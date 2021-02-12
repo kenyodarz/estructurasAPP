@@ -1,1 +1,38 @@
-<p>resumen works!</p>
+<nav>
+  <input type="checkbox" id="check" />
+  <label for="check" class="checkbtn">
+    <i class="pi pi-bars"></i>
+  </label>
+  <label class="logo">Ventas</label>
+  <ul>
+    <li>
+      <a [routerLink]="['/resume/home']" routerLinkActive="active">Home</a>
+    </li>
+    <li>
+      <a [routerLink]="['productos']" routerLinkActive="active" *ngIf="isAdmin">Producto</a>
+    </li>
+    <li>
+      <a [routerLink]="['empleado']" routerLinkActive="active"  *ngIf="isAdmin">Empleado</a>
+    </li>
+    <li><a [routerLink]="['clientes']" routerLinkActive="active"  *ngIf="isAdmin">Cliente</a></li>
+    <li>
+      <a [routerLink]="['ventas']" routerLinkActive="active">Nueva Venta</a>
+    </li>
+    <li>
+      <button
+        type="button"
+        id="btn_usuario"
+        pButton
+        pRipple 
+        icon="pi pi-user"
+        [label]="[usuario]"
+        (click)="menu.toggle($event)"
+        class="p-button-outlined"
+      ></button>
+      <p-menu #menu [popup]="true" [model]="items"></p-menu>
+    </li>
+  </ul>
+</nav>
+<section>
+  <router-outlet></router-outlet>
+</section>

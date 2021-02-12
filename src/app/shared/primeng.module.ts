@@ -26,6 +26,7 @@ import { FormsModule } from '@angular/forms';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { MenuModule } from 'primeng/menu';
 
 
 const myModule = [
@@ -53,6 +54,7 @@ const myModule = [
   InputTextareaModule,
   KeyFilterModule,
   ToggleButtonModule,
+  MenuModule,
 ];
 
 @NgModule({
