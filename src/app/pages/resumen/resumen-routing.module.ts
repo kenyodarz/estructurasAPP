@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginGuard } from 'src/app/guards/login.guard';
 import { HomeComponent } from './components/home/home.component';
 import { ResumenComponent } from './resumen.component';
+import { PersonaComponent } from './components/persona/persona.component';
+import { EstructuraComponent } from './components/estructuras/estructura.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { FormularioComponent } from './components/formulario/formulario.component';
 
 const routes: Routes = [
   {
@@ -20,9 +24,30 @@ const routes: Routes = [
         component: HomeComponent,
         canActivate: [LoginGuard],
       },
-    ]
-  }
+      {
+        path: 'persona',
+        component: PersonaComponent,
+        canActivate: [LoginGuard],
+      },
+      {
+        path: 'estructuras',
+        component: EstructuraComponent,
+        canActivate: [LoginGuard],
+      },
+      {
+        path: 'reportes',
+        component: ReportesComponent,
+        canActivate: [LoginGuard],
+      },
+      {
+        path: 'formulario',
+        component: FormularioComponent,
+        canActivate: [LoginGuard],
+      },
+    ],
+  },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

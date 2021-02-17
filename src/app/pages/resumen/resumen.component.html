@@ -3,20 +3,20 @@
   <label for="check" class="checkbtn">
     <i class="pi pi-bars"></i>
   </label>
-  <label class="logo">Ventas</label>
+  <label class="logo">INSPECCIONES</label>
   <ul>
     <li>
       <a [routerLink]="['/resume/home']" routerLinkActive="active">Home</a>
     </li>
     <li>
-      <a [routerLink]="['personas']" routerLinkActive="active" *ngIf="isAdmin">Personas</a>
+      <a [routerLink]="['/resumen/persona']" routerLinkActive="active" *ngIf="isAdmin">Personas</a>
     </li>
     <li>
-      <a [routerLink]="['esructuras']" routerLinkActive="active"  *ngIf="isAdmin">Estructuras</a>
+      <a [routerLink]="['/resumen/estructuras']" routerLinkActive="active"  *ngIf="isAdmin">Estructuras</a>
     </li>
-    <li><a [routerLink]="['reportes']" routerLinkActive="active"  *ngIf="isAdmin">Repostes</a></li>
+    <li><a [routerLink]="['/resumen/reportes']" routerLinkActive="active"  *ngIf="isAdmin">Reportes</a></li>
     <li>
-      <a [routerLink]="['formulario']" routerLinkActive="active">Formulario</a>
+      <a [routerLink]="['/resumen/formulario']" routerLinkActive="active">Formulario</a>
     </li>
     <li>
       <button

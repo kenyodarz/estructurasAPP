@@ -1,0 +1,84 @@
+<p>Estructuras Works!</p>
+<!--
+<div class="stepsdemo-content">
+  <p-card>
+    <p-button (click)="showModalDialog()" icon="pi pi-external-link" label="Show"></p-button>
+<p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
+      <div class="p-col-12 p-md-5">
+            <div>N° OT</div>
+            <input pInputText type="text" formControlName="numeroOT" pKeyFilter="alphanum" />
+          </div>
+        <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+        </ng-template>
+</p-dialog>
+    <form >
+      <p-fieldset legend="INFORMACIÓN DE ESTRUCTURA">
+        <div class="p-grid p-fluid">
+          <div class="p-col-12 p-md-5">
+            <div>N° ESTRUCTURA</div>
+            <input pInputText formControlName="numEstructura" type="text" pKeyFilter="alphanum" />
+          </div>
+
+          <div class="p-col-12 p-md-5">
+            <div>N° OT</div>
+            <input pInputText type="text" formControlName="numeroOT" pKeyFilter="alphanum" />
+          </div>
+          <div class="p-col-12 p-md-2 p-grid p-ai-end p-jc-center">
+            <p-button
+              label="Buscar"
+              icon="pi pi-search"
+              (click)="buscarEstructura()"
+            ></p-button>
+          </div>
+          <div class="p-col-12 p-md-4">
+            <div>CIRCUITO</div>
+            <input pInputText type="text" formControlName="circuito" readonly />
+          </div>
+          <div class="p-col-12 p-md-4">
+            <div>UBICACIÓN</div>
+            <input pInputText type="text" formControlName="ubicacion" readonly />
+          </div>
+          <div class="p-col-12 p-md-4">
+            <div>PREDIO</div>
+            <p-selectButton
+            [options]="stateOptions"
+            formControlName="predioPublico"
+            optionLabel="label"
+            optionValue="value"
+            disabled = "true"
+          ></p-selectButton>
+          </div>
+        </div>
+        <p-fieldset legend="GEOREFERENCIACIÓN">
+          <div class="p-grid p-fluid">
+            <div class="p-col-12 p-md-4">
+              <div>COORD X:</div>
+              <input pInputText type="text" formControlName="coordinadaX" readonly />
+            </div>
+            <div class="p-col-12 p-md-4">
+              <div>COORD Y:</div>
+              <input pInputText type="text" formControlName="coordinadaY" readonly />
+            </div>
+            <div class="p-col-12 p-md-4">
+              <div>ALTURA M.S.N.M.:</div>
+              <input pInputText type="text" formControlName="alturaSobreNivelMar" readonly />
+            </div>
+          </div>
+        </p-fieldset>
+      </p-fieldset>
+    </form>
+    <ng-template pTemplate="footer">
+      <div class="p-grid p-nogutter p-justify-end">
+        <p-button
+          label="Next"
+          icon="pi pi-angle-right"
+          iconPos="right"
+          [routerLink]="['/formulario/apantallamiento']"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>
+-->
