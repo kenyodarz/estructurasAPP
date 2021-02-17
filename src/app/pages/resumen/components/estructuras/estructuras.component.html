@@ -1,15 +1,15 @@
-<p-panel header="Administracion Registro de Personas">
+<p-panel header="Administracion de Estructuras">
   <p-menubar [model]="items"></p-menubar>
   <p-table
     #dt
-    [value]="personaList"
+    [value]="estructuras"
     [paginator]="true"
     selectionMode="single"
-    [(selection)]="selectedPersona"
-    dataKey="cedulaPersona"
+    [(selection)]="selectedEstructura"
+    dataKey="idEstructura"
     [rows]="10"
     [responsive]="true"
-    [globalFilterFields]="['cedulaPersona', 'nombrePersona', 'apellidoPersona', 'telefonoPersona']"
+    [globalFilterFields]="['idEstructura', 'numEstructura', 'numeroOT', 'ubicacion']"
   >
     <ng-template pTemplate="caption">
       <div style="text-align: right">
@@ -27,40 +27,40 @@
     <ng-template pTemplate="header">
       <tr>
         <th style="width: 3rem">#</th>
-        <th>DOCUMENTO DE IDENTIDAD</th>
-        <th>NOMBRE</th>
-        <th>APELLIDO</th>
-        <th>TELEFONO</th>
+        <th>ID Estructura</th>
+        <th>Nro Estructura</th>
+        <th>Nro OT</th>
+        <th>Ubicacion</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-rowIndex="rowIndex" let-persona>
-      <tr [pSelectableRow]="persona">
+    <ng-template pTemplate="body" let-rowIndex="rowIndex" let-estructura>
+      <tr [pSelectableRow]="estructura">
         <td>{{ rowIndex + 1 }}</td>
-        <td>{{ persona.cedulaPersona }}</td>
-        <td>{{ persona.nombrePersona }}</td>
-        <td>{{ persona.apellidoPersona }}</td>
-        <td>{{ persona.telefonoPersona }}</td>
+        <td>{{ estructura.idEstructura }}</td>
+        <td>{{ estructura.numEstructura }}</td>
+        <td>{{ estructura.numeroOT }}</td>
+        <td>{{ estructura.ubicacion }}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="summary">
       <div style="text-align: left">
         Registro Seleccionado:
         {{
-          selectedPersona
-            ? selectedPersona.cedulaPersona +
+          selectedEstructura
+            ? selectedEstructura.idEstructura +
               " - " +
-              selectedPersona.nombrePersona +
+              selectedEstructura.numEstructura +
               " - " +
-              selectedPersona.apellidoPersona +
+              selectedEstructura.numeroOT +
               " - " +
-              selectedPersona.telefonoPersona
+              selectedEstructura.ubicacion
             : "Ninguno"
         }}
       </div></ng-template
     >
   </p-table>
 </p-panel>
-<!--
+
 <p-dialog
   header="{{ title }} Estructura"
   [(visible)]="displaySaveEditModal"
@@ -70,7 +70,7 @@
   [draggable]="false"
   [resizable]="false"
 >
-  <form action="" [formGroup]="formPersona">
+  <form action="" [formGroup]="formEstructura">
     <div class="p-grid p-fluid">
       <div class="p-col">
         <div>
@@ -81,8 +81,8 @@
           severity="error"
           text="Por favor Ingrese un ID Estructura"
           *ngIf="
-            !formPersona.controls['idEstructura'].valid &&
-            formPersona.controls['idEstructura'].dirty
+            !formEstructura.controls['idEstructura'].valid &&
+            formEstructura.controls['idEstructura'].dirty
           "
         ></p-message>
       </div>
@@ -95,8 +95,8 @@
           severity="error"
           text="Por favor Ingrese un Nro Estructura"
           *ngIf="
-            !formPersona.controls['numEstructura'].valid &&
-            formPersona.controls['numEstructura'].dirty
+            !formEstructura.controls['numEstructura'].valid &&
+            formEstructura.controls['numEstructura'].dirty
           "
         ></p-message>
       </div>
@@ -109,8 +109,8 @@
           severity="error"
           text="Por favor Ingrese un circuito"
           *ngIf="
-            !formPersona.controls['circuito'].valid &&
-            formPersona.controls['circuito'].dirty
+            !formEstructura.controls['circuito'].valid &&
+            formEstructura.controls['circuito'].dirty
           "
         ></p-message>
       </div>
@@ -123,8 +123,8 @@
           severity="error"
           text="Por favor Ingrese un Nro OT"
           *ngIf="
-            !formPersona.controls['numeroOT'].valid &&
-            formPersona.controls['numeroOT'].dirty
+            !formEstructura.controls['numeroOT'].valid &&
+            formEstructura.controls['numeroOT'].dirty
           "
         ></p-message>
       </div>
@@ -137,8 +137,8 @@
           severity="error"
           text="Por favor Ingrese una ubicación"
           *ngIf="
-            !formPersona.controls['ubicacion'].valid &&
-            formPersona.controls['ubicacion'].dirty
+            !formEstructura.controls['ubicacion'].valid &&
+            formEstructura.controls['ubicacion'].dirty
           "
         ></p-message>
       </div>
@@ -156,8 +156,8 @@
           severity="error"
           text="Por favor Seleccione un tipo de Predio"
           *ngIf="
-            !formPersona.controls['predioPublico'].valid &&
-            formPersona.controls['predioPublico'].dirty
+            !formEstructura.controls['predioPublico'].valid &&
+            formEstructura.controls['predioPublico'].dirty
           "
         ></p-message>
       </div>
@@ -171,8 +171,8 @@
             severity="error"
             text="Por favor Ingrese la coordenadaX"
             *ngIf="
-              !formPersona.controls['coordinadaX'].valid &&
-              formPersona.controls['coordinadaX'].dirty
+              !formEstructura.controls['coordinadaX'].valid &&
+              formEstructura.controls['coordinadaX'].dirty
             "
           ></p-message>
         </div>
@@ -185,8 +185,8 @@
             severity="error"
             text="Por favor Ingrese la coordenadaY"
             *ngIf="
-              !formPersona.controls['coordinadaY'].valid &&
-              formPersona.controls['coordinadaY'].dirty
+              !formEstructura.controls['coordinadaY'].valid &&
+              formEstructura.controls['coordinadaY'].dirty
             "
           ></p-message>
         </div>
@@ -203,8 +203,8 @@
             severity="error"
             text="Por favor Ingrese un ID Estructura"
             *ngIf="
-              !formPersona.controls['alturaSobreNivelMar'].valid &&
-              formPersona.controls['alturaSobreNivelMar'].dirty
+              !formEstructura.controls['alturaSobreNivelMar'].valid &&
+              formEstructura.controls['alturaSobreNivelMar'].dirty
             "
           ></p-message>
         </div>
@@ -220,10 +220,10 @@
     ></p-button>
     <p-button
       icon="pi pi-check"
-      [disabled]="formPersona.invalid"
+      [disabled]="formEstructura.invalid"
       (click)="onGuardar()"
       label="Aceptar"
       styleClass="p-button-text"
     ></p-button>
   </ng-template>
-</p-dialog>-->
+</p-dialog>

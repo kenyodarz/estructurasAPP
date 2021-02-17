@@ -4,7 +4,7 @@ import { LoginGuard } from 'src/app/guards/login.guard';
 import { HomeComponent } from './components/home/home.component';
 import { ResumenComponent } from './resumen.component';
 import { PersonaComponent } from './components/persona/persona.component';
-import { EstructuraComponent } from './components/estructuras/estructura.component';
+import { EstructurasComponent } from './components/estructuras/estructuras.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 
@@ -31,7 +31,7 @@ const routes: Routes = [
       },
       {
         path: 'estructuras',
-        component: EstructuraComponent,
+        component: EstructurasComponent,
         canActivate: [LoginGuard],
       },
       {

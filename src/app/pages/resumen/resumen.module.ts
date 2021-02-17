@@ -6,10 +6,16 @@ import { PrimengModule } from 'src/app/shared/primeng.module';
 import { ResumenRoutingModule } from './resumen-routing.module';
 import { ResumenComponent } from './resumen.component';
 import { HomeComponent } from './components/home/home.component';
-
+import { EstructurasComponent } from './components/estructuras/estructuras.component';
+import { PersonaComponent } from './components/persona/persona.component';
 
 @NgModule({
-  declarations: [ResumenComponent, HomeComponent],
+  declarations: [
+    ResumenComponent,
+    HomeComponent,
+    EstructurasComponent,
+    PersonaComponent,
+  ],
   imports: [
     CommonModule,
     ResumenRoutingModule,
