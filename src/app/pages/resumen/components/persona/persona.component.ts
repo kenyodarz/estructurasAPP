@@ -65,6 +65,7 @@ export class PersonaComponent implements OnInit {
         detail: `La persona ${persona.nombrePersona} ${persona.apellidoPersona} ha sido guardada correctamente`,
       });
       this.validarGuardado(persona);
+      this.displaySaveEditModal = false;
     });
   }
 
@@ -80,6 +81,7 @@ export class PersonaComponent implements OnInit {
   }
 
   mostarDialigoGuardarEditar(editar: boolean) {
+     this.formPersona.reset();
     if (editar) {
       if (
         this.selectedPersona === null ||

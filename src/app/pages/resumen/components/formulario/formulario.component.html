@@ -1,10 +1,113 @@
-<p>Formulario Works!</p>
-<!--
-<br>
-<div class="stepsdemo-content">
-<div class="card">
-    <p-steps [model]="items" [readonly]="true"></p-steps>
-</div>
-</div>
-<router-outlet></router-outlet>
+
+<p-panel header="Administración de Formatos">
+  <p-menubar [model]="items"></p-menubar>
+  <p-table
+    #dt
+    [value]="formulario"
+    [paginator]="true"
+    selectionMode="single"
+    [(selection)]="selectedFormulario"
+    dataKey="idInspecciones"
+    [rows]="10"
+    [responsive]="true"
+    [globalFilterFields]="['idInspecciones', 'observaciones', 'nombre1', 'codigo1']"
+  >
+    <ng-template pTemplate="caption">
+      <div style="text-align: right">
+        <i class="pi pi-search" style="margin: 4px 4px 0 0"></i>
+        <input
+          type="text"
+          pInputText
+          size="20"
+          placeholder="Buscar"
+          (input)="dt.filterGlobal($event.target.value, 'contains')"
+          style="width: auto"
+        />
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">#</th>
+        <th>ID INSPECCIONES</th>
+        <th>OBSERVACIONES GENERALES</th>
+        <th>NOMBRE RESPONSABLE</th>
+        <th>CODIGO RESPONSABLE</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowIndex="rowIndex" let-formulario>
+      <tr [pSelectableRow]="formulario">
+        <td>{{ rowIndex + 1 }}</td>
+        <td>{{ formulario.idInspeccion }}</td>
+        <td>{{ formulario.observaciones }}</td>
+        <td>{{ formulario.nombre1 }}</td>
+        <td>{{ formulario.codigo1 }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div style="text-align: left">
+        Registro Seleccionado:
+        {{
+          selectedFormulario
+            ? selectedFormulario.idInspeccion +
+              " - " +
+              selectedFormulario.observaciones +
+              " - " +
+              selectedFormulario.nombre1 +
+              " - " +
+              selectedFormulario.codigo1
+            : "Ninguno"
+        }}
+      </div></ng-template
+    >
+  </p-table>
+</p-panel>
+
+<p-dialog
+  header="{{ title }} Formulario"
+  [(visible)]="displaySaveEditModal"
+  [modal]="true"
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <form action="" [formGroup]="formFormulario">
+    <div class="p-grid p-fluid">
+      <div class="p-col">
+      
+      </div>
+      <div class="p-col">
+       
+      </div>
+      <div class="p-col">
+       
+      </div>
+      <div class="p-col">
+        
+      </div>
+      <div class="p-col">
+       
+      </div>
+      <div class="p-col">
+        
+      </div>
+    
+    </div>
+  </form>
+  <ng-template pTemplate="footer">
+    <p-button
+      icon="pi pi-check"
+      (click)="displaySaveEditModal = false"
+      label="Cancelar"
+      styleClass="p-button-text p-button-danger"
+    ></p-button>
+    <p-button
+      icon="pi pi-check"
+      [disabled]="formFormulario.invalid"
+      (click)="onGuardar()"
+      label="Aceptar"
+      styleClass="p-button-text"
+    ></p-button>
+  </ng-template>
+</p-dialog>
 -->

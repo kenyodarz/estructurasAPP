@@ -60,9 +60,8 @@
     >
   </p-table>
 </p-panel>
-<!--
 <p-dialog
-  header="{{ title }} Estructura"
+  header="{{ title }} Persona"
   [(visible)]="displaySaveEditModal"
   [modal]="true"
   [style]="{ width: '50vw' }"
@@ -70,148 +69,148 @@
   [draggable]="false"
   [resizable]="false"
 >
+
   <form action="" [formGroup]="formPersona">
-    <div class="p-grid p-fluid">
+   <div class="p-grid p-fluid">
       <div class="p-col">
-        <div>
-          <div>ID Estructura:*</div>
-          <input pInputText type="text" formControlName="idEstructura" />
+          <div>
+          <div>CEDULA:*</div>
+          <input pInputText type="text" formControlName="cedulaPersona" />
         </div>
-        <p-message
+         <p-message
           severity="error"
-          text="Por favor Ingrese un ID Estructura"
+          text="Por favor Ingrese cedula de persona"
           *ngIf="
-            !formPersona.controls['idEstructura'].valid &&
-            formPersona.controls['idEstructura'].dirty
+            !formPersona.controls['cedulaPersona'].valid &&
+            formPersona.controls['cedulaPersona'].dirty
           "
         ></p-message>
       </div>
       <div class="p-col">
         <div>
-          <div>Nro. Estructura:*</div>
-          <input pInputText type="text" formControlName="numEstructura" />
+          <div>NOMBRE:*</div>
+          <input pInputText type="text" formControlName="nombrePersona" />
         </div>
         <p-message
           severity="error"
-          text="Por favor Ingrese un Nro Estructura"
+          text="Por favor Ingrese Nombre de persona"
           *ngIf="
-            !formPersona.controls['numEstructura'].valid &&
-            formPersona.controls['numEstructura'].dirty
+            !formPersona.controls['nombrePersona'].valid &&
+            formPersona.controls['nombrePersona'].dirty
           "
         ></p-message>
       </div>
-      <div class="p-col">
+       <div class="p-col">
         <div>
-          <div>Circuito:*</div>
-          <input pInputText type="text" formControlName="circuito" />
+          <div>APELLIDO:*</div>
+          <input pInputText type="text" formControlName="apellidoPersona" />
         </div>
         <p-message
           severity="error"
-          text="Por favor Ingrese un circuito"
+          text="Por favor Ingrese Apellido de persona"
           *ngIf="
-            !formPersona.controls['circuito'].valid &&
-            formPersona.controls['circuito'].dirty
+            !formPersona.controls['apellidoPersona'].valid &&
+            formPersona.controls['apellidoPersona'].dirty
           "
         ></p-message>
       </div>
-      <div class="p-col">
+       <div class="p-col">
         <div>
-          <div>Nro OT:*</div>
-          <input pInputText type="text" formControlName="numeroOT" />
+          <div>TELEFONO:*</div>
+          <input pInputText type="text" formControlName="telefonoPersona" />
         </div>
         <p-message
           severity="error"
-          text="Por favor Ingrese un Nro OT"
+          text="Por favor Ingrese Telefono de persona"
           *ngIf="
-            !formPersona.controls['numeroOT'].valid &&
-            formPersona.controls['numeroOT'].dirty
+            !formPersona.controls['telefonoPersona'].valid &&
+            formPersona.controls['telefonoPersona'].dirty
           "
         ></p-message>
       </div>
-      <div class="p-col">
+       <div class="p-col">
         <div>
-          <div>Ubicación:*</div>
-          <input pInputText type="text" formControlName="ubicacion" />
+          <div>USUARIO:*</div>
+          <input pInputText type="text" formControlName="usuario" />
         </div>
         <p-message
           severity="error"
-          text="Por favor Ingrese una ubicación"
+          text="Por favor Ingrese Usuario"
           *ngIf="
-            !formPersona.controls['ubicacion'].valid &&
-            formPersona.controls['ubicacion'].dirty
+            !formPersona.controls['usuario'].valid &&
+            formPersona.controls['usuario'].dirty
+          "
+        ></p-message>
+      </div> <div class="p-col">
+        <div>
+          <div>USUARIO:*</div>
+          <input pInputText type="text" formControlName="usuario" />
+        </div>
+        <p-message
+          severity="error"
+          text="Por favor Ingrese Usuario"
+          *ngIf="
+            !formPersona.controls['usuario'].valid &&
+            formPersona.controls['usuario'].dirty
           "
         ></p-message>
       </div>
-      <div class="p-col">
+       <div class="p-col">
         <div>
-          <div>Tipo de predio:*</div>
+          <div>CONTRASEÑA:*</div>
+          <input pInputText type="text" formControlName="password" />
+        </div>
+        <p-message
+          severity="error"
+          text="Por favor Ingrese Contraseña"
+          *ngIf="
+            !formPersona.controls['password'].valid &&
+            formPersona.controls['password'].dirty
+          "
+        ></p-message>
+      </div>
+       <div class="p-col">
+        <div>
+          <div>ESTADO:*</div>
           <p-selectButton
-            [options]="stateOptions"
-            formControlName="predioPublico"
+            [options]="estadoActivo"
+            formControlName="estadoActivo"
             optionLabel="label"
             optionValue="value"
           ></p-selectButton>
         </div>
         <p-message
           severity="error"
-          text="Por favor Seleccione un tipo de Predio"
+          text="Por favor Seleccione estado de la persona"
           *ngIf="
-            !formPersona.controls['predioPublico'].valid &&
-            formPersona.controls['predioPublico'].dirty
+            !formPersona.controls['estadoActivo'].valid &&
+            formPersona.controls['estadoActivo'].dirty
           "
         ></p-message>
       </div>
-      <p-fieldset legend="Georeferenciación">
-        <div class="p-col">
-          <div>
-            <div>CoordenadaX:*</div>
-            <input pInputText type="text" formControlName="coordinadaX" />
-          </div>
-          <p-message
-            severity="error"
-            text="Por favor Ingrese la coordenadaX"
-            *ngIf="
-              !formPersona.controls['coordinadaX'].valid &&
-              formPersona.controls['coordinadaX'].dirty
-            "
-          ></p-message>
+      <div class="p-col">
+        <div>
+          <div>ROL:*</div>
+          <p-selectButton
+            [options]="isAdmin"
+            formControlName="esAdministrador"
+            optionLabel="label"
+            optionValue="value"
+          ></p-selectButton>
         </div>
-        <div class="p-col">
-          <div>
-            <div>CoordenadaY:*</div>
-            <input pInputText type="text" formControlName="coordinadaY" />
-          </div>
-          <p-message
-            severity="error"
-            text="Por favor Ingrese la coordenadaY"
-            *ngIf="
-              !formPersona.controls['coordinadaY'].valid &&
-              formPersona.controls['coordinadaY'].dirty
-            "
-          ></p-message>
-        </div>
-        <div class="p-col">
-          <div>
-            <div>Altura M.S.N.M:*</div>
-            <input
-              pInputText
-              type="text"
-              formControlName="alturaSobreNivelMar"
-            />
-          </div>
-          <p-message
-            severity="error"
-            text="Por favor Ingrese un ID Estructura"
-            *ngIf="
-              !formPersona.controls['alturaSobreNivelMar'].valid &&
-              formPersona.controls['alturaSobreNivelMar'].dirty
-            "
-          ></p-message>
-        </div>
-      </p-fieldset>
-    </div>
+        <p-message
+          severity="error"
+          text="Por favor Seleccione rol de la persona"
+          *ngIf="
+            !formPersona.controls['esAdministrador'].valid &&
+            formPersona.controls['esAdministrador'].dirty
+          "
+        ></p-message>
+      </div>
+   </div>
+    
   </form>
-  <ng-template pTemplate="footer">
+   <ng-template pTemplate="footer">
     <p-button
       icon="pi pi-check"
       (click)="displaySaveEditModal = false"
@@ -226,4 +225,3 @@
       styleClass="p-button-text"
     ></p-button>
   </ng-template>
-</p-dialog>-->
