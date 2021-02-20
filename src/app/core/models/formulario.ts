@@ -1,4 +1,5 @@
 import { Estructura } from "./estructura";
+import { Persona } from "./persona";
 
 export class Formulario {
   constructor(
@@ -14,7 +15,8 @@ export class Formulario {
     public idtransposicion: string = null,
     public idUbicacion: string = null,
     public observaciones: string = null,
-    public nombre1: string = null,
+    public numeroOT: string = null,
+    public persona: Persona = null,
     public nombre2: string = null,
     public nombre3: string = null,
     public nombre4: string = null,

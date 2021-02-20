@@ -1,46 +1,69 @@
-
 <p-panel header="Administración de Formatos">
-  <p-menubar [model]="items"></p-menubar>
   <p-table
     #dt
-    [value]="formulario"
+    [value]="formularios"
     [paginator]="true"
     selectionMode="single"
     [(selection)]="selectedFormulario"
-    dataKey="idInspecciones"
+    dataKey="idInspeccion"
     [rows]="10"
     [responsive]="true"
-    [globalFilterFields]="['idInspecciones', 'observaciones', 'nombre1', 'codigo1']"
+    [globalFilterFields]="[
+      'numeroOT',
+      'observaciones',
+      'nombre1',
+      'codigo1'
+    ]"
   >
     <ng-template pTemplate="caption">
-      <div style="text-align: right">
-        <i class="pi pi-search" style="margin: 4px 4px 0 0"></i>
-        <input
-          type="text"
-          pInputText
-          size="20"
-          placeholder="Buscar"
-          (input)="dt.filterGlobal($event.target.value, 'contains')"
-          style="width: auto"
-        />
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <button
+          pButton
+          pRipple
+          label="Nuevo"
+          icon="pi pi-plus"
+          class="p-button-outlined p-button-success p-mr-2"
+          (click)="mostrarDialogoGuardar(false)"
+        ></button>
+        <div style="text-align: right">
+          <i class="pi pi-search" style="margin: 4px 4px 0 0"></i>
+          <input
+            type="text"
+            pInputText
+            size="20"
+            placeholder="Buscar"
+            (input)="dt.filterGlobal($event.target.value, 'contains')"
+            style="width: auto"
+          />
+        </div>
       </div>
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
         <th style="width: 3rem">#</th>
-        <th>ID INSPECCIONES</th>
+        <th>NRO ORDEN DE TRABAJO</th>
         <th>OBSERVACIONES GENERALES</th>
         <th>NOMBRE RESPONSABLE</th>
         <th>CODIGO RESPONSABLE</th>
+        <th style="width: 8rem">ACCIONES</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rowIndex="rowIndex" let-formulario>
       <tr [pSelectableRow]="formulario">
         <td>{{ rowIndex + 1 }}</td>
-        <td>{{ formulario.idInspeccion }}</td>
+        <td>{{ formulario.numeroOT }}</td>
         <td>{{ formulario.observaciones }}</td>
-        <td>{{ formulario.nombre1 }}</td>
+        <td>{{ formulario.persona.nombrePersona }} {{ formulario.persona.apellidoPersona }}</td>
         <td>{{ formulario.codigo1 }}</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-eye"
+            class="p-button-rounded p-button-info p-mr-2"
+            (click)="onVerFormulario(formulario)"
+          ></button>
+        </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="summary">
@@ -48,11 +71,13 @@
         Registro Seleccionado:
         {{
           selectedFormulario
-            ? selectedFormulario.idInspeccion +
+            ? selectedFormulario.numeroOT +
               " - " +
               selectedFormulario.observaciones +
               " - " +
-              selectedFormulario.nombre1 +
+              selectedFormulario.persona.nombrePersona + 
+              " " + 
+              selectedFormulario.persona.apellidoPersona +
               " - " +
               selectedFormulario.codigo1
             : "Ninguno"
@@ -72,26 +97,13 @@
   [resizable]="false"
 >
   <form action="" [formGroup]="formFormulario">
-    <div class="p-grid p-fluid">
-      <div class="p-col">
-      
-      </div>
-      <div class="p-col">
-       
-      </div>
-      <div class="p-col">
-       
-      </div>
-      <div class="p-col">
-        
-      </div>
-      <div class="p-col">
-       
-      </div>
-      <div class="p-col">
-        
-      </div>
-    
+    <div class="p-fluid">
+      <div class="p-field p-grid">
+            <label for="numeroOT" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Orden Numero</label>
+            <div class="p-col-12 p-md-10">
+                <input id="numeroOT"  formControlName="numeroOT" type="text" pInputText> 
+            </div>
+        </div>
     </div>
   </form>
   <ng-template pTemplate="footer">

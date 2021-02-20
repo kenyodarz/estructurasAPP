@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FormularioService extends CommonService<Formulario, string> {
-  protected API_URL: string = `${API_URL}/formularios/`;
+  protected API_URL: string = `${API_URL}/inspecciones/`;
   constructor(protected http: HttpClient) {
     super(http);
   }
