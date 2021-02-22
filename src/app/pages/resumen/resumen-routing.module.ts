@@ -7,9 +7,7 @@ import { PersonaComponent } from './components/persona/persona.component';
 import { EstructurasComponent } from './components/estructuras/estructuras.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
-import { VerFormularioComponent } from './components/formulario/ver-formulario/ver-formulario.component';   
-
-
+import { VerFormularioComponent } from './components/formulario/ver-formulario/ver-formulario.component';
 
 const routes: Routes = [
   {
@@ -49,17 +47,18 @@ const routes: Routes = [
       },
       {
         path: 'formulario/ver/:id',
-        component: VerFormularioComponent,
+        loadChildren: () =>
+          import('src/app/pages/resumen/components/formulario/formulario.module').then(
+            (m) => m.FormularioModule
+          ),
         canActivate: [LoginGuard],
       },
     ],
   },
-  
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ResumenRoutingModule { }
+export class ResumenRoutingModule {}

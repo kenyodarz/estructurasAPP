@@ -1,22 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EstructurasComponent } from '../estructuras/estructuras.component';
-import { InformacionComponent } from '../informacion/informacion.component';
 import { FormularioComponent } from './formulario.component';
+import { InformacionComponent } from './informacion/informacion.component';
+import { VerFormularioComponent } from './ver-formulario/ver-formulario.component';
 
 
 
 @NgModule({
   imports: [
     RouterModule.forChild([
+      { path: '', redirectTo: 'informacion', pathMatch: 'full' },
       {
         path: '',
-        component: FormularioComponent,
-        children: [
-          { path: '', redirectTo: 'informacion', pathMatch: 'full' },
-          { path: 'informacion', component: InformacionComponent },
-          
-        ],
+        component: VerFormularioComponent,
+        children: [{ path: 'informacion', component: InformacionComponent }],
       },
     ]),
   ],
