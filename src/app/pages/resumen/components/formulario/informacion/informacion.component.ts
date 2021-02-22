@@ -13,16 +13,14 @@ import { Estructura } from 'src/app/core/models/estructura';
 @Component({
   selector: 'app-informacion',
   templateUrl: './informacion.component.html',
-  styleUrls: ['./informacion.component.css']
+  styleUrls: ['./informacion.component.css'],
 })
 export class InformacionComponent implements OnInit {
- estructura: Estructura = new Estructura();
+  estructura: Estructura = new Estructura();
   formInformacion: FormGroup;
   stateOptions: { label: string; value: boolean }[];
   displayModal: boolean = true;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

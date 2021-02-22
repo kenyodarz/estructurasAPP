@@ -1,13 +1,12 @@
 <p>fdmgf</p>
 <div class="stepsdemo-content">
   <p-card>
-
-    <form >
+    <form>
       <p-fieldset legend="INFORMACIÓN DE ESTRUCTURA">
         <div class="p-grid p-fluid">
           <div class="p-col-12 p-md-5">
             <div>N° ESTRUCTURA</div>
-            <input pInputText  type="text" pKeyFilter="alphanum" />
+            <input pInputText type="text" pKeyFilter="alphanum" />
           </div>
 
           <div class="p-col-12 p-md-5">
@@ -15,29 +14,25 @@
             <input pInputText type="text" pKeyFilter="alphanum" />
           </div>
           <div class="p-col-12 p-md-2 p-grid p-ai-end p-jc-center">
-            <p-button
-              label="Buscar"
-              icon="pi pi-search"
-             
-            ></p-button>
+            <p-button label="Buscar" icon="pi pi-search"></p-button>
           </div>
           <div class="p-col-12 p-md-4">
             <div>CIRCUITO</div>
-            <input pInputText type="text"  readonly />
+            <input pInputText type="text" readonly />
           </div>
           <div class="p-col-12 p-md-4">
             <div>UBICACIÓN</div>
-            <input pInputText type="text"  readonly />
+            <input pInputText type="text" readonly />
           </div>
           <div class="p-col-12 p-md-4">
             <div>PREDIO</div>
             <p-selectButton
-            [options]=""
-            formControlName="predioPublico"
-            optionLabel="label"
-            optionValue="value"
-            disabled = "true"
-          ></p-selectButton>
+              [options]=""
+              formControlName="predioPublico"
+              optionLabel="label"
+              optionValue="value"
+              disabled="true"
+            ></p-selectButton>
           </div>
         </div>
         <p-fieldset legend="GEOREFERENCIACIÓN">
@@ -64,7 +59,6 @@
           label="Next"
           icon="pi pi-angle-right"
           iconPos="right"
-        
         ></p-button>
       </div>
     </ng-template>
