@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormularioComponent } from './formulario.component';
 import { InformacionComponent } from './informacion/informacion.component';
+import { ApantallamientoComponent } from './apantallamiento/apantallamiento.component';
 import { VerFormularioComponent } from './ver-formulario/ver-formulario.component';
-
 
 
 @NgModule({
@@ -13,8 +13,10 @@ import { VerFormularioComponent } from './ver-formulario/ver-formulario.componen
       {
         path: '',
         component: VerFormularioComponent,
-        children: [{ path: 'informacion', component: InformacionComponent }],
+        children: [{ path: 'informacion', component: InformacionComponent },
+      { path: 'apantallamiento', component: ApantallamientoComponent }],
       },
+      
     ]),
   ],
   exports: [RouterModule],

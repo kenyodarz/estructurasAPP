@@ -18,7 +18,9 @@ export class EstructuraService extends CommonService<Estructura, string> {
     super(http);
   }
 
-  buscarTorresPorNumero(numEstrutura: String): Observable<Estructura>{
-    return this.http.get<Estructura>(`${this.API_URL}numero/${numEstrutura}`);
+  buscarTorresPorNumero(numEstrutura: String, circuito: String): Observable<Estructura>{
+    return this.http.get<Estructura>(
+      `${this.API_URL}numero/${numEstrutura}/${circuito}`
+    );
   }
 }
