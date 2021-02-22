@@ -10,6 +10,16 @@ import { EstructurasComponent } from './components/estructuras/estructuras.compo
 import { PersonaComponent } from './components/persona/persona.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { VerFormularioComponent } from './components/formulario/ver-formulario/ver-formulario.component';
+import { EstructuraaComponent } from './components/estructuraa/estructuraa.component';
+import { AislamientoComponent } from './components/aislamiento/aislamiento.component';
+import { ApantallamientoComponent } from './components/apantallamiento/apantallamiento.component';
+import { BasesComponent } from './components/bases/bases.component';
+import { CableConductorComponent } from './components/cable-conductor/cable-conductor.component';
+import { ServidumbreComponent } from './components/servidumbre/servidumbre.component';
+import { SptComponent } from './components/spt/spt.component';
+import { TransposicionComponent } from './components/transposicion/transposicion.component';
+import { UbicacionComponent } from './components/ubicacion/ubicacion.component';
+import { InformacionComponent } from './components/informacion/informacion.component';
 
 
 @NgModule({
@@ -20,6 +30,16 @@ import { VerFormularioComponent } from './components/formulario/ver-formulario/v
     PersonaComponent,
     FormularioComponent,
     VerFormularioComponent,
+    EstructuraaComponent,
+    AislamientoComponent,
+    ApantallamientoComponent,
+    BasesComponent,
+    CableConductorComponent,
+    ServidumbreComponent,
+    SptComponent,
+    TransposicionComponent,
+    UbicacionComponent,
+    InformacionComponent,
   ],
   imports: [
     CommonModule,

@@ -9,7 +9,7 @@
     dataKey="idEstructura"
     [rows]="10"
     [responsive]="true"
-    [globalFilterFields]="['idEstructura', 'numEstructura', 'numeroOT', 'ubicacion']"
+    [globalFilterFields]="['idEstructura', 'numEstructura',  'ubicacion']"
   >
     <ng-template pTemplate="caption">
       <div style="text-align: right">
@@ -29,7 +29,7 @@
         <th style="width: 3rem">#</th>
         <th>ID Estructura</th>
         <th>Nro Estructura</th>
-        <th>Nro OT</th>
+        
         <th>Ubicacion</th>
       </tr>
     </ng-template>
@@ -38,7 +38,7 @@
         <td>{{ rowIndex + 1 }}</td>
         <td>{{ estructura.idEstructura }}</td>
         <td>{{ estructura.numEstructura }}</td>
-        <td>{{ estructura.numeroOT }}</td>
+       
         <td>{{ estructura.ubicacion }}</td>
       </tr>
     </ng-template>
@@ -51,8 +51,7 @@
               " - " +
               selectedEstructura.numEstructura +
               " - " +
-              selectedEstructura.numeroOT +
-              " - " +
+             
               selectedEstructura.ubicacion
             : "Ninguno"
         }}
@@ -114,20 +113,7 @@
           "
         ></p-message>
       </div>
-      <div class="p-col">
-        <div>
-          <div>Nro OT:*</div>
-          <input pInputText type="text" formControlName="numeroOT" />
-        </div>
-        <p-message
-          severity="error"
-          text="Por favor Ingrese un Nro OT"
-          *ngIf="
-            !formEstructura.controls['numeroOT'].valid &&
-            formEstructura.controls['numeroOT'].dirty
-          "
-        ></p-message>
-      </div>
+    
       <div class="p-col">
         <div>
           <div>Ubicación:*</div>

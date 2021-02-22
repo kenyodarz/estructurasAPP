@@ -149,7 +149,6 @@ export class EstructurasComponent implements OnInit {
       idEstructura: new FormControl(null, Validators.required),
       numEstructura: new FormControl(null, Validators.required),
       circuito: new FormControl(null, Validators.required),
-      numeroOT: new FormControl(null, Validators.required),
       ubicacion: new FormControl(null, Validators.required),
       predioPublico: new FormControl(null, Validators.required),
       coordinadaX: new FormControl(null, Validators.required),
