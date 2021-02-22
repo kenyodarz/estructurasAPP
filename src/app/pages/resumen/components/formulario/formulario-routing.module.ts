@@ -5,18 +5,18 @@ import { InformacionComponent } from './informacion/informacion.component';
 import { ApantallamientoComponent } from './apantallamiento/apantallamiento.component';
 import { VerFormularioComponent } from './ver-formulario/ver-formulario.component';
 
-
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: '', redirectTo: 'informacion', pathMatch: 'full' },
+      // { path: '', redirectTo: 'informacion', pathMatch: 'full' },
       {
         path: '',
         component: VerFormularioComponent,
-        children: [{ path: 'informacion', component: InformacionComponent },
-      { path: 'apantallamiento', component: ApantallamientoComponent }],
+        children: [
+          { path: 'informacion/:id', component: InformacionComponent },
+          { path: 'apantallamiento/:id', component: ApantallamientoComponent },
+        ],
       },
-      
     ]),
   ],
   exports: [RouterModule],

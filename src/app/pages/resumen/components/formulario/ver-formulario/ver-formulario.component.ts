@@ -5,10 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 // PrimeNG
 import { MessageService, ConfirmationService } from 'primeng/api';
-//Modelos
-import { Formulario } from 'src/app/core/models/formulario';
-// Services
-import { FormularioService } from 'src/app/core/services/formulario.service';
+
 import { PersonaService } from 'src/app/core/services/persona.service';
 import { TokenStorageService } from 'src/app/core/services/token-storage.service';
 
@@ -19,9 +16,8 @@ import { TokenStorageService } from 'src/app/core/services/token-storage.service
 })
 export class VerFormularioComponent implements OnInit {
   items: MenuItem[];
-  formulario: Formulario = new Formulario();
+  
   constructor(
-    private formularioService: FormularioService,
     private personaService: PersonaService,
     private token: TokenStorageService,
     private messageService: MessageService,
@@ -31,19 +27,14 @@ export class VerFormularioComponent implements OnInit {
     private router: Router
   ) {}
 
-  obtenerFormulario(idInspeccion: string) {
-    this.formularioService
-      .getOne(idInspeccion)
-      .subscribe((formulario: Formulario) => {
-        this.formulario = formulario;
-        console.log(this.formulario);
-      });
-  }
+  
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const idInspeccion: string = params.get('id');
-      this.obtenerFormulario(idInspeccion);
+      this.router.navigateByUrl(
+        `resumen/formulario/ver/${idInspeccion}/informacion/${idInspeccion}`
+      );
     });
       this.items = [
         {

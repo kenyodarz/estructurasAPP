@@ -1,4 +1,4 @@
-<br>
+<br />
 <div class="stepsdemo-content">
   <p-card>
     <form [formGroup]="formInformacion" (ngSubmit)="onSubmit()">
@@ -6,24 +6,39 @@
         <div class="p-grid p-fluid">
           <div class="p-col-12 p-md-5">
             <div>N° ESTRUCTURA</div>
-            <input pInputText type="text"  formControlName="numEstructura" pKeyFilter="alphanum" />
+            <input
+              pInputText
+              type="text"
+              formControlName="numEstructura"
+              pKeyFilter="alphanum"
+            />
           </div>
 
           <div class="p-col-12 p-md-5">
             <div>CIRCUITO</div>
-            <input pInputText type="text" formControlName="circuito" pKeyFilter="alphanum" />
+            <input
+              pInputText
+              type="text"
+              formControlName="circuito"
+              pKeyFilter="alphanum"
+            />
           </div>
-         <div class="p-col-12 p-md-2 p-grid p-ai-end p-jc-center">
+          <div class="p-col-12 p-md-2 p-grid p-ai-end p-jc-center">
             <p-button
               label="Buscar"
               icon="pi pi-search"
               (click)="buscarEstructura()"
             ></p-button>
           </div>
-       
+
           <div class="p-col-12 p-md-4">
             <div>UBICACIÓN</div>
-            <input pInputText type="text"  formControlName="ubicacion"  readonly />
+            <input
+              pInputText
+              type="text"
+              formControlName="ubicacion"
+              readonly
+            />
           </div>
           <div class="p-col-12 p-md-4">
             <div>PREDIO</div>
@@ -40,15 +55,30 @@
           <div class="p-grid p-fluid">
             <div class="p-col-12 p-md-4">
               <div>COORD X:</div>
-              <input pInputText type="text" formControlName="coordinadaX"  readonly />
+              <input
+                pInputText
+                type="text"
+                formControlName="coordinadaX"
+                readonly
+              />
             </div>
             <div class="p-col-12 p-md-4">
               <div>COORD Y:</div>
-              <input pInputText type="text" formControlName="coordinadaY" readonly />
+              <input
+                pInputText
+                type="text"
+                formControlName="coordinadaY"
+                readonly
+              />
             </div>
             <div class="p-col-12 p-md-4">
               <div>ALTURA M.S.N.M.:</div>
-              <input pInputText type="text" formControlName="alturaSobreNivelMar" readonly />
+              <input
+                pInputText
+                type="text"
+                formControlName="alturaSobreNivelMar"
+                readonly
+              />
             </div>
           </div>
         </p-fieldset>
@@ -57,10 +87,11 @@
     <ng-template pTemplate="footer">
       <div class="p-grid p-nogutter p-justify-end">
         <p-button
-          label="Next"
+          label="Siguiente"
           icon="pi pi-angle-right"
           iconPos="right"
-            (onClick)="nextPage()" 
+          [disabled]="formInformacion.invalid"
+          (onClick)="nextPage()"
         ></p-button>
       </div>
     </ng-template>

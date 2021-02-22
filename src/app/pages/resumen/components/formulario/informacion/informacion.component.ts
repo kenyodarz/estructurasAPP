@@ -2,14 +2,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 // PrimeNG
 import { MessageService, ConfirmationService } from 'primeng/api';
-import { MenuItem } from 'primeng/api';
 // Services
 import { EstructuraService } from 'src/app/core/services/estructura.service';
+import { FormularioService } from 'src/app/core/services/formulario.service';
 // Modelos
 import { Estructura } from 'src/app/core/models/estructura';
+import { Formulario } from 'src/app/core/models/formulario';
 
 @Component({
   selector: 'app-informacion',
@@ -18,15 +19,18 @@ import { Estructura } from 'src/app/core/models/estructura';
 })
 export class InformacionComponent implements OnInit {
   estructura: Estructura = new Estructura();
+  formulario: Formulario = new Formulario();
   formInformacion: FormGroup;
   stateOptions: { label: string; value: boolean }[];
 
   constructor(
     private estructuraService: EstructuraService,
+    private formularioService: FormularioService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private rutaActiva: ActivatedRoute
   ) {}
 
   buscarEstructura() {
@@ -37,6 +41,34 @@ export class InformacionComponent implements OnInit {
         this.formInformacion.patchValue(estructura);
       });
   }
+
+  obtenerFormulario(idInspeccion: string) {
+    this.formularioService
+      .getOne(idInspeccion)
+      .subscribe((formulario: Formulario) => {
+        this.formulario = formulario;
+        if (formulario.estructura != null) {
+          this.formInformacion.patchValue(formulario.estructura);
+        }
+        console.log(this.formulario);
+      });
+  }
+
+  guardarFormulario() {
+    this.formularioService
+      .save(this.formulario)
+      .subscribe((formulario: Formulario) => {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Información',
+          detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
+        });
+        this.router.navigateByUrl(
+          `resumen/formulario/ver/${formulario.idInspeccion}/apantallamiento/${formulario.idInspeccion}`
+        );
+      });
+  }
+
   onSubmit() {}
 
   get numEstructura() {
@@ -47,6 +79,9 @@ export class InformacionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.rutaActiva.params.subscribe((params: Params) => {
+      this.obtenerFormulario(params.id);
+    });
     this.formInformacion = this.fb.group({
       idEstructura: new FormControl(null, Validators.required),
       numEstructura: new FormControl(null, Validators.required),
@@ -63,6 +98,7 @@ export class InformacionComponent implements OnInit {
     ];
   }
   nextPage() {
-    this.router.navigate(['apantallamiento']);
+    this.formulario.estructura = this.formInformacion.value as Estructura;
+    this.guardarFormulario();
   }
 }
