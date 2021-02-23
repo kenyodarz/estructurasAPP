@@ -1,1 +1,56 @@
-<p>cable-conductor works!</p>
+<div class="stepsdemo-content">
+  <p-card>
+     <form [formGroup]="formCableConductor" (ngSubmit)="onSubmit()">
+    <p-fieldset legend="CABLE CONDUCTOR">
+      <ng-template pTemplate="content">
+        <div class="p-grid p-fluid">
+          <div class="p-col-12 p-md-4">
+      <p-fieldset legend="CALIBRE">
+        <input type="text" pInputText />
+      </p-fieldset>
+      </div>
+      <div class="p-col-12 p-md-8">
+      <p-fieldset legend="AMORTIGUADOR">
+        <div class="p-grid p-fluid">
+           <div class="p-col-12 p-md-5">
+          <p-selectButton
+            [options]="amortiguadorOpcions"
+            optionLabel="label"
+            optionValue="value"
+          ></p-selectButton>
+          </div>
+        
+        <div class="p-col-12 p-md-7">
+        <input type="text" pInputText />
+        </div>
+        </div>
+      </p-fieldset>
+      </div>
+      <div class="p-col-12 p-md-12">
+      <p-fieldset legend="EMPALMES"> </p-fieldset>
+      </div>
+       <div class="p-col-12 p-md-12">
+      <p-fieldset legend="ESTADO CONDUCTOR"> </p-fieldset>
+       </div>
+        <div class="p-col-12 p-md-12">
+      <p-fieldset legend="OBSERVACIONES">
+        <textarea
+          rows="5"
+          cols="30"
+          pInputTextarea
+          autoResize="autoResize"
+        ></textarea>
+      </p-fieldset>
+        </div>
+        </div>
+          </ng-template>
+    </p-fieldset>
+     </form>
+       <ng-template pTemplate="footer">
+            <div class="p-grid p-nogutter p-justify-between">
+                <p-button label="Back" icon="pi pi-angle-left"  [routerLink]="['/formulario/estructuraa']"></p-button>
+                <p-button label="Next" icon="pi pi-angle-right" iconPos="right"  (onClick)="nextPage()"></p-button>
+            </div>
+        </ng-template>
+  </p-card>
+</div>

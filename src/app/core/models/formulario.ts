@@ -1,19 +1,28 @@
+import { Aislamiento } from "./aislamiento";
+import { Apantallamiento } from "./apantallamiento";
+import { Bases } from "./bases";
+import { CableConductor } from "./cableConductor";
 import { Estructura } from "./estructura";
+import { Estructuraa } from "./estructuraa";
 import { Persona } from "./persona";
+import { Servidumbre } from "./servidumbre";
+import { Spt } from "./spt";
+import { Transposicion } from "./transposicion";
+import { Ubicacion } from "./ubicacion";
 
 export class Formulario {
   constructor(
     public idInspeccion: string = null,
     public estructura: Estructura = null,
-    public idApantallamiento: string = null,
-    public idTorres: number = null,
-    public idCableConductor: string = null,
-    public idAisladores: boolean = null,
-    public idBases: string = null,
-    public idSpt: string = null,
-    public idServidumbre: string = null,
-    public idtransposicion: string = null,
-    public idUbicacion: string = null,
+    public idApantallamiento: Apantallamiento = null,
+    public idTorres: Estructuraa = null,
+    public idCableConductor: CableConductor = null,
+    public idAisladores: Aislamiento = null,
+    public idBases: Bases = null,
+    public idSpt: Spt = null,
+    public idServidumbre: Servidumbre = null,
+    public idtransposicion: Transposicion = null,
+    public idUbicacion: Ubicacion = null,
     public observaciones: string = null,
     public numeroOT: string = null,
     public persona: Persona = null,

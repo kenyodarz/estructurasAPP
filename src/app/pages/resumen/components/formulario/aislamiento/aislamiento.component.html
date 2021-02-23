@@ -1,1 +1,35 @@
-<p>aislamiento works!</p>
+<br/>
+<div class="stepsdemo-content">
+  <p-card>
+     <form [formGroup]="formAislamiento" (ngSubmit)="onSubmit()">
+    <p-fieldset legend="AISLAMIENTO">
+      <ng-template pTemplate="content">
+        <div class="p-grid p-fluid">
+          <div class="p-col-12 p-md-12">
+            <p-fieldset legend="FASE R">
+
+            </p-fieldset>
+          </div>
+           <div class="p-col-12 p-md-12">
+            <p-fieldset legend="FASE S">
+
+            </p-fieldset>
+          </div>
+           <div class="p-col-12 p-md-12">
+            <p-fieldset legend="FASE T">
+
+            </p-fieldset>
+          </div>
+          
+             </div>
+          </ng-template>
+    </p-fieldset>
+     </form>
+       <ng-template pTemplate="footer">
+            <div class="p-grid p-nogutter p-justify-between">
+                <p-button label="Back" icon="pi pi-angle-left"  [routerLink]="['/formulario/cableConductor']"></p-button>
+                <p-button label="Next" icon="pi pi-angle-right" iconPos="right"  (onClick)="nextPage()"></p-button>
+            </div>
+        </ng-template>
+  </p-card>
+</div>

@@ -6,13 +6,13 @@ import { CommonService } from './common.service';
 // Enviroment
 import { API_URL } from 'src/environments/environment';
 // Modelo
-import { Apantallamiento } from 'src/app/core/models/apantallamiento';
+import { Servidumbre } from 'src/app/core/models/servidumbre';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ApantallamientoService extends CommonService<Apantallamiento, string> {
-  protected API_URL: string = `${API_URL}/apantallamiento/`;
+export class ServidumbreService extends CommonService<Servidumbre, string> {
+  protected API_URL: string = `${API_URL}/servidumbre/`;
   constructor(protected http: HttpClient) {
     super(http);
   }

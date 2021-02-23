@@ -5,11 +5,30 @@ import { PrimengModule } from 'src/app/shared/primeng.module';
 
 import { FormularioRoutingModule } from './formulario-routing.module';
 import { InformacionComponent } from './informacion/informacion.component';
+import { ApantallamientoComponent } from './apantallamiento/apantallamiento.component';
+import { EstructuraaComponent } from './estructuraa/estructuraa.component';
+import { AislamientoComponent } from './aislamiento/aislamiento.component';
+import { BasesComponent } from './bases/bases.component';
+import { SptComponent } from './spt/spt.component';
+import { TransposicionComponent } from './transposicion/transposicion.component';
+import { UbicacionComponent } from './ubicacion/ubicacion.component';
 import { VerFormularioComponent } from './ver-formulario/ver-formulario.component';
+import { CableConductorComponent } from './cable-conductor/cable-conductor.component';
 
 
 @NgModule({
-  declarations: [VerFormularioComponent, InformacionComponent],
+  declarations: [
+    VerFormularioComponent,
+    InformacionComponent,
+    ApantallamientoComponent,
+    EstructuraaComponent,
+    AislamientoComponent,
+    BasesComponent,
+    SptComponent,
+    TransposicionComponent,
+    UbicacionComponent,
+    CableConductorComponent,
+  ],
   imports: [
     FormularioRoutingModule,
     PrimengModule,
