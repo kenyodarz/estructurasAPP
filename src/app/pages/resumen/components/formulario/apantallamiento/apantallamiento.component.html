@@ -1,146 +1,159 @@
-<br> 
+<br />
 <div class="stepsdemo-content">
   <p-card>
     <form [formGroup]="formApantallamiento" (ngSubmit)="onSubmit()">
-    <p-fieldset legend="APANTALLAMIENTO">
-      <ng-template pTemplate="content">
-        <div class="p-grid p-fluid">
-          <div class="p-col-12 p-md-5">
-            <p-fieldset legend="CABLE DE GUARDA">
-              <div class="p-field">
-                <p-selectButton
-                  [options]="stateOptions"
-                  formControlName="cableGuarda"
-                  optionLabel="label"
-                  optionValue="value"
-                ></p-selectButton>
-              </div>
-            </p-fieldset>
-          </div>
-          <div class="p-col-12 p-md-5">
-            <p-fieldset legend="TIPO">
-              <div class="p-field">
-                <p-selectButton
-                  [options]="paymentOptions"
-                  formControlName="tipoApantallamiento"
-                  optionLabel="label"
-                  optionValue="value"
-                ></p-selectButton>
-              </div>
-            </p-fieldset>
-          </div>
-          <div class="p-col-12 p-md-2">
-            <p-fieldset legend="CALIBRE">
-              <input pInputText type="text" formControlName="calibreApantallamiento" pKeyFilter="alphanum" />
-              <br />
-            </p-fieldset>
-          </div>
-        </div>
-        <div class="p-grid p-fluid">
-          <div class="p-col-12 p-md-6">
-            <p-fieldset legend="ESTADO CABLE GUARDA">
-              <div class="p-field-checkbox">
-                <p-checkbox
-                  name="group1"
-                  value="New York"
-                  inputId="ny"
-                ></p-checkbox>
-                <label for="ny">ROTOS</label>
-              </div>
-              <div class="p-field-checkbox">
-                <p-checkbox
-                  name="group1"
-                  value="San Francisco"
-                  inputId="sf"
-                ></p-checkbox>
-                <label for="sf">NO TIENE BLINDAJE</label>
-              </div>
-              <div class="p-field-checkbox">
-                <p-checkbox
-                  name="group1"
-                  value="Los Angeles"
-                  inputId="la"
-                ></p-checkbox>
-                <label for="la">EMPALMES EN MAL ESTADO</label>
-              </div>
-              <div class="p-field-checkbox">
-                <p-checkbox
-                  name="group1"
-                  value="Chicago"
-                  inputId="ch"
-                ></p-checkbox>
-                <label for="ch">HERRAJES EN MAL ESTADO</label>
-              </div>
-              <div class="p-field-checkbox">
-                <p-checkbox
-                  name="group1"
-                  value="Chicago"
-                  inputId="ch"
-                ></p-checkbox>
-                <label for="ch">BUENOS</label>
-              </div>
-            </p-fieldset>
-          </div>
-          <div class="p-col-12 p-md-6">
-            <p-fieldset legend="CONECTORES CABLE GUARDA">
-              <div class="p-field-checkbox">
-                <p-checkbox
-                  name="group1"
-                  value="New York"
-                  inputId="ny"
-                ></p-checkbox>
-                <label for="ny">SULFATADOS</label>
-              </div>
-              <div class="p-field-checkbox">
-                <p-checkbox
-                  name="group1"
-                  value="San Francisco"
-                  inputId="sf"
-                ></p-checkbox>
-                <label for="sf">QUEMADOS</label>
-              </div>
-              <div class="p-field-checkbox">
-                <p-checkbox
-                  name="group1"
-                  value="Los Angeles"
-                  inputId="la"
-                ></p-checkbox>
-                <label for="la">REPOSICION</label>
-              </div>
-              <div class="p-field-checkbox">
-                <p-checkbox
-                  name="group1"
-                  value="Chicago"
-                  inputId="ch"
-                ></p-checkbox>
-                <label for="ch">BUENOS</label>
-              </div>
-            </p-fieldset>
-          </div>
-        </div>
-        <p-fieldset legend="OBSERVACIONES">
+      <p-fieldset legend="APANTALLAMIENTO">
+        <ng-template pTemplate="content">
           <div class="p-grid p-fluid">
-            <div class="p-col-12 p-md-12">
-              <textarea
-                rows="5"
-                cols="30"
-                pInputTextarea
-                autoResize="autoResize"
-                formControlName="observacionesApantallamiento"
-              ></textarea>
+            <div class="p-col-12 p-md-5">
+              <p-fieldset legend="CABLE DE GUARDA">
+                <div class="p-field">
+                  <p-selectButton
+                    [options]="stateOptions"
+                    formControlName="cableGuarda"
+                    optionLabel="label"
+                    optionValue="value"
+                  ></p-selectButton>
+                </div>
+              </p-fieldset>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <p-fieldset legend="TIPO">
+                <div class="p-field">
+                  <p-selectButton
+                    [options]="paymentOptions"
+                    formControlName="tipoApantallamiento"
+                    optionLabel="label"
+                    optionValue="value"
+                  ></p-selectButton>
+                </div>
+              </p-fieldset>
+            </div>
+            <div class="p-col-12 p-md-2">
+              <p-fieldset legend="CALIBRE">
+                <input
+                  pInputText
+                  type="text"
+                  formControlName="calibreApantallamiento"
+                  pKeyFilter="alphanum"
+                />
+                <br />
+              </p-fieldset>
             </div>
           </div>
-        </p-fieldset>
-      </ng-template> </p-fieldset
-  >
-  </form>
-   <ng-template pTemplate="footer">
-            <div class="p-grid p-nogutter p-justify-between">
-                <p-button label="Back" icon="pi pi-angle-left"  (onClick)="prevPage()"></p-button>
-                <p-button label="Next" icon="pi pi-angle-right" iconPos="right"  (onClick)="nextPage()"></p-button>
+          <div class="p-grid p-fluid">
+            <div class="p-col-12 p-md-6">
+              <p-fieldset legend="ESTADO CABLE GUARDA">
+                <div class="p-field-checkbox">
+                  <p-checkbox
+                    name="group1"
+                    value=""
+                    inputId="ny"
+                  ></p-checkbox>
+                  <label for="ny">ROTOS</label>
+                </div>
+                <div class="p-field-checkbox">
+                  <p-checkbox
+                    name="group1"
+                    value="noTieneBlin"
+                    inputId="sf"
+                  ></p-checkbox>
+                  <label for="sf">NO TIENE BLINDAJE</label>
+                </div>
+                <div class="p-field-checkbox">
+                  <p-checkbox
+                    name="group1"
+                    value="empalmeMalEstado"
+                    inputId="la"
+                  ></p-checkbox>
+                  <label for="la">EMPALMES EN MAL ESTADO</label>
+                </div>
+                <div class="p-field-checkbox">
+                  <p-checkbox
+                    name="group1"
+                    value="herrajeMalEstado"
+                    inputId="ch"
+                  ></p-checkbox>
+                  <label for="ch">HERRAJES EN MAL ESTADO</label>
+                </div>
+                <div class="p-field-checkbox">
+                  <p-checkbox
+                    name="group1"
+                    value="buenos"
+                    inputId="ch"
+                  ></p-checkbox>
+                  <label for="ch">BUENOS</label>
+                </div>
+              </p-fieldset>
             </div>
+            <div class="p-col-12 p-md-6">
+              <p-fieldset legend="CONECTORES CABLE GUARDA">
+                <div class="p-field-checkbox">
+                  <p-checkbox
+                    name="group1"
+                    value="sulfatados"
+                    inputId="sulfatados"
+                  ></p-checkbox>
+                  <label for="sulfatados">SULFATADOS</label>
+                </div>
+                <div class="p-field-checkbox">
+                  <p-checkbox
+                    name="group1"
+                    value="quemados"
+                    inputId="quemados"
+                  ></p-checkbox>
+                  <label for="quemados">QUEMADOS</label>
+                </div>
+                <div class="p-field-checkbox">
+                  <p-checkbox
+                    name="group1"
+                    value="reposicion"
+                    inputId="reposicion"
+                  ></p-checkbox>
+                  <label for="reposicion">REPOSICION</label>
+                </div>
+                <div class="p-field-checkbox">
+                  <p-checkbox
+                    name="group1"
+                    value="buenos"
+                    inputId="buenos"
+                  ></p-checkbox>
+                  <label for="buenos">BUENOS</label>
+                </div>
+              </p-fieldset>
+            </div>
+          </div>
+          <p-fieldset legend="OBSERVACIONES">
+            <div class="p-grid p-fluid">
+              <div class="p-col-12 p-md-12">
+                <textarea
+                  rows="5"
+                  cols="30"
+                  pInputTextarea
+                  autoResize="autoResize"
+                  formControlName="observacionesApantallamiento"
+                ></textarea>
+              </div>
+            </div>
+          </p-fieldset>
         </ng-template>
-
- </p-card>
-  
+      </p-fieldset>
+    </form>
+    <ng-template pTemplate="footer">
+      <div class="p-grid p-nogutter p-justify-between">
+        <p-button
+          label="Back"
+          icon="pi pi-angle-left"
+          (onClick)="prevPage()"
+        ></p-button>
+        <p-button
+          label="Next"
+          icon="pi pi-angle-right"
+          iconPos="right"
+          [disabled]="formApantallamiento.invalid"
+          (onClick)="nextPage()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
 </div>

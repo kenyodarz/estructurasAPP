@@ -12,6 +12,8 @@ import { FormularioService } from 'src/app/core/services/formulario.service';
 import { Formulario } from 'src/app/core/models/formulario';
 import { Estructura } from 'src/app/core/models/estructura';
 import { Apantallamiento } from 'src/app/core/models/apantallamiento';
+import { EstadoService } from 'src/app/core/services/estado.service';
+import { Estado } from 'src/app/core/models/estado';
 
 @Component({
   selector: 'app-apantallamiento',
@@ -21,11 +23,12 @@ import { Apantallamiento } from 'src/app/core/models/apantallamiento';
 export class ApantallamientoComponent implements OnInit {
   stateOptions: any[];
   paymentOptions: any[];
-  estructura: Estructura = new Estructura();
   formulario: Formulario = new Formulario();
+  estado: Estado = new Estado();
   formApantallamiento: FormGroup;
   constructor(
     private apantallaminetoService: ApantallamientoService,
+    private estadoService: EstadoService,
     private formularioService: FormularioService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
@@ -51,8 +54,19 @@ export class ApantallamientoComponent implements OnInit {
         this.formulario = formulario;
         if (formulario.idApantallamiento != null) {
           // Aca va el nuevo Formulario
-           this.formApantallamiento.patchValue(formulario.idApantallamiento);
+          this.formApantallamiento.patchValue(formulario.idApantallamiento);
+          this.obtenerEstado(formulario.idApantallamiento.idApantallamiento);
         }
+      });
+  }
+
+  obtenerEstado(idApantallamiento: string) {
+    this.estadoService
+      .obtenerEstadoPorApantallamiento(idApantallamiento)
+      .subscribe((estado: Estado) => {
+        this.estado = estado;
+        console.log(this.estado);
+        
       });
   }
 
@@ -73,14 +87,26 @@ export class ApantallamientoComponent implements OnInit {
   onSubmit() {}
   nextPage() {
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
-   this.formulario.idApantallamiento = this.formApantallamiento.value as Apantallamiento;
+    // this.formulario.idApantallamiento = this.formApantallamiento
+    //    .value as Apantallamiento;
     this.guardarFormulario();
   }
-  prevPage() {}
+  prevPage() {
+    this.router.navigateByUrl(
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/informacion/${this.formulario.idInspeccion}`
+    );
+  }
 
   ngOnInit(): void {
     this.rutaActiva.params.subscribe((params: Params) => {
       this.obtenerFormulario(params.id);
+    });
+    this.formApantallamiento = this.fb.group({
+      idApantallamiento: new FormControl(),
+      cableGuarda: new FormControl(null, Validators.required),
+      tipoApantallamiento: new FormControl(null, Validators.required),
+      calibreApantallamiento: new FormControl(null, Validators.required),
+      observacionesApantallamiento: new FormControl(null, Validators.required),
     });
   }
 }
