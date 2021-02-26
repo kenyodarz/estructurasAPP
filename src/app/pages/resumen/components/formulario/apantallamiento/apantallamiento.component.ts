@@ -14,6 +14,8 @@ import { Estructura } from 'src/app/core/models/estructura';
 import { Apantallamiento } from 'src/app/core/models/apantallamiento';
 import { EstadoService } from 'src/app/core/services/estado.service';
 import { Estado } from 'src/app/core/models/estado';
+import { ConectorService } from 'src/app/core/services/conector.service';
+import { Conector } from 'src/app/core/models/conector';
 
 @Component({
   selector: 'app-apantallamiento',
@@ -25,10 +27,14 @@ export class ApantallamientoComponent implements OnInit {
   paymentOptions: any[];
   formulario: Formulario = new Formulario();
   estado: Estado = new Estado();
+  conector: Conector = new Conector();
   formApantallamiento: FormGroup;
+  formEstado: FormGroup;
+  formConector: FormGroup;
   constructor(
     private apantallaminetoService: ApantallamientoService,
     private estadoService: EstadoService,
+    private conectorService: ConectorService,
     private formularioService: FormularioService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
@@ -55,7 +61,7 @@ export class ApantallamientoComponent implements OnInit {
         if (formulario.idApantallamiento != null) {
           // Aca va el nuevo Formulario
           this.formApantallamiento.patchValue(formulario.idApantallamiento);
-          this.obtenerEstado(formulario.idApantallamiento.idApantallamiento);
+          //  this.obtenerEstado(formulario.idApantallamiento.idApantallamiento);
         }
       });
   }
@@ -66,7 +72,15 @@ export class ApantallamientoComponent implements OnInit {
       .subscribe((estado: Estado) => {
         this.estado = estado;
         console.log(this.estado);
-        
+      });
+  }
+
+  obtenerConector(idApantallamiento: string) {
+    this.conectorService
+      .obtenerConectorPorApantallamiento(idApantallamiento)
+      .subscribe((conector: Conector) => {
+        this.conector = conector;
+        console.log(this.conector);
       });
   }
 
@@ -107,6 +121,19 @@ export class ApantallamientoComponent implements OnInit {
       tipoApantallamiento: new FormControl(null, Validators.required),
       calibreApantallamiento: new FormControl(null, Validators.required),
       observacionesApantallamiento: new FormControl(null, Validators.required),
+    });
+    this.formConector = this.fb.group({
+      sulfatados: new FormControl(),
+      quemados: new FormControl(),
+      reposicion: new FormControl(),
+      buenos: new FormControl(),
+    });
+    this.formEstado = this.fb.group({
+      rotos: new FormControl(),
+      noTieneBlin: new FormControl(),
+      empalmeMalEstado: new FormControl(),
+      herrajeMalEstado: new FormControl(),
+      buenos: new FormControl(),
     });
   }
 }

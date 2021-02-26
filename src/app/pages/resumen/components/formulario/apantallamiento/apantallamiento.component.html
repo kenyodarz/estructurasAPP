@@ -43,17 +43,20 @@
           </div>
           <div class="p-grid p-fluid">
             <div class="p-col-12 p-md-6">
+              <form [formGroup]="formEstado">
               <p-fieldset legend="ESTADO CABLE GUARDA">
                 <div class="p-field-checkbox">
                   <p-checkbox
+                  formControlName="rotos"
                     name="group1"
-                    value=""
-                    inputId="ny"
+                    value="rotos"
+                    inputId="rotos"
                   ></p-checkbox>
                   <label for="ny">ROTOS</label>
                 </div>
                 <div class="p-field-checkbox">
                   <p-checkbox
+                  formControlName="noTieneBlin"
                     name="group1"
                     value="noTieneBlin"
                     inputId="sf"
@@ -62,6 +65,7 @@
                 </div>
                 <div class="p-field-checkbox">
                   <p-checkbox
+                  formControlName="empalmeMalEstado"
                     name="group1"
                     value="empalmeMalEstado"
                     inputId="la"
@@ -70,6 +74,7 @@
                 </div>
                 <div class="p-field-checkbox">
                   <p-checkbox
+                  formControlName="herrajeMalEstado"
                     name="group1"
                     value="herrajeMalEstado"
                     inputId="ch"
@@ -78,6 +83,7 @@
                 </div>
                 <div class="p-field-checkbox">
                   <p-checkbox
+                  formControlName="buenos"
                     name="group1"
                     value="buenos"
                     inputId="ch"
@@ -85,11 +91,14 @@
                   <label for="ch">BUENOS</label>
                 </div>
               </p-fieldset>
+              </form>
             </div>
             <div class="p-col-12 p-md-6">
+               <form [formGroup]="formConector">
               <p-fieldset legend="CONECTORES CABLE GUARDA">
                 <div class="p-field-checkbox">
                   <p-checkbox
+                  formControlName="sulfatados"
                     name="group1"
                     value="sulfatados"
                     inputId="sulfatados"
@@ -98,6 +107,7 @@
                 </div>
                 <div class="p-field-checkbox">
                   <p-checkbox
+                  formControlName="quemados"
                     name="group1"
                     value="quemados"
                     inputId="quemados"
@@ -106,6 +116,7 @@
                 </div>
                 <div class="p-field-checkbox">
                   <p-checkbox
+                  formControlName="reposicion"
                     name="group1"
                     value="reposicion"
                     inputId="reposicion"
@@ -114,6 +125,7 @@
                 </div>
                 <div class="p-field-checkbox">
                   <p-checkbox
+                  formControlName="buenos"
                     name="group1"
                     value="buenos"
                     inputId="buenos"
@@ -121,6 +133,7 @@
                   <label for="buenos">BUENOS</label>
                 </div>
               </p-fieldset>
+               </form>
             </div>
           </div>
           <p-fieldset legend="OBSERVACIONES">

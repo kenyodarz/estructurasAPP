@@ -7,6 +7,7 @@ import { CommonService } from './common.service';
 import { API_URL } from 'src/environments/environment';
 // Modelo
 import { Conector } from 'src/app/core/models/conector';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,4 +17,9 @@ export class ConectorService extends CommonService<Conector, string> {
   constructor(protected http: HttpClient) {
     super(http);
   }
+
+ obtenerConectorPorApantallamiento(id: string): Observable<Conector>{
+   return this.http.get<Conector>(`${this.API_URL}obtener/${id}`);
+ }
+
 }
