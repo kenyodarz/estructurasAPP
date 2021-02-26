@@ -34,7 +34,6 @@ export class InformacionComponent implements OnInit {
   ) {}
 
   buscarEstructura() {
-    console.log(this.numEstructura);
     this.estructuraService
       .buscarTorresPorNumero(this.numEstructura, this.circuito)
       .subscribe((estructura: Estructura) => {

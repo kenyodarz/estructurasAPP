@@ -12,7 +12,7 @@ import { Apantallamiento } from 'src/app/core/models/apantallamiento';
   providedIn: 'root',
 })
 export class ApantallamientoService extends CommonService<Apantallamiento, string> {
-  protected API_URL: string = `${API_URL}/apantallamiento/`;
+  protected API_URL: string = `${API_URL}/apantallamientos/`;
   constructor(protected http: HttpClient) {
     super(http);
   }

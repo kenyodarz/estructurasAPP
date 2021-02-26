@@ -18,8 +18,7 @@ export class EstadoService extends CommonService<Estado, string> {
     super(http);
   }
 
-  obtenerEstadoPorApantallamiento(id: string): Observable<Estado>{
-    return this.http.get<Estado>(`${this.API_URL}obtener/${id}`)
+  obtenerEstadoPorApantallamiento(id: string): Observable<Estado> {
+    return this.http.get<Estado>(`${this.API_URL}obtener/${id}`);
   }
-
 }

@@ -13,13 +13,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ConectorService extends CommonService<Conector, string> {
-  protected API_URL: string = `${API_URL}/conector/`;
+  protected API_URL: string = `${API_URL}/apantallamientos/conectores/`;
   constructor(protected http: HttpClient) {
     super(http);
   }
 
- obtenerConectorPorApantallamiento(id: string): Observable<Conector>{
-   return this.http.get<Conector>(`${this.API_URL}obtener/${id}`);
- }
-
+  obtenerConectorPorApantallamiento(id: string): Observable<Conector> {
+    return this.http.get<Conector>(`${this.API_URL}obtener/${id}`);
+  }
 }

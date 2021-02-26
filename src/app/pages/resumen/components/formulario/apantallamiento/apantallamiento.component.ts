@@ -23,14 +23,17 @@ import { Conector } from 'src/app/core/models/conector';
   styleUrls: ['./apantallamiento.component.css'],
 })
 export class ApantallamientoComponent implements OnInit {
-  stateOptions: any[];
-  paymentOptions: any[];
+  apantallamiento: Apantallamiento = new Apantallamiento();
   formulario: Formulario = new Formulario();
   estado: Estado = new Estado();
   conector: Conector = new Conector();
+
   formApantallamiento: FormGroup;
   formEstado: FormGroup;
   formConector: FormGroup;
+
+  stateOptions: any[];
+  paymentOptions: any[];
   constructor(
     private apantallaminetoService: ApantallamientoService,
     private estadoService: EstadoService,
@@ -41,17 +44,7 @@ export class ApantallamientoComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private rutaActiva: ActivatedRoute
-  ) {
-    this.stateOptions = [
-      { label: 'SI', value: 'true' },
-      { label: 'NO', value: 'false' },
-    ];
-
-    this.paymentOptions = [
-      { label: 'HHS', value: 'true' },
-      { label: 'OPGW', value: 'false' },
-    ];
-  }
+  ) {}
 
   obtenerFormulario(idInspeccion: string) {
     this.formularioService
@@ -60,7 +53,7 @@ export class ApantallamientoComponent implements OnInit {
         this.formulario = formulario;
         if (formulario.idApantallamiento != null) {
           // Aca va el nuevo Formulario
-          this.formApantallamiento.patchValue(formulario.idApantallamiento);
+          this.cargarDatos(formulario.idApantallamiento);
           //  this.obtenerEstado(formulario.idApantallamiento.idApantallamiento);
         }
       });
@@ -70,8 +63,8 @@ export class ApantallamientoComponent implements OnInit {
     this.estadoService
       .obtenerEstadoPorApantallamiento(idApantallamiento)
       .subscribe((estado: Estado) => {
-        this.estado = estado;
-        console.log(this.estado);
+        console.info(estado)
+        this.formEstado.patchValue(estado);
       });
   }
 
@@ -79,9 +72,41 @@ export class ApantallamientoComponent implements OnInit {
     this.conectorService
       .obtenerConectorPorApantallamiento(idApantallamiento)
       .subscribe((conector: Conector) => {
-        this.conector = conector;
-        console.log(this.conector);
+        console.info(conector);
+        this.formEstado.patchValue(conector);
       });
+  }
+
+  guardarApantallamento() {
+    this.apantallaminetoService
+      .save(this.apantallamiento)
+      .subscribe((apantallamiento: Apantallamiento) => {
+        this.guardarEstado(apantallamiento);
+        this.guardarConector(apantallamiento);
+        this.formulario.idApantallamiento = apantallamiento;
+        this.guardarFormulario();
+      });
+  }
+  guardarConector(apantallamiento: Apantallamiento) {
+    this.conector.apantallamiento = apantallamiento;
+    this.conectorService.save(this.conector).subscribe((conector: Conector) =>
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Informacion',
+        detail: `Se ha guardado correctamente el Conector ${conector.idConector}`,
+      })
+    );
+  }
+
+  guardarEstado(apantallamiento: Apantallamiento) {
+    this.estado.apantallamiento = apantallamiento;
+    this.estadoService.save(this.estado).subscribe((estado: Estado) => {
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Informacion',
+        detail: `Se ha guardado correctamente el Estado ${estado.idEstado}`,
+      });
+    });
   }
 
   guardarFormulario() {
@@ -98,12 +123,16 @@ export class ApantallamientoComponent implements OnInit {
         );
       });
   }
+
   onSubmit() {}
+
   nextPage() {
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
-    // this.formulario.idApantallamiento = this.formApantallamiento
-    //    .value as Apantallamiento;
-    this.guardarFormulario();
+    this.conector = this.formConector.value;
+    this.estado = this.formEstado.value;
+    this.apantallamiento = this.formApantallamiento.value
+    this.guardarApantallamento();
+    // console.info(this.formApantallamiento.value);
   }
   prevPage() {
     this.router.navigateByUrl(
@@ -111,16 +140,22 @@ export class ApantallamientoComponent implements OnInit {
     );
   }
 
+  cargarDatos(apantallamiento: Apantallamiento) {
+    this.formApantallamiento.patchValue(apantallamiento);
+    this.obtenerEstado(apantallamiento.idApantallamiento);
+    this.obtenerConector(apantallamiento.idApantallamiento);
+  }
+
   ngOnInit(): void {
-    this.rutaActiva.params.subscribe((params: Params) => {
-      this.obtenerFormulario(params.id);
-    });
     this.formApantallamiento = this.fb.group({
       idApantallamiento: new FormControl(),
       cableGuarda: new FormControl(null, Validators.required),
       tipoApantallamiento: new FormControl(null, Validators.required),
       calibreApantallamiento: new FormControl(null, Validators.required),
       observacionesApantallamiento: new FormControl(null, Validators.required),
+    });
+    this.rutaActiva.params.subscribe((params: Params) => {
+      this.obtenerFormulario(params.id);
     });
     this.formConector = this.fb.group({
       sulfatados: new FormControl(),
@@ -135,5 +170,14 @@ export class ApantallamientoComponent implements OnInit {
       herrajeMalEstado: new FormControl(),
       buenos: new FormControl(),
     });
+    this.stateOptions = [
+      { label: 'SI', value: true },
+      { label: 'NO', value: false },
+    ];
+
+    this.paymentOptions = [
+      { label: 'HHS', value: 'HHS' },
+      { label: 'OPGW', value: 'OPGW' },
+    ];
   }
 }

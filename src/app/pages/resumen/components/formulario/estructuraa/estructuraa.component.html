@@ -1,95 +1,104 @@
 <div class="stepsdemo-content">
   <p-card>
-     <form [formGroup]="formEstructuraa" (ngSubmit)="onSubmit()">
-     <p-fieldset legend="ESTRUCTURA">
+    <form [formGroup]="formEstructuraa" (ngSubmit)="onSubmit()">
+      <p-fieldset legend="ESTRUCTURA">
         <div class="p-grid p-fluid">
           <div class="p-col-12 p-md-12">
-           <p-fieldset legend="FUNCIÓN">
+            <p-fieldset legend="FUNCIÓN">
               <div class="p-grid p-fluid">
-          <div class="p-col-12 p-md-12">
-             <div class="p-field">
-          <p-selectButton
-            [options]="funcionOptions"
-            optionLabel="label"
-            optionValue="value"
-          ></p-selectButton>
-        </div>
-            </div>
-              </div>
-           </p-fieldset>
-            <p-fieldset legend="TIPO">
-         <div class="p-field">
-          <p-selectButton
-            [options]="tipoOpcions"
-            optionLabel="label"
-            optionValue="value"
-          ></p-selectButton>
-        </div>
-            </p-fieldset>
-             <p-fieldset legend="PINTURA">
-         <div class="p-field">
-          <p-selectButton
-            [options]="pinturaOpcions"
-            optionLabel="label"
-            optionValue="value"
-          ></p-selectButton>
-        </div>
-             </p-fieldset>
-             <p-fieldset legend="ESTADO-ÁNGULOS">
-               <div class="p-field">
-          <p-selectButton
-            [options]="angulosOpcions"
-            optionLabel="label"
-            optionValue="value"
-          ></p-selectButton>
-        </div>
-             </p-fieldset>
-             <p-fieldset legend="SEÑALIZACIÓN">
-               <p-fieldset legend="RIESGO ELÉCTRICO">
+                <div class="p-col-12 p-md-12">
                   <div class="p-field">
-            <p-selectButton
-              [options]="riesgoElectricoOpcions"
-              optionLabel="label"
-              optionValue="value"
-            ></p-selectButton>
+                    <p-selectButton
+                      [options]="funcionOptions"
+                      optionLabel="label"
+                      optionValue="value"
+                    ></p-selectButton>
+                  </div>
+                </div>
+              </div>
+            </p-fieldset>
+            <p-fieldset legend="TIPO">
+              <div class="p-field">
+                <p-selectButton
+                  [options]="tipoOpcions"
+                  optionLabel="label"
+                  optionValue="value"
+                ></p-selectButton>
+              </div>
+            </p-fieldset>
+            <p-fieldset legend="PINTURA">
+              <div class="p-field">
+                <p-selectButton
+                  [options]="pinturaOpcions"
+                  optionLabel="label"
+                  optionValue="value"
+                ></p-selectButton>
+              </div>
+            </p-fieldset>
+            <p-fieldset legend="ESTADO-ÁNGULOS">
+              <div class="p-field">
+                <p-selectButton
+                  [options]="angulosOpcions"
+                  optionLabel="label"
+                  optionValue="value"
+                ></p-selectButton>
+              </div>
+            </p-fieldset>
+            <p-fieldset legend="SEÑALIZACIÓN">
+              <p-fieldset legend="RIESGO ELÉCTRICO">
+                <div class="p-field">
+                  <p-selectButton
+                    [options]="riesgoElectricoOpcions"
+                    optionLabel="label"
+                    optionValue="value"
+                  ></p-selectButton>
+                </div>
+              </p-fieldset>
+              <p-fieldset legend="VIAL">
+                <div class="p-field">
+                  <p-selectButton
+                    [options]="vialOpcions"
+                    optionLabel="label"
+                    optionValue="value"
+                  ></p-selectButton>
+                </div>
+              </p-fieldset>
+            </p-fieldset>
+            <p-fieldset legend="NOMENCLATURA">
+              <div class="p-field">
+                <p-selectButton
+                  [options]="nomenclaturaOpcions"
+                  optionLabel="label"
+                  optionValue="value"
+                ></p-selectButton>
+              </div>
+            </p-fieldset>
+            <p-fieldset legend="OBSERVACIONES">
+              <textarea
+                rows="5"
+                cols="30"
+                pInputTextarea
+                autoResize="autoResize"
+              ></textarea>
+            </p-fieldset>
           </div>
-               </p-fieldset>
-               <p-fieldset legend="VIAL">
-          <div class="p-field">
-            <p-selectButton
-              [options]="vialOpcions"
-              optionLabel="label"
-              optionValue="value"
-            ></p-selectButton>
-          </div>
-        </p-fieldset>
-             </p-fieldset>
-              <p-fieldset legend="NOMENCLATURA">
-        <div class="p-field">
-          <p-selectButton
-            [options]="nomenclaturaOpcions"
-            optionLabel="label"
-            optionValue="value"
-          ></p-selectButton>
         </div>
       </p-fieldset>
-       <p-fieldset legend="OBSERVACIONES">
-        <textarea
-          rows="5"
-          cols="30"
-          pInputTextarea
-          autoResize="autoResize"
-        ></textarea>
-      </p-fieldset>
-           </div>
-        </div>
-     </p-fieldset>
-     </form>
-      <ng-template pTemplate="footer">
-            <div class="p-grid p-nogutter p-justify-between">
-                <p-button label="Back" icon="pi pi-angle-left"  [routerLink]="['/formulario/apantallamiento']"></p-button>
-                <p-button label="Next" icon="pi pi-angle-right" iconPos="right"  (onClick)="nextPage()"></p-button>
-            </div>
-        </ng-template>
+    </form>
+    <ng-template pTemplate="footer">
+      <div class="p-grid p-nogutter p-justify-between">
+        <p-button
+          label="Back"
+          icon="pi pi-angle-left"
+          [routerLink]="['/formulario/apantallamiento']"
+        ></p-button>
+        <p-button
+          label="Next"
+          icon="pi pi-angle-right"
+          iconPos="right"
+          (onClick)="nextPage()"
+        ></p-button>
+      </div>
+    </ng-template>
   </p-card>
 </div>

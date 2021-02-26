@@ -29,7 +29,41 @@ export class EstructuraaComponent implements OnInit {
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private router: Router
-  ) {
+  ) {}
+  obtenerFormulario(idInspeccion: string) {
+    this.formularioService
+      .getOne(idInspeccion)
+      .subscribe((formulario: Formulario) => {
+        this.formulario = formulario;
+        if (formulario.estructura != null) {
+          // Aca va el nuevo Formulario
+          // this.formInformacion.patchValue(formulario.estructura);
+        }
+      });
+  }
+  onSubmit() {}
+  guardarFormulario() {
+    this.formularioService
+      .save(this.formulario)
+      .subscribe((formulario: Formulario) => {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'estructuraa',
+          detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
+        });
+        this.router.navigateByUrl(
+          `resumen/formulario/ver/${formulario.idInspeccion}/cable-conductor/${formulario.idInspeccion}`
+        );
+      });
+  }
+  nextPage() {
+    // se igual el formulario de apantallamiento a apantallamiento en el formulario
+    // this.formulario.estructura = this.formInformacion.value as Estructura;
+    this.guardarFormulario();
+  }
+  prevPage() {}
+
+  ngOnInit(): void {
     this.funcionOptions = [
       { label: 'RETENCIÓN', value: 'retencion' },
       { label: 'SUSPENSIÓN', value: 'suspension' },
@@ -71,38 +105,4 @@ export class EstructuraaComponent implements OnInit {
       { label: 'NO TIENE', value: 'deformados' },
     ];
   }
-  obtenerFormulario(idInspeccion: string) {
-    this.formularioService
-      .getOne(idInspeccion)
-      .subscribe((formulario: Formulario) => {
-        this.formulario = formulario;
-        if (formulario.estructura != null) {
-          // Aca va el nuevo Formulario
-          // this.formInformacion.patchValue(formulario.estructura);
-        }
-      });
-  }
-  onSubmit() {}
-  guardarFormulario() {
-    this.formularioService
-      .save(this.formulario)
-      .subscribe((formulario: Formulario) => {
-        this.messageService.add({
-          severity: 'info',
-          summary: 'estructuraa',
-          detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
-        });
-        this.router.navigateByUrl(
-          `resumen/formulario/ver/${formulario.idInspeccion}/cable-conductor/${formulario.idInspeccion}`
-        );
-      });
-  }
-  nextPage() {
-    // se igual el formulario de apantallamiento a apantallamiento en el formulario
-    // this.formulario.estructura = this.formInformacion.value as Estructura;
-     this.guardarFormulario();
-  }
-  prevPage() {}
-
-  ngOnInit(): void {}
 }
