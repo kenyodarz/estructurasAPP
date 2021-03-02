@@ -54,24 +54,24 @@
                     >
                     <label for="ny">ROTOS</label>
                   </div>
-                   <div class="p-field-checkbox">
+                  <div class="p-field-checkbox">
                     <p-checkbox
-                       [formControl]="formEstado.controls['noTieneBlin']"
+                      [formControl]="formEstado.controls['noTieneBlin']"
                       binary="true"
                     ></p-checkbox>
                     <label for="sf">NO TIENE BLINDAJE</label>
                   </div>
-                  
+
                   <div class="p-field-checkbox">
                     <p-checkbox
-                       [formControl]="formEstado.controls['empalmeMalEstado']"
+                      [formControl]="formEstado.controls['empalmeMalEstado']"
                       binary="true"
                     ></p-checkbox>
                     <label for="la">EMPALMES EN MAL ESTADO</label>
                   </div>
                   <div class="p-field-checkbox">
                     <p-checkbox
-                     [formControl]="formEstado.controls['herrajeMalEstado']"
+                      [formControl]="formEstado.controls['herrajeMalEstado']"
                       binary="true"
                     ></p-checkbox>
                     <label for="ch">HERRAJES EN MAL ESTADO</label>
@@ -82,21 +82,21 @@
                       binary="true"
                     ></p-checkbox>
                     <label for="ch">BUENOS</label>
-                  </div> 
-                </p-fieldset> 
+                  </div>
+                </p-fieldset>
               </form>
             </div>
-             <div class="p-col-12 p-md-6">
+            <div class="p-col-12 p-md-6">
               <form [formGroup]="formConector">
                 <p-fieldset legend="CONECTORES CABLE GUARDA">
                   <div class="p-field-checkbox">
                     <p-checkbox
-                     [formControl]="formConector.controls['sulfatados']"
+                      [formControl]="formConector.controls['sulfatados']"
                       binary="true"
                     ></p-checkbox>
                     <label for="su">SULFATADOS</label>
                   </div>
-                  
+
                   <div class="p-field-checkbox">
                     <p-checkbox
                       [formControl]="formConector.controls['quemados']"
@@ -106,7 +106,7 @@
                   </div>
                   <div class="p-field-checkbox">
                     <p-checkbox
-                     [formControl]="formConector.controls['reposicion']"
+                      [formControl]="formConector.controls['reposicion']"
                       binary="true"
                     ></p-checkbox>
                     <label for="re">REPOSICION</label>
@@ -118,12 +118,9 @@
                     ></p-checkbox>
                     <label for="bu">BUENOS</label>
                   </div>
-                  
                 </p-fieldset>
-                
               </form>
-            
-            </div> 
+            </div>
           </div>
           <p-fieldset legend="OBSERVACIONES">
             <div class="p-grid p-fluid">

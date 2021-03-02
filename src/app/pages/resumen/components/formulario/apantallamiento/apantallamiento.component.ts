@@ -62,8 +62,9 @@ export class ApantallamientoComponent implements OnInit {
     this.estadoService
       .obtenerEstadoPorApantallamiento(idApantallamiento)
       .subscribe((estado: Estado) => {
-        console.info(estado)
+        console.info(estado);
         this.formEstado.patchValue(estado);
+        this.estado = estado;
       });
   }
 
@@ -72,7 +73,8 @@ export class ApantallamientoComponent implements OnInit {
       .obtenerConectorPorApantallamiento(idApantallamiento)
       .subscribe((conector: Conector) => {
         console.info(conector);
-        this.formEstado.patchValue(conector);
+        this.formConector.patchValue(conector);
+        this.conector = conector;
       });
   }
 
@@ -128,11 +130,10 @@ export class ApantallamientoComponent implements OnInit {
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
     this.conector = this.formConector.value;
     this.estado = this.formEstado.value;
-    this.apantallamiento = this.formApantallamiento.value
+    this.apantallamiento = this.formApantallamiento.value;
     this.guardarApantallamento();
-    // console.info(this.formApantallamiento.value);
   }
-  
+
   prevPage() {
     this.router.navigateByUrl(
       `resumen/formulario/ver/${this.formulario.idInspeccion}/informacion/${this.formulario.idInspeccion}`
@@ -158,6 +159,7 @@ export class ApantallamientoComponent implements OnInit {
       quemados: new FormControl(),
       reposicion: new FormControl(),
       buenos: new FormControl(),
+      idConector: new FormControl(),
     });
     this.formEstado = this.fb.group({
       rotos: new FormControl(),
@@ -165,10 +167,11 @@ export class ApantallamientoComponent implements OnInit {
       empalmeMalEstado: new FormControl(),
       herrajeMalEstado: new FormControl(),
       buenos: new FormControl(),
+      idEstado: new FormControl(),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {
-       this.obtenerFormulario(params.id);
+      this.obtenerFormulario(params.id);
     });
 
     this.stateOptions = [
