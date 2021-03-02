@@ -15,7 +15,7 @@ export class EstructuraaService extends CommonService<
   Estructuraa,
   string
 > {
-  protected API_URL: string = `${API_URL}/estructuraa/`;
+  protected API_URL: string = `${API_URL}/torres/`;
   constructor(protected http: HttpClient) {
     super(http);
   }

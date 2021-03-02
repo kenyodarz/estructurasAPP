@@ -1,1 +1,57 @@
-<p>bases works!</p>
+<br>
+<div class="stepsdemo-content">
+  <p-card>
+     <form [formGroup]="formBases" >
+    <p-fieldset legend="BASES">
+      <ng-template pTemplate="content">
+        <div class="p-grid p-fluid">
+          <div class="p-col-12 p-md-12">
+             <p-fieldset legend="ESTADO BASES">
+               <div class="p-grid p-fluid">
+                <div class="p-col-12 p-md-12">
+                  <p-fieldset legend="ANGULOS PRINCIPALES">
+
+                  </p-fieldset>
+                </div>
+                
+          
+                <div class="p-col-12 p-md-3">
+             <p-fieldset legend="BASE I">
+
+             </p-fieldset>
+          </div>
+          <div class="p-col-12 p-md-3">
+             <p-fieldset legend="BASE II">
+
+             </p-fieldset>
+          </div>
+          <div class="p-col-12 p-md-3">
+             <p-fieldset legend="BASE III">
+
+             </p-fieldset>
+          </div>
+          <div class="p-col-12 p-md-3">
+             <p-fieldset legend="BASE IV">
+
+             </p-fieldset>
+          </div>
+                </div>
+             </p-fieldset>
+          </div>
+           <div class="p-col-12 p-md-12">
+             <p-fieldset legend="OBSERVACIONES">
+
+             </p-fieldset>
+          </div>
+        </div>
+          </ng-template>
+    </p-fieldset>
+    </form>
+       <ng-template pTemplate="footer">
+            <div class="p-grid p-nogutter p-justify-between">
+                <p-button label="Back" icon="pi pi-angle-left"  (onClick)="prevPage()"></p-button>
+                <p-button label="Next" icon="pi pi-angle-right" iconPos="right"  (onClick)="nextPage()"></p-button>
+            </div>
+        </ng-template>
+  </p-card>
+</div>

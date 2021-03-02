@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Formulario } from 'src/app/core/models/formulario';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { FormularioService } from 'src/app/core/services/formulario.service';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-aislamiento',
@@ -17,7 +17,9 @@ export class AislamientoComponent implements OnInit {
     private formularioService: FormularioService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder,
+    private rutaActiva: ActivatedRoute
   ) {}
 
   obtenerFormulario(idInspeccion: string) {
@@ -25,7 +27,7 @@ export class AislamientoComponent implements OnInit {
       .getOne(idInspeccion)
       .subscribe((formulario: Formulario) => {
         this.formulario = formulario;
-        if (formulario.estructura != null) {
+        if (formulario.idAisladores != null) {
           // Aca va el nuevo Formulario
           // this.formInformacion.patchValue(formulario.estructura);
         }
@@ -46,12 +48,30 @@ export class AislamientoComponent implements OnInit {
         );
       });
   }
-  onSubmit(){}
+
   nextPage() {
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
     // this.formulario.estructura = this.formInformacion.value as Estructura;
-     this.guardarFormulario();
+    // this.guardarFormulario();
+    this.router.navigateByUrl(
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/bases/${this.formulario.idInspeccion}`
+    );
   }
-  prevPage() {}
-  ngOnInit(): void {}
+  
+  prevPage() {
+    this.router.navigateByUrl(
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/cable-conductor/${this.formulario.idInspeccion}`
+    );
+  }
+
+  ngOnInit(): void {
+
+    this.formAislamiento = this.fb.group({
+      idCableConductor: new FormControl(),
+    });
+
+    this.rutaActiva.params.subscribe((params: Params) => {
+      this.obtenerFormulario(params.id);
+    });
+  }
 }

@@ -6,13 +6,16 @@ import { CommonService } from './common.service';
 // Enviroment
 import { API_URL } from 'src/environments/environment';
 // Modelo
-import { Servidumbre } from 'src/app/core/models/servidumbre';
+import { CableConductor } from '../models/cableConductor';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ServidumbreService extends CommonService<Servidumbre, string> {
-  protected API_URL: string = `${API_URL}/servidumbres/`;
+export class cableConductorService extends CommonService<
+  CableConductor,
+  string
+> {
+  protected API_URL: string = `${API_URL}/cables-conductores/`;
   constructor(protected http: HttpClient) {
     super(http);
   }

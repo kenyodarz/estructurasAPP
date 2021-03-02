@@ -1,7 +1,7 @@
 <br />
 <div class="stepsdemo-content">
   <p-card>
-    <form [formGroup]="formApantallamiento" (ngSubmit)="onSubmit()">
+    <form [formGroup]="formApantallamiento">
       <p-fieldset legend="APANTALLAMIENTO">
         <ng-template pTemplate="content">
           <div class="p-grid p-fluid">
@@ -54,87 +54,76 @@
                     >
                     <label for="ny">ROTOS</label>
                   </div>
-                  <!-- <div class="p-field-checkbox">
+                   <div class="p-field-checkbox">
                     <p-checkbox
-                      formControlName="noTieneBlin"
-                      name="group1"
-                      value="noTieneBlin"
-                      inputId="sf"
+                       [formControl]="formEstado.controls['noTieneBlin']"
+                      binary="true"
                     ></p-checkbox>
                     <label for="sf">NO TIENE BLINDAJE</label>
                   </div>
+                  
                   <div class="p-field-checkbox">
                     <p-checkbox
-                      formControlName="empalmeMalEstado"
-                      name="group1"
-                      value="empalmeMalEstado"
-                      inputId="la"
+                       [formControl]="formEstado.controls['empalmeMalEstado']"
+                      binary="true"
                     ></p-checkbox>
                     <label for="la">EMPALMES EN MAL ESTADO</label>
                   </div>
                   <div class="p-field-checkbox">
                     <p-checkbox
-                      formControlName="herrajeMalEstado"
-                      name="group1"
-                      value="herrajeMalEstado"
-                      inputId="ch"
+                     [formControl]="formEstado.controls['herrajeMalEstado']"
+                      binary="true"
                     ></p-checkbox>
                     <label for="ch">HERRAJES EN MAL ESTADO</label>
                   </div>
                   <div class="p-field-checkbox">
                     <p-checkbox
-                      formControlName="buenos"
-                      name="group1"
-                      value="buenos"
-                      inputId="ch"
+                      [formControl]="formEstado.controls['buenos']"
+                      binary="true"
                     ></p-checkbox>
                     <label for="ch">BUENOS</label>
-                  </div> -->
-                </p-fieldset>
+                  </div> 
+                </p-fieldset> 
               </form>
             </div>
-            <!-- <div class="p-col-12 p-md-6">
+             <div class="p-col-12 p-md-6">
               <form [formGroup]="formConector">
                 <p-fieldset legend="CONECTORES CABLE GUARDA">
                   <div class="p-field-checkbox">
                     <p-checkbox
-                      formControlName="sulfatados"
-                      name="group1"
-                      value="sulfatados"
-                      inputId="sulfatados"
+                     [formControl]="formConector.controls['sulfatados']"
+                      binary="true"
                     ></p-checkbox>
-                    <label for="sulfatados">SULFATADOS</label>
+                    <label for="su">SULFATADOS</label>
+                  </div>
+                  
+                  <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formConector.controls['quemados']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="qu">QUEMADOS</label>
                   </div>
                   <div class="p-field-checkbox">
                     <p-checkbox
-                      formControlName="quemados"
-                      name="group1"
-                      value="quemados"
-                      inputId="quemados"
+                     [formControl]="formConector.controls['reposicion']"
+                      binary="true"
                     ></p-checkbox>
-                    <label for="quemados">QUEMADOS</label>
+                    <label for="re">REPOSICION</label>
                   </div>
                   <div class="p-field-checkbox">
                     <p-checkbox
-                      formControlName="reposicion"
-                      name="group1"
-                      value="reposicion"
-                      inputId="reposicion"
+                      [formControl]="formConector.controls['buenos']"
+                      binary="true"
                     ></p-checkbox>
-                    <label for="reposicion">REPOSICION</label>
+                    <label for="bu">BUENOS</label>
                   </div>
-                  <div class="p-field-checkbox">
-                    <p-checkbox
-                      formControlName="buenos"
-                      name="group1"
-                      value="buenos"
-                      inputId="buenos"
-                    ></p-checkbox>
-                    <label for="buenos">BUENOS</label>
-                  </div>
+                  
                 </p-fieldset>
+                
               </form>
-            </div> -->
+            
+            </div> 
           </div>
           <p-fieldset legend="OBSERVACIONES">
             <div class="p-grid p-fluid">

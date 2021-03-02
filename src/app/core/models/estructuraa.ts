@@ -1,9 +1,12 @@
 export class Estructuraa {
   constructor(
-    public idApantallamiento: string = null,
-    public cableGuarda: boolean = null,
-    public tipoApantallamiento: string = null,
-    public calibreApantallamiento: string = null,
-    public observacionesApantallamiento: string = null
+    public idTorre: string = null,
+    public funcion: string = null,
+    public tipo: string = null,
+    public pintura: string = null,
+    public estadoAngulos: string = null,
+    public riesgoElectrico: string = null,
+    public vial: string = null,
+    public nomenclatura: string = null
   ) {}
 }

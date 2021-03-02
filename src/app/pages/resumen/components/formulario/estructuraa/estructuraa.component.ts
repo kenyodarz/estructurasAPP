@@ -5,8 +5,10 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 // PrimeNG
 import { MessageService, ConfirmationService } from 'primeng/api';
 
+import { EstructuraaService } from 'src/app/core/services/estructuraa.service';
 import { FormularioService } from 'src/app/core/services/formulario.service';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Estructuraa } from 'src/app/core/models/estructuraa';
 
 @Component({
   selector: 'app-estructuraa',
@@ -21,27 +23,46 @@ export class EstructuraaComponent implements OnInit {
   riesgoElectricoOpcions: any[];
   vialOpcions: any[];
   nomenclaturaOpcions: any[];
-  formulario: Formulario = new Formulario();
+
   formEstructuraa: FormGroup;
+
+  formulario: Formulario = new Formulario();
+  estructuraa: Estructuraa = new Estructuraa();
 
   constructor(
     private formularioService: FormularioService,
+    private estruraaService: EstructuraaService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private router: Router
+    private fb: FormBuilder,
+    private router: Router,
+    private rutaActiva: ActivatedRoute
   ) {}
+
   obtenerFormulario(idInspeccion: string) {
     this.formularioService
       .getOne(idInspeccion)
       .subscribe((formulario: Formulario) => {
         this.formulario = formulario;
-        if (formulario.estructura != null) {
+        if (formulario.idTorres != null) {
           // Aca va el nuevo Formulario
-          // this.formInformacion.patchValue(formulario.estructura);
+        //  this.formEstructuraa.patchValue(formulario.idTorres);
         }
       });
   }
-  onSubmit() {}
+
+  guardarEstructuraa(estructuraa: Estructuraa) {
+    this.estructuraa = estructuraa;
+    this.estruraaService.save(this.estructuraa).subscribe((estructuraa: Estructuraa) => {
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Estructura',
+        detail: `Se ha guardado correctamente la estructura ${estructuraa.idTorre}`,
+      });
+       this.guardarFormulario();
+    });
+  }
+
   guardarFormulario() {
     this.formularioService
       .save(this.formulario)
@@ -56,14 +77,39 @@ export class EstructuraaComponent implements OnInit {
         );
       });
   }
+
   nextPage() {
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
-    // this.formulario.estructura = this.formInformacion.value as Estructura;
-    this.guardarFormulario();
+    //this.estructuraa = this.formEstructuraa.value;
+   // this.guardarFormulario;
+   // console.info(this.formEstructuraa.value);
+  this.router.navigateByUrl(
+    `resumen/formulario/ver/${this.formulario.idInspeccion}/cable-conductor/${this.formulario.idInspeccion}`
+  );
   }
-  prevPage() {}
+
+  prevPage() {
+    this.router.navigateByUrl(
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/apantallamiento/${this.formulario.idInspeccion}`
+    );
+  }
 
   ngOnInit(): void {
+    this.formEstructuraa = this.fb.group({
+      idTorre: new FormControl(null, Validators.required),
+      funcion: new FormControl(),
+      tipo: new FormControl(null, Validators.required),
+      pintura: new FormControl(null, Validators.required),
+      estadoAngulos: new FormControl(null, Validators.required),
+      riesgoElectrico: new FormControl(null, Validators.required),
+      vial: new FormControl(null, Validators.required),
+      nomenclatura: new FormControl(null, Validators.required),
+    });
+
+    this.rutaActiva.params.subscribe((params: Params) => {
+      this.obtenerFormulario(params.id);
+    });
+
     this.funcionOptions = [
       { label: 'RETENCIÓN', value: 'retencion' },
       { label: 'SUSPENSIÓN', value: 'suspension' },
@@ -90,19 +136,19 @@ export class EstructuraaComponent implements OnInit {
       { label: 'BUEN ESTADO', value: 'buen' },
     ];
     this.riesgoElectricoOpcions = [
-      { label: 'BUEN ESTADO', value: 'mal' },
-      { label: 'MAL ESTADO', value: 'faltantes' },
-      { label: 'NO TIENE', value: 'deformados' },
+      { label: 'BUEN ESTADO', value: 'buen' },
+      { label: 'MAL ESTADO', value: 'mal' },
+      { label: 'NO TIENE', value: 'noTiene' },
     ];
     this.vialOpcions = [
-      { label: 'SI TIENE', value: 'mal' },
-      { label: 'NO TIENE', value: 'faltantes' },
-      { label: 'NO APLICA', value: 'deformados' },
+      { label: 'SI TIENE', value: 'siTiene' },
+      { label: 'NO TIENE', value: 'noTiene' },
+      { label: 'NO APLICA', value: 'noAplica' },
     ];
     this.nomenclaturaOpcions = [
-      { label: 'BUEN ESTADO', value: 'mal' },
-      { label: 'MAL ESTADO', value: 'faltantes' },
-      { label: 'NO TIENE', value: 'deformados' },
+      { label: 'BUEN ESTADO', value: 'buen' },
+      { label: 'MAL ESTADO', value: 'mal' },
+      { label: 'NO TIENE', value: 'noTiene' },
     ];
   }
 }

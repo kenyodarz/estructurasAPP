@@ -10,7 +10,6 @@ import { ApantallamientoService } from 'src/app/core/services/apantallamiento.se
 import { FormularioService } from 'src/app/core/services/formulario.service';
 // Modelos
 import { Formulario } from 'src/app/core/models/formulario';
-import { Estructura } from 'src/app/core/models/estructura';
 import { Apantallamiento } from 'src/app/core/models/apantallamiento';
 import { EstadoService } from 'src/app/core/services/estado.service';
 import { Estado } from 'src/app/core/models/estado';
@@ -87,6 +86,7 @@ export class ApantallamientoComponent implements OnInit {
         this.guardarFormulario();
       });
   }
+
   guardarConector(apantallamiento: Apantallamiento) {
     this.conector.apantallamiento = apantallamiento;
     this.conectorService.save(this.conector).subscribe((conector: Conector) =>
@@ -124,8 +124,6 @@ export class ApantallamientoComponent implements OnInit {
       });
   }
 
-  onSubmit() {}
-
   nextPage() {
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
     this.conector = this.formConector.value;
@@ -134,6 +132,7 @@ export class ApantallamientoComponent implements OnInit {
     this.guardarApantallamento();
     // console.info(this.formApantallamiento.value);
   }
+  
   prevPage() {
     this.router.navigateByUrl(
       `resumen/formulario/ver/${this.formulario.idInspeccion}/informacion/${this.formulario.idInspeccion}`
@@ -154,9 +153,6 @@ export class ApantallamientoComponent implements OnInit {
       calibreApantallamiento: new FormControl(null, Validators.required),
       observacionesApantallamiento: new FormControl(null, Validators.required),
     });
-    this.rutaActiva.params.subscribe((params: Params) => {
-      this.obtenerFormulario(params.id);
-    });
     this.formConector = this.fb.group({
       sulfatados: new FormControl(),
       quemados: new FormControl(),
@@ -170,6 +166,11 @@ export class ApantallamientoComponent implements OnInit {
       herrajeMalEstado: new FormControl(),
       buenos: new FormControl(),
     });
+
+    this.rutaActiva.params.subscribe((params: Params) => {
+       this.obtenerFormulario(params.id);
+    });
+
     this.stateOptions = [
       { label: 'SI', value: true },
       { label: 'NO', value: false },

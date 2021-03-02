@@ -1,6 +1,8 @@
+
+<br>
 <div class="stepsdemo-content">
   <p-card>
-    <form [formGroup]="formEstructuraa" (ngSubmit)="onSubmit()">
+    <form [formGroup]="formEstructuraa" >
       <p-fieldset legend="ESTRUCTURA">
         <div class="p-grid p-fluid">
           <div class="p-col-12 p-md-12">
@@ -10,6 +12,7 @@
                   <div class="p-field">
                     <p-selectButton
                       [options]="funcionOptions"
+                       formControlName="funcion"
                       optionLabel="label"
                       optionValue="value"
                     ></p-selectButton>
@@ -21,6 +24,7 @@
               <div class="p-field">
                 <p-selectButton
                   [options]="tipoOpcions"
+                   formControlName="tipo"
                   optionLabel="label"
                   optionValue="value"
                 ></p-selectButton>
@@ -30,6 +34,7 @@
               <div class="p-field">
                 <p-selectButton
                   [options]="pinturaOpcions"
+                   formControlName="pintura"
                   optionLabel="label"
                   optionValue="value"
                 ></p-selectButton>
@@ -39,6 +44,7 @@
               <div class="p-field">
                 <p-selectButton
                   [options]="angulosOpcions"
+                   formControlName="estadoAngulos"
                   optionLabel="label"
                   optionValue="value"
                 ></p-selectButton>
@@ -49,6 +55,7 @@
                 <div class="p-field">
                   <p-selectButton
                     [options]="riesgoElectricoOpcions"
+                     formControlName="riesgoElectrico"
                     optionLabel="label"
                     optionValue="value"
                   ></p-selectButton>
@@ -58,6 +65,7 @@
                 <div class="p-field">
                   <p-selectButton
                     [options]="vialOpcions"
+                     formControlName="vial"
                     optionLabel="label"
                     optionValue="value"
                   ></p-selectButton>
@@ -68,6 +76,7 @@
               <div class="p-field">
                 <p-selectButton
                   [options]="nomenclaturaOpcions"
+                   formControlName="nomenclatura"
                   optionLabel="label"
                   optionValue="value"
                 ></p-selectButton>
@@ -90,7 +99,7 @@
         <p-button
           label="Back"
           icon="pi pi-angle-left"
-          [routerLink]="['/formulario/apantallamiento']"
+          (onClick)="prevPage()"
         ></p-button>
         <p-button
           label="Next"

@@ -12,6 +12,8 @@ import { ServidumbreComponent } from './servidumbre/servidumbre.component';
 import { TransposicionComponent } from './transposicion/transposicion.component';
 import { UbicacionComponent } from './ubicacion/ubicacion.component';
 import { VerFormularioComponent } from './ver-formulario/ver-formulario.component';
+import { ObservacionComponent } from './observacion/observacion.component';
+import { ConfirmacionComponent } from './confirmacion/confirmacion.component';
 
 @NgModule({
   imports: [
@@ -31,6 +33,8 @@ import { VerFormularioComponent } from './ver-formulario/ver-formulario.componen
           { path: 'servidumbre/:id', component: ServidumbreComponent },
           { path: 'transposicion/:id', component: TransposicionComponent },
           { path: 'ubicacion/:id', component: UbicacionComponent },
+          { path: 'observacion/:id', component: ObservacionComponent },
+          { path: 'confirmacion/:id', component: ConfirmacionComponent },
         ],
       },
     ]),

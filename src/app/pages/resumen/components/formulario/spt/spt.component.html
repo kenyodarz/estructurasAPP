@@ -1,1 +1,40 @@
-<p>spt works!</p>
+<br>
+<div class="stepsdemo-content">
+  <p-card>
+      <form [formGroup]="formSpt" >
+    <p-fieldset legend="SISTEMA PUESTA A TIERRA SPT">
+      <ng-template pTemplate="content">
+        <div class="p-grid p-fluid">
+          <div class="p-col-12 p-md-12">
+            <p-fieldset legend="S.P.T.">
+
+              <div class="p-grid p-fluid">
+                <div class="p-col-12 p-md-12">
+              <p-fieldset legend="TIPO">
+                
+              </p-fieldset>
+                </div>
+                <div class="p-col-12 p-md-12">
+              <p-fieldset legend="BAJANTE">
+
+              </p-fieldset>
+                </div>
+              </div>
+            </p-fieldset>
+          </div>
+          <div class="p-col-12 p-md-12">
+             <p-fieldset legend="OBSERVACIONES">
+             </p-fieldset>
+          </div>
+        </div>
+          </ng-template>
+    </p-fieldset>
+    </form>
+       <ng-template pTemplate="footer">
+            <div class="p-grid p-nogutter p-justify-between">
+                <p-button label="Back" icon="pi pi-angle-left" (onClick)="prevPage()"></p-button>
+                <p-button label="Next" icon="pi pi-angle-right" iconPos="right"  (onClick)="nextPage()"></p-button>
+            </div>
+        </ng-template>
+  </p-card>
+</div>

@@ -14,6 +14,9 @@ import { TransposicionComponent } from './transposicion/transposicion.component'
 import { UbicacionComponent } from './ubicacion/ubicacion.component';
 import { VerFormularioComponent } from './ver-formulario/ver-formulario.component';
 import { CableConductorComponent } from './cable-conductor/cable-conductor.component';
+import { ServidumbreComponent } from './servidumbre/servidumbre.component';
+import { ObservacionComponent } from './observacion/observacion.component';
+import { ConfirmacionComponent } from './confirmacion/confirmacion.component';
 
 
 @NgModule({
@@ -28,6 +31,9 @@ import { CableConductorComponent } from './cable-conductor/cable-conductor.compo
     TransposicionComponent,
     UbicacionComponent,
     CableConductorComponent,
+    ServidumbreComponent,
+    ObservacionComponent,
+    ConfirmacionComponent,
   ],
   imports: [
     FormularioRoutingModule,

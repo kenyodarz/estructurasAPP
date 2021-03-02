@@ -12,7 +12,7 @@ import { Transposicion } from 'src/app/core/models/transposicion';
   providedIn: 'root',
 })
 export class TransposicionService extends CommonService<Transposicion, string> {
-  protected API_URL: string = `${API_URL}/transposicion/`;
+  protected API_URL: string = `${API_URL}/transposiciones/`;
   constructor(protected http: HttpClient) {
     super(http);
   }

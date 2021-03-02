@@ -4,20 +4,20 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Formulario } from 'src/app/core/models/formulario';
 import { FormularioService } from 'src/app/core/services/formulario.service';
-import { TransposicionService } from 'src/app/core/services/transposicion.service';
+import { ServidumbreService } from 'src/app/core/services/servidumbre.service';
 
 @Component({
-  selector: 'app-transposicion',
-  templateUrl: './transposicion.component.html',
-  styleUrls: ['./transposicion.component.css'],
+  selector: 'app-confirmacion',
+  templateUrl: './confirmacion.component.html',
+  styleUrls: ['./confirmacion.component.css'],
 })
-export class TransposicionComponent implements OnInit {
-   formTransposicion: FormGroup;
+export class ConfirmacionComponent implements OnInit {
+  formConfirmacion: FormGroup;
 
   formulario: Formulario = new Formulario();
   constructor(
-     private formularioService: FormularioService,
-    private transposicionService: TransposicionService,
+    private formularioService: FormularioService,
+    private servidumbreService: ServidumbreService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private fb: FormBuilder,
@@ -29,42 +29,20 @@ export class TransposicionComponent implements OnInit {
       .getOne(idInspeccion)
       .subscribe((formulario: Formulario) => {
         this.formulario = formulario;
-        if (formulario.estructura != null) {
+        if (formulario.idInspeccion != null) {
           // Aca va el nuevo Formulario
           // this.formInformacion.patchValue(formulario.estructura);
         }
       });
   }
 
-  guardarFormulario() {
-    this.formularioService
-      .save(this.formulario)
-      .subscribe((formulario: Formulario) => {
-        this.messageService.add({
-          severity: 'info',
-          summary: 'Información',
-          detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
-        });
-        this.router.navigateByUrl(
-          `resumen/formulario/ver/${formulario.idInspeccion}/transposicion/${formulario.idInspeccion}`
-        );
-      });
-  }
-  nextPage() {
-    // se igual el formulario de apantallamiento a apantallamiento en el formulario
-    // this.formulario.estructura = this.formInformacion.value as Estructura;
-    // this.guardarFormulario();
-      this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/ubicacion/${this.formulario.idInspeccion}`
-    );
-  }
   prevPage() {
-      this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/servidumbre/${this.formulario.idInspeccion}`
+    this.router.navigateByUrl(
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/observacion/${this.formulario.idInspeccion}`
     );
   }
   ngOnInit(): void {
-    this.formTransposicion = this.fb.group({
+    this.formConfirmacion = this.fb.group({
       idServidumbre: new FormControl(null, Validators.required),
       podaconRiesgo: new FormControl(),
       cantArboles: new FormControl(null, Validators.required),
@@ -77,5 +55,4 @@ export class TransposicionComponent implements OnInit {
       this.obtenerFormulario(params.id);
     });
   }
-  }
-
+}

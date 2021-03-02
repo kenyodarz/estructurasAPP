@@ -1,1 +1,34 @@
-<p>servidumbre works!</p>
+<br>
+<div class="stepsdemo-content">
+  <p-card>
+     <form [formGroup]="formServidumbre" >
+    <p-fieldset legend="SERVIDUMBRE">
+      <ng-template pTemplate="content">
+        <div class="p-grid p-fluid">
+          <div class="p-col-12 p-md-12">
+            <p-fieldset legend="PODA">
+
+            </p-fieldset>
+          </div>
+          <div class="p-col-12 p-md-5">
+          <p-fieldset legend="SERVIDUMBRE">
+
+          </p-fieldset>
+          </div>
+           <div class="p-col-12 p-md-7">
+          <p-fieldset legend="OBSERVACIONES">
+
+          </p-fieldset>
+          </div>
+        </div>
+          </ng-template>
+    </p-fieldset>
+    </form>
+       <ng-template pTemplate="footer">
+            <div class="p-grid p-nogutter p-justify-between">
+                <p-button label="Back" icon="pi pi-angle-left" (onClick)="prevPage()"></p-button>
+                <p-button label="Next" icon="pi pi-angle-right" (onClick)="nextPage()" iconPos="right" ></p-button>
+            </div>
+        </ng-template>
+  </p-card>
+</div>

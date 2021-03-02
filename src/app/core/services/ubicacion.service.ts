@@ -12,7 +12,7 @@ import { Ubicacion } from 'src/app/core/models/ubicacion';
   providedIn: 'root',
 })
 export class UbicacionService extends CommonService<Ubicacion, string> {
-  protected API_URL: string = `${API_URL}/ubicacion/`;
+  protected API_URL: string = `${API_URL}/ubicaciones/`;
   constructor(protected http: HttpClient) {
     super(http);
   }

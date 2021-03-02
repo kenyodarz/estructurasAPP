@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { Estructura } from 'src/app/core/models/estructura';
+import { CableConductor } from 'src/app/core/models/cableConductor';
 import { Formulario } from 'src/app/core/models/formulario';
-import { EstructuraService } from 'src/app/core/services/estructura.service';
+import { cableConductorService } from 'src/app/core/services/cableConductor.service';
 import { FormularioService } from 'src/app/core/services/formulario.service';
 
 @Component({
@@ -13,34 +13,33 @@ import { FormularioService } from 'src/app/core/services/formulario.service';
   styleUrls: ['./cable-conductor.component.css'],
 })
 export class CableConductorComponent implements OnInit {
-  estructura: Estructura = new Estructura();
+  cableConductor: CableConductor = new CableConductor();
   formulario: Formulario = new Formulario();
+
   formCableConductor: FormGroup;
+
   amortiguadorOpcions: any[];
+  products: any[];
+  selectedProducts: any[];
   constructor(
-    private estructuraService: EstructuraService,
+    private cableConductorService: cableConductorService,
     private formularioService: FormularioService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private fb: FormBuilder,
     private router: Router,
     private rutaActiva: ActivatedRoute
-  ) {
-    this.amortiguadorOpcions = [
-      { label: 'SI', value: 'true' },
-      { label: 'NO', value: 'false' },
-    ];
-  }
+  ) {}
 
   obtenerFormulario(idInspeccion: string) {
     this.formularioService
       .getOne(idInspeccion)
       .subscribe((formulario: Formulario) => {
         this.formulario = formulario;
-        if (formulario.estructura != null) {
-        //  this.formCableConductor.patchValue(formulario.estructura);
+        if (formulario.idCableConductor != null) {
+          //  this.formCableConductor.patchValue(formulario.estructura);
         }
-     //   console.log(this.formulario);
+        //   console.log(this.formulario);
       });
   }
 
@@ -61,9 +60,38 @@ export class CableConductorComponent implements OnInit {
 
   nextPage() {
     //this.formulario.estructura = this.formInformacion.value as Estructura;
-    this.guardarFormulario();
+    // this.guardarFormulario();
+    this.router.navigateByUrl(
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/aislamiento/${this.formulario.idInspeccion}`
+    );
   }
 
-  onSubmit() {}
-  ngOnInit(): void {}
+  prevPage() {
+    this.router.navigateByUrl(
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/estructuraa/${this.formulario.idInspeccion}`
+    );
+  }
+
+  ngOnInit(): void {
+    this.formCableConductor = this.fb.group({
+      idCableConductor: new FormControl(),
+      calibreCableConductor: new FormControl(null, Validators.required),
+      amortiguadorCableConductor: new FormControl(null, Validators.required),
+      cantidadAmortiguadores: new FormControl(null, Validators.required),
+      buenEstadoConductor: new FormControl(null, Validators.required),
+      embarrilado: new FormControl(null, Validators.required),
+      faseEmbarrilado: new FormControl(null, Validators.required),
+      cantidadEmbarrilado: new FormControl(null, Validators.required),
+      observacionesCableConductor: new FormControl(null, Validators.required),
+    });
+
+    this.rutaActiva.params.subscribe((params: Params) => {
+      this.obtenerFormulario(params.id);
+    });
+
+    this.amortiguadorOpcions = [
+      { label: 'SI', value: 'true' },
+      { label: 'NO', value: 'false' },
+    ];
+  }
 }

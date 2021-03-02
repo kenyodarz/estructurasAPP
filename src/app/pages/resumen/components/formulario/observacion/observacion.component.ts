@@ -4,20 +4,17 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Formulario } from 'src/app/core/models/formulario';
 import { FormularioService } from 'src/app/core/services/formulario.service';
-import { ServidumbreService } from 'src/app/core/services/servidumbre.service';
 
 @Component({
-  selector: 'app-servidumbre',
-  templateUrl: './servidumbre.component.html',
-  styleUrls: ['./servidumbre.component.css'],
+  selector: 'app-observacion',
+  templateUrl: './observacion.component.html',
+  styleUrls: ['./observacion.component.css'],
 })
-export class ServidumbreComponent implements OnInit {
-  formServidumbre: FormGroup;
-
+export class ObservacionComponent implements OnInit {
   formulario: Formulario = new Formulario();
+  formObservacion: FormGroup;
   constructor(
     private formularioService: FormularioService,
-    private servidumbreService: ServidumbreService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private fb: FormBuilder,
@@ -30,7 +27,7 @@ export class ServidumbreComponent implements OnInit {
       .getOne(idInspeccion)
       .subscribe((formulario: Formulario) => {
         this.formulario = formulario;
-        if (formulario.idServidumbre != null) {
+        if (formulario.observaciones != null) {
           // Aca va el nuevo Formulario
           // this.formInformacion.patchValue(formulario.estructura);
         }
@@ -42,23 +39,32 @@ export class ServidumbreComponent implements OnInit {
     // this.formulario.estructura = this.formInformacion.value as Estructura;
     // this.guardarFormulario();
     this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/transposicion/${this.formulario.idInspeccion}`
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/confirmacion/${this.formulario.idInspeccion}`
     );
   }
+
   prevPage() {
     this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/spt/${this.formulario.idInspeccion}`
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/ubicacion/${this.formulario.idInspeccion}`
     );
   }
   ngOnInit(): void {
-    this.formServidumbre = this.fb.group({
-      idServidumbre: new FormControl(null, Validators.required),
-      podaconRiesgo: new FormControl(),
-      cantArboles: new FormControl(null, Validators.required),
-      obsPoda: new FormControl(null, Validators.required),
-      NoRequierePoda: new FormControl(null, Validators.required),
-      obsServidumbre: new FormControl(null, Validators.required),
-     
+    this.formObservacion = this.fb.group({
+      observaciones: new FormControl(null, Validators.required),
+      nombre2: new FormControl(null, Validators.required),
+      nombre3: new FormControl(null, Validators.required),
+      nombre4: new FormControl(null, Validators.required),
+      nombre5: new FormControl(null, Validators.required),
+      codigo2: new FormControl(null, Validators.required),
+      codigo3: new FormControl(null, Validators.required),
+      codigo4: new FormControl(null, Validators.required),
+      codigo5: new FormControl(null, Validators.required),
+      fecha: new FormControl(null, Validators.required),
+      movil: new FormControl(null, Validators.required),
+      reviso: new FormControl(null, Validators.required),
+      codigoRevisor: new FormControl(null, Validators.required),
+      firma: new FormControl(null, Validators.required),
+      fechaRevisor: new FormControl(null, Validators.required),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {

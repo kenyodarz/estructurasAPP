@@ -42,44 +42,48 @@ export class VerFormularioComponent implements OnInit {
           routerLink: 'informacion',
         },
         {
-          label: 'apantallamiento',
+          label: 'Apantallamiento',
           routerLink: 'apantallamiento',
         },
         {
-          label: 'estructuraa',
+          label: 'Estructuraa',
           routerLink: 'estructuraa',
         },
         {
-          label: 'cableConductor',
-          routerLink: 'cableConductor',
+          label: 'CableConductor',
+          routerLink: 'cable-conductor',
         },
         {
-          label: 'aislamiento',
+          label: 'Aislamiento',
           routerLink: 'aislamiento',
         },
         {
-          label: 'bases',
+          label: 'Bases',
           routerLink: 'bases',
         },
         {
-          label: 'spt',
+          label: 'SPT',
           routerLink: 'spt',
         },
         {
-          label: 'servidumbre',
+          label: 'Servidumbre',
           routerLink: 'servidumbre',
         },
         {
-          label: 'transposicion',
+          label: 'Transposicion',
           routerLink: 'transposicion',
         },
         {
-          label: 'ubicacion',
+          label: 'Ubicacion',
           routerLink: 'ubicacion',
         },
         {
-          label: 'Confirmation',
-          routerLink: 'confirmation',
+          label: 'Observación',
+          routerLink: 'observacion',
+        },
+        {
+          label: 'Confirmación',
+          routerLink: 'confirmacion',
         },
       ];
   }

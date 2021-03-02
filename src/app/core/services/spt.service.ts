@@ -12,7 +12,7 @@ import { Spt } from 'src/app/core/models/spt';
   providedIn: 'root',
 })
 export class SptService extends CommonService<Spt, string> {
-  protected API_URL: string = `${API_URL}/spt/`;
+  protected API_URL: string = `${API_URL}/spts/`;
   constructor(protected http: HttpClient) {
     super(http);
   }

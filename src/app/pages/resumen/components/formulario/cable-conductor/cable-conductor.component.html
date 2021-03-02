@@ -1,6 +1,6 @@
 <div class="stepsdemo-content">
   <p-card>
-     <form [formGroup]="formCableConductor" (ngSubmit)="onSubmit()">
+     <form [formGroup]="formCableConductor" >
     <p-fieldset legend="CABLE CONDUCTOR">
       <ng-template pTemplate="content">
         <div class="p-grid p-fluid">
@@ -15,6 +15,7 @@
            <div class="p-col-12 p-md-5">
           <p-selectButton
             [options]="amortiguadorOpcions"
+             formControlName="amortiguadorCableConductor"
             optionLabel="label"
             optionValue="value"
           ></p-selectButton>
@@ -27,7 +28,70 @@
       </p-fieldset>
       </div>
       <div class="p-col-12 p-md-12">
-      <p-fieldset legend="EMPALMES"> </p-fieldset>
+      <p-fieldset legend="EMPALMES"> 
+          <p-table #dt [value]="products" [rows]="10" [globalFilterFields]="['name','country.name','representative.name','status']"
+        [(selection)]="selectedProducts" [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h5 class="p-m-0">Manage Products</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                </span>
+            </div>
+        </ng-template>
+         <ng-template pTemplate="header">
+            <tr>
+                
+                <th pSortableColumn="name">FASE <p-sortIcon field="name"></p-sortIcon></th>
+                <th></th>
+                <th pSortableColumn="price">MANUAL <p-sortIcon field="price"></p-sortIcon></th>
+                <th pSortableColumn="category">FULL TENSIÓN <p-sortIcon field="category"></p-sortIcon></th>
+                <th pSortableColumn="rating">BLINDAJE <p-sortIcon field="rating"></p-sortIcon></th>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                
+                <td>R</td>
+                <td><img ></td>
+                <td> <div class="p-field p-col-12 p-md-4">
+        <span class="p-float-label">
+            <input type="text" id="inputtext" pInputText > 
+            <label for="inputtext">CANT:</label>
+        </span>
+    </div></td>
+                <td>
+                   <div class="p-field p-col-12 p-md-4">
+        <span class="p-float-label">
+            <input type="text" id="inputtext" pInputText > 
+            <label for="inputtext">CANT:</label>
+        </span>
+    </div>
+                </td>
+                <td>         <div class="p-field p-col-12 p-md-4">
+        <span class="p-float-label">
+            <input type="text" id="inputtext" pInputText > 
+            <label for="inputtext">CANT:</label>
+        </span>
+    </div></td>
+                
+                <td>
+                    <p-tableCheckbox [value]="product"></p-tableCheckbox>
+                </td>
+            </tr>
+        </ng-template>
+         <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{products ? products.length : 0 }} products.
+            </div>
+        </ng-template>  
+       </p-table>
+      </p-fieldset>
       </div>
        <div class="p-col-12 p-md-12">
       <p-fieldset legend="ESTADO CONDUCTOR"> </p-fieldset>
@@ -48,7 +112,7 @@
      </form>
        <ng-template pTemplate="footer">
             <div class="p-grid p-nogutter p-justify-between">
-                <p-button label="Back" icon="pi pi-angle-left"  [routerLink]="['/formulario/estructuraa']"></p-button>
+                <p-button label="Back" icon="pi pi-angle-left" (onClick) = "prevPage()"></p-button>
                 <p-button label="Next" icon="pi pi-angle-right" iconPos="right"  (onClick)="nextPage()"></p-button>
             </div>
         </ng-template>

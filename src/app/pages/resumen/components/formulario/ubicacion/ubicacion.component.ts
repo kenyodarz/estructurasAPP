@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Formulario } from 'src/app/core/models/formulario';
 import { FormularioService } from 'src/app/core/services/formulario.service';
+import { UbicacionService } from 'src/app/core/services/ubicacion.service';
 
 @Component({
   selector: 'app-ubicacion',
@@ -11,11 +13,15 @@ import { FormularioService } from 'src/app/core/services/formulario.service';
 })
 export class UbicacionComponent implements OnInit {
   formulario: Formulario = new Formulario();
+  formUbicacion: FormGroup;
   constructor(
     private formularioService: FormularioService,
+    private ubicacionService: UbicacionService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private router: Router
+    private fb: FormBuilder,
+    private router: Router,
+    private rutaActiva: ActivatedRoute
   ) {}
   obtenerFormulario(idInspeccion: string) {
     this.formularioService
@@ -47,7 +53,26 @@ export class UbicacionComponent implements OnInit {
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
     // this.formulario.estructura = this.formInformacion.value as Estructura;
     // this.guardarFormulario();
+    this.router.navigateByUrl(
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/observacion/${this.formulario.idInspeccion}`
+    );
   }
-  prevPage() {}
-  ngOnInit(): void {}
+
+  prevPage() {
+    this.router.navigateByUrl(
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/transposicion/${this.formulario.idInspeccion}`
+    );
+  }
+  ngOnInit(): void {
+    this.formUbicacion = this.fb.group({
+      idUbicacion: new FormControl(null, Validators.required),
+      torredesde: new FormControl(null, Validators.required),
+      torrehasta: new FormControl(null, Validators.required),
+      descripcion: new FormControl(null, Validators.required),
+    });
+
+    this.rutaActiva.params.subscribe((params: Params) => {
+      this.obtenerFormulario(params.id);
+    });
+  }
 }

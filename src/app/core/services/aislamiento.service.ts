@@ -12,7 +12,7 @@ import { Aislamiento } from 'src/app/core/models/aislamiento';
   providedIn: 'root',
 })
 export class AislamientoService extends CommonService<Aislamiento, string> {
-  protected API_URL: string = `${API_URL}/aislamiento/`;
+  protected API_URL: string = `${API_URL}/aislamientos/`;
   constructor(protected http: HttpClient) {
     super(http);
   }
