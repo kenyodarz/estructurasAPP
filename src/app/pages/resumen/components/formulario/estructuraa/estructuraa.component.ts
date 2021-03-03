@@ -7,7 +7,12 @@ import { MessageService, ConfirmationService } from 'primeng/api';
 
 import { EstructuraaService } from 'src/app/core/services/estructuraa.service';
 import { FormularioService } from 'src/app/core/services/formulario.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Estructuraa } from 'src/app/core/models/estructuraa';
 
 @Component({
@@ -44,23 +49,29 @@ export class EstructuraaComponent implements OnInit {
       .getOne(idInspeccion)
       .subscribe((formulario: Formulario) => {
         this.formulario = formulario;
+
+        console.log(formulario);
+
         if (formulario.idTorres != null) {
           // Aca va el nuevo Formulario
-        //  this.formEstructuraa.patchValue(formulario.idTorres);
+          this.formEstructuraa.patchValue(formulario.idTorres);
         }
       });
   }
 
   guardarEstructuraa(estructuraa: Estructuraa) {
     this.estructuraa = estructuraa;
-    this.estruraaService.save(this.estructuraa).subscribe((estructuraa: Estructuraa) => {
-      this.messageService.add({
-        severity: 'info',
-        summary: 'Estructura',
-        detail: `Se ha guardado correctamente la estructura ${estructuraa.idTorre}`,
+    this.estruraaService
+      .save(this.estructuraa)
+      .subscribe((estructuraa: Estructuraa) => {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Estructura',
+          detail: `Se ha guardado correctamente la estructura ${estructuraa.idTorre}`,
+        });
+        this.formulario.idTorres = estructuraa;
+        this.guardarFormulario();
       });
-       this.guardarFormulario();
-    });
   }
 
   guardarFormulario() {
@@ -80,12 +91,8 @@ export class EstructuraaComponent implements OnInit {
 
   nextPage() {
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
-    //this.estructuraa = this.formEstructuraa.value;
-   // this.guardarFormulario;
-   // console.info(this.formEstructuraa.value);
-  this.router.navigateByUrl(
-    `resumen/formulario/ver/${this.formulario.idInspeccion}/cable-conductor/${this.formulario.idInspeccion}`
-  );
+    this.estructuraa = this.formEstructuraa.value;
+    this.guardarEstructuraa(this.estructuraa)
   }
 
   prevPage() {
