@@ -10,29 +10,127 @@
                <div class="p-grid p-fluid">
                 <div class="p-col-12 p-md-12">
                   <p-fieldset legend="ANGULOS PRINCIPALES">
-
+              <div class="p-grid p-fluid">
+                <div class="p-col-12 p-md-12">
+                  <div class="p-field">
+                    <p-selectButton
+                      [options]="angulos"
+                       formControlName="buenEstado"
+                      optionLabel="label"
+                      optionValue="value"
+                    ></p-selectButton>
+                  </div>
+                </div>
+              </div>
                   </p-fieldset>
                 </div>
                 
           
                 <div class="p-col-12 p-md-3">
+                   <form [formGroup]="formSubBase">
              <p-fieldset legend="BASE I">
+                    <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formSubBase.controls['buena']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="su">BUENA</label>
+                  </div>
 
+                  <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formSubBase.controls['enterrada']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="qu">ENTERRADA</label>
+                  </div>
+                  <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formSubBase.controls['fracturada']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="re">FRACTURADA</label>
+                  </div>
+                 
              </p-fieldset>
+                   </form>
           </div>
           <div class="p-col-12 p-md-3">
              <p-fieldset legend="BASE II">
+ <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formSubBase.controls['buena']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="su">BUENA</label>
+                  </div>
 
+                  <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formSubBase.controls['enterrada']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="qu">ENTERRADA</label>
+                  </div>
+                  <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formSubBase.controls['fracturada']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="re">FRACTURADA</label>
+                  </div>
              </p-fieldset>
           </div>
           <div class="p-col-12 p-md-3">
              <p-fieldset legend="BASE III">
+ <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formSubBase.controls['buena']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="su">BUENA</label>
+                  </div>
 
+                  <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formSubBase.controls['enterrada']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="qu">ENTERRADA</label>
+                  </div>
+                  <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formSubBase.controls['fracturada']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="re">FRACTURADA</label>
+                  </div>
              </p-fieldset>
           </div>
           <div class="p-col-12 p-md-3">
              <p-fieldset legend="BASE IV">
+ <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formSubBase.controls['buena']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="su">BUENA</label>
+                  </div>
 
+                  <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formSubBase.controls['enterrada']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="qu">ENTERRADA</label>
+                  </div>
+                  <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formSubBase.controls['fracturada']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="re">FRACTURADA</label>
+                  </div>
              </p-fieldset>
           </div>
                 </div>
@@ -40,7 +138,13 @@
           </div>
            <div class="p-col-12 p-md-12">
              <p-fieldset legend="OBSERVACIONES">
-
+              <textarea
+                rows="5"
+                cols="30"
+                pInputTextarea
+                autoResize="autoResize"
+                formControlName="obsBase"
+              ></textarea>
              </p-fieldset>
           </div>
         </div>

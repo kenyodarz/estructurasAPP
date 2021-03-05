@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Formulario } from 'src/app/core/models/formulario';
+import { Spt } from 'src/app/core/models/spt';
 import { FormularioService } from 'src/app/core/services/formulario.service';
 import { SptService } from 'src/app/core/services/spt.service';
 
@@ -16,6 +17,9 @@ export class SptComponent implements OnInit {
   formSpt: FormGroup;
 
   formulario: Formulario = new Formulario();
+  spt: Spt = new Spt();
+  sptOptions: any[];
+  bajante: any[];
   constructor(
     private formularioService: FormularioService,
     private sptService: SptService,
@@ -30,10 +34,26 @@ export class SptComponent implements OnInit {
       .getOne(idInspeccion)
       .subscribe((formulario: Formulario) => {
         this.formulario = formulario;
-        if (formulario.estructura != null) {
+         console.log(formulario);
+        if (formulario.idSpt != null) {
           // Aca va el nuevo Formulario
-          // this.formInformacion.patchValue(formulario.estructura);
+          this.formSpt.patchValue(formulario.idSpt);
         }
+      });
+  }
+
+  guardarSPT(spt: Spt) {
+    this.spt = spt;
+    this.sptService
+      .save(this.spt)
+      .subscribe((spt: Spt) => {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'SPT',
+          detail: `Se ha guardado correctamente el SPT ${spt.idSpt}`,
+        });
+        this.formulario.idSpt = spt;
+        this.guardarFormulario();
       });
   }
 
@@ -47,38 +67,48 @@ export class SptComponent implements OnInit {
           detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
         });
         this.router.navigateByUrl(
-          `resumen/formulario/ver/${formulario.idInspeccion}/spt/${formulario.idInspeccion}`
+          `resumen/formulario/ver/${formulario.idInspeccion}/servidumbre/${formulario.idInspeccion}`
         );
       });
   }
+
   nextPage() {
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
-    // this.formulario.estructura = this.formInformacion.value as Estructura;
-    // this.guardarFormulario();
-    this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/servidumbre/${this.formulario.idInspeccion}`
-    );
+    this.spt = this.formSpt.value;
+    this.guardarSPT(this.spt);
+    
   }
+
   prevPage() {
     this.router.navigateByUrl(
       `resumen/formulario/ver/${this.formulario.idInspeccion}/bases/${this.formulario.idInspeccion}`
     );
   }
+  
   ngOnInit(): void {
-     this.formSpt = this.fb.group({
-       idSpt: new FormControl(null, Validators.required),
-       tieneSPT: new FormControl(),
-       calibreSPT: new FormControl(null, Validators.required),
-       tipoSPT: new FormControl(null, Validators.required),
-       cant: new FormControl(null, Validators.required),
-       tieneBajante: new FormControl(null, Validators.required),
-       tipoBajante: new FormControl(null, Validators.required),
-       calibreBajante: new FormControl(null, Validators.required),
-       observaciones: new FormControl(null, Validators.required),
-     });
+    this.formSpt = this.fb.group({
+      idSpt: new FormControl(null, Validators.required),
+      tieneSPT: new FormControl(),
+      calibreSPT: new FormControl(),
+      tipoSPT: new FormControl(),
+      cant: new FormControl(),
+      tieneBajante: new FormControl(),
+      tipoBajante: new FormControl(),
+      calibreBajante: new FormControl(),
+      observaciones: new FormControl(),
+    });
 
-     this.rutaActiva.params.subscribe((params: Params) => {
-       this.obtenerFormulario(params.id);
-     });
+    this.rutaActiva.params.subscribe((params: Params) => {
+      this.obtenerFormulario(params.id);
+    });
+
+    this.sptOptions = [
+      { label: 'TIENE', value: true },
+      { label: 'NO TIENE', value: false },
+    ];
+    this.bajante = [
+      { label: 'TIENE', value: true },
+      { label: 'NO TIENE', value: false },
+    ];
   }
 }

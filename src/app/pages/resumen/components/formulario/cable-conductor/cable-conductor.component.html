@@ -1,3 +1,4 @@
+<br>
 <div class="stepsdemo-content">
   <p-card>
      <form [formGroup]="formCableConductor" >
@@ -6,7 +7,7 @@
         <div class="p-grid p-fluid">
           <div class="p-col-12 p-md-4">
       <p-fieldset legend="CALIBRE">
-        <input type="text" pInputText />
+        <input type="text" pInputText  formControlName="calibreCableConductor"/>
       </p-fieldset>
       </div>
       <div class="p-col-12 p-md-8">
@@ -22,79 +23,141 @@
           </div>
         
         <div class="p-col-12 p-md-7">
-        <input type="text" pInputText />
+        <input type="text" pInputText formControlName="cantidadAmortiguadores"/>
         </div>
         </div>
       </p-fieldset>
       </div>
       <div class="p-col-12 p-md-12">
+        <form [formGroup]="formEmpalme">
       <p-fieldset legend="EMPALMES"> 
-          <p-table #dt [value]="products" [rows]="10" [globalFilterFields]="['name','country.name','representative.name','status']"
-        [(selection)]="selectedProducts" [rowHover]="true" dataKey="id"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
-        <ng-template pTemplate="caption">
-            <div class="p-d-flex p-ai-center p-jc-between">
-                <h5 class="p-m-0">Manage Products</h5>
-                <span class="p-input-icon-left">
-                    <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
-                </span>
+        <div class="p-grid p-fluid">
+        <div class="p-col-12 p-md-12">
+
+         <div class="p-col-12 p-md-4">
+            <button pButton pRipple type="button" label="FASE R"></button>
+            <div class="p-field-checkbox ">
+                <p-checkbox  binary="true" inputId="binary"  [formControl]="formEmpalme.controls['noAplica']" ></p-checkbox>
+                <label for="binary">{{checked}}</label>
             </div>
-        </ng-template>
-         <ng-template pTemplate="header">
-            <tr>
-                
-                <th pSortableColumn="name">FASE <p-sortIcon field="name"></p-sortIcon></th>
-                <th></th>
-                <th pSortableColumn="price">MANUAL <p-sortIcon field="price"></p-sortIcon></th>
-                <th pSortableColumn="category">FULL TENSIÓN <p-sortIcon field="category"></p-sortIcon></th>
-                <th pSortableColumn="rating">BLINDAJE <p-sortIcon field="rating"></p-sortIcon></th>
-                <th style="width: 3rem">
-                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                </th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-product>
-            <tr>
-                
-                <td>R</td>
-                <td><img ></td>
-                <td> <div class="p-field p-col-12 p-md-4">
-        <span class="p-float-label">
-            <input type="text" id="inputtext" pInputText > 
-            <label for="inputtext">CANT:</label>
-        </span>
-    </div></td>
-                <td>
-                   <div class="p-field p-col-12 p-md-4">
-        <span class="p-float-label">
-            <input type="text" id="inputtext" pInputText > 
-            <label for="inputtext">CANT:</label>
-        </span>
-    </div>
-                </td>
-                <td>         <div class="p-field p-col-12 p-md-4">
-        <span class="p-float-label">
-            <input type="text" id="inputtext" pInputText > 
-            <label for="inputtext">CANT:</label>
-        </span>
-    </div></td>
-                
-                <td>
-                    <p-tableCheckbox [value]="product"></p-tableCheckbox>
-                </td>
-            </tr>
-        </ng-template>
-         <ng-template pTemplate="summary">
-            <div class="p-d-flex p-ai-center p-jc-between">
-                In total there are {{products ? products.length : 0 }} products.
+            <p-card>
+              <p-fieldset legend="MANUAL">
+                 <input type="text" pInputText  formControlName="cantidadManual"/>
+              </p-fieldset>
+               <p-fieldset legend="FULL TENSIÓN">
+                 <input type="text" pInputText  formControlName="cantidadFullTension"/>
+              </p-fieldset>
+                <p-fieldset legend="BLINDAJE">
+                 <input type="text" pInputText  formControlName="cantidadBlindaje"/>
+              </p-fieldset>
+            </p-card>
+         </div>
+
+         <div class="p-col-12 p-md-4">
+            <button pButton pRipple type="button" label="FASE S"></button>
+             <div class="p-field-checkbox ">
+                <p-checkbox  binary="true" inputId="binary"  [formControl]="formEmpalme.controls['noAplica']"></p-checkbox>
+                <label for="binary">{{checked}}</label>
             </div>
-        </ng-template>  
-       </p-table>
+            <p-card>
+              <p-fieldset legend="MANUAL">
+                 <input type="text" pInputText  formControlName="cantidadManual"/>
+              </p-fieldset>
+               <p-fieldset legend="FULL TENSIÓN">
+                 <input type="text" pInputText  formControlName="cantidadFullTension"/>
+              </p-fieldset>
+                <p-fieldset legend="BLINDAJE">
+                 <input type="text" pInputText  formControlName="cantidadBlindaje"/>
+              </p-fieldset>
+            </p-card>
+         </div>
+
+         <div class="p-col-12 p-md-4">
+            <button pButton pRipple type="button" label="FASE T"></button>
+             <div class="p-field-checkbox ">
+                <p-checkbox  binary="true" inputId="binary"  [formControl]="formEmpalme.controls['noAplica']"></p-checkbox>
+                <label for="binary">{{checked}}</label>
+            </div>
+            <p-card>
+              <p-fieldset legend="MANUAL">
+                 <input type="text" pInputText  formControlName="cantidadManual"/>
+              </p-fieldset>
+               <p-fieldset legend="FULL TENSIÓN">
+                 <input type="text" pInputText  formControlName="cantidadFullTension"/>
+              </p-fieldset>
+                <p-fieldset legend="BLINDAJE">
+                 <input type="text" pInputText  formControlName="cantidadBlindaje"/>
+              </p-fieldset>
+            </p-card>
+         </div>
+
+         </div>
+        </div>
       </p-fieldset>
+        </form>
       </div>
        <div class="p-col-12 p-md-12">
-      <p-fieldset legend="ESTADO CONDUCTOR"> </p-fieldset>
+         <form [formGroup]="formDeshilachado">
+      <p-fieldset legend="ESTADO CONDUCTOR"> 
+           <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formCableConductor.controls['embarrilado']"
+                      binary="true"
+                    >
+                      ></p-checkbox
+                    >
+                    <label for="ny">EMBARRILADO</label>
+                  </div>
+                    <p-card>
+                   <div class="p-col-12 p-md-7">
+                      <input type="text" pInputText formControlName="faseEmbarrilado"/>
+                      </div>
+                      <div class="p-col-12 p-md-7">
+                      <input type="text" pInputText formControlName="cantidadEmbarrilado"/>
+                      </div>
+                    </p-card>
+                    <br>
+             <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formCableConductor.controls['deshilachado']"
+                      binary="true"
+                    >
+                      ></p-checkbox
+                    >
+                    <label for="ny">DESHILACHADO</label>
+                  </div>
+                   <p-card>
+                   <div class="p-col-12 p-md-7">
+                      <input type="text" pInputText formControlName="numeroHilos"/>
+                      </div>
+                      <div class="p-col-12 p-md-7">
+                      <input type="text" pInputText formControlName="distancia"/>
+                      </div>
+                      <div class="p-col-12 p-md-7">
+                      <input type="text" pInputText formControlName="numeroHilos"/>
+                      </div>
+                      <div class="p-col-12 p-md-7">
+                      <input type="text" pInputText formControlName="distancia"/>
+                      </div>
+                      <div class="p-col-12 p-md-7">
+                      <input type="text" pInputText formControlName="numeroHilos"/>
+                      </div>
+                      <div class="p-col-12 p-md-7">
+                      <input type="text" pInputText formControlName="distancia"/>
+                      </div>
+                    </p-card>
+                    <br>
+               <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formCableConductor.controls['buenEstadoConductor']"
+                      binary="true"
+                    >
+                      ></p-checkbox
+                    >
+                    <label for="ny">BUEN ESTADO</label>
+                  </div>
+      </p-fieldset>
+         </form>
        </div>
         <div class="p-col-12 p-md-12">
       <p-fieldset legend="OBSERVACIONES">

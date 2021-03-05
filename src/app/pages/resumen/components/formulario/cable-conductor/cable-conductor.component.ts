@@ -17,10 +17,13 @@ export class CableConductorComponent implements OnInit {
   formulario: Formulario = new Formulario();
 
   formCableConductor: FormGroup;
+  formEmpalme: FormGroup;
+  formDeshilachado: FormGroup;
 
   amortiguadorOpcions: any[];
   products: any[];
   selectedProducts: any[];
+  checked: string = 'No aplica';
   constructor(
     private cableConductorService: cableConductorService,
     private formularioService: FormularioService,
@@ -79,10 +82,26 @@ export class CableConductorComponent implements OnInit {
       amortiguadorCableConductor: new FormControl(null, Validators.required),
       cantidadAmortiguadores: new FormControl(null, Validators.required),
       buenEstadoConductor: new FormControl(null, Validators.required),
-      embarrilado: new FormControl(null, Validators.required),
-      faseEmbarrilado: new FormControl(null, Validators.required),
-      cantidadEmbarrilado: new FormControl(null, Validators.required),
+      embarrilado: new FormControl(),
+      deshilachado: new FormControl(),
+      faseEmbarrilado: new FormControl(),
+      cantidadEmbarrilado: new FormControl(),
       observacionesCableConductor: new FormControl(null, Validators.required),
+    });
+    this.formEmpalme = this.fb.group({
+      idEmpalme: new FormControl(),
+      fase: new FormControl(null, Validators.required),
+      cantidadManual: new FormControl(null, Validators.required),
+      cantidadFullTension: new FormControl(null, Validators.required),
+      cantidadBlindaje: new FormControl(null, Validators.required),
+      noAplica: new FormControl(),
+    });
+    this.formDeshilachado = this.fb.group({
+      idDeshilachado: new FormControl(),
+      fase: new FormControl(null, Validators.required),
+      numeroHilos: new FormControl(null, Validators.required),
+      distancia: new FormControl(null, Validators.required),
+     
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {

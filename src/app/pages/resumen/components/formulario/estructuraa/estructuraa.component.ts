@@ -111,6 +111,7 @@ export class EstructuraaComponent implements OnInit {
       riesgoElectrico: new FormControl(null, Validators.required),
       vial: new FormControl(null, Validators.required),
       nomenclatura: new FormControl(null, Validators.required),
+      observaciones: new FormControl(null, Validators.required),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {

@@ -1,13 +1,27 @@
 <br>
 <div class="stepsdemo-content">
   <p-card>
+    <form [formGroup]="formTransposicion" >
     <p-fieldset legend="TRANSPOSICIÓN">
       <ng-template pTemplate="content">
         <div class="p-grid p-fluid">
-
+          <p-dropdown [options]="alimentador" placeholder="Seleccione fase de entrada" optionLabel="name" [showClear]="true" formControlName="faseEntrada1"></p-dropdown>
+        
+          <p-dropdown [options]="alimentador" placeholder="Seleccione fase de salida" optionLabel="name" [showClear]="true" formControlName="faseSalida1"></p-dropdown>
+        </div>
+         <div class="p-grid p-fluid">
+          <p-dropdown [options]="alimentador" placeholder="Seleccione fase de entrada" optionLabel="name" [showClear]="true" formControlName="faseEntrada2"></p-dropdown>
+        
+          <p-dropdown [options]="alimentador" placeholder="Seleccione fase de salida" optionLabel="name" [showClear]="true" formControlName="faseSalida2"></p-dropdown>
+        </div>
+         <div class="p-grid p-fluid">
+          <p-dropdown [options]="alimentador" placeholder="Seleccione fase de entrada" optionLabel="name" [showClear]="true" formControlName="faseEntrada3"></p-dropdown>
+        
+          <p-dropdown [options]="alimentador" placeholder="Seleccione fase de salida" optionLabel="name" [showClear]="true" formControlName="faseSalida3"></p-dropdown>
         </div>
           </ng-template>
     </p-fieldset>
+    </form>
        <ng-template pTemplate="footer">
             <div class="p-grid p-nogutter p-justify-between">
                 <p-button label="Back" icon="pi pi-angle-left" (onClick)="prevPage()"></p-button>

@@ -7,17 +7,87 @@
         <div class="p-grid p-fluid">
           <div class="p-col-12 p-md-12">
             <p-fieldset legend="PODA">
+               <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formServidumbre.controls['podaconRiesgo']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="su">PODA CON RIESGO ELÉCTRICO </label>
+                   
+              <div class="p-col-12 p-md-4">
+                      <input type="text" pInputText formControlName="obsPoda"/>
+              </div>
+               </div>
+               
 
+                <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formServidumbre.controls['podasinRiesgo']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="su">PODA SIN RIESGO ELÉCTRICO </label>
+                      <div class="p-col-12 p-md-4">
+                      <input type="text" pInputText formControlName="cantArboles"/>
+              </div>
+              <div class="p-col-12 p-md-4">
+                      <input type="text" pInputText formControlName="obsPoda"/>
+              </div>
+                </div>
+
+                 <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formServidumbre.controls['NoRequierePoda']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="su">NO REQUIERE PODA</label>
+                </div>
             </p-fieldset>
           </div>
           <div class="p-col-12 p-md-5">
           <p-fieldset legend="SERVIDUMBRE">
+                 <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formServidumbre.controls['invasion']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="su">INVASIÓN SERVIDUMBRE</label>
+                </div>
 
+                 <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formServidumbre.controls['pasoMT']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="su">PASO LINEAS MT EN EL TRAMO LINEA</label>
+                </div>
+
+                 <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formServidumbre.controls['pasoBT']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="su">PASO LINEAS BT EN EL TRAMO LINEA</label>
+                </div>
+
+                 <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formServidumbre.controls['noAplica']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="su">NO APLICA</label>
+                </div>
           </p-fieldset>
           </div>
            <div class="p-col-12 p-md-7">
           <p-fieldset legend="OBSERVACIONES">
-
+               <textarea
+              
+                rows="5"
+                cols="30"
+                pInputTextarea
+                autoResize="autoResize"
+                 formControlName="obsServidumbre"
+              ></textarea>
           </p-fieldset>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Formulario } from 'src/app/core/models/formulario';
+import { Ubicacion } from 'src/app/core/models/ubicacion';
 import { FormularioService } from 'src/app/core/services/formulario.service';
 import { UbicacionService } from 'src/app/core/services/ubicacion.service';
 
@@ -13,7 +14,10 @@ import { UbicacionService } from 'src/app/core/services/ubicacion.service';
 })
 export class UbicacionComponent implements OnInit {
   formulario: Formulario = new Formulario();
+  ubicacion: Ubicacion = new Ubicacion();
   formUbicacion: FormGroup;
+
+  objetosOptions: any[];
   constructor(
     private formularioService: FormularioService,
     private ubicacionService: UbicacionService,
@@ -28,10 +32,25 @@ export class UbicacionComponent implements OnInit {
       .getOne(idInspeccion)
       .subscribe((formulario: Formulario) => {
         this.formulario = formulario;
-        if (formulario.estructura != null) {
+        if (formulario.idUbicacion != null) {
           // Aca va el nuevo Formulario
-          // this.formInformacion.patchValue(formulario.estructura);
+          this.formUbicacion.patchValue(formulario.idUbicacion);
         }
+      });
+  }
+
+  guardarUbicacion(ubicacion: Ubicacion) {
+    this.ubicacion = ubicacion;
+    this.ubicacionService
+      .save(this.ubicacion)
+      .subscribe((ubicacion: Ubicacion) => {
+        this.messageService.add({
+          severity: 'Ubicacion',
+          summary: 'SPT',
+          detail: `Se ha guardado correctamente la Ubicacion ${ubicacion.idUbicacion}`,
+        });
+        this.formulario.idUbicacion = ubicacion;
+        this.guardarFormulario();
       });
   }
 
@@ -45,14 +64,14 @@ export class UbicacionComponent implements OnInit {
           detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
         });
         this.router.navigateByUrl(
-          `resumen/formulario/ver/${formulario.idInspeccion}/ubicacion/${formulario.idInspeccion}`
+          `resumen/formulario/ver/${formulario.idInspeccion}/observacion/${formulario.idInspeccion}`
         );
       });
   }
   nextPage() {
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
-    // this.formulario.estructura = this.formInformacion.value as Estructura;
-    // this.guardarFormulario();
+     //this.formulario.idUbicacion = this.formUbicacion.value;
+     //this.guardarFormulario();
     this.router.navigateByUrl(
       `resumen/formulario/ver/${this.formulario.idInspeccion}/observacion/${this.formulario.idInspeccion}`
     );
@@ -68,11 +87,17 @@ export class UbicacionComponent implements OnInit {
       idUbicacion: new FormControl(null, Validators.required),
       torredesde: new FormControl(null, Validators.required),
       torrehasta: new FormControl(null, Validators.required),
+      hayObjetos: new FormControl(),
       descripcion: new FormControl(null, Validators.required),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {
       this.obtenerFormulario(params.id);
     });
+
+    this.objetosOptions = [
+      { label: 'HAY OBJETOS INTERMEDIOS', value: true },
+      { label: 'NO HAY OBJETOS INTERMEDIOS', value: false },
+    ];
   }
 }

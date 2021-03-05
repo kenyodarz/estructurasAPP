@@ -7,6 +7,7 @@ export class Estructuraa {
     public estadoAngulos: string = null,
     public riesgoElectrico: string = null,
     public vial: string = null,
-    public nomenclatura: string = null
+    public nomenclatura: string = null,
+    public observaciones: string = null
   ) {}
 }

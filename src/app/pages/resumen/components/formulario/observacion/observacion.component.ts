@@ -27,9 +27,9 @@ export class ObservacionComponent implements OnInit {
       .getOne(idInspeccion)
       .subscribe((formulario: Formulario) => {
         this.formulario = formulario;
-        if (formulario.observaciones != null) {
+        if (formulario.idInspeccion != null) {
           // Aca va el nuevo Formulario
-          // this.formInformacion.patchValue(formulario.estructura);
+         //  this.formObservacion.patchValue(formulario.estructura);
         }
       });
   }
@@ -59,12 +59,12 @@ export class ObservacionComponent implements OnInit {
       codigo3: new FormControl(null, Validators.required),
       codigo4: new FormControl(null, Validators.required),
       codigo5: new FormControl(null, Validators.required),
-      fecha: new FormControl(null, Validators.required),
-      movil: new FormControl(null, Validators.required),
+      fecha: new FormControl(),
+      movil: new FormControl(),
       reviso: new FormControl(null, Validators.required),
       codigoRevisor: new FormControl(null, Validators.required),
       firma: new FormControl(null, Validators.required),
-      fechaRevisor: new FormControl(null, Validators.required),
+      fechaRevisor: new FormControl(),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {

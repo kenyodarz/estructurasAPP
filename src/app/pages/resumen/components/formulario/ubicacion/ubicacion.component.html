@@ -5,7 +5,61 @@
     <p-fieldset legend="UBICACIÓN DE PODA E INVASIÓN DE SERVIDUMBRE">
       <ng-template pTemplate="content">
         <div class="p-grid p-fluid">
-
+            <p-tabView>
+              <p-tabPanel header="TORRE I - TORRE II">
+             <div class="p-col-12 p-md-4">
+                      <input type="text" pInputText formControlName="torredesde"/>
+              </div>
+               <div class="p-col-12 p-md-4">
+                      <input type="text" pInputText formControlName="torrehasta"/>
+              </div>
+              <p-selectButton
+                    [options]="objetosOptions"
+                    formControlName="hayObjetos"
+                    optionLabel="label"
+                    optionValue="value"
+                  ></p-selectButton>
+  <div class="p-col-12 p-md-12">
+      
+        <textarea
+          rows="5"
+          cols="30"
+          pInputTextarea
+          autoResize="autoResize"
+          formControlName = "descripcion"
+        ></textarea>
+      
+        </div>
+        <p-button label="Validar"></p-button>
+        </p-tabPanel>
+        <p-tabPanel header="TORRE II - TORRE III">
+             <div class="p-col-12 p-md-4">
+                      <input type="text" pInputText formControlName="torredesde"/>
+              </div>
+               <div class="p-col-12 p-md-4">
+                      <input type="text" pInputText formControlName="torrehasta"/>
+              </div>
+              <p-selectButton
+                    [options]="objetosOptions"
+                    formControlName="hayObjetos"
+                    optionLabel="label"
+                    optionValue="value"
+                  ></p-selectButton>
+  <div class="p-col-12 p-md-12">
+      
+        <textarea
+          rows="5"
+          cols="30"
+          pInputTextarea
+          autoResize="autoResize"
+          formControlName = "descripcion"
+        ></textarea>
+      
+        </div>
+        <p-button label="Validar"></p-button>
+          
+        </p-tabPanel>
+            </p-tabView>
         </div>
           </ng-template>
     </p-fieldset>

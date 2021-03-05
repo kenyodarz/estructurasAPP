@@ -6,6 +6,7 @@ export class CableConductor {
     public cantidadAmortiguadores: number = null,
     public buenEstadoConductor: boolean = null,
     public embarrilado: boolean = null,
+    public deshilachado: boolean = null,
     public faseEmbarrilado: string = null,
     public cantidadEmbarrilado: number = null,
     public observacionesCableConductor: string = null
