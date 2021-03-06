@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { CableConductor } from 'src/app/core/models/cableConductor';
@@ -24,6 +29,9 @@ export class CableConductorComponent implements OnInit {
   products: any[];
   selectedProducts: any[];
   checked: string = 'No aplica';
+  mostrarFaseR: boolean = false;
+  mostrarFaseS: boolean = false;
+  mostrarFaseT: boolean = false;
   constructor(
     private cableConductorService: cableConductorService,
     private formularioService: FormularioService,
@@ -75,6 +83,10 @@ export class CableConductorComponent implements OnInit {
     );
   }
 
+  OnChangeBuenEstado() {
+    this.embarrilado = false;
+  }
+
   ngOnInit(): void {
     this.formCableConductor = this.fb.group({
       idCableConductor: new FormControl(),
@@ -101,7 +113,6 @@ export class CableConductorComponent implements OnInit {
       fase: new FormControl(null, Validators.required),
       numeroHilos: new FormControl(null, Validators.required),
       distancia: new FormControl(null, Validators.required),
-     
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {
@@ -112,5 +123,19 @@ export class CableConductorComponent implements OnInit {
       { label: 'SI', value: 'true' },
       { label: 'NO', value: 'false' },
     ];
+  }
+
+  get buenEstado() {
+    return this.formCableConductor.get('buenEstadoConductor').value;
+  }
+
+  get embarrilado() {
+    return this.formCableConductor.get('embarrilado').value;
+  }
+
+  set embarrilado(estado: boolean) {
+    this.formCableConductor.patchValue({
+      embarrilado: estado,
+    });
   }
 }
