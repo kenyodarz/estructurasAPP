@@ -40,8 +40,10 @@
                 <p-fieldset legend="EMPALMES">
                   <div>
                     <div class="p-grid p-fluid">
+                      
                       <!-- Fase R -->
                       <div class="p-col-4 p-md-4">
+                        <form [formGroup]="formFaseR">
                         <button
                           *ngIf="!mostrarFaseR"
                           pButton
@@ -83,9 +85,14 @@
                             ></button>
                           </p-footer>
                         </p-card>
+                        </form>
                       </div>
+                      
+                  
                       <!-- Fase S -->
+                       
                       <div class="p-col-4 p-md-4">
+                        <form [formGroup]="formFaseS">
                         <button
                           *ngIf="!mostrarFaseS"
                           pButton
@@ -127,9 +134,13 @@
                             ></button>
                           </p-footer>
                         </p-card>
+                                               </form>
                       </div>
+
                       <!-- Fase T -->
+                       
                       <div class="p-col-4 p-md-4">
+                        <form [formGroup]="formFaseT">
                         <button
                           *ngIf="!mostrarFaseT"
                           pButton
@@ -171,7 +182,9 @@
                             ></button>
                           </p-footer>
                         </p-card>
+                        </form>
                       </div>
+                       
                     </div>
                   </div>
                 </p-fieldset>
