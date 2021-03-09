@@ -25,7 +25,7 @@
                       optionValue="value"
                     ></p-selectButton>
                   </div>
-                  <div class="p-col-12 p-md-7">
+                  <div class="p-col-12 p-md-7" *ngIf="amortiguadorCableConductor">
                     <input
                       type="text"
                       pInputText
@@ -35,156 +35,162 @@
                 </div>
               </p-fieldset>
             </div>
-            <div class="p-col-12 p-md-12">
+            <div class="p-col-12 p-md-12" >
               <form [formGroup]="formEmpalme">
                 <p-fieldset legend="EMPALMES">
                   <div>
                     <div class="p-grid p-fluid">
-                      
                       <!-- Fase R -->
                       <div class="p-col-4 p-md-4">
                         <form [formGroup]="formFaseR">
-                        <button
-                          *ngIf="!mostrarFaseR"
-                          pButton
-                          pRipple
-                          type="button"
-                          label="FASE R"
-                          (click)="mostrarFaseR = true"
-                        ></button>
-                        <p-card *ngIf="mostrarFaseR">
-                          <p-fieldset legend="MANUAL">
-                            <input
-                              type="text"
-                              pInputText
-                              formControlName="cantidadManual"
-                            />
-                          </p-fieldset>
-                          <p-fieldset legend="FULL TENSIÓN">
-                            <input
-                              type="text"
-                              pInputText
-                              formControlName="cantidadFullTension"
-                            />
-                          </p-fieldset>
-                          <p-fieldset legend="BLINDAJE">
-                            <input
-                              type="text"
-                              pInputText
-                              formControlName="cantidadBlindaje"
-                            />
-                          </p-fieldset>
-                          <p-footer>
-                            <button
-                              pButton
-                              pRipple
-                              type="button"
-                              label="ELIMINAR FASE R"
-                              (click)="mostrarFaseR = false"
-                              class="p-button-danger"
-                            ></button>
-                          </p-footer>
-                        </p-card>
+                          <button
+                            *ngIf="!mostrarFaseR"
+                            pButton
+                            pRipple
+                            type="button"
+                            label="FASE R"
+                            (click)="mostrarFaseR = true"
+                          ></button>
+                          <p-card *ngIf="mostrarFaseR">
+                            <p-fieldset legend="MANUAL">
+                              <input
+                                type="text"
+                                pInputText
+                                formControlName="cantidadManual"
+                              />
+                            </p-fieldset>
+                            <p-fieldset legend="FULL TENSIÓN">
+                              <input
+                                type="text"
+                                pInputText
+                                formControlName="cantidadFullTension"
+                              />
+                            </p-fieldset>
+                            <p-fieldset legend="BLINDAJE">
+                              <input
+                                type="text"
+                                pInputText
+                                formControlName="cantidadBlindaje"
+                              />
+                            </p-fieldset>
+                            <p-footer>
+                              <button
+                                pButton
+                                pRipple
+                                type="button"
+                                label="ACTUALIZAR FASE R"
+                                (click)="guardarEmpalmeR()"
+                                class="p-button-info"
+                                [disabled] = "formFaseR.invalid"
+                              ></button>
+                              <button
+                                pButton
+                                pRipple
+                                type="button"
+                                label="ELIMINAR FASE R"
+                                (click)="mostrarFaseR = false"
+                                class="p-button-danger"
+                              ></button>
+                            </p-footer>
+                          </p-card>
                         </form>
                       </div>
-                      
-                  
+
                       <!-- Fase S -->
-                       
+
                       <div class="p-col-4 p-md-4">
                         <form [formGroup]="formFaseS">
-                        <button
-                          *ngIf="!mostrarFaseS"
-                          pButton
-                          pRipple
-                          type="button"
-                          label="FASE S"
-                          (click)="mostrarFaseS = true"
-                        ></button>
-                        <p-card *ngIf="mostrarFaseS">
-                          <p-fieldset legend="MANUAL">
-                            <input
-                              type="text"
-                              pInputText
-                              formControlName="cantidadManual"
-                            />
-                          </p-fieldset>
-                          <p-fieldset legend="FULL TENSIÓN">
-                            <input
-                              type="text"
-                              pInputText
-                              formControlName="cantidadFullTension"
-                            />
-                          </p-fieldset>
-                          <p-fieldset legend="BLINDAJE">
-                            <input
-                              type="text"
-                              pInputText
-                              formControlName="cantidadBlindaje"
-                            />
-                          </p-fieldset>
-                          <p-footer>
-                            <button
-                              pButton
-                              pRipple
-                              type="button"
-                              label="ELIMINAR FASE S"
-                              (click)="mostrarFaseS = false"
-                              class="p-button-danger"
-                            ></button>
-                          </p-footer>
-                        </p-card>
-                                               </form>
+                          <button
+                            *ngIf="!mostrarFaseS"
+                            pButton
+                            pRipple
+                            type="button"
+                            label="FASE S"
+                            (click)="mostrarFaseS = true"
+                          ></button>
+                          <p-card *ngIf="mostrarFaseS">
+                            <p-fieldset legend="MANUAL">
+                              <input
+                                type="text"
+                                pInputText
+                                formControlName="cantidadManual"
+                              />
+                            </p-fieldset>
+                            <p-fieldset legend="FULL TENSIÓN">
+                              <input
+                                type="text"
+                                pInputText
+                                formControlName="cantidadFullTension"
+                              />
+                            </p-fieldset>
+                            <p-fieldset legend="BLINDAJE">
+                              <input
+                                type="text"
+                                pInputText
+                                formControlName="cantidadBlindaje"
+                              />
+                            </p-fieldset>
+                            <p-footer>
+                              <button
+                                pButton
+                                pRipple
+                                type="button"
+                                label="ELIMINAR FASE S"
+                                (click)="mostrarFaseS = false"
+                                class="p-button-danger"
+                              ></button>
+                            </p-footer>
+                          </p-card>
+                        </form>
                       </div>
 
                       <!-- Fase T -->
-                       
+
                       <div class="p-col-4 p-md-4">
                         <form [formGroup]="formFaseT">
-                        <button
-                          *ngIf="!mostrarFaseT"
-                          pButton
-                          pRipple
-                          type="button"
-                          label="FASE T"
-                          (click)="mostrarFaseT = true"
-                        ></button>
-                        <p-card *ngIf="mostrarFaseT">
-                          <p-fieldset legend="MANUAL">
-                            <input
-                              type="text"
-                              pInputText
-                              formControlName="cantidadManual"
-                            />
-                          </p-fieldset>
-                          <p-fieldset legend="FULL TENSIÓN">
-                            <input
-                              type="text"
-                              pInputText
-                              formControlName="cantidadFullTension"
-                            />
-                          </p-fieldset>
-                          <p-fieldset legend="BLINDAJE">
-                            <input
-                              type="text"
-                              pInputText
-                              formControlName="cantidadBlindaje"
-                            />
-                          </p-fieldset>
-                          <p-footer>
-                            <button
-                              pButton
-                              pRipple
-                              type="button"
-                              label="ELIMINAR FASE T"
-                              (click)="mostrarFaseT = false"
-                              class="p-button-danger"
-                            ></button>
-                          </p-footer>
-                        </p-card>
+                          <button
+                            *ngIf="!mostrarFaseT"
+                            pButton
+                            pRipple
+                            type="button"
+                            label="FASE T"
+                            (click)="mostrarFaseT = true"
+                          ></button>
+                          <p-card *ngIf="mostrarFaseT">
+                            <p-fieldset legend="MANUAL">
+                              <input
+                                type="text"
+                                pInputText
+                                formControlName="cantidadManual"
+                              />
+                            </p-fieldset>
+                            <p-fieldset legend="FULL TENSIÓN">
+                              <input
+                                type="text"
+                                pInputText
+                                formControlName="cantidadFullTension"
+                              />
+                            </p-fieldset>
+                            <p-fieldset legend="BLINDAJE">
+                              <input
+                                type="text"
+                                pInputText
+                                formControlName="cantidadBlindaje"
+                              />
+                            </p-fieldset>
+                            <p-footer>
+                              <button
+                                pButton
+                                pRipple
+                                type="button"
+                                label="ELIMINAR FASE T"
+                                (click)="mostrarFaseT = false"
+                                class="p-button-danger"
+                              ></button>
+                            </p-footer>
+                          </p-card>
                         </form>
                       </div>
-                       
                     </div>
                   </div>
                 </p-fieldset>
