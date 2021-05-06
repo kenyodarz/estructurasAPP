@@ -17,5 +17,4 @@ export class FormularioService extends CommonService<Formulario, string> {
   constructor(protected http: HttpClient) {
     super(http);
   }
-
 }

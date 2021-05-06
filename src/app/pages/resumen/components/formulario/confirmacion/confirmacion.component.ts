@@ -24,6 +24,9 @@ export class ConfirmacionComponent implements OnInit {
     private router: Router,
     private rutaActiva: ActivatedRoute
   ) {}
+ 
+
+
   obtenerFormulario(idInspeccion: string) {
     this.formularioService
       .getOne(idInspeccion)
@@ -31,7 +34,7 @@ export class ConfirmacionComponent implements OnInit {
         this.formulario = formulario;
         if (formulario.idInspeccion != null) {
           // Aca va el nuevo Formulario
-          // this.formInformacion.patchValue(formulario.estructura);
+          // this.formConfirmacion.patchValue(formulario.estructura);
         }
       });
   }

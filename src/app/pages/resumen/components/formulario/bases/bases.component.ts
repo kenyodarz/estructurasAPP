@@ -8,6 +8,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { FormularioService } from 'src/app/core/services/formulario.service';
 import { BasesService } from 'src/app/core/services/bases.service';
 import { Bases } from 'src/app/core/models/bases';
+import { SubBase } from 'src/app/core/models/subBase';
+import { SubBaseService } from 'src/app/core/services/subBase.service';
 
 @Component({
   selector: 'app-bases',
@@ -16,13 +18,20 @@ import { Bases } from 'src/app/core/models/bases';
 })
 export class BasesComponent implements OnInit {
   formBases: FormGroup;
-  formSubBase: FormGroup;
+  formSubBaseI: FormGroup;
+  formSubBaseII: FormGroup;
+  formSubBaseIII: FormGroup;
+  formSubBaseIV: FormGroup;
+
+  checked2: boolean = true;
 
   formulario: Formulario = new Formulario();
   bases: Bases = new Bases();
+  subBase: SubBase = new SubBase();
   angulos: any[];
   constructor(
     private formularioService: FormularioService,
+    private subBaseService: SubBaseService,
     private basesService: BasesService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
@@ -43,17 +52,58 @@ export class BasesComponent implements OnInit {
       });
   }
 
-  guardarBases(bases: Bases) {
-    this.bases = bases;
-    this.basesService.save(this.bases).subscribe((bases: Bases) => {
-      this.messageService.add({
-        severity: 'info',
-        summary: 'Bases',
-        detail: `Se ha guardado correctamente las Bases ${bases.idBase}`,
+  // guardarBases() {
+  //   // this.bases = bases;
+  //   this.basesService.save(this.bases).subscribe((bases: Bases) => {
+  //     this.guardarSubBases(bases);
+  //     this.formulario.idBases = bases;
+  //     this.guardarFormulario();
+  //   });
+  // }
+
+  guardarSubBases(subBase: SubBase) {
+    // this.subBase.bases = subBase;
+    // this.subBaseService.save(this.subBase).subscribe((subBase: SubBase) => {
+    //   this.messageService.add({
+    //     severity: 'info',
+    //     summary: 'Informacion',
+    //     detail: `Se ha guardado correctamente la SubBase ${subBase.idSubBase}`,
+    //   });
+    // });
+
+    this.subBaseService
+      .guardarSubBaseConBase(this.formulario.idBases.idBase, subBase)
+      .subscribe((subBase: SubBase) => {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'SubBase',
+          detail: `Se ha guardado correctamente la SubBase ${subBase.idSubBase}`,
+        });
       });
-      this.formulario.idBases = bases;
-      this.guardarFormulario();
-    });
+  }
+
+  guardarSubBaseI() {
+    let subBase: SubBase = this.formSubBaseI.value;
+    this.guardarSubBases(subBase);
+    console.log(subBase);
+  }
+
+  guardarSubBaseII() {
+    let subBase: SubBase = this.formSubBaseII.value;
+    this.guardarSubBases(subBase);
+    console.log(subBase);
+  }
+
+  guardarSubBaseIII() {
+    let subBase: SubBase = this.formSubBaseIII.value;
+    this.guardarSubBases(subBase);
+    console.log(subBase);
+  }
+
+  guardarSubBaseIV() {
+    let subBase: SubBase = this.formSubBaseIV.value;
+    this.guardarSubBases(subBase);
+    console.log(subBase);
   }
 
   guardarFormulario() {
@@ -71,7 +121,29 @@ export class BasesComponent implements OnInit {
       });
   }
 
+  next() {
+    this.bases = this.formBases.value;
+    console.log((this.bases = this.formBases.value));
+    this.basesService.save(this.bases).subscribe((bases: Bases) => {
+      this.formulario.idBases = bases;
+      this.formularioService
+        .save(this.formulario)
+        .subscribe((formulario: Formulario) => {
+          this.messageService.add({
+            severity: 'info',
+            summary: 'Bases',
+            detail: `se ha actualizado la base ${bases.idBase}`,
+          });
+        });
+    });
+  }
+
   nextPage() {
+    // this.subBase = this.formSubBaseI.value;
+    // // this.subBase = this.formSubBaseII.value;
+    // // this.subBase = this.formSubBaseIII.value;
+    // // this.subBase = this.formSubBaseIV.value;
+    // this.bases = this.formBases.value;
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
     //this.bases = this.formBases.value;
     //this.guardarFormulario;
@@ -79,7 +151,43 @@ export class BasesComponent implements OnInit {
     // console.info(this.formEstructuraa.value);
     this.router.navigateByUrl(
       `resumen/formulario/ver/${this.formulario.idInspeccion}/spt/${this.formulario.idInspeccion}`
-     );
+    );
+    // this.guardarBases();
+  }
+
+  OnChangeBuenEstadoI() {
+    this.enterradaI = false;
+    this.fracturadaI = false;
+  }
+
+  OnChangeMalEstadoI() {
+    this.buenEstadoI = false;
+  }
+
+  OnChangeBuenEstadoII() {
+    this.enterradaII = false;
+    this.fracturadaII = false;
+  }
+
+  OnChangeMalEstadoII() {
+    this.buenEstadoII = false;
+  }
+
+  OnChangeBuenEstadoIII() {
+    this.enterradaIII = false;
+    this.fracturadaIII = false;
+  }
+
+  OnChangeMalEstadoIII() {
+    this.buenEstadoIII = false;
+  }
+  OnChangeBuenEstadoIV() {
+    this.enterradaIV = false;
+    this.fracturadaIV = false;
+  }
+
+  OnChangeMalEstadoIV() {
+    this.buenEstadoIV = false;
   }
 
   prevPage() {
@@ -90,11 +198,32 @@ export class BasesComponent implements OnInit {
 
   ngOnInit(): void {
     this.formBases = this.fb.group({
-      idBase: new FormControl(null, Validators.required),
+      idBase: new FormControl(),
       buenEstado: new FormControl(null, Validators.required),
       obsBase: new FormControl(null, Validators.required),
+      boton: new FormControl(),
     });
-    this.formSubBase = this.fb.group({
+    this.formSubBaseI = this.fb.group({
+      idSubBase: new FormControl(null, Validators.required),
+      buena: new FormControl(),
+      enterrada: new FormControl(),
+      fracturada: new FormControl(),
+    });
+    this.formSubBaseII = this.fb.group({
+      idSubBase: new FormControl(null, Validators.required),
+      buena: new FormControl(),
+      enterrada: new FormControl(),
+      fracturada: new FormControl(),
+    });
+
+    this.formSubBaseIII = this.fb.group({
+      idSubBase: new FormControl(null, Validators.required),
+      buena: new FormControl(),
+      enterrada: new FormControl(),
+      fracturada: new FormControl(),
+    });
+
+    this.formSubBaseIV = this.fb.group({
       idSubBase: new FormControl(null, Validators.required),
       buena: new FormControl(),
       enterrada: new FormControl(),
@@ -106,8 +235,127 @@ export class BasesComponent implements OnInit {
     });
 
     this.angulos = [
-      { label: 'BUEN ESTADO', value: 'buen' },
-      { label: 'MAL ESTADO', value: 'mal' },
+      { label: 'BUEN ESTADO', value: true },
+      { label: 'MAL ESTADO', value: false },
     ];
+  }
+  get buenEstadoI() {
+    return this.formSubBaseI.get('buena').value;
+  }
+
+  set buenEstadoI(estado: boolean) {
+    this.formSubBaseI.patchValue({
+      buena: estado,
+    });
+  }
+
+  get buenEstadoII() {
+    return this.formSubBaseII.get('buena').value;
+  }
+
+  set buenEstadoII(estado: boolean) {
+    this.formSubBaseII.patchValue({
+      buena: estado,
+    });
+  }
+  get buenEstadoIII() {
+    return this.formSubBaseIII.get('buena').value;
+  }
+
+  set buenEstadoIII(estado: boolean) {
+    this.formSubBaseIII.patchValue({
+      buena: estado,
+    });
+  }
+  get buenEstadoIV() {
+    return this.formSubBaseIV.get('buena').value;
+  }
+
+  set buenEstadoIV(estado: boolean) {
+    this.formSubBaseIV.patchValue({
+      buena: estado,
+    });
+  }
+
+  get enterradaI() {
+    return this.formSubBaseI.get('enterrada').value;
+  }
+
+  set enterradaI(estado: boolean) {
+    this.formSubBaseI.patchValue({
+      enterrada: estado,
+    });
+  }
+
+  get enterradaII() {
+    return this.formSubBaseII.get('enterrada').value;
+  }
+
+  set enterradaII(estado: boolean) {
+    this.formSubBaseII.patchValue({
+      enterrada: estado,
+    });
+  }
+  get enterradaIII() {
+    return this.formSubBaseIII.get('enterrada').value;
+  }
+
+  set enterradaIII(estado: boolean) {
+    this.formSubBaseIII.patchValue({
+      enterrada: estado,
+    });
+  }
+  get enterradaIV() {
+    return this.formSubBaseIV.get('enterrada').value;
+  }
+
+  set enterradaIV(estado: boolean) {
+    this.formSubBaseIV.patchValue({
+      enterrada: estado,
+    });
+  }
+
+  get fracturadaI() {
+    return this.formSubBaseI.get('fracturada').value;
+  }
+
+  set fracturadaI(estado: boolean) {
+    this.formSubBaseI.patchValue({
+      fracturada: estado,
+    });
+  }
+
+  get fracturadaII() {
+    return this.formSubBaseII.get('fracturada').value;
+  }
+
+  set fracturadaII(estado: boolean) {
+    this.formSubBaseII.patchValue({
+      fracturada: estado,
+    });
+  }
+
+  get fracturadaIII() {
+    return this.formSubBaseIII.get('fracturada').value;
+  }
+
+  set fracturadaIII(estado: boolean) {
+    this.formSubBaseIII.patchValue({
+      fracturada: estado,
+    });
+  }
+
+  get fracturadaIV() {
+    return this.formSubBaseIV.get('fracturada').value;
+  }
+
+  set fracturadaIV(estado: boolean) {
+    this.formSubBaseIV.patchValue({
+      fracturada: estado,
+    });
+  }
+
+  get ApareceSubBases() {
+    return this.formBases.get('boton').value;
   }
 }

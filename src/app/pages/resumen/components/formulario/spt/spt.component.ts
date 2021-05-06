@@ -34,7 +34,7 @@ export class SptComponent implements OnInit {
       .getOne(idInspeccion)
       .subscribe((formulario: Formulario) => {
         this.formulario = formulario;
-         console.log(formulario);
+        console.log(formulario);
         if (formulario.idSpt != null) {
           // Aca va el nuevo Formulario
           this.formSpt.patchValue(formulario.idSpt);
@@ -44,17 +44,15 @@ export class SptComponent implements OnInit {
 
   guardarSPT(spt: Spt) {
     this.spt = spt;
-    this.sptService
-      .save(this.spt)
-      .subscribe((spt: Spt) => {
-        this.messageService.add({
-          severity: 'info',
-          summary: 'SPT',
-          detail: `Se ha guardado correctamente el SPT ${spt.idSpt}`,
-        });
-        this.formulario.idSpt = spt;
-        this.guardarFormulario();
+    this.sptService.save(this.spt).subscribe((spt: Spt) => {
+      this.messageService.add({
+        severity: 'info',
+        summary: 'SPT',
+        detail: `Se ha guardado correctamente el SPT ${spt.idSpt}`,
       });
+      this.formulario.idSpt = spt;
+      this.guardarFormulario();
+    });
   }
 
   guardarFormulario() {
@@ -76,7 +74,6 @@ export class SptComponent implements OnInit {
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
     this.spt = this.formSpt.value;
     this.guardarSPT(this.spt);
-    
   }
 
   prevPage() {
@@ -84,13 +81,32 @@ export class SptComponent implements OnInit {
       `resumen/formulario/ver/${this.formulario.idInspeccion}/bases/${this.formulario.idInspeccion}`
     );
   }
-  
+
+  OnChangeAnilloContrapeso() {
+    this.Anillo = false;
+    this.Contrapeso = false;
+
+  }
+
+  OnChangeAnillo() {
+    this.AnilloContrapeso = false;
+    this.Contrapeso = false;
+
+  }
+
+  OnChangeContrapeso() {
+    this.Anillo = false;
+    this.AnilloContrapeso = false;
+  }
+
   ngOnInit(): void {
     this.formSpt = this.fb.group({
       idSpt: new FormControl(null, Validators.required),
       tieneSPT: new FormControl(),
       calibreSPT: new FormControl(),
-      tipoSPT: new FormControl(),
+      tipoContrapeso: new FormControl(),
+      tipoAnilloContrapeso: new FormControl(),
+      tipoAnillo: new FormControl(),
       cant: new FormControl(),
       tieneBajante: new FormControl(),
       tipoBajante: new FormControl(),
@@ -110,5 +126,35 @@ export class SptComponent implements OnInit {
       { label: 'TIENE', value: true },
       { label: 'NO TIENE', value: false },
     ];
+  }
+
+  get Contrapeso() {
+    return this.formSpt.get('tipoContrapeso').value;
+  }
+
+  set Contrapeso(estado: boolean) {
+    this.formSpt.patchValue({
+      tipoContrapeso: estado,
+    });
+  }
+
+  get AnilloContrapeso() {
+    return this.formSpt.get('tipoAnilloContrapeso').value;
+  }
+
+  set AnilloContrapeso(estado: boolean) {
+    this.formSpt.patchValue({
+      tipoAnilloContrapeso: estado,
+    });
+  }
+
+  get Anillo() {
+    return this.formSpt.get('tipoAnillo').value;
+  }
+
+  set Anillo(estado: boolean) {
+    this.formSpt.patchValue({
+      tipoAnillo: estado,
+    });
   }
 }

@@ -18,6 +18,8 @@ export class UbicacionComponent implements OnInit {
   formUbicacion: FormGroup;
 
   objetosOptions: any[];
+  cities: any[];
+  selectedCity2: string;
   constructor(
     private formularioService: FormularioService,
     private ubicacionService: UbicacionService,
@@ -70,8 +72,8 @@ export class UbicacionComponent implements OnInit {
   }
   nextPage() {
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
-     //this.formulario.idUbicacion = this.formUbicacion.value;
-     //this.guardarFormulario();
+    //this.formulario.idUbicacion = this.formUbicacion.value;
+    //this.guardarFormulario();
     this.router.navigateByUrl(
       `resumen/formulario/ver/${this.formulario.idInspeccion}/observacion/${this.formulario.idInspeccion}`
     );
@@ -98,6 +100,14 @@ export class UbicacionComponent implements OnInit {
     this.objetosOptions = [
       { label: 'HAY OBJETOS INTERMEDIOS', value: true },
       { label: 'NO HAY OBJETOS INTERMEDIOS', value: false },
+    ];
+
+    this.cities = [
+      { name: 'New York', code: 'NY' },
+      { name: 'Rome', code: 'RM' },
+      { name: 'London', code: 'LDN' },
+      { name: 'Istanbul', code: 'IST' },
+      { name: 'Paris', code: 'PRS' },
     ];
   }
 }

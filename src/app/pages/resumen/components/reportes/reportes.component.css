@@ -1,0 +1,4 @@
+::ng-deep .p-panel .p-panel-header {
+  width: 100%;
+  text-transform: uppercase;
+}

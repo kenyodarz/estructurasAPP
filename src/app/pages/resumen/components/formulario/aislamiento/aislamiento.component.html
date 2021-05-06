@@ -1,87 +1,415 @@
-<br/>
+<br />
 <div class="stepsdemo-content">
   <p-card>
-     <form [formGroup]="formAislamiento" >
-    <p-fieldset legend="AISLAMIENTO">
-      <ng-template pTemplate="content">
-        <div class="p-grid p-fluid">
-          <div class="card">
-    <form [formGroup]="formFase" >
-    <p-tabView>
-        <p-tabPanel header="FASE R">
-            <div class="p-grid p-fluid">
-                <div class="p-col-12 p-md-12">
-                  <div class="p-field">
-                    <p-selectButton
-                      [options]="tipo"
-                       formControlName="funcion"
-                      optionLabel="label"
-                      optionValue="value"
-                    ></p-selectButton>
+   
+      <p-fieldset legend="AISLAMIENTO">
+        <ng-template pTemplate="content">
+          <div class="p-grid p-fluid">
+            <div class="card">       
+                <p-tabView>
+                 
+                  <p-tabPanel header="FASE R">
+                     <form [formGroup]="formAislamientoR" >
+                   <div class="p-grid p-fluid">
+                        <div class="p-col-12 p-md-1">
+                      <h4>TIPO:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-11">
+                        <div class="p-field">
+                          <p-selectButton
+                            [options]="tipo"
+                            formControlName="tipo"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                      </div>
+                    
+                   <div class="p-col-12 p-md-1">
+                      <h4>CLASE:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-5">
+                        <div class="p-field">
+                          <p-selectButton
+                            [options]="clase"
+                            formControlName="clase"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                      </div>
+                    <div class="p-col-12 p-md-3">
+                      <h4>N° AISLADORES POR CADENA:</h4>
+                      </div>
+                    <div class="p-col-12 p-md-2">
+                      <input
+                        type="text"
+                        pInputText
+                        formControlName="numAisladores"
+                      />
+                      </div>
+                      <div class="p-col-12 p-md-1">
+                        <p-button icon="pi pi-check" (click)="next()"></p-button>
+                      </div>
+                    <!--
+                    </div>
+
+                    <!-- <p-table >
+                      <ng-template pTemplate="header" let-columnas >
+                        <tr>
+                          <th>ESTADO</th>
+                          <th *ngFor="let col of columnas">{{ col }}</th>
+                          
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-row let-filas let-fila>
+                        <tr *ngFor="let fila of filas">
+                          <td></td>
+                          <td *ngFor="let celda of fila" (click)="ocultarCeldas(celda)">
+                            <div *ngIf="celda.editar">
+                              <input type="text" [(ngModel)]="celda.valor" />
+                            </div>
+                             <div *ngIf="!celda.editar">
+                                {{ celda.valor }}
+                              </div>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="summary">
+                        
+                      </ng-template>
+                    </p-table> 
+
+                     <div class="p-grid p-fluid">
+                     <div class="p-col-12 p-md-2">
+                      <h4>TIPO DE CADENA:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-5">
+                        <div class="p-field">
+                          <p-selectButton
+                            [options]="tipoCadena"
+                            formControlName="tipoCadena"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                      </div>
+                  
+                    <div class="p-col-12 p-md-2">
+                      <div class="p-field-checkbox">
+                    <p-checkbox
+                      [formControl]="formAislamientoR.controls['buenEstado']"
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="bu">BUEN ESTADO</label>
                   </div>
-                </div>
-              </div> 
-              <div class="p-grid p-fluid">
-                <div class="p-col-12 p-md-12">
-                  <div class="p-field">
-                    <p-selectButton
-                      [options]="clase"
-                       formControlName="funcion"
-                      optionLabel="label"
-                      optionValue="value"
-                    ></p-selectButton>
-                  </div>
-                </div>
-              </div> 
-              <div class="p-col-12 p-md-7">
-                      <input type="text" pInputText formControlName="cantidadEmbarrilado"/>
+                      </div>
+                     </div>
+
+                     <div class="p-col-12 p-md-12">
+                     <p-fieldset legend="PUENTES">
+                          <div class="p-field">
+                          <p-selectButton
+                            [options]="puentes"
+                            formControlName="puentes"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                     </p-fieldset>
+                     </div>
+                      <div class="p-col-12 p-md-12">
+                     <p-fieldset legend="OBSERVACIONES">
+                       
+              <div class="p-col-12 p-md-12">
+                <textarea
+                  rows="5"
+                  cols="30"
+                  pInputTextarea
+                  autoResize="autoResize"
+                  formControlName="observaciones"
+                ></textarea>
               </div>
-
-              <button pButton pRipple type="button" icon="pi pi-plus" title="Add Column" (click)="addColumn()" [disabled]="columns.length === 20" class="p-mr-2"></button>
-            <button pButton pRipple type="button" icon="pi pi-minus" title="Remove Column" (click)="removeColumn()"[disabled]="columns.length === 1"></button>
-
-              <p-table [columns]="cols"  styleClass="p-datatable-responsive-demo">
-    <ng-template pTemplate="header" let-columns>
-        <tr>
-           <th *ngFor="let col of columns">
-                {{col.header}}
-            </th>
-            <th *ngFor="let col of columns; let i=index" [@animation]="'visible'">
-              {{i + 1}}
-            </th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr>
-            <td *ngFor="let col of columns">
-                <span class="p-column-title">{{col.header}}</span>
-                {{rowData[col.field]}}
-            </td>
-        </tr>
-    </ng-template>
-</p-table>
-        </p-tabPanel>
-        <p-tabPanel header="FASE S">
             
+                     </p-fieldset>-->
+                     </div>
+                     </form> 
+                  </p-tabPanel>
 
-        </p-tabPanel>
-        <p-tabPanel header="FASE T">
-           
-          
-        </p-tabPanel>
-    </p-tabView>
-    </form>
-</div>
-          
-             </div>
-          </ng-template>
-    </p-fieldset>
-     </form>
-       <ng-template pTemplate="footer">
-            <div class="p-grid p-nogutter p-justify-between">
-                <p-button label="Back" icon="pi pi-angle-left"  (onClick)="prevPage()"></p-button>
-                <p-button label="Next" icon="pi pi-angle-right" iconPos="right"  (onClick)="nextPage()"></p-button>
+ <!-- <form [formGroup]="formAislamientoS" >
+                  <p-tabPanel header="FASE S">
+                    <div class="p-grid p-fluid">
+                        <div class="p-col-12 p-md-1">
+                      <h4>TIPO:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-11">
+                        <div class="p-field">
+                          <p-selectButton
+                            [options]="tipo"
+                            formControlName="tipo"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                      </div>
+                    
+                   <div class="p-col-12 p-md-1">
+                      <h4>CLASE:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-5">
+                        <div class="p-field">
+                          <p-selectButton
+                            [options]="clase"
+                            formControlName="clase"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                      </div>
+                    <div class="p-col-12 p-md-3">
+                      <h4>N° AISLADORES POR CADENA:</h4>
+                      </div>
+                    <div class="p-col-12 p-md-2">
+                      <input
+                        type="text"
+                        pInputText
+                        formControlName="numAisladores"
+                      />
+                      </div>
+                      <div class="p-col-12 p-md-1">
+                        <p-button icon="pi pi-check"></p-button>
+                      </div>
+                    
+                    </div>
+
+                    <!-- <p-table >
+                      <ng-template pTemplate="header" let-columnas >
+                        <tr>
+                          <th>ESTADO</th>
+                          <th *ngFor="let col of columnas">{{ col }}</th>
+                          
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-row let-filas let-fila>
+                        <tr *ngFor="let fila of filas">
+                          <td></td>
+                          <td *ngFor="let celda of fila" (click)="ocultarCeldas(celda)">
+                            <div *ngIf="celda.editar">
+                              <input type="text" [(ngModel)]="celda.valor" />
+                            </div>
+                             <div *ngIf="!celda.editar">
+                                {{ celda.valor }}
+                              </div>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="summary">
+                        
+                      </ng-template>
+                    </p-table> 
+
+                     <div class="p-grid p-fluid">
+                     <div class="p-col-12 p-md-2">
+                      <h4>TIPO DE CADENA:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-5">
+                        <div class="p-field">
+                          <p-selectButton
+                            [options]="tipoCadena"
+                            formControlName="tipoCadena"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                      </div>
+                  
+                    <div class="p-col-12 p-md-2">
+                      <div class="p-field-checkbox">
+                    <p-checkbox
+                    
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="bu">BUEN ESTADO</label>
+                  </div>
+                      </div>
+                     </div>
+
+                     <div class="p-col-12 p-md-12">
+                     <p-fieldset legend="PUENTES">
+                          <div class="p-field">
+                          <p-selectButton
+                            [options]="puentes"
+                            formControlName="puentes"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                     </p-fieldset>
+                     </div>
+                      <div class="p-col-12 p-md-12">
+                     <p-fieldset legend="OBSERVACIONES">
+                       
+              <div class="p-col-12 p-md-12">
+                <textarea
+                  rows="5"
+                  cols="30"
+                  pInputTextarea
+                  autoResize="autoResize"
+                  formControlName="observaciones"
+                ></textarea>
+              </div>
+            
+                     </p-fieldset>
+                     </div>
+                   </p-tabPanel>
+ </form> -->
+  <!-- <form [formGroup]="formAislamientoT" >
+                  <p-tabPanel header="FASE T">
+                    <div class="p-grid p-fluid">
+                        <div class="p-col-12 p-md-1">
+                      <h4>TIPO:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-11">
+                        <div class="p-field">
+                          <p-selectButton
+                            [options]="tipo"
+                            formControlName="tipo"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                      </div>
+                    
+                   <div class="p-col-12 p-md-1">
+                      <h4>CLASE:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-5">
+                        <div class="p-field">
+                          <p-selectButton
+                            [options]="clase"
+                            formControlName="clase"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                      </div>
+                    <div class="p-col-12 p-md-3">
+                      <h4>N° AISLADORES POR CADENA:</h4>
+                      </div>
+                    <div class="p-col-12 p-md-2">
+                      <input
+                        type="text"
+                        pInputText
+                        formControlName="numAisladores"
+                      />
+                      </div>
+                      <div class="p-col-12 p-md-1">
+                        <p-button icon="pi pi-check"></p-button>
+                      </div>
+                    
+                    </div>
+
+                    <!-- <p-table >
+                      <ng-template pTemplate="header" let-columnas >
+                        <tr>
+                          <th>ESTADO</th>
+                          <th *ngFor="let col of columnas">{{ col }}</th>
+                          
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-row let-filas let-fila>
+                        <tr *ngFor="let fila of filas">
+                          <td></td>
+                          <td *ngFor="let celda of fila" (click)="ocultarCeldas(celda)">
+                            <div *ngIf="celda.editar">
+                              <input type="text" [(ngModel)]="celda.valor" />
+                            </div>
+                             <div *ngIf="!celda.editar">
+                                {{ celda.valor }}
+                              </div>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="summary">
+                        
+                      </ng-template>
+                    </p-table> 
+
+                     <div class="p-grid p-fluid">
+                     <div class="p-col-12 p-md-2">
+                      <h4>TIPO DE CADENA:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-5">
+                        <div class="p-field">
+                          <p-selectButton
+                            [options]="tipoCadena"
+                            formControlName="tipoCadena"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                      </div>
+                  
+                    <div class="p-col-12 p-md-2">
+                      <div class="p-field-checkbox">
+                    <p-checkbox
+                     
+                      binary="true"
+                    ></p-checkbox>
+                    <label for="bu">BUEN ESTADO</label>
+                  </div>
+                      </div>
+                     </div>
+
+                     <div class="p-col-12 p-md-12">
+                     <p-fieldset legend="PUENTES">
+                          <div class="p-field">
+                          <p-selectButton
+                            [options]="puentes"
+                            formControlName="puentes"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                     </p-fieldset>
+                     </div>
+                      <div class="p-col-12 p-md-12">
+                     <p-fieldset legend="OBSERVACIONES">
+                       
+              <div class="p-col-12 p-md-12">
+                <textarea
+                  rows="5"
+                  cols="30"
+                  pInputTextarea
+                  autoResize="autoResize"
+                  formControlName="observaciones"
+                ></textarea>
+              </div>
+            
+                     </p-fieldset>
+                     </div>
+                    
+                  </p-tabPanel>
+  </form> -->
+                </p-tabView>
             </div>
+          </div>
         </ng-template>
+      </p-fieldset>
+    <ng-template pTemplate="footer">
+      <div class="p-grid p-nogutter p-justify-between">
+        <p-button
+          label="Back"
+          icon="pi pi-angle-left"
+          (onClick)="prevPage()"
+        ></p-button>
+        <p-button
+          label="Next"
+          icon="pi pi-angle-right"
+          iconPos="right"
+          (onClick)="nextPage()"
+        ></p-button>
+      </div>
+    </ng-template>
   </p-card>
 </div>

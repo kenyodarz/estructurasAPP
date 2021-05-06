@@ -14,6 +14,7 @@ import { cableConductorService } from 'src/app/core/services/cableConductor.serv
 import { EmpalmeService } from 'src/app/core/services/empalme.service';
 import { FormularioService } from 'src/app/core/services/formulario.service';
 import { Deshilachado } from 'src/app/core/models/deshilachado';
+import { DeshilachadoService } from 'src/app/core/services/deshilachado.service';
 
 @Component({
   selector: 'app-cable-conductor',
@@ -26,6 +27,7 @@ export class CableConductorComponent implements OnInit {
   empalme: Empalme = new Empalme();
   empalmes: Empalme[] = [];
   deshilachados: Deshilachado[] = [];
+  deshilachado: Deshilachado = new Deshilachado();
 
   formCableConductor: FormGroup;
   formEmpalme: FormGroup;
@@ -38,6 +40,8 @@ export class CableConductorComponent implements OnInit {
   products: any[];
   selectedProducts: any[];
   checked: string = 'No aplica';
+  checked2: boolean = true;
+
   mostrarFaseR: boolean = false;
   mostrarFaseS: boolean = false;
   mostrarFaseT: boolean = false;
@@ -45,6 +49,7 @@ export class CableConductorComponent implements OnInit {
     private cableConductorService: cableConductorService,
     private formularioService: FormularioService,
     private empalmeService: EmpalmeService,
+    private deshilachadoService: DeshilachadoService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private fb: FormBuilder,
@@ -105,6 +110,39 @@ export class CableConductorComponent implements OnInit {
       });
   }
 
+  guardarDeshilachados(deshilachado: Deshilachado) {
+    this.deshilachadoService
+      .guardarDeshilachadoConConductor(
+        this.formulario.idCableConductor.idCableConductor,
+        deshilachado
+      )
+      .subscribe((deshilachado: Deshilachado) => {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Deshilachado',
+          detail: `Se ha guardado correctamente el Deshilachado ${deshilachado.idDeshilachado}`,
+        });
+      });
+  }
+
+  guardarDeshilachadoR() {
+    let deshilachado: Deshilachado = this.formDeshilachado.value;
+    deshilachado.fase = 'R';
+    this.guardarDeshilachados(deshilachado);
+  }
+
+  guardarDeshilachadoS() {
+    let deshilachado: Deshilachado = this.formDeshilachado.value;
+    deshilachado.fase = 'S';
+    this.guardarDeshilachados(deshilachado);
+  }
+
+  guardarDeshilachadoT() {
+    let deshilachado: Deshilachado = this.formDeshilachado.value;
+    deshilachado.fase = 'T';
+    this.guardarDeshilachados(deshilachado);
+  }
+
   guardarFormulario() {
     this.formularioService
       .save(this.formulario)
@@ -120,11 +158,51 @@ export class CableConductorComponent implements OnInit {
       });
   }
 
+  next() {
+    this.cableConductor = this.formCableConductor.value;
+    this.cableConductorService
+      .save(this.cableConductor)
+      .subscribe((cableConductor: CableConductor) => {
+        this.formulario.idCableConductor = cableConductor;
+        this.formularioService
+          .save(this.formulario)
+          .subscribe((formulario: Formulario) => {
+            this.messageService.add({
+              severity: 'info',
+              summary: 'CableConductor',
+              detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
+            });
+          });
+      });
+  }
+
+  // guardar cable conductor
+  //guardar la opcion seleccionada en la bd
+  // guardarlo entre la lista conductor
   nextPage() {
-    this.cableConductor = this.formCableConductor.value;
-    this.empalme = this.formEmpalme.value;
-    this.cableConductor = this.formCableConductor.value;
-    this.guardarCableConductor();
+    if (
+      (this.buenEstado == true || this.embarrilado == true) &&
+      this.deshilacha == false
+    ) {
+      this.cableConductor = this.formCableConductor.value;
+      this.empalme = this.formEmpalme.value;
+      console.log((this.cableConductor = this.formCableConductor.value));
+      this.guardarCableConductor();
+    } else if (
+      this.buenEstado == false &&
+      this.embarrilado == false &&
+      this.deshilacha == true
+    ) {
+      this.cableConductor = this.formCableConductor.value;
+      this.empalme = this.formEmpalme.value;
+      this.deshilachado = this.formDeshilachado.value;
+      let deshilacha: Deshilachado = this.formDeshilachado.value;
+      console.log((this.deshilachado = this.formDeshilachado.value));
+      console.log((this.cableConductor = this.formCableConductor.value));
+      // this.guardarDeshilachados(deshilacha);
+      this.guardarCableConductor();
+    }
+
     // this.router.navigateByUrl(
     //   `resumen/formulario/ver/${this.formulario.idInspeccion}/aislamiento/${this.formulario.idInspeccion}`
     // );
@@ -138,11 +216,32 @@ export class CableConductorComponent implements OnInit {
 
   OnChangeBuenEstado() {
     this.embarrilado = false;
+    this.deshilacha = false;
+  }
+
+  OnChangeEmbarrilado() {
+    this.buenEstado = false;
+    this.deshilacha = false;
+  }
+
+  OnChangeDeshilachado() {
+    this.buenEstado = false;
+    this.embarrilado = false;
   }
 
   guardarEmpalmeR() {
     let empalme: Empalme = this.formFaseR.value;
     empalme.fase = 'R';
+    this.guardarEmpalme(empalme);
+  }
+  guardarEmpalmeS() {
+    let empalme: Empalme = this.formFaseS.value;
+    empalme.fase = 'S';
+    this.guardarEmpalme(empalme);
+  }
+  guardarEmpalmeT() {
+    let empalme: Empalme = this.formFaseT.value;
+    empalme.fase = 'T';
     this.guardarEmpalme(empalme);
   }
 
@@ -152,12 +251,13 @@ export class CableConductorComponent implements OnInit {
       calibreCableConductor: new FormControl(null, Validators.required),
       amortiguadorCableConductor: new FormControl(null, Validators.required),
       cantidadAmortiguadores: new FormControl(),
-      buenEstadoConductor: new FormControl(null, Validators.required),
+      buenEstadoConductor: new FormControl(),
       embarrilado: new FormControl(),
       deshilachado: new FormControl(),
       faseEmbarrilado: new FormControl(),
       cantidadEmbarrilado: new FormControl(),
       observacionesCableConductor: new FormControl(),
+      boton: new FormControl(),
     });
     this.formEmpalme = this.fb.group({
       idEmpalme: new FormControl(),
@@ -177,7 +277,7 @@ export class CableConductorComponent implements OnInit {
     });
     this.formFaseS = this.fb.group({
       idEmpalme: new FormControl(),
-      fase: new FormControl(null, Validators.required),
+      fase: new FormControl(),
       cantidadManual: new FormControl(null, Validators.required),
       cantidadFullTension: new FormControl(null, Validators.required),
       cantidadBlindaje: new FormControl(null, Validators.required),
@@ -185,7 +285,7 @@ export class CableConductorComponent implements OnInit {
     });
     this.formFaseT = this.fb.group({
       idEmpalme: new FormControl(),
-      fase: new FormControl(null, Validators.required),
+      fase: new FormControl(),
       cantidadManual: new FormControl(null, Validators.required),
       cantidadFullTension: new FormControl(null, Validators.required),
       cantidadBlindaje: new FormControl(null, Validators.required),
@@ -212,6 +312,12 @@ export class CableConductorComponent implements OnInit {
     return this.formCableConductor.get('buenEstadoConductor').value;
   }
 
+  set buenEstado(estado: boolean) {
+    this.formCableConductor.patchValue({
+      buenEstadoConductor: estado,
+    });
+  }
+
   get embarrilado() {
     return this.formCableConductor.get('embarrilado').value;
   }
@@ -222,7 +328,39 @@ export class CableConductorComponent implements OnInit {
     });
   }
 
+  get deshilacha() {
+    return this.formCableConductor.get('deshilachado').value;
+  }
+
+  set deshilacha(estado: boolean) {
+    this.formCableConductor.patchValue({
+      deshilachado: estado,
+    });
+  }
+
   get amortiguadorCableConductor() {
     return this.formCableConductor.get('amortiguadorCableConductor').value;
+  }
+  set cantidadAmortiguadores(cantidad: number) {
+    this.formCableConductor.patchValue({
+      cantidadAmortiguadores: cantidad,
+    });
+  }
+  get cantidadAmortiguadores() {
+    return this.formCableConductor.get('cantidadAmortiguadores').value;
+  }
+
+  get ApareceEmpalmes() {
+    return this.formCableConductor.get('boton').value;
+  }
+  get ApareceDeshilachado() {
+    return this.formCableConductor.get('boton').value;
+  }
+
+  amortiguadorOnChange() {
+    console.log('cambio');
+    if (this.amortiguadorCableConductor === false) {
+      this.cantidadAmortiguadores = 0;
+    }
   }
 }

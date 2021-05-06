@@ -71,8 +71,8 @@ export class ServidumbreComponent implements OnInit {
 
   nextPage() {
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
-     this.servidumbre = this.formServidumbre.value;
-     this.guardarServidumbre(this.servidumbre);
+    this.servidumbre = this.formServidumbre.value;
+    this.guardarServidumbre(this.servidumbre);
     this.router.navigateByUrl(
       `resumen/formulario/ver/${this.formulario.idInspeccion}/transposicion/${this.formulario.idInspeccion}`
     );
@@ -83,7 +83,32 @@ export class ServidumbreComponent implements OnInit {
       `resumen/formulario/ver/${this.formulario.idInspeccion}/spt/${this.formulario.idInspeccion}`
     );
   }
-  
+
+  OnChangePodacom() {
+    this.NoRequierePoda = false;
+    this.podasinRiesgo = false;
+  }
+
+  OnChangePodasin() {
+    this.podaconRiesgo = false;
+    this.NoRequierePoda = false;
+  }
+
+  OnChangeNorequiere() {
+    this.podaconRiesgo = false;
+    this.podasinRiesgo = false;
+  }
+
+  OnChangeSiAplica() {
+    this.noAplica = false;
+  }
+
+  OnChangeNoAplica() {
+    this.pasoBT = false;
+    this.pasoMT = false;
+    this.invasion = false;
+  }
+
   ngOnInit(): void {
     this.formServidumbre = this.fb.group({
       idServidumbre: new FormControl(null, Validators.required),
@@ -102,5 +127,76 @@ export class ServidumbreComponent implements OnInit {
     this.rutaActiva.params.subscribe((params: Params) => {
       this.obtenerFormulario(params.id);
     });
+  }
+  get podaconRiesgo() {
+    return this.formServidumbre.get('podaconRiesgo').value;
+  }
+
+  set podaconRiesgo(estado: boolean) {
+    this.formServidumbre.patchValue({
+      podaconRiesgo: estado,
+    });
+  }
+  get podasinRiesgo() {
+    return this.formServidumbre.get('podasinRiesgo').value;
+  }
+
+  set podasinRiesgo(estado: boolean) {
+    this.formServidumbre.patchValue({
+      podasinRiesgo: estado,
+    });
+  }
+
+  get NoRequierePoda() {
+    return this.formServidumbre.get('NoRequierePoda').value;
+  }
+
+  set NoRequierePoda(estado: boolean) {
+    this.formServidumbre.patchValue({
+      NoRequierePoda: estado,
+    });
+  }
+  get invasion() {
+    return this.formServidumbre.get('invasion').value;
+  }
+
+  set invasion(estado: boolean) {
+    this.formServidumbre.patchValue({
+      invasion: estado,
+    });
+  }
+  get pasoMT() {
+    return this.formServidumbre.get('pasoMT').value;
+  }
+
+  set pasoMT(estado: boolean) {
+    this.formServidumbre.patchValue({
+      pasoMT: estado,
+    });
+  }
+  get pasoBT() {
+    return this.formServidumbre.get('pasoBT').value;
+  }
+
+  set pasoBT(estado: boolean) {
+    this.formServidumbre.patchValue({
+      pasoBT: estado,
+    });
+  }
+  get noAplica() {
+    return this.formServidumbre.get('noAplica').value;
+  }
+
+  set noAplica(estado: boolean) {
+    this.formServidumbre.patchValue({
+      noAplica: estado,
+    });
+  }
+  get conRiesgo() {
+    return this.formServidumbre.get('podaconRiesgo').value;
+  }
+
+  get sinRiesgo() {
+    return this.formServidumbre.get('podasinRiesgo').value;
   }
 }

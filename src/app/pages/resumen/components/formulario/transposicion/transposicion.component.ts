@@ -6,6 +6,7 @@ import { Formulario } from 'src/app/core/models/formulario';
 import { Transposicion } from 'src/app/core/models/transposicion';
 import { FormularioService } from 'src/app/core/services/formulario.service';
 import { TransposicionService } from 'src/app/core/services/transposicion.service';
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-transposicion',
@@ -18,6 +19,9 @@ export class TransposicionComponent implements OnInit {
   formulario: Formulario = new Formulario();
   transposicion: Transposicion = new Transposicion();
 
+  items: SelectItem[];
+
+  item: string;
   alimentador: any[];
   constructor(
     private formularioService: FormularioService,
@@ -72,10 +76,9 @@ export class TransposicionComponent implements OnInit {
 
   nextPage() {
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
-     this.formulario.idtransposicion = this.formTransposicion.value;
-     console.log(this.formulario.idtransposicion);
-     this.guardarFormulario();
-    
+    this.formulario.idtransposicion = this.formTransposicion.value;
+    console.log(this.formulario.idtransposicion);
+    this.guardarFormulario();
   }
 
   prevPage() {
@@ -104,6 +107,12 @@ export class TransposicionComponent implements OnInit {
       { name: '2', code: '2' },
       { name: '3', code: '3' },
     ];
+    
+        this.items = [];
+        for (let i = 1; i < 4; i++) {
+          this.items.push({ label: 'Item ' + i, value: 'Item ' + i });
+        }
   }
+  
 }
 

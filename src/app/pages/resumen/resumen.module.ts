@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { EstructurasComponent } from './components/estructuras/estructuras.component';
 import { PersonaComponent } from './components/persona/persona.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormularioComponent } from './components/formulario/formulario.componen
     EstructurasComponent,
     PersonaComponent,
     FormularioComponent,
+    ReportesComponent,
   ],
   imports: [
     CommonModule,

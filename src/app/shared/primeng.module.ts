@@ -27,6 +27,9 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { MenuModule } from 'primeng/menu';
+import { AccordionModule } from 'primeng/accordion';
+import { ToolbarModule } from 'primeng/toolbar';
+import { SplitButtonModule } from 'primeng/splitbutton';
 
 
 const myModule = [
@@ -55,6 +58,9 @@ const myModule = [
   KeyFilterModule,
   ToggleButtonModule,
   MenuModule,
+  AccordionModule,
+  ToolbarModule,
+  SplitButtonModule,
 ];
 
 @NgModule({

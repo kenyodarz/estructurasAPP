@@ -1,8 +1,8 @@
 export class Servidumbre {
   constructor(
     public idServidumbre: string = null,
-    public podaconRiesgo: string = null,
-    public podasinRiesgo: string = null,
+    public podaconRiesgo: boolean = null,
+    public podasinRiesgo: boolean = null,
     public cantArboles: number = null,
     public obsPoda: string = null,
     public NoRequierePoda: boolean = null,

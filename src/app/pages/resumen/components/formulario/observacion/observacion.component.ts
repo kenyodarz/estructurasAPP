@@ -29,18 +29,48 @@ export class ObservacionComponent implements OnInit {
         this.formulario = formulario;
         if (formulario.idInspeccion != null) {
           // Aca va el nuevo Formulario
-         //  this.formObservacion.patchValue(formulario.estructura);
+          //  this.formObservacion.patchValue(formulario.estructura);
         }
       });
   }
 
+  guardarFormulario() {
+    this.formularioService
+      .save(this.formulario)
+      .subscribe((formulario: Formulario) => {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Información',
+          detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
+        });
+        this.router.navigateByUrl(
+          `resumen/formulario/ver/${formulario.idInspeccion}/confirmacion/${formulario.idInspeccion}`
+        );
+      });
+  }
+
+  guardarObservacion(formulario: Formulario) {
+    this.formulario = formulario;
+    this.formularioService
+      .save(this.formulario)
+      .subscribe((formulario: Formulario) => {
+        this.messageService.add({
+          severity: '',
+          summary: '',
+          detail: `Se ha guardado correctamente  ${formulario.idInspeccion}`,
+        });
+     //   this.formulario.idInspeccion = formulario;
+        this.guardarFormulario();
+      });
+  }
+
   nextPage() {
-    // se igual el formulario de apantallamiento a apantallamiento en el formulario
-    // this.formulario.estructura = this.formInformacion.value as Estructura;
-    // this.guardarFormulario();
-    this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/confirmacion/${this.formulario.idInspeccion}`
-    );
+    // this.formulario = this.formObservacion.value;
+    // console.log((this.formulario = this.formObservacion.value));
+    // this.guardarObservacion(this.formulario);
+    // this.router.navigateByUrl(
+    //   `resumen/formulario/ver/${this.formulario.idInspeccion}/confirmacion/${this.formulario.idInspeccion}`
+    // );
   }
 
   prevPage() {
@@ -63,7 +93,7 @@ export class ObservacionComponent implements OnInit {
       movil: new FormControl(),
       reviso: new FormControl(null, Validators.required),
       codigoRevisor: new FormControl(null, Validators.required),
-      firma: new FormControl(null, Validators.required),
+      firma: new FormControl(),
       fechaRevisor: new FormControl(),
     });
 

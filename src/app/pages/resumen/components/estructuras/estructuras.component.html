@@ -71,7 +71,7 @@
 >
   <form action="" [formGroup]="formEstructura">
     <div class="p-grid p-fluid">
-      <div class="p-col">
+      <div class="p-col-12 p-md-6">
         <div>
           <div>ID Estructura:*</div>
           <input pInputText type="text" formControlName="idEstructura" />
@@ -85,7 +85,7 @@
           "
         ></p-message>
       </div>
-      <div class="p-col">
+      <div class="p-col-12 p-md-6">
         <div>
           <div>Nro. Estructura:*</div>
           <input pInputText type="text" formControlName="numEstructura" />
@@ -99,7 +99,7 @@
           "
         ></p-message>
       </div>
-      <div class="p-col">
+      <div class="p-col-12 p-md-6">
         <div>
           <div>Circuito:*</div>
           <input pInputText type="text" formControlName="circuito" />
@@ -114,7 +114,7 @@
         ></p-message>
       </div>
     
-      <div class="p-col">
+      <div class="p-col-12 p-md-6">
         <div>
           <div>Ubicación:*</div>
           <input pInputText type="text" formControlName="ubicacion" />
@@ -128,7 +128,7 @@
           "
         ></p-message>
       </div>
-      <div class="p-col">
+      <div class="p-col-12 p-md-12">
         <div>
           <div>Tipo de predio:*</div>
           <p-selectButton
@@ -147,8 +147,9 @@
           "
         ></p-message>
       </div>
+      <div class="p-col-12 p-md-12">
       <p-fieldset legend="Georeferenciación">
-        <div class="p-col">
+        <div class="p-col-12 p-md-12">
           <div>
             <div>CoordenadaX:*</div>
             <input pInputText type="text" formControlName="coordinadaX" />
@@ -162,7 +163,7 @@
             "
           ></p-message>
         </div>
-        <div class="p-col">
+        <div class="p-col-12 p-md-12">
           <div>
             <div>CoordenadaY:*</div>
             <input pInputText type="text" formControlName="coordinadaY" />
@@ -176,7 +177,7 @@
             "
           ></p-message>
         </div>
-        <div class="p-col">
+        <div class="p-col-12 p-md-12">
           <div>
             <div>Altura M.S.N.M:*</div>
             <input
@@ -195,6 +196,7 @@
           ></p-message>
         </div>
       </p-fieldset>
+      </div>
     </div>
   </form>
   <ng-template pTemplate="footer">

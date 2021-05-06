@@ -6,28 +6,36 @@
       <ng-template pTemplate="content">
         <div class="p-grid p-fluid">
           <div class="p-col-12 p-md-12">
+            <div class="p-grid p-fluid">
+            <div class="p-col-12 p-md-6">
             <p-fieldset legend="S.P.T.">
               <div class="p-grid p-fluid">
-                <div class="p-col-12 p-md-8">
-                  <div class="p-field">
+                <div class="p-col-12 p-md-6">
+                 
                     <p-selectButton
                       [options]="sptOptions"
                        formControlName="tieneSPT"
                       optionLabel="label"
                       optionValue="value"
                     ></p-selectButton>
-                  </div>
+                 
                 </div>
+              <div class="p-col-12 p-md-2">
+               <label for="basic">CALIBRE:</label>
               </div>
-              <p-fieldset legend="CALIBRE">
+             <div class="p-col-12 p-md-4">
         <input type="text" pInputText  formControlName="calibreSPT"/>
-      </p-fieldset>
+             </div>
+      </div>
               <div class="p-grid p-fluid">
                 <div class="p-col-12 p-md-12">
               <p-fieldset legend="TIPO">
+                 <div class="p-grid p-fluid">
+                   <div class="p-col-12 p-md-6">
                 <div class="p-field-checkbox">
                     <p-checkbox
-                      [formControl]="formSpt.controls['tipoSPT']"
+                      [formControl]="formSpt.controls['tipoContrapeso']"
+                       (onChange)="OnChangeContrapeso()"
                       binary="true"
                     ></p-checkbox>
                     <label for="su">CONTRAPESO</label>
@@ -35,42 +43,68 @@
 
                   <div class="p-field-checkbox">
                     <p-checkbox
-                      [formControl]="formSpt.controls['tipoSPT']"
+                      [formControl]="formSpt.controls['tipoAnilloContrapeso']"
+                       (onChange)="OnChangeAnilloContrapeso()"
                       binary="true"
                     ></p-checkbox>
                     <label for="qu">ANILLO + CONTRAPESO</label>
                   </div>
                   <div class="p-field-checkbox">
                     <p-checkbox
-                      [formControl]="formSpt.controls['tipoSPT']"
+                      [formControl]="formSpt.controls['tipoAnillo']"
+                       (onChange)="OnChangeAnillo()"
                       binary="true"
                     ></p-checkbox>
                     <label for="re">ANILLO</label>
                   </div>
+                   </div>
+                   <div class="p-col-12 p-md-1">
+                     <label for="basic">CANT:</label>
+                   </div>
+                   <div class="p-col-12 p-md-5">
                    <input type="text" pInputText  formControlName="cant"/>
+                   </div>
+                 </div>
               </p-fieldset>
                 </div>
                 <div class="p-col-12 p-md-12">
               <p-fieldset legend="BAJANTE">
+                <div class="p-grid p-fluid">
+                  <div class="p-col-12 p-md-12">
                     <p-selectButton
                       [options]="bajante"
                        formControlName="tieneBajante"
                       optionLabel="label"
                       optionValue="value"
                     ></p-selectButton>
+                  </div>
+                    <div class="p-col-12 p-md-6">
                     <p-fieldset legend="TIPO">
                       <input type="text" pInputText  formControlName="tipoBajante"/>
                     </p-fieldset>
+                    </div>
+                    <div class="p-col-12 p-md-6">
                     <p-fieldset legend="CALIBRE">
                       <input type="text" pInputText  formControlName="calibreBajante"/>
                     </p-fieldset>
+                    </div>
+                     </div>
               </p-fieldset>
                 </div>
               </div>
             </p-fieldset>
+            </div>
+            <div class="p-col-12 p-md-6">
+             <p-fieldset legend="UBICACIÓN BAJANTES Y SPT">
+              
+             </p-fieldset>
+            </div>
+            </div>
           </div>
+        
           <div class="p-col-12 p-md-12">
              <p-fieldset legend="OBSERVACIONES">
+               
                 <textarea
                 rows="5"
                 cols="30"
@@ -80,7 +114,7 @@
               ></textarea>
              </p-fieldset>
           </div>
-        </div>
+       </div>
           </ng-template>
     </p-fieldset>
     </form>

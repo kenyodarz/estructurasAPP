@@ -72,7 +72,7 @@
 
   <form action="" [formGroup]="formPersona">
    <div class="p-grid p-fluid">
-      <div class="p-col">
+      <div class="p-col-12 p-md-6">
           <div>
           <div>CEDULA:*</div>
           <input pInputText type="text" formControlName="cedulaPersona" />
@@ -86,7 +86,7 @@
           "
         ></p-message>
       </div>
-      <div class="p-col">
+      <div class="p-col-12 p-md-6">
         <div>
           <div>NOMBRE:*</div>
           <input pInputText type="text" formControlName="nombrePersona" />
@@ -100,7 +100,7 @@
           "
         ></p-message>
       </div>
-       <div class="p-col">
+       <div class="p-col-12 p-md-6">
         <div>
           <div>APELLIDO:*</div>
           <input pInputText type="text" formControlName="apellidoPersona" />
@@ -114,7 +114,7 @@
           "
         ></p-message>
       </div>
-       <div class="p-col">
+       <div class="p-col-12 p-md-6">
         <div>
           <div>TELEFONO:*</div>
           <input pInputText type="text" formControlName="telefonoPersona" />
@@ -128,7 +128,7 @@
           "
         ></p-message>
       </div>
-       <div class="p-col">
+       <div class="p-col-12 p-md-6">
         <div>
           <div>USUARIO:*</div>
           <input pInputText type="text" formControlName="usuario" />
@@ -141,21 +141,8 @@
             formPersona.controls['usuario'].dirty
           "
         ></p-message>
-      </div> <div class="p-col">
-        <div>
-          <div>USUARIO:*</div>
-          <input pInputText type="text" formControlName="usuario" />
-        </div>
-        <p-message
-          severity="error"
-          text="Por favor Ingrese Usuario"
-          *ngIf="
-            !formPersona.controls['usuario'].valid &&
-            formPersona.controls['usuario'].dirty
-          "
-        ></p-message>
-      </div>
-       <div class="p-col">
+      </div> 
+       <div class="p-col-12 p-md-6">
         <div>
           <div>CONTRASEÑA:*</div>
           <input pInputText type="text" formControlName="password" />
@@ -169,7 +156,7 @@
           "
         ></p-message>
       </div>
-       <div class="p-col">
+       <div class="p-col-12 p-md-6">
         <div>
           <div>ESTADO:*</div>
           <p-selectButton
@@ -188,7 +175,7 @@
           "
         ></p-message>
       </div>
-      <div class="p-col">
+      <div class="p-col-12 p-md-6">
         <div>
           <div>ROL:*</div>
           <p-selectButton

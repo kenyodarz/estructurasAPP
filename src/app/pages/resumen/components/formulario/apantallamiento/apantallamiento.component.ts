@@ -140,6 +140,27 @@ export class ApantallamientoComponent implements OnInit {
     );
   }
 
+  OnChangeMalEstado() {
+    this.buenEstado = false;
+  }
+
+  OnChangeBuenEstado() {
+    this.malEstado = false;
+    this.blindaje = false;
+    this.empalme = false;
+    this.herraje = false;
+  }
+
+  OnChangeConectorMal() {
+    this.buenos = false;
+  }
+
+  OnChangeConectorBuenEstado() {
+    this.sulfatados = false;
+    this.quemados = false;
+    this.reposicion = false;
+  }
+
   cargarDatos(apantallamiento: Apantallamiento) {
     this.formApantallamiento.patchValue(apantallamiento);
     this.obtenerEstado(apantallamiento.idApantallamiento);
@@ -183,5 +204,92 @@ export class ApantallamientoComponent implements OnInit {
       { label: 'HHS', value: 'HHS' },
       { label: 'OPGW', value: 'OPGW' },
     ];
+  }
+  get malEstado() {
+    return this.formEstado.get('rotos').value;
+  }
+
+  set malEstado(estado: boolean) {
+    this.formEstado.patchValue({
+      rotos: estado,
+    });
+  }
+  get blindaje() {
+    return this.formEstado.get('noTieneBlin').value;
+  }
+
+  set blindaje(estado: boolean) {
+    this.formEstado.patchValue({
+      noTieneBlin: estado,
+    });
+  }
+  get empalme() {
+    return this.formEstado.get('empalmeMalEstado').value;
+  }
+
+  set empalme(estado: boolean) {
+    this.formEstado.patchValue({
+      empalmeMalEstado: estado,
+    });
+  }
+
+  get herraje() {
+    return this.formEstado.get('herrajeMalEstado').value;
+  }
+
+  set herraje(estado: boolean) {
+    this.formEstado.patchValue({
+      herrajeMalEstado: estado,
+    });
+  }
+
+  get sulfatados() {
+    return this.formConector.get('sulfatados').value;
+  }
+
+  set sulfatados(estado: boolean) {
+    this.formConector.patchValue({
+      sulfatados: estado,
+    });
+  }
+
+  get quemados() {
+    return this.formConector.get('quemados').value;
+  }
+
+  set quemados(estado: boolean) {
+    this.formConector.patchValue({
+      quemados: estado,
+    });
+  }
+
+  get reposicion() {
+    return this.formConector.get('reposicion').value;
+  }
+
+  set reposicion(estado: boolean) {
+    this.formConector.patchValue({
+      reposicion: estado,
+    });
+  }
+
+  get buenos() {
+    return this.formConector.get('buenos').value;
+  }
+
+  set buenos(estado: boolean) {
+    this.formConector.patchValue({
+      buenos: estado,
+    });
+  }
+
+  get buenEstado() {
+    return this.formEstado.get('buenos').value;
+  }
+
+  set buenEstado(estado: boolean) {
+    this.formEstado.patchValue({
+      buenos: estado,
+    });
   }
 }

@@ -6,7 +6,7 @@ import { CommonService } from './common.service';
 // Enviroment
 import { API_URL } from 'src/environments/environment';
 // Modelo
-import { Aislamiento } from 'src/app/core/models/aislamiento';
+import { Aislamiento } from '../models/aislamiento';
 
 @Injectable({
   providedIn: 'root',
