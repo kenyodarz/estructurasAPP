@@ -9,6 +9,7 @@ import { API_URL } from 'src/environments/environment';
 import { CableConductor } from '../models/cableConductor';
 import { Empalme } from '../models/empalme';
 import { Observable } from 'rxjs';
+import { Deshilachado } from '../models/deshilachado';
 
 @Injectable({
   providedIn: 'root',
@@ -43,6 +44,31 @@ export class cableConductorService extends CommonService<
     return this.http.put<CableConductor>(
       `${this.API_URL}/${idCableConductor}/eliminar-empalmes`,
       empalme,
+      { headers: headers }
+    );
+  }
+
+  asignarDeshilachado(
+    idCableConductor: string,
+    deshilachado: Deshilachado
+  ): Observable<CableConductor> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    return this.http.put<CableConductor>(
+      `${this.API_URL}/${idCableConductor}/asignar-deshilachados`,
+      deshilachado,
+      { headers: headers }
+    );
+  }
+  eliminarDeshilachado(
+    idCableConductor: string,
+    deshilachado: Deshilachado
+  ): Observable<CableConductor> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    return this.http.put<CableConductor>(
+      `${this.API_URL}/${idCableConductor}/eliminar-deshilachados`,
+      deshilachado,
       { headers: headers }
     );
   }

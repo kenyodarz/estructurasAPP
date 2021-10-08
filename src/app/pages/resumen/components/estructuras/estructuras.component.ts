@@ -129,6 +129,7 @@ export class EstructurasComponent implements OnInit {
       },
     });
   }
+  
   validarEliminacion(estructura: Estructura) {
     this.estructuras.splice(
       this.estructuras.findIndex(
@@ -146,7 +147,7 @@ export class EstructurasComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerEstructuras();
     this.formEstructura = this.fb.group({
-      idEstructura: new FormControl(null, Validators.required),
+      idEstructura: new FormControl(),
       numEstructura: new FormControl(null, Validators.required),
       circuito: new FormControl(null, Validators.required),
       ubicacion: new FormControl(null, Validators.required),

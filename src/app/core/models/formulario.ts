@@ -25,7 +25,7 @@ export class Formulario {
     public idUbicacion: Ubicacion = null,
     public observaciones: string = null,
     public numeroOT: string = null,
-    public persona: Persona = null,
+    public persona: Array<Persona> = null,
     public nombre2: string = null,
     public nombre3: string = null,
     public nombre4: string = null,

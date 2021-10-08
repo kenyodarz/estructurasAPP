@@ -64,11 +64,11 @@ export class EstructuraaComponent implements OnInit {
     this.estruraaService
       .save(this.estructuraa)
       .subscribe((estructuraa: Estructuraa) => {
-        this.messageService.add({
-          severity: 'info',
-          summary: 'Estructura',
-          detail: `Se ha guardado correctamente la estructura ${estructuraa.idTorre}`,
-        });
+        // this.messageService.add({
+        //   severity: 'info',
+        //   summary: 'Estructura',
+        //   detail: `Se ha guardado correctamente la estructura ${estructuraa.idTorre}`,
+        // });
         this.formulario.idTorres = estructuraa;
         this.guardarFormulario();
       });
@@ -103,8 +103,8 @@ export class EstructuraaComponent implements OnInit {
 
   ngOnInit(): void {
     this.formEstructuraa = this.fb.group({
-      idTorre: new FormControl(null, Validators.required),
-      funcion: new FormControl(),
+      idTorre: new FormControl(),
+      funcion: new FormControl(null, Validators.required),
       tipo: new FormControl(null, Validators.required),
       pintura: new FormControl(null, Validators.required),
       estadoAngulos: new FormControl(null, Validators.required),
@@ -131,7 +131,7 @@ export class EstructuraaComponent implements OnInit {
       { label: 'POSTES EN FIBRA', value: 'fibra' },
     ];
     this.pinturaOpcions = [
-      { label: 'NO TIENE', value: 'no' },
+      { label: 'NO TIENE', value: 'noTiene' },
       { label: 'BUEN ESTADO', value: 'buen' },
       { label: 'MAL ESTADO', value: 'mal' },
     ];

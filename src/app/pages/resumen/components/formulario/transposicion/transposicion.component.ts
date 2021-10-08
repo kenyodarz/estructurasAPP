@@ -75,10 +75,16 @@ export class TransposicionComponent implements OnInit {
   }
 
   nextPage() {
+
+    // this.transposicion = this.formTransposicion.value;
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
-    this.formulario.idtransposicion = this.formTransposicion.value;
-    console.log(this.formulario.idtransposicion);
-    this.guardarFormulario();
+    this.transposicion = this.formTransposicion.value;
+    console.log(this.transposicion);
+    this.guardarTransposicion(this.transposicion);
+
+     this.router.navigateByUrl(
+       `resumen/formulario/ver/${this.formulario.idInspeccion}/ubicacion/${this.formulario.idInspeccion}`
+     );
   }
 
   prevPage() {
@@ -89,13 +95,13 @@ export class TransposicionComponent implements OnInit {
 
   ngOnInit(): void {
     this.formTransposicion = this.fb.group({
-      idTransposicion: new FormControl(null, Validators.required),
-      faseEntrada1: new FormControl(),
+      idTransposicion: new FormControl(),
+      faseEntrada1: new FormControl(null, Validators.required),
       faseSalida1: new FormControl(null, Validators.required),
       faseEntrada2: new FormControl(null, Validators.required),
       faseSalida2: new FormControl(null, Validators.required),
       faseEntrada3: new FormControl(null, Validators.required),
-      faseSalida3: new FormControl(),
+      faseSalida3: new FormControl(null, Validators.required),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {
@@ -103,9 +109,9 @@ export class TransposicionComponent implements OnInit {
     });
 
     this.alimentador = [
-      { name: '1', code: '1' },
-      { name: '2', code: '2' },
-      { name: '3', code: '3' },
+      { name: '1', value: '1' },
+      { name: '2', value: '2' },
+      { name: '3', value: '3' },
     ];
     
         this.items = [];

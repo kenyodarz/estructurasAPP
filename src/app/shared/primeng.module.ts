@@ -30,7 +30,10 @@ import { MenuModule } from 'primeng/menu';
 import { AccordionModule } from 'primeng/accordion';
 import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { PasswordModule } from 'primeng/password';
+import { CarouselModule } from 'primeng/carousel';
 
+import { GalleriaModule } from 'primeng/galleria';
 
 const myModule = [
   ConfirmDialogModule,
@@ -61,6 +64,9 @@ const myModule = [
   AccordionModule,
   ToolbarModule,
   SplitButtonModule,
+  PasswordModule,
+  CarouselModule,
+  GalleriaModule,
 ];
 
 @NgModule({

@@ -41,6 +41,23 @@ const routes: Routes = [
         canActivate: [LoginGuard],
       },
       {
+      path: 'reportes/estructurasBuenas',
+        loadChildren: () =>
+          import('src/app/pages/resumen/components/reportes/reporte.module').then(
+            (m) => m.ReporteModule
+          ),
+        canActivate: [LoginGuard],
+      },
+
+       {
+      path: 'reportes/estructurasMalas',
+        loadChildren: () =>
+          import('src/app/pages/resumen/components/reportes/estructura.module').then(
+            (m) => m.EstructuraModule
+          ),
+        canActivate: [LoginGuard],
+      },
+      {
         path: 'formulario',
         component: FormularioComponent,
         canActivate: [LoginGuard],

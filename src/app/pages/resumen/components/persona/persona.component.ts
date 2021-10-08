@@ -21,6 +21,7 @@ export class PersonaComponent implements OnInit {
   selectedPersona: Persona = null;
   formPersona: FormGroup;
 
+  value3: string;
   displaySaveEditModal: Boolean = false;
   items: MenuItem[] = [];
   title: string = '';
@@ -81,7 +82,7 @@ export class PersonaComponent implements OnInit {
   }
 
   mostarDialigoGuardarEditar(editar: boolean) {
-     this.formPersona.reset();
+    this.formPersona.reset();
     if (editar) {
       if (
         this.selectedPersona === null ||
@@ -185,7 +186,7 @@ export class PersonaComponent implements OnInit {
       { label: 'Activo', value: true },
       { label: 'Inactivo', value: false },
     ];
-    
+
     this.isAdmin = [
       { label: 'Administrativo', value: true },
       { label: 'Operativo', value: false },

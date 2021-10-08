@@ -94,7 +94,7 @@ export class ApantallamientoComponent implements OnInit {
     this.conectorService.save(this.conector).subscribe((conector: Conector) =>
       this.messageService.add({
         severity: 'info',
-        summary: 'Informacion',
+        summary: 'Conector',
         detail: `Se ha guardado correctamente el Conector ${conector.idConector}`,
       })
     );
@@ -105,7 +105,7 @@ export class ApantallamientoComponent implements OnInit {
     this.estadoService.save(this.estado).subscribe((estado: Estado) => {
       this.messageService.add({
         severity: 'info',
-        summary: 'Informacion',
+        summary: 'Estado',
         detail: `Se ha guardado correctamente el Estado ${estado.idEstado}`,
       });
     });

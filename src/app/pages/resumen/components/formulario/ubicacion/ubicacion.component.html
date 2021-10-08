@@ -1,13 +1,15 @@
 <br />
 <div class="stepsdemo-content">
   <p-card>
-    <form [formGroup]="formUbicacion">
       <p-fieldset legend="UBICACIÓN DE PODA E INVASIÓN DE SERVIDUMBRE">
         <ng-template pTemplate="content">
           <div class="p-grid p-fluid">
             <div class="p-col-12 p-md-12">
-              <p-tabView>
+                <p-button  *ngIf="!mostrar" label="Fases" (click)="next()" (click)="mostrar = true"></p-button>
+                 <!-- <p-button label="Submit" (click)="next()"></p-button> -->
+              <p-tabView *ngIf="mostrar">
                 <p-tabPanel header="TORRE I - TORRE II">
+                   <form [formGroup]="formUbicacionOneI">
                   <div class="p-grid p-fluid">
                     <div class="p-col-12 p-md-1">
                       <label>TORRE N°</label>
@@ -15,9 +17,10 @@
                     <div class="p-col-12 p-md-2">
                       <p-dropdown
                         [options]="cities"
-                       
+                        formControlName="torredesde"
                         editable="true"
                         optionLabel="name"
+                        optionValue="value"
                       ></p-dropdown>
                       <!-- <input type="text" pInputText formControlName="torredesde"/> -->
                     </div>
@@ -27,9 +30,10 @@
                     <div class="p-col-12 p-md-2">
                       <p-dropdown
                         [options]="cities"
-                        
+                        formControlName="torrehasta"
                         editable="true"
                         optionLabel="name"
+                        optionValue="value"
                       ></p-dropdown>
                       <!-- <input type="text" pInputText formControlName="torrehasta"/> -->
                     </div>
@@ -54,9 +58,11 @@
                       ></textarea>
                     </p-fieldset>
                   </div>
-                  <p-button label="Validar"></p-button>
+                  <p-button label="Validar" (click)="guardarUbicacionOneI()"></p-button>
+                  </form>
                 </p-tabPanel>
                 <p-tabPanel header="TORRE II - TORRE III">
+                <form [formGroup]="formUbicacionOneII">
                   <div class="p-grid p-fluid">
                     <div class="p-col-12 p-md-1">
                       <label>TORRE N°</label>
@@ -64,9 +70,10 @@
                     <div class="p-col-12 p-md-2">
                       <p-dropdown
                         [options]="cities"
-                        
+                        formControlName="torredesde"
                         editable="true"
                         optionLabel="name"
+                        optionValue="value"
                       ></p-dropdown>
                       <!-- <input type="text" pInputText formControlName="torredesde"/> -->
                     </div>
@@ -76,11 +83,14 @@
                     <div class="p-col-12 p-md-2">
                       <p-dropdown
                         [options]="cities"
+                        formControlName="torrehasta"
                         editable="true"
                         optionLabel="name"
+                        optionValue="value"
                       ></p-dropdown>
-                      <!-- <input type="text" pInputText formControlName="torredesde"/> -->
+                      <!-- <input type="text" pInputText formControlName="torrehasta"/> -->
                     </div>
+
                     <div class="p-col-12 p-md-6">
                       <p-selectButton
                         [options]="objetosOptions"
@@ -90,7 +100,7 @@
                       ></p-selectButton>
                     </div>
                   </div>
-                  <div class="p-col-12 p-md-12">
+                   <div class="p-col-12 p-md-12">
                     <p-fieldset legend="OBSERVACIONES">
                       <textarea
                         rows="5"
@@ -101,14 +111,14 @@
                       ></textarea>
                     </p-fieldset>
                   </div>
-                  <p-button label="Validar"></p-button>
+                  <p-button label="Validar" (click)="guardarUbicacionOneII()"></p-button>
+                  </form>
                 </p-tabPanel>
               </p-tabView>
             </div>
           </div>
         </ng-template>
       </p-fieldset>
-    </form>
     <ng-template pTemplate="footer">
       <div class="p-grid p-nogutter p-justify-between">
         <p-button
@@ -120,6 +130,8 @@
           label="Next"
           icon="pi pi-angle-right"
           iconPos="right"
+          [disabled]="formUbicacionOneI.invalid"
+          [disabled]="formUbicacionOneII.invalid"
           (onClick)="nextPage()"
         ></p-button>
       </div>

@@ -84,8 +84,16 @@ export class FormularioComponent implements OnInit {
     );
     if (index !== -1) {
       this.formulario[index] = formulario;
+      
+            this.messageService.add({
+              severity: 'info',
+              summary: 'Información',
+              detail: `El formato ha sido eliminada correctamente`,
+            });
+        
     } else {
       this.formularios.push(formulario);
+
     }
     this.onVerFormulario(formulario);
   }

@@ -19,6 +19,7 @@
      <p-fieldset legend="RESPONSABLE DE LA INSPECCIÓN">
       <ng-template pTemplate="content">
         <div class="p-grid p-fluid">
+           <!-- <form [formGroup]="formPersona" > -->
           <div class="p-col-12 p-md-1">
             <label>NOMBRE:</label>
           </div>
@@ -26,7 +27,7 @@
             <input
                   pInputText
                   type="text"
-                  
+                  formControlName="nombrePersona"
                   pKeyFilter="alphanum"
                 />
           </div>
@@ -37,10 +38,11 @@
                 <input
                   pInputText
                   type="text"
-                  
+                  formControlName="cedulaPersona"
                   pKeyFilter="alphanum"
                 />
           </div>
+           <!-- </form> -->
           <div class="p-col-12 p-md-1">
             <label>NOMBRE:</label>
           </div>
@@ -136,7 +138,7 @@
                 <input
                   pInputText
                   type="text"
-                  formControlName="codigo5"
+                  formControlName="fecha"
                   pKeyFilter="alphanum"
                 />
             </div>
@@ -147,7 +149,7 @@
                 <input
                   pInputText
                   type="text"
-                  formControlName="codigo5"
+                  formControlName="movil"
                   pKeyFilter="alphanum"
                 />
             </div>
@@ -196,10 +198,11 @@
             <label>FECHA:</label>
           </div>
            <div class="p-col-12 p-md-5">
+             
   <input
                   pInputText
                   type="text"
-                  formControlName="firma"
+                  formControlName="fechaRevisor"
                   pKeyFilter="alphanum"
                 />
            </div>

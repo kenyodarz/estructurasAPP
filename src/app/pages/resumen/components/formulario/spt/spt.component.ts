@@ -45,11 +45,11 @@ export class SptComponent implements OnInit {
   guardarSPT(spt: Spt) {
     this.spt = spt;
     this.sptService.save(this.spt).subscribe((spt: Spt) => {
-      this.messageService.add({
-        severity: 'info',
-        summary: 'SPT',
-        detail: `Se ha guardado correctamente el SPT ${spt.idSpt}`,
-      });
+      // this.messageService.add({
+      //   severity: 'info',
+      //   summary: 'SPT',
+      //   detail: `Se ha guardado correctamente el SPT ${spt.idSpt}`,
+      // });
       this.formulario.idSpt = spt;
       this.guardarFormulario();
     });
@@ -101,17 +101,17 @@ export class SptComponent implements OnInit {
 
   ngOnInit(): void {
     this.formSpt = this.fb.group({
-      idSpt: new FormControl(null, Validators.required),
-      tieneSPT: new FormControl(),
-      calibreSPT: new FormControl(),
+      idSpt: new FormControl(),
+      tieneSPT: new FormControl(null, Validators.required),
+      calibreSPT: new FormControl(null, Validators.required),
       tipoContrapeso: new FormControl(),
       tipoAnilloContrapeso: new FormControl(),
       tipoAnillo: new FormControl(),
-      cant: new FormControl(),
-      tieneBajante: new FormControl(),
-      tipoBajante: new FormControl(),
-      calibreBajante: new FormControl(),
-      observaciones: new FormControl(),
+      cant: new FormControl(null, Validators.required),
+      tieneBajante: new FormControl(null, Validators.required),
+      tipoBajante: new FormControl(null, Validators.required),
+      calibreBajante: new FormControl(null, Validators.required),
+      observaciones: new FormControl(null, Validators.required),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {

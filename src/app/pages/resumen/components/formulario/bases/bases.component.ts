@@ -24,10 +24,12 @@ export class BasesComponent implements OnInit {
   formSubBaseIV: FormGroup;
 
   checked2: boolean = true;
+  mostrar: boolean = false;
 
   formulario: Formulario = new Formulario();
   bases: Bases = new Bases();
   subBase: SubBase = new SubBase();
+  subBases: SubBase[] = [];
   angulos: any[];
   constructor(
     private formularioService: FormularioService,
@@ -46,12 +48,42 @@ export class BasesComponent implements OnInit {
       .subscribe((formulario: Formulario) => {
         this.formulario = formulario;
         if (formulario.idBases != null) {
+          if (formulario.idBases.subbases.length > 0) {
+            
+            this.mostrar = true;
+          }
           // Aca va el nuevo Formulario
           this.formBases.patchValue(formulario.idBases);
+          this.cargarDatos(formulario.idBases);
         }
       });
   }
+  cargarDatos(base: Bases) {
+    console.log(base);
+    this.bases = base;
+    this.formBases.patchValue(base);
+    base.subbases.forEach((subbases) => {
+      switch (subbases.base) {
+        case 'I':
+          this.formSubBaseI.patchValue(subbases);
+          break;
+        case 'II':
+          this.formSubBaseII.patchValue(subbases);
+          break;
+        case 'III':
+          this.formSubBaseIII.patchValue(subbases);
+          break;
+        case 'IV':
+          this.formSubBaseIV.patchValue(subbases);
+          break;
 
+        default:
+          console.warn('No existe la Subbase de la base');
+          break;
+      }
+    });
+    this.subBases = this.bases.subbases;
+  }
   // guardarBases() {
   //   // this.bases = bases;
   //   this.basesService.save(this.bases).subscribe((bases: Bases) => {
@@ -62,15 +94,6 @@ export class BasesComponent implements OnInit {
   // }
 
   guardarSubBases(subBase: SubBase) {
-    // this.subBase.bases = subBase;
-    // this.subBaseService.save(this.subBase).subscribe((subBase: SubBase) => {
-    //   this.messageService.add({
-    //     severity: 'info',
-    //     summary: 'Informacion',
-    //     detail: `Se ha guardado correctamente la SubBase ${subBase.idSubBase}`,
-    //   });
-    // });
-
     this.subBaseService
       .guardarSubBaseConBase(this.formulario.idBases.idBase, subBase)
       .subscribe((subBase: SubBase) => {
@@ -84,24 +107,28 @@ export class BasesComponent implements OnInit {
 
   guardarSubBaseI() {
     let subBase: SubBase = this.formSubBaseI.value;
+    subBase.base = 'I';
     this.guardarSubBases(subBase);
     console.log(subBase);
   }
 
   guardarSubBaseII() {
     let subBase: SubBase = this.formSubBaseII.value;
+    subBase.base = 'II';
     this.guardarSubBases(subBase);
     console.log(subBase);
   }
 
   guardarSubBaseIII() {
     let subBase: SubBase = this.formSubBaseIII.value;
+    subBase.base = 'III';
     this.guardarSubBases(subBase);
     console.log(subBase);
   }
 
   guardarSubBaseIV() {
     let subBase: SubBase = this.formSubBaseIV.value;
+    subBase.base = 'IV';
     this.guardarSubBases(subBase);
     console.log(subBase);
   }

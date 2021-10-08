@@ -3,48 +3,26 @@ import { Formulario } from 'src/app/core/models/formulario';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { FormularioService } from 'src/app/core/services/formulario.service';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AislamientoService } from 'src/app/core/services/aislamiento.service';
 import { Aislamiento } from 'src/app/core/models/aislamiento';
+import { Fase } from 'src/app/core/models/fase';
+import { FaseService } from 'src/app/core/services/fase.service';
 
 @Component({
   selector: 'app-aislamiento',
   templateUrl: './aislamiento.component.html',
   styleUrls: ['./aislamiento.component.css'],
-  // animations: [
-  //   trigger('animation',[
-  //     state(
-  //       'visible',
-  //       style({
-  //         transform: 'translateX(0)',
-  //         opacity: 1,
-  //       })
-  //     ),
-  //     transition('void => *', [
-  //       style({ transform: 'translateX(50%)', opacity: 0}),
-  //       animate('300ms ease-out'),
-
-  //     ]),
-  //     transition('* => void', [
-  //       animate(
-  //         '250ms ease-in',
-  //         style({
-  //           height: 0,
-  //           opacity: 0,
-  //           transform: 'translateX(50%)',
-  //         })
-  //       ),
-  //     ]),
-  //   ]),
-  // ],
 })
 export class AislamientoComponent implements OnInit {
   aislamiento: Aislamiento = new Aislamiento();
+  fase: Fase = new Fase();
+  fases: Fase[] = [];
   formulario: Formulario = new Formulario();
-  formAislamientoR: FormGroup;
-  formAislamientoS: FormGroup;
-  formAislamientoT: FormGroup;
+  formAislamiento: FormGroup;
+  formFaseR: FormGroup;
+  formFaseS: FormGroup;
+  formFaseT: FormGroup;
 
   tipo: any[];
   tipoCadena: any[];
@@ -55,10 +33,12 @@ export class AislamientoComponent implements OnInit {
   filas = [];
   columnas = [];
 
+  mostrar: boolean = false;
   columns: number[];
   constructor(
     private formularioService: FormularioService,
     private aislamientoService: AislamientoService,
+    private faseService: FaseService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private router: Router,
@@ -72,10 +52,41 @@ export class AislamientoComponent implements OnInit {
       .subscribe((formulario: Formulario) => {
         this.formulario = formulario;
         if (formulario.idAisladores != null) {
+          console.log(formulario.idAisladores);
+          this.mostrar = true;
+
           // Aca va el nuevo Formulario
-          // this.formInformacion.patchValue(formulario.estructura);
+          this.formAislamiento.patchValue(formulario.idAisladores);
+
+          this.cargarDatos(formulario.idAisladores);
         }
       });
+  }
+
+  cargarDatos(aislamiento: Aislamiento) {
+    console.log(aislamiento);
+    this.aislamiento = aislamiento;
+    this.formAislamiento.patchValue(aislamiento);
+    aislamiento.fases.forEach((fase) => {
+      switch (fase.fase) {
+        case 'R':
+          this.formFaseR.patchValue(fase);
+          break;
+
+        case 'S':
+          this.formFaseS.patchValue(fase);
+          break;
+
+        case 'T':
+          this.formFaseT.patchValue(fase);
+          break;
+
+        default:
+          console.warn('No existe la fase del aislamiento');
+          break;
+      }
+    });
+    this.fases = aislamiento.fases;
   }
 
   guardarFormulario() {
@@ -94,8 +105,7 @@ export class AislamientoComponent implements OnInit {
   }
 
   guardarAislamiento(aislamiento: Aislamiento) {
-
-     this.aislamiento = aislamiento;
+    this.aislamiento = aislamiento;
     this.aislamientoService
       .save(this.aislamiento)
       .subscribe((aislamiento: Aislamiento) => {
@@ -107,16 +117,17 @@ export class AislamientoComponent implements OnInit {
         this.formulario.idAisladores = aislamiento;
         this.guardarFormulario();
       });
-
   }
 
   next() {
-  // this.aislamiento = this.formAislamientoR.value;
-  // console.log(this.aislamiento = this.formAislamientoR.value);
-  // this.guardarAislamiento(this.aislamiento);
+    // this.aislamiento = this.formAislamientoR.value;
+    // console.log(this.aislamiento = this.formAislamientoR.value);
+    // this.guardarAislamiento(this.aislamiento);
 
-    this.aislamiento = this.formAislamientoR.value;
-    console.log((this.aislamiento = this.formAislamientoR.value));
+    this.aislamiento = this.formAislamiento.value;
+    this.aislamiento.fase = 'Fase';
+    console.log((this.aislamiento = this.formAislamiento.value));
+    console.log((this.aislamiento.fase = 'Fase'));
     this.aislamientoService
       .save(this.aislamiento)
       .subscribe((aislamiento: Aislamiento) => {
@@ -127,11 +138,44 @@ export class AislamientoComponent implements OnInit {
             this.messageService.add({
               severity: 'info',
               summary: 'Aislamiento',
-              detail: `se ha actualizado el aislamiento ${aislamiento.idAislamiento}`,
+              detail: `se ha actualizado el aislamiento ${formulario.idAisladores}`,
             });
           });
       });
-
+  }
+  guardarFase(fase: Fase) {
+    this.faseService
+      .guardarFaseconAislamiento(
+        this.formulario.idAisladores.idAislamiento,
+        fase
+      )
+      .subscribe((faseResul: Fase) => {
+        this.aislamientoService
+          .asignarFases(this.formulario.idAisladores.idAislamiento, faseResul)
+          .subscribe((data) => {
+            this.obtenerFormulario(this.formulario.idInspeccion);
+          });
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Fase',
+          detail: `Se ha guardado correctamente la fase ${faseResul.idFase}`,
+        });
+      });
+  }
+  guardarFaseR() {
+    let fase: Fase = this.formFaseR.value;
+    fase.fase = 'R';
+    this.guardarFase(fase);
+  }
+  guardarFaseS() {
+    let fase: Fase = this.formFaseS.value;
+    fase.fase = 'S';
+    this.guardarFase(fase);
+  }
+  guardarFaseT() {
+    let fase: Fase = this.formFaseT.value;
+    fase.fase = 'T';
+    this.guardarFase(fase);
   }
 
   nextPage() {
@@ -150,42 +194,46 @@ export class AislamientoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formAislamientoR = this.fb.group({
+    this.formAislamiento = this.fb.group({
       idAislamiento: new FormControl(),
       fase: new FormControl(),
-      tipo: new FormControl(),
-      clase: new FormControl(),
-      buenEstado: new FormControl(),
-      numAisladores: new FormControl(),
-      tipoCadena: new FormControl(),
-      puentes: new FormControl(),
-      observaciones: new FormControl(),
-      idInspecciones: new FormControl(),
     });
-     this.formAislamientoS = this.fb.group({
-       idAislamiento: new FormControl(),
-       fase: new FormControl(),
-       tipo: new FormControl(),
-       clase: new FormControl(),
-       buenEstado: new FormControl(),
-       numAisladores: new FormControl(),
-       tipoCadena: new FormControl(),
-       puentes: new FormControl(),
-       observaciones: new FormControl(),
-       idInspecciones: new FormControl(),
-     });
-     this.formAislamientoT = this.fb.group({
-       idAislamiento: new FormControl(),
-       fase: new FormControl(),
-       tipo: new FormControl(),
-       clase: new FormControl(),
-       buenEstado: new FormControl(),
-       numAisladores: new FormControl(),
-       tipoCadena: new FormControl(),
-       puentes: new FormControl(),
-       observaciones: new FormControl(),
-       idInspecciones: new FormControl(),
-     });
+
+    this.formFaseR = this.fb.group({
+      idFase: new FormControl(),
+      fase: new FormControl(null, Validators.required),
+      tipo: new FormControl(null, Validators.required),
+      clase: new FormControl(null, Validators.required),
+      buenEstado: new FormControl(null, Validators.required),
+      numAisladores: new FormControl(null, Validators.required),
+      tipoCadena: new FormControl(null, Validators.required),
+      puentes: new FormControl(null, Validators.required),
+      observaciones: new FormControl(null, Validators.required),
+    });
+
+    this.formFaseS = this.fb.group({
+      idFase: new FormControl(),
+      fase: new FormControl(null, Validators.required),
+      tipo: new FormControl(null, Validators.required),
+      clase: new FormControl(null, Validators.required),
+      buenEstado: new FormControl(null, Validators.required),
+      numAisladores: new FormControl(null, Validators.required),
+      tipoCadena: new FormControl(null, Validators.required),
+      puentes: new FormControl(null, Validators.required),
+      observaciones: new FormControl(null, Validators.required),
+    });
+
+    this.formFaseT = this.fb.group({
+      idFase: new FormControl(),
+      fase: new FormControl(null, Validators.required),
+      tipo: new FormControl(null, Validators.required),
+      clase: new FormControl(null, Validators.required),
+      buenEstado: new FormControl(null, Validators.required),
+      numAisladores: new FormControl(null, Validators.required),
+      tipoCadena: new FormControl(null, Validators.required),
+      puentes: new FormControl(null, Validators.required),
+      observaciones: new FormControl(null, Validators.required),
+    });
 
     this.rutaActiva.params.subscribe((params: Params) => {
       this.obtenerFormulario(params.id);
@@ -207,7 +255,7 @@ export class AislamientoComponent implements OnInit {
       { label: 'SENCILLA', value: 'sencilla' },
       { label: 'DOBLE', value: 'doble' },
     ];
-    
+
     this.puentes = [
       { label: 'CONTINUO', value: 'continuo' },
       { label: 'ENTIZADO', value: 'entizado' },
@@ -253,5 +301,23 @@ export class AislamientoComponent implements OnInit {
         if (c != celda) c.editar = false;
       });
     });
+  }
+
+  onTabClose(event) {
+    this.messageService.add({
+      severity: 'info',
+      summary: 'Se guardo fase',
+      // detail: 'Index: ' + event.index,
+    });
+  }
+
+  onTabOpen(event) {
+    // this.messageService.add({
+    //   severity: 'info',
+    //   summary: 'Tab Expanded',
+    //   detail: 'Index: ' + event.index,
+    // });
+
+    // this.next();
   }
 }

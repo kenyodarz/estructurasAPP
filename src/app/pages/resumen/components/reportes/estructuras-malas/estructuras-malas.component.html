@@ -1,0 +1,134 @@
+<p-panel header="Estructuras en mal estado">
+   <p-menubar [model]="items"></p-menubar>
+  <!-- <div class="stepsdemo-content">
+  <div class="card">
+    <p-steps [model]="items" [readonly]="true"></p-steps>
+  </div>
+</div> -->
+<router-outlet></router-outlet>
+<p-table
+    #dt
+    [value]="estructuras"
+    [paginator]="true"
+    selectionMode="single"
+    
+    dataKey="idEstructura"
+    [rows]="10"
+    [responsive]="true"
+    
+  >
+   <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">#</th>
+        <th>N° OT</th>
+        <th>N° ESTRUCTURA</th>
+        <th>CIRCUITO</th>
+        <th>RESPONSABLE</th>
+        <th>OBSERVACIONES</th>
+      </tr>
+    </ng-template>
+
+         <ng-template pTemplate="body" >
+      <tr >
+        <td>1</td>
+        <td>1235618</td>
+        <td>E118</td>
+        <td>Insula</td>
+        <td>Leonardo Albarracin</td>
+        <td>Revisar apantallamiento, estado estructura, cable conductor, aislamiento, bases, spt, servidumbre, ubicación</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>1235613</td>
+        <td>E113</td>
+        <td>San mateo</td>
+        <td>Leonardo Albarracin</td>
+        <td>Revisar apantallamiento, estado estructura, cable conductor, aislamiento, bases, spt, servidumbre</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>123565</td>
+        <td>E105</td>
+        <td>San mateo</td>
+        <td>Leonardo Albarracin</td>
+        <td>Revisar apantallamiento, estado estructura, spt, servidumbre, ubicación</td>
+      </tr>
+
+      <tr>
+        <td>4</td>
+        <td>123567</td>
+        <td>E107</td>
+        <td>Tibu</td>
+        <td>Leonardo Albarracin</td>
+        <td>Revisar apantallamiento, cable conductor, aislamiento, spt</td>
+      </tr>
+
+      <tr>
+        <td>5</td>
+        <td>123566</td>
+        <td>E106</td>
+        <td>Tibu</td>
+        <td>Leonardo Albarracin</td>
+        <td>Revisar apantallamiento, cable conductor, bases</td>
+      </tr>
+
+      <tr>
+        <td>6</td>
+        <td>123563</td>
+        <td>E103</td>
+        <td>San Mateo</td>
+        <td>Leonardo Albarracin</td>
+        <td>Revisar apantallamiento, cable conductor, bases, servidumbre, ubicación</td>
+      </tr>
+
+      <tr>
+        <td>7</td>
+        <td>1235619</td>
+        <td>E119</td>
+        <td>San mateo</td>
+        <td>Leonardo Albarracin</td>
+        <td>Revisar apantallamiento, aislamiento, bases, servidumbre</td>
+      </tr>
+
+      <tr>
+        <td>8</td>
+        <td>1235617</td>
+        <td>E117</td>
+        <td>Insula</td>
+        <td>Leonardo Albarracin</td>
+        <td>Revisar estado estructura, cable conductor, bases, ubicación</td>
+      </tr>
+
+      <tr>
+        <td>9</td>
+        <td>1235612</td>
+        <td>E112</td>
+        <td>Insula</td>
+        <td>Leonardo Albarracin</td>
+        <td>Revisar estado estructura, aislamiento, bases, spt, ubicación</td>
+      </tr>
+
+      <tr>
+        <td>10</td>
+        <td>1235610</td>
+        <td>E110</td>
+        <td>Belen</td>
+        <td>Leonardo Albarracin</td>
+        <td>Revisar estado estructura, aislamiento, spt, servidumbre</td>
+      </tr>
+    </ng-template>
+
+      <ng-template pTemplate="summary">
+      <div style="text-align: left">
+        Registro Seleccionado:
+        {{
+          selectedEstructura
+            ? selectedEstructura.numEstructura +
+              " - " +
+              selectedEstructura.circuito   
+            : "Ninguno"
+        }}
+      </div></ng-template
+    >
+</p-table>
+</p-panel>

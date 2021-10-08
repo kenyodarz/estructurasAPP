@@ -16,6 +16,7 @@
                         "
                         (onChange)="OnChangePodacom()"
                         binary="true"
+                        (ngModelChange)="sinRiesgoOnChange()"
                       ></p-checkbox>
                       <label for="su">PODA CON RIESGO ELÉCTRICO </label>
                     </div>
@@ -44,6 +45,7 @@
                       [formControl]="formServidumbre.controls['podasinRiesgo']"
                       (onChange)="OnChangePodasin()"
                       binary="true"
+                       (ngModelChange)="sinRiesgoOnChange()"
                     ></p-checkbox>
                     <label for="su">PODA SIN RIESGO ELÉCTRICO </label>
                   </div>
@@ -144,6 +146,7 @@
         <p-button
           label="Next"
           icon="pi pi-angle-right"
+          [disabled]="formServidumbre.invalid"
           (onClick)="nextPage()"
           iconPos="right"
         ></p-button>

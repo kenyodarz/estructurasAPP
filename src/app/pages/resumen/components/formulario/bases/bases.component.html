@@ -22,15 +22,15 @@
                           
                         </div>
                          <div class="p-col-12 p-md-1">
-                
-                  <p-toggleButton [(ngModel)]="checked2"  onLabel="next" offLabel="deshabilitar" onIcon="" offIcon="" [style]="{'width': '10em'}"  formControlName="boton" (click)="next()"></p-toggleButton>
+                 <p-button  *ngIf="!mostrar" label="Next" (click)="next()" (click)="mostrar = true"></p-button>
+                  <!-- <p-toggleButton [(ngModel)]="checked2"  onLabel="next" offLabel="deshabilitar" onIcon="" offIcon="" [style]="{'width': '10em'}"  formControlName="boton" (click)="next()"></p-toggleButton> -->
 
                   </div>
                       </div>
                     </p-fieldset>
                   </div>
                   <div class="p-col-12 p-md-12" >
-                    <p-accordion>
+                    <p-accordion *ngIf="mostrar">
                       <p-accordionTab header="BASES">
                           <div class="p-grid p-fluid">
                         <div class="p-col-12 p-md-3">
@@ -70,6 +70,7 @@
                                 pRipple
                                 type="button"
                                 label="AGREGAR"
+                                
                                 (click)="guardarSubBaseI()"
                               ></button>
                             </p-fieldset>
@@ -241,6 +242,7 @@
           label="Next"
           icon="pi pi-angle-right"
           iconPos="right"
+          [disabled]="formBases.invalid"
           (onClick)="nextPage()"
         ></p-button>
       </div>

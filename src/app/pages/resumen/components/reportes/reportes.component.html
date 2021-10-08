@@ -2,16 +2,58 @@
 
  <p-table
   #dt
-    [value]=""
+    [value]="estructuras"
     [paginator]="true"
-    selectionMode="single">
+    selectionMode="single"
+    [(selection)]="selectedEstructura"
+    dataKey="idEstructura"
+    [rows]="10"
+    [responsive]="true"
+    [globalFilterFields]="['numEstructura',  'ubicacion']">
 
-    <ng-template pTemplate="caption">
+      <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <div class="p-d-flex p-ai-center ">
+        <button
+          pButton
+          pRipple
+          label="Estructuras en buen estado"
+          icon="pi pi-plus"
+          class="p-button-outlined p-button-success p-mr-2 "
+          (click)="onVerEstructurasBuenas()"
+        ></button>
+        
+        <button
+          pButton
+          pRipple
+          label="Estructuras en mal estado"
+          icon="pi pi-times"
+          class="p-button-outlined p-button-danger p-mr-2"
+           (click)="onVerEstructurasMalas()"
+        ></button>
+        </div>
+        <div style="text-align: right">
+          <i class="pi pi-search" style="margin: 4px 4px 0 0"></i>
+          <input
+            type="text"
+            pInputText
+            size="20"
+            placeholder="Buscar"
+            (input)="dt.filterGlobal($event.target.value, 'contains')"
+            style="width: auto"
+          />
+        </div>
+      </div>
+      
+    </ng-template>
+
+
+    <!-- <ng-template pTemplate="caption">
       <p-toolbar>
     <div class="p-toolbar-group-left">            
         <i class="p-toolbar-separator pi pi-bars p-mr-2" style="vertical-align: middle"></i>
         
-        <p-splitButton label="Save" icon="pi pi-check" [model]="items" styleClass="p-button-success"></p-splitButton>
+        <p-splitButton label="Reportes" icon="pi pi-check" [model]="items"  styleClass="p-button-success"></p-splitButton>
     </div>
     
             <div class="p-d-flex p-ai-center p-jc-between">
@@ -28,22 +70,47 @@
         </div>
       </div>
 </p-toolbar>
+    </ng-template> -->
 
-    </ng-template>
      <ng-template pTemplate="header">
       <tr>
         <th style="width: 3rem">#</th>
-        <th>NUMERO DE OT</th>
-        <th>ESTRUCTURA</th>
+        <th>N° ESTRUCTURA</th>
         <th>CIRCUITO</th>
-        <th>RESPONSABLE</th>
+        <!-- <th>RESPONSABLE</th>
+        <th>OBSERVACIONES</th> -->
       </tr>
     </ng-template>
 
-     <ng-template pTemplate="body" let-rowIndex="rowIndex" let-persona>
-      <tr >
-        
+     <ng-template pTemplate="body" let-rowIndex="rowIndex" let-estructura>
+      <tr [pSelectableRow]="estructura">
+        <td>{{ rowIndex + 1 }}</td>
+        <td>{{ estructura.numEstructura }}</td>
+        <td>{{ estructura.circuito }}</td>
+        <!-- <td>{{ formulario.persona.nombrePersona }} {{ formulario.persona.apellidoPersona }}</td>
+        <td>{{ formulario.persona.cedulaPersona }}</td> -->
+        <!-- <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-eye"
+            class="p-button-rounded p-button-info p-mr-2"
+            (click)="onVerEstructura(estructura)"
+          ></button>
+        </td> -->
       </tr>
     </ng-template>
+    <ng-template pTemplate="summary">
+      <div style="text-align: left">
+        Registro Seleccionado:
+        {{
+          selectedEstructura
+            ? selectedEstructura.numEstructura +
+              " - " +
+              selectedEstructura.circuito   
+            : "Ninguno"
+        }}
+      </div></ng-template
+    >
  </p-table>
 </p-panel>

@@ -45,8 +45,8 @@ export class ServidumbreComponent implements OnInit {
       .save(this.servidumbre)
       .subscribe((servidumbre: Servidumbre) => {
         this.messageService.add({
-          severity: 'Servidumbre',
-          summary: 'SPT',
+          severity: 'info',
+          summary: 'Servidumbre',
           detail: `Se ha guardado correctamente la Servidumbre ${servidumbre.idServidumbre}`,
         });
         this.formulario.idServidumbre = servidumbre;
@@ -70,12 +70,8 @@ export class ServidumbreComponent implements OnInit {
   }
 
   nextPage() {
-    // se igual el formulario de apantallamiento a apantallamiento en el formulario
     this.servidumbre = this.formServidumbre.value;
     this.guardarServidumbre(this.servidumbre);
-    this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/transposicion/${this.formulario.idInspeccion}`
-    );
   }
 
   prevPage() {
@@ -111,12 +107,12 @@ export class ServidumbreComponent implements OnInit {
 
   ngOnInit(): void {
     this.formServidumbre = this.fb.group({
-      idServidumbre: new FormControl(null, Validators.required),
+      idServidumbre: new FormControl(),
       podaconRiesgo: new FormControl(),
       podasinRiesgo: new FormControl(),
-      cantArboles: new FormControl(null, Validators.required),
+      cantArboles: new FormControl(),
       obsPoda: new FormControl(null, Validators.required),
-      NoRequierePoda: new FormControl(null, Validators.required),
+      NoRequierePoda: new FormControl(),
       obsServidumbre: new FormControl(null, Validators.required),
       noAplica: new FormControl(),
       invasion: new FormControl(),
@@ -174,6 +170,15 @@ export class ServidumbreComponent implements OnInit {
       pasoMT: estado,
     });
   }
+  get obsPoda() {
+    return this.formServidumbre.get('obsPoda').value;
+  }
+
+  set obsPoda(estado: string) {
+    this.formServidumbre.patchValue({
+      obsPoda: estado,
+    });
+  }
   get pasoBT() {
     return this.formServidumbre.get('pasoBT').value;
   }
@@ -187,6 +192,15 @@ export class ServidumbreComponent implements OnInit {
     return this.formServidumbre.get('noAplica').value;
   }
 
+  get cantArboles() {
+    return this.formServidumbre.get('cantArboles').value;
+  }
+  set cantArboles(cantidad: number) {
+    this.formServidumbre.patchValue({
+      cantArboles: cantidad,
+    });
+  }
+
   set noAplica(estado: boolean) {
     this.formServidumbre.patchValue({
       noAplica: estado,
@@ -198,5 +212,13 @@ export class ServidumbreComponent implements OnInit {
 
   get sinRiesgo() {
     return this.formServidumbre.get('podasinRiesgo').value;
+  }
+
+  sinRiesgoOnChange() {
+    console.log('cambio');
+    if (this.sinRiesgo === false) {
+      this.cantArboles = 0;
+      this.obsPoda = " ";
+    }
   }
 }

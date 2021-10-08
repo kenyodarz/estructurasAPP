@@ -41,7 +41,9 @@
                   </div>
                   <div class="p-col-12 p-md-1">
                 
-                  <p-toggleButton [(ngModel)]="checked2"  onLabel="next" offLabel="deshabilitar" onIcon="" offIcon="" [style]="{'width': '10em'}"  formControlName="boton"  (click)="next()"></p-toggleButton>
+                     <p-button  *ngIf="!mostrar" [disabled]="formCableConductor.invalid" label="Next" (click)="next()" (click)="mostrar = true"></p-button>
+
+                  <!-- <p-toggleButton [(ngModel)]="checked2"  onLabel="Next" offLabel="deshabilitar" onIcon="" offIcon="" [style]="{'width': '10em'}"  formControlName="boton"  (click)="next()"></p-toggleButton> -->
 
                   </div>
                 </div>
@@ -50,7 +52,7 @@
             <div class="p-col-12 p-md-12">
               <p-accordion>
                  <form [formGroup]="formEmpalme">
-                <div  *ngIf="!ApareceEmpalmes">
+                <div   *ngIf="mostrar">
                 <p-accordionTab header="EMPALMES">
                   <p>
                       
@@ -266,7 +268,7 @@
                                
                             <p-fieldset legend="FULL TENSIÓN">
                               <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-4">
+                              <div class=" p-text-center p-col-12 p-md-3">
                               <label for="class" >CANT:</label>
                             </div>
                             <div class="p-col-4 p-md-9">
@@ -324,7 +326,7 @@
                  </form>
 
                   <form [formGroup]="formDeshilachado">
-                    <div *ngIf="!ApareceDeshilachado">
+                    <div *ngIf="mostrar">
                 <p-accordionTab header="ESTADO CONDUCTOR">
                 <div class="p-col-12 p-md-12">
                   

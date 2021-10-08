@@ -15,6 +15,7 @@ import { EmpalmeService } from 'src/app/core/services/empalme.service';
 import { FormularioService } from 'src/app/core/services/formulario.service';
 import { Deshilachado } from 'src/app/core/models/deshilachado';
 import { DeshilachadoService } from 'src/app/core/services/deshilachado.service';
+import { flushMicrotasks } from '@angular/core/testing';
 
 @Component({
   selector: 'app-cable-conductor',
@@ -42,6 +43,7 @@ export class CableConductorComponent implements OnInit {
   checked: string = 'No aplica';
   checked2: boolean = true;
 
+  mostrar: boolean = false;
   mostrarFaseR: boolean = false;
   mostrarFaseS: boolean = false;
   mostrarFaseT: boolean = false;
@@ -63,7 +65,13 @@ export class CableConductorComponent implements OnInit {
       .subscribe((formulario: Formulario) => {
         this.formulario = formulario;
         if (formulario.idCableConductor != null) {
-          this.cargarDatos(formulario.idCableConductor);
+
+      if(formulario.idCableConductor.empalmes.length >0 ){
+        
+        this.mostrar = true;
+      }
+      this.cargarDatos(formulario.idCableConductor);
+    
           //this.formCableConductor.patchValue(formulario.idCableConductor);
         }
         //   console.log(this.formulario);
@@ -81,16 +89,38 @@ export class CableConductorComponent implements OnInit {
   }
 
   cargarDatos(cableConductor: CableConductor) {
+    console.log(cableConductor);
+    this.cableConductor = cableConductor;
     this.formCableConductor.patchValue(cableConductor);
+    cableConductor.empalmes.forEach((empalme) => {
+      switch (empalme.fase) {
+        case 'R':
+          this.formFaseR.patchValue(empalme);
+          break;
+        case 'S':
+          this.formFaseS.patchValue(empalme);
+          break;
+        case 'T':
+          this.formFaseT.patchValue(empalme);
+          break;
+
+        default:
+          console.warn('No existe la fase del empalme');
+          break;
+      }
+    });
     this.empalmes = cableConductor.empalmes;
     this.deshilachados = cableConductor.deshilachado;
+         
   }
 
   guardarCableConductor() {
+    console.log(this.cableConductor);
     this.cableConductorService
       .save(this.cableConductor)
       .subscribe((cableConductor: CableConductor) => {
         this.formulario.idCableConductor = cableConductor;
+        this.obtenerFormulario(this.formulario.idInspeccion);
         this.guardarFormulario();
       });
   }
@@ -101,11 +131,19 @@ export class CableConductorComponent implements OnInit {
         this.formulario.idCableConductor.idCableConductor,
         empalme
       )
-      .subscribe((empalme: Empalme) => {
+      .subscribe((empalmeResul: Empalme) => {
+        this.cableConductorService
+          .asignarEmpalme(
+            this.formulario.idCableConductor.idCableConductor,
+            empalmeResul
+          )
+          .subscribe((data) => {
+            this.obtenerFormulario(this.formulario.idInspeccion);
+          });
         this.messageService.add({
           severity: 'info',
           summary: 'Empalme',
-          detail: `Se ha guardado correctamente el Empalme ${empalme.idEmpalme}`,
+          detail: `Se ha guardado correctamente el Empalme ${empalmeResul.idEmpalme}`,
         });
       });
   }
@@ -116,11 +154,19 @@ export class CableConductorComponent implements OnInit {
         this.formulario.idCableConductor.idCableConductor,
         deshilachado
       )
-      .subscribe((deshilachado: Deshilachado) => {
+      .subscribe((deshilachadoResul: Deshilachado) => {
+        this.cableConductorService
+          .asignarDeshilachado(
+            this.formulario.idCableConductor.idCableConductor,
+            deshilachadoResul
+          )
+          .subscribe((data) => {
+            this.obtenerFormulario(this.formulario.idInspeccion);
+          });
         this.messageService.add({
           severity: 'info',
           summary: 'Deshilachado',
-          detail: `Se ha guardado correctamente el Deshilachado ${deshilachado.idDeshilachado}`,
+          detail: `Se ha guardado correctamente el Deshilachado ${deshilachadoResul.idDeshilachado}`,
         });
       });
   }
@@ -159,53 +205,62 @@ export class CableConductorComponent implements OnInit {
   }
 
   next() {
-    this.cableConductor = this.formCableConductor.value;
-    this.cableConductorService
-      .save(this.cableConductor)
-      .subscribe((cableConductor: CableConductor) => {
-        this.formulario.idCableConductor = cableConductor;
-        this.formularioService
-          .save(this.formulario)
-          .subscribe((formulario: Formulario) => {
-            this.messageService.add({
-              severity: 'info',
-              summary: 'CableConductor',
-              detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
+    if (
+      this.cableConductor !== null &&
+      this.cableConductor.idCableConductor !== null
+    ) {
+      console.log('Entro en el SI');
+      this.cableConductor;
+      // Codigo en caso de que si
+    } else {
+      console.log('Entro en el NO');
+      // Codigo caso no
+      this.cableConductor = this.formCableConductor.value;
+      this.cableConductorService
+        .save(this.cableConductor)
+        .subscribe((cableConductor: CableConductor) => {
+          this.formulario.idCableConductor = cableConductor;
+          this.formularioService
+            .save(this.formulario)
+            .subscribe((formulario: Formulario) => {
+              this.messageService.add({
+                severity: 'info',
+                summary: 'CableConductor',
+                detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
+              });
             });
-          });
-      });
+        });
+    }
   }
 
-  // guardar cable conductor
-  //guardar la opcion seleccionada en la bd
-  // guardarlo entre la lista conductor
   nextPage() {
+    this.cableConductor = new CableConductor();
+    console.log(this.formCableConductor.value);
+    this.cableConductor = this.formCableConductor.value;
     if (
-      (this.buenEstado == true || this.embarrilado == true) &&
+      (this.cableConductor.buenEstadoConductor == true ||
+        this.cableConductor.embarrilado == true) &&
       this.deshilacha == false
     ) {
-      this.cableConductor = this.formCableConductor.value;
-      this.empalme = this.formEmpalme.value;
-      console.log((this.cableConductor = this.formCableConductor.value));
-      this.guardarCableConductor();
+      console.log('entro 1');
+       this.cableConductor = this.formCableConductor.value;
+       this.empalme = this.formEmpalme.value;
+       this.guardarCableConductor();
+
     } else if (
-      this.buenEstado == false &&
-      this.embarrilado == false &&
+      this.cableConductor.buenEstadoConductor == false &&
+      this.cableConductor.embarrilado == false &&
       this.deshilacha == true
     ) {
-      this.cableConductor = this.formCableConductor.value;
-      this.empalme = this.formEmpalme.value;
-      this.deshilachado = this.formDeshilachado.value;
-      let deshilacha: Deshilachado = this.formDeshilachado.value;
-      console.log((this.deshilachado = this.formDeshilachado.value));
-      console.log((this.cableConductor = this.formCableConductor.value));
-      // this.guardarDeshilachados(deshilacha);
-      this.guardarCableConductor();
-    }
+      console.log('entro 2');
+          this.cableConductor = this.formCableConductor.value;
+          this.empalme = this.formEmpalme.value;
+          this.deshilachado = this.formDeshilachado.value;
+          let deshilacha: Deshilachado = this.formDeshilachado.value;
+          // this.guardarDeshilachados(deshilacha);
+          this.guardarCableConductor();
 
-    // this.router.navigateByUrl(
-    //   `resumen/formulario/ver/${this.formulario.idInspeccion}/aislamiento/${this.formulario.idInspeccion}`
-    // );
+    }
   }
 
   prevPage() {
@@ -256,8 +311,8 @@ export class CableConductorComponent implements OnInit {
       deshilachado: new FormControl(),
       faseEmbarrilado: new FormControl(),
       cantidadEmbarrilado: new FormControl(),
-      observacionesCableConductor: new FormControl(),
-      boton: new FormControl(),
+      observacionesCableConductor: new FormControl(null, Validators.required),
+      // boton: new FormControl(),
     });
     this.formEmpalme = this.fb.group({
       idEmpalme: new FormControl(),
@@ -306,6 +361,8 @@ export class CableConductorComponent implements OnInit {
       { label: 'SI', value: true },
       { label: 'NO', value: false },
     ];
+
+  
   }
 
   get buenEstado() {

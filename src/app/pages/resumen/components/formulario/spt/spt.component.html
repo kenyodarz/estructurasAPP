@@ -96,7 +96,10 @@
             </div>
             <div class="p-col-12 p-md-6">
              <p-fieldset legend="UBICACIÓN BAJANTES Y SPT">
-              
+               <br>
+               <br>
+               <br>
+               <img alt="Card" src="assets/img/sptt.jpg">
              </p-fieldset>
             </div>
             </div>
@@ -121,7 +124,9 @@
        <ng-template pTemplate="footer">
             <div class="p-grid p-nogutter p-justify-between">
                 <p-button label="Back" icon="pi pi-angle-left" (onClick)="prevPage()"></p-button>
-                <p-button label="Next" icon="pi pi-angle-right" iconPos="right"  (onClick)="nextPage()"></p-button>
+                <p-button label="Next" icon="pi pi-angle-right" iconPos="right"  
+                [disabled]="formSpt.invalid"
+                (onClick)="nextPage()"></p-button>
             </div>
         </ng-template>
   </p-card>

@@ -1,0 +1,61 @@
+<br>
+<p>Información de las bases en buen estado</p>
+<p-table
+    #dt
+    [value]=""
+    [paginator]="true"
+    selectionMode="single" 
+  >
+  <br>
+ <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">#</th>
+        <th>N° OT</th>
+        <th>N° ESTRUCTURA</th>
+        <th>ANGULOS PRINCIPALES</th>
+        <th>BASE I</th>
+        <th>BASE II</th>
+        <th>BASE III</th>
+        <th>BASE IV</th>
+        <th>BASE V</th>
+        <th>OBSERVACIONES</th>
+      </tr>
+    </ng-template>
+     <ng-template pTemplate="body" let-rowIndex="rowIndex" let-estructura>
+      <tr [pSelectableRow]="estructura">
+        <td>{{ rowIndex + 1 }}</td>
+        <td>{{ estructura.ot }}</td>
+        <td>{{ estructura.numEstructura }}</td>
+        <td>{{ estructura.circuito }}</td>
+        <td>{{ estructura.circuito }}</td>
+        <td>{{ estructura.observaciones }}</td>
+        <!-- <td>{{ formulario.persona.nombrePersona }} {{ formulario.persona.apellidoPersona }}</td>
+        <td>{{ formulario.persona.cedulaPersona }}</td> -->
+        <!-- <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-eye"
+            class="p-button-rounded p-button-info p-mr-2"
+            (click)="onVerEstructura(estructura)"
+          ></button>
+        </td> -->
+      </tr>
+    </ng-template>
+
+     <ng-template pTemplate="summary">
+      <div style="text-align: left">
+        Registro Seleccionado:
+        {{
+          selectedEstructura
+            ? selectedEstructura.numEstructura +
+              " - " +
+              selectedEstructura.circuito   
+            : "Ninguno"
+        }}
+      </div></ng-template>
+
+</p-table>
+<br>
+<br> 
+<p>Estructuras en buen estado</p>
