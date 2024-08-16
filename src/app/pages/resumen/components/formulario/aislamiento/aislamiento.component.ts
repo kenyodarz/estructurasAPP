@@ -3,7 +3,7 @@ import { Formulario } from 'src/app/core/models/formulario';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { FormularioService } from 'src/app/core/services/formulario.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { AislamientoService } from 'src/app/core/services/aislamiento.service';
 import { Aislamiento } from 'src/app/core/models/aislamiento';
 import { Fase } from 'src/app/core/models/fase';
@@ -19,10 +19,10 @@ export class AislamientoComponent implements OnInit {
   fase: Fase = new Fase();
   fases: Fase[] = [];
   formulario: Formulario = new Formulario();
-  formAislamiento: FormGroup;
-  formFaseR: FormGroup;
-  formFaseS: FormGroup;
-  formFaseT: FormGroup;
+  formAislamiento: UntypedFormGroup;
+  formFaseR: UntypedFormGroup;
+  formFaseS: UntypedFormGroup;
+  formFaseT: UntypedFormGroup;
 
   tipo: any[];
   tipoCadena: any[];
@@ -42,7 +42,7 @@ export class AislamientoComponent implements OnInit {
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private router: Router,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private rutaActiva: ActivatedRoute
   ) {}
 
@@ -195,44 +195,44 @@ export class AislamientoComponent implements OnInit {
 
   ngOnInit(): void {
     this.formAislamiento = this.fb.group({
-      idAislamiento: new FormControl(),
-      fase: new FormControl(),
+      idAislamiento: new UntypedFormControl(),
+      fase: new UntypedFormControl(),
     });
 
     this.formFaseR = this.fb.group({
-      idFase: new FormControl(),
-      fase: new FormControl(null, Validators.required),
-      tipo: new FormControl(null, Validators.required),
-      clase: new FormControl(null, Validators.required),
-      buenEstado: new FormControl(null, Validators.required),
-      numAisladores: new FormControl(null, Validators.required),
-      tipoCadena: new FormControl(null, Validators.required),
-      puentes: new FormControl(null, Validators.required),
-      observaciones: new FormControl(null, Validators.required),
+      idFase: new UntypedFormControl(),
+      fase: new UntypedFormControl(null, Validators.required),
+      tipo: new UntypedFormControl(null, Validators.required),
+      clase: new UntypedFormControl(null, Validators.required),
+      buenEstado: new UntypedFormControl(null, Validators.required),
+      numAisladores: new UntypedFormControl(null, Validators.required),
+      tipoCadena: new UntypedFormControl(null, Validators.required),
+      puentes: new UntypedFormControl(null, Validators.required),
+      observaciones: new UntypedFormControl(null, Validators.required),
     });
 
     this.formFaseS = this.fb.group({
-      idFase: new FormControl(),
-      fase: new FormControl(null, Validators.required),
-      tipo: new FormControl(null, Validators.required),
-      clase: new FormControl(null, Validators.required),
-      buenEstado: new FormControl(null, Validators.required),
-      numAisladores: new FormControl(null, Validators.required),
-      tipoCadena: new FormControl(null, Validators.required),
-      puentes: new FormControl(null, Validators.required),
-      observaciones: new FormControl(null, Validators.required),
+      idFase: new UntypedFormControl(),
+      fase: new UntypedFormControl(null, Validators.required),
+      tipo: new UntypedFormControl(null, Validators.required),
+      clase: new UntypedFormControl(null, Validators.required),
+      buenEstado: new UntypedFormControl(null, Validators.required),
+      numAisladores: new UntypedFormControl(null, Validators.required),
+      tipoCadena: new UntypedFormControl(null, Validators.required),
+      puentes: new UntypedFormControl(null, Validators.required),
+      observaciones: new UntypedFormControl(null, Validators.required),
     });
 
     this.formFaseT = this.fb.group({
-      idFase: new FormControl(),
-      fase: new FormControl(null, Validators.required),
-      tipo: new FormControl(null, Validators.required),
-      clase: new FormControl(null, Validators.required),
-      buenEstado: new FormControl(null, Validators.required),
-      numAisladores: new FormControl(null, Validators.required),
-      tipoCadena: new FormControl(null, Validators.required),
-      puentes: new FormControl(null, Validators.required),
-      observaciones: new FormControl(null, Validators.required),
+      idFase: new UntypedFormControl(),
+      fase: new UntypedFormControl(null, Validators.required),
+      tipo: new UntypedFormControl(null, Validators.required),
+      clase: new UntypedFormControl(null, Validators.required),
+      buenEstado: new UntypedFormControl(null, Validators.required),
+      numAisladores: new UntypedFormControl(null, Validators.required),
+      tipoCadena: new UntypedFormControl(null, Validators.required),
+      puentes: new UntypedFormControl(null, Validators.required),
+      observaciones: new UntypedFormControl(null, Validators.required),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {

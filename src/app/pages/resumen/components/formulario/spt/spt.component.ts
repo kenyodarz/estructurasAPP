@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -14,7 +14,7 @@ import { SptService } from 'src/app/core/services/spt.service';
   styleUrls: ['./spt.component.css'],
 })
 export class SptComponent implements OnInit {
-  formSpt: FormGroup;
+  formSpt: UntypedFormGroup;
 
   formulario: Formulario = new Formulario();
   spt: Spt = new Spt();
@@ -25,7 +25,7 @@ export class SptComponent implements OnInit {
     private sptService: SptService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private rutaActiva: ActivatedRoute
   ) {}
@@ -101,17 +101,17 @@ export class SptComponent implements OnInit {
 
   ngOnInit(): void {
     this.formSpt = this.fb.group({
-      idSpt: new FormControl(),
-      tieneSPT: new FormControl(null, Validators.required),
-      calibreSPT: new FormControl(null, Validators.required),
-      tipoContrapeso: new FormControl(),
-      tipoAnilloContrapeso: new FormControl(),
-      tipoAnillo: new FormControl(),
-      cant: new FormControl(null, Validators.required),
-      tieneBajante: new FormControl(null, Validators.required),
-      tipoBajante: new FormControl(null, Validators.required),
-      calibreBajante: new FormControl(null, Validators.required),
-      observaciones: new FormControl(null, Validators.required),
+      idSpt: new UntypedFormControl(),
+      tieneSPT: new UntypedFormControl(null, Validators.required),
+      calibreSPT: new UntypedFormControl(null, Validators.required),
+      tipoContrapeso: new UntypedFormControl(),
+      tipoAnilloContrapeso: new UntypedFormControl(),
+      tipoAnillo: new UntypedFormControl(),
+      cant: new UntypedFormControl(null, Validators.required),
+      tieneBajante: new UntypedFormControl(null, Validators.required),
+      tipoBajante: new UntypedFormControl(null, Validators.required),
+      calibreBajante: new UntypedFormControl(null, Validators.required),
+      observaciones: new UntypedFormControl(null, Validators.required),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {

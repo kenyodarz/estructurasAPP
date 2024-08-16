@@ -1,7 +1,7 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormControl } from '@angular/forms';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, UntypedFormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 // PrimeNG
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { MenuItem } from 'primeng/api';
@@ -19,7 +19,7 @@ export class EstructurasComponent implements OnInit {
   estructura: Estructura = new Estructura();
   selectedEstructura: Estructura = null;
   estructuras: Estructura[] = [];
-  formEstructura: FormGroup;
+  formEstructura: UntypedFormGroup;
   displaySaveEditModal: boolean = false;
   stateOptions: any[];
 
@@ -30,7 +30,7 @@ export class EstructurasComponent implements OnInit {
     private estructuraService: EstructuraService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {}
 
   obtenerEstructuras() {
@@ -147,14 +147,14 @@ export class EstructurasComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerEstructuras();
     this.formEstructura = this.fb.group({
-      idEstructura: new FormControl(),
-      numEstructura: new FormControl(null, Validators.required),
-      circuito: new FormControl(null, Validators.required),
-      ubicacion: new FormControl(null, Validators.required),
-      predioPublico: new FormControl(null, Validators.required),
-      coordinadaX: new FormControl(null, Validators.required),
-      coordinadaY: new FormControl(null, Validators.required),
-      alturaSobreNivelMar: new FormControl(null, Validators.required),
+      idEstructura: new UntypedFormControl(),
+      numEstructura: new UntypedFormControl(null, Validators.required),
+      circuito: new UntypedFormControl(null, Validators.required),
+      ubicacion: new UntypedFormControl(null, Validators.required),
+      predioPublico: new UntypedFormControl(null, Validators.required),
+      coordinadaX: new UntypedFormControl(null, Validators.required),
+      coordinadaY: new UntypedFormControl(null, Validators.required),
+      alturaSobreNivelMar: new UntypedFormControl(null, Validators.required),
     });
     this.items = [
       {

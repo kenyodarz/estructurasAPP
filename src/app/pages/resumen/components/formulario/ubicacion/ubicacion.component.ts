@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Formulario } from 'src/app/core/models/formulario';
@@ -18,9 +18,9 @@ export class UbicacionComponent implements OnInit {
   formulario: Formulario = new Formulario();
   ubicacionOne: UbicacionOne = new UbicacionOne();
   ubicacion: Ubicacion = new Ubicacion();
-  formUbicacion: FormGroup;
-  formUbicacionOneI: FormGroup;
-  formUbicacionOneII: FormGroup;
+  formUbicacion: UntypedFormGroup;
+  formUbicacionOneI: UntypedFormGroup;
+  formUbicacionOneII: UntypedFormGroup;
 
   objetosOptions: any[];
   cities: any[];
@@ -33,7 +33,7 @@ export class UbicacionComponent implements OnInit {
     private ubicacionOneService: UbicacionOneService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private rutaActiva: ActivatedRoute
   ) {}
@@ -161,24 +161,24 @@ export class UbicacionComponent implements OnInit {
   }
   ngOnInit(): void {
     this.formUbicacion = this.fb.group({
-      idUbicacion: new FormControl(),
-      OneOrTwo: new FormControl(),
+      idUbicacion: new UntypedFormControl(),
+      OneOrTwo: new UntypedFormControl(),
     });
 
     this.formUbicacionOneI = this.fb.group({
-      idUbicacionOne: new FormControl(),
-      torredesde: new FormControl(null, Validators.required),
-      torrehasta: new FormControl(null, Validators.required),
-      hayObjetos: new FormControl(),
-      descripcion: new FormControl(null, Validators.required),
+      idUbicacionOne: new UntypedFormControl(),
+      torredesde: new UntypedFormControl(null, Validators.required),
+      torrehasta: new UntypedFormControl(null, Validators.required),
+      hayObjetos: new UntypedFormControl(),
+      descripcion: new UntypedFormControl(null, Validators.required),
     });
 
     this.formUbicacionOneII = this.fb.group({
-      idUbicacionOne: new FormControl(),
-      torredesde: new FormControl(null, Validators.required),
-      torrehasta: new FormControl(null, Validators.required),
-      hayObjetos: new FormControl(),
-      descripcion: new FormControl(null, Validators.required),
+      idUbicacionOne: new UntypedFormControl(),
+      torredesde: new UntypedFormControl(null, Validators.required),
+      torrehasta: new UntypedFormControl(null, Validators.required),
+      hayObjetos: new UntypedFormControl(),
+      descripcion: new UntypedFormControl(null, Validators.required),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Formulario } from 'src/app/core/models/formulario';
@@ -14,7 +14,7 @@ import { SelectItem } from 'primeng/api';
   styleUrls: ['./transposicion.component.css'],
 })
 export class TransposicionComponent implements OnInit {
-  formTransposicion: FormGroup;
+  formTransposicion: UntypedFormGroup;
 
   formulario: Formulario = new Formulario();
   transposicion: Transposicion = new Transposicion();
@@ -28,7 +28,7 @@ export class TransposicionComponent implements OnInit {
     private transposicionService: TransposicionService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private rutaActiva: ActivatedRoute
   ) {}
@@ -95,13 +95,13 @@ export class TransposicionComponent implements OnInit {
 
   ngOnInit(): void {
     this.formTransposicion = this.fb.group({
-      idTransposicion: new FormControl(),
-      faseEntrada1: new FormControl(null, Validators.required),
-      faseSalida1: new FormControl(null, Validators.required),
-      faseEntrada2: new FormControl(null, Validators.required),
-      faseSalida2: new FormControl(null, Validators.required),
-      faseEntrada3: new FormControl(null, Validators.required),
-      faseSalida3: new FormControl(null, Validators.required),
+      idTransposicion: new UntypedFormControl(),
+      faseEntrada1: new UntypedFormControl(null, Validators.required),
+      faseSalida1: new UntypedFormControl(null, Validators.required),
+      faseEntrada2: new UntypedFormControl(null, Validators.required),
+      faseSalida2: new UntypedFormControl(null, Validators.required),
+      faseEntrada3: new UntypedFormControl(null, Validators.required),
+      faseSalida3: new UntypedFormControl(null, Validators.required),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {

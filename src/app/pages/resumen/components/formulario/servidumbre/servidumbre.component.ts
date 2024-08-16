@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Formulario } from 'src/app/core/models/formulario';
@@ -13,7 +13,7 @@ import { ServidumbreService } from 'src/app/core/services/servidumbre.service';
   styleUrls: ['./servidumbre.component.css'],
 })
 export class ServidumbreComponent implements OnInit {
-  formServidumbre: FormGroup;
+  formServidumbre: UntypedFormGroup;
 
   formulario: Formulario = new Formulario();
   servidumbre: Servidumbre = new Servidumbre();
@@ -22,7 +22,7 @@ export class ServidumbreComponent implements OnInit {
     private servidumbreService: ServidumbreService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private rutaActiva: ActivatedRoute
   ) {}
@@ -107,17 +107,17 @@ export class ServidumbreComponent implements OnInit {
 
   ngOnInit(): void {
     this.formServidumbre = this.fb.group({
-      idServidumbre: new FormControl(),
-      podaconRiesgo: new FormControl(),
-      podasinRiesgo: new FormControl(),
-      cantArboles: new FormControl(),
-      obsPoda: new FormControl(null, Validators.required),
-      NoRequierePoda: new FormControl(),
-      obsServidumbre: new FormControl(null, Validators.required),
-      noAplica: new FormControl(),
-      invasion: new FormControl(),
-      pasoMT: new FormControl(),
-      pasoBT: new FormControl(),
+      idServidumbre: new UntypedFormControl(),
+      podaconRiesgo: new UntypedFormControl(),
+      podasinRiesgo: new UntypedFormControl(),
+      cantArboles: new UntypedFormControl(),
+      obsPoda: new UntypedFormControl(null, Validators.required),
+      NoRequierePoda: new UntypedFormControl(),
+      obsServidumbre: new UntypedFormControl(null, Validators.required),
+      noAplica: new UntypedFormControl(),
+      invasion: new UntypedFormControl(),
+      pasoMT: new UntypedFormControl(),
+      pasoBT: new UntypedFormControl(),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {

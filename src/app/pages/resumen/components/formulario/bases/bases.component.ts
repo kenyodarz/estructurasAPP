@@ -4,7 +4,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 
 // PrimeNG
 import { MessageService, ConfirmationService } from 'primeng/api';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { FormularioService } from 'src/app/core/services/formulario.service';
 import { BasesService } from 'src/app/core/services/bases.service';
 import { Bases } from 'src/app/core/models/bases';
@@ -17,11 +17,11 @@ import { SubBaseService } from 'src/app/core/services/subBase.service';
   styleUrls: ['./bases.component.css'],
 })
 export class BasesComponent implements OnInit {
-  formBases: FormGroup;
-  formSubBaseI: FormGroup;
-  formSubBaseII: FormGroup;
-  formSubBaseIII: FormGroup;
-  formSubBaseIV: FormGroup;
+  formBases: UntypedFormGroup;
+  formSubBaseI: UntypedFormGroup;
+  formSubBaseII: UntypedFormGroup;
+  formSubBaseIII: UntypedFormGroup;
+  formSubBaseIV: UntypedFormGroup;
 
   checked2: boolean = true;
   mostrar: boolean = false;
@@ -37,7 +37,7 @@ export class BasesComponent implements OnInit {
     private basesService: BasesService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private rutaActiva: ActivatedRoute
   ) {}
@@ -225,36 +225,36 @@ export class BasesComponent implements OnInit {
 
   ngOnInit(): void {
     this.formBases = this.fb.group({
-      idBase: new FormControl(),
-      buenEstado: new FormControl(null, Validators.required),
-      obsBase: new FormControl(null, Validators.required),
-      boton: new FormControl(),
+      idBase: new UntypedFormControl(),
+      buenEstado: new UntypedFormControl(null, Validators.required),
+      obsBase: new UntypedFormControl(null, Validators.required),
+      boton: new UntypedFormControl(),
     });
     this.formSubBaseI = this.fb.group({
-      idSubBase: new FormControl(null, Validators.required),
-      buena: new FormControl(),
-      enterrada: new FormControl(),
-      fracturada: new FormControl(),
+      idSubBase: new UntypedFormControl(null, Validators.required),
+      buena: new UntypedFormControl(),
+      enterrada: new UntypedFormControl(),
+      fracturada: new UntypedFormControl(),
     });
     this.formSubBaseII = this.fb.group({
-      idSubBase: new FormControl(null, Validators.required),
-      buena: new FormControl(),
-      enterrada: new FormControl(),
-      fracturada: new FormControl(),
+      idSubBase: new UntypedFormControl(null, Validators.required),
+      buena: new UntypedFormControl(),
+      enterrada: new UntypedFormControl(),
+      fracturada: new UntypedFormControl(),
     });
 
     this.formSubBaseIII = this.fb.group({
-      idSubBase: new FormControl(null, Validators.required),
-      buena: new FormControl(),
-      enterrada: new FormControl(),
-      fracturada: new FormControl(),
+      idSubBase: new UntypedFormControl(null, Validators.required),
+      buena: new UntypedFormControl(),
+      enterrada: new UntypedFormControl(),
+      fracturada: new UntypedFormControl(),
     });
 
     this.formSubBaseIV = this.fb.group({
-      idSubBase: new FormControl(null, Validators.required),
-      buena: new FormControl(),
-      enterrada: new FormControl(),
-      fracturada: new FormControl(),
+      idSubBase: new UntypedFormControl(null, Validators.required),
+      buena: new UntypedFormControl(),
+      enterrada: new UntypedFormControl(),
+      fracturada: new UntypedFormControl(),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {

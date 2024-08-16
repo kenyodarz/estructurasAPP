@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -30,12 +30,12 @@ export class CableConductorComponent implements OnInit {
   deshilachados: Deshilachado[] = [];
   deshilachado: Deshilachado = new Deshilachado();
 
-  formCableConductor: FormGroup;
-  formEmpalme: FormGroup;
-  formDeshilachado: FormGroup;
-  formFaseR: FormGroup;
-  formFaseS: FormGroup;
-  formFaseT: FormGroup;
+  formCableConductor: UntypedFormGroup;
+  formEmpalme: UntypedFormGroup;
+  formDeshilachado: UntypedFormGroup;
+  formFaseR: UntypedFormGroup;
+  formFaseS: UntypedFormGroup;
+  formFaseT: UntypedFormGroup;
 
   amortiguadorOpcions: any[];
   products: any[];
@@ -54,7 +54,7 @@ export class CableConductorComponent implements OnInit {
     private deshilachadoService: DeshilachadoService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private rutaActiva: ActivatedRoute
   ) {}
@@ -302,55 +302,55 @@ export class CableConductorComponent implements OnInit {
 
   ngOnInit(): void {
     this.formCableConductor = this.fb.group({
-      idCableConductor: new FormControl(),
-      calibreCableConductor: new FormControl(null, Validators.required),
-      amortiguadorCableConductor: new FormControl(null, Validators.required),
-      cantidadAmortiguadores: new FormControl(),
-      buenEstadoConductor: new FormControl(),
-      embarrilado: new FormControl(),
-      deshilachado: new FormControl(),
-      faseEmbarrilado: new FormControl(),
-      cantidadEmbarrilado: new FormControl(),
-      observacionesCableConductor: new FormControl(null, Validators.required),
+      idCableConductor: new UntypedFormControl(),
+      calibreCableConductor: new UntypedFormControl(null, Validators.required),
+      amortiguadorCableConductor: new UntypedFormControl(null, Validators.required),
+      cantidadAmortiguadores: new UntypedFormControl(),
+      buenEstadoConductor: new UntypedFormControl(),
+      embarrilado: new UntypedFormControl(),
+      deshilachado: new UntypedFormControl(),
+      faseEmbarrilado: new UntypedFormControl(),
+      cantidadEmbarrilado: new UntypedFormControl(),
+      observacionesCableConductor: new UntypedFormControl(null, Validators.required),
       // boton: new FormControl(),
     });
     this.formEmpalme = this.fb.group({
-      idEmpalme: new FormControl(),
-      fase: new FormControl(null, Validators.required),
-      cantidadManual: new FormControl(null, Validators.required),
-      cantidadFullTension: new FormControl(null, Validators.required),
-      cantidadBlindaje: new FormControl(null, Validators.required),
-      noAplica: new FormControl(),
+      idEmpalme: new UntypedFormControl(),
+      fase: new UntypedFormControl(null, Validators.required),
+      cantidadManual: new UntypedFormControl(null, Validators.required),
+      cantidadFullTension: new UntypedFormControl(null, Validators.required),
+      cantidadBlindaje: new UntypedFormControl(null, Validators.required),
+      noAplica: new UntypedFormControl(),
     });
     this.formFaseR = this.fb.group({
-      idEmpalme: new FormControl(),
-      fase: new FormControl(),
-      cantidadManual: new FormControl(null, Validators.required),
-      cantidadFullTension: new FormControl(null, Validators.required),
-      cantidadBlindaje: new FormControl(null, Validators.required),
-      noAplica: new FormControl(),
+      idEmpalme: new UntypedFormControl(),
+      fase: new UntypedFormControl(),
+      cantidadManual: new UntypedFormControl(null, Validators.required),
+      cantidadFullTension: new UntypedFormControl(null, Validators.required),
+      cantidadBlindaje: new UntypedFormControl(null, Validators.required),
+      noAplica: new UntypedFormControl(),
     });
     this.formFaseS = this.fb.group({
-      idEmpalme: new FormControl(),
-      fase: new FormControl(),
-      cantidadManual: new FormControl(null, Validators.required),
-      cantidadFullTension: new FormControl(null, Validators.required),
-      cantidadBlindaje: new FormControl(null, Validators.required),
-      noAplica: new FormControl(),
+      idEmpalme: new UntypedFormControl(),
+      fase: new UntypedFormControl(),
+      cantidadManual: new UntypedFormControl(null, Validators.required),
+      cantidadFullTension: new UntypedFormControl(null, Validators.required),
+      cantidadBlindaje: new UntypedFormControl(null, Validators.required),
+      noAplica: new UntypedFormControl(),
     });
     this.formFaseT = this.fb.group({
-      idEmpalme: new FormControl(),
-      fase: new FormControl(),
-      cantidadManual: new FormControl(null, Validators.required),
-      cantidadFullTension: new FormControl(null, Validators.required),
-      cantidadBlindaje: new FormControl(null, Validators.required),
-      noAplica: new FormControl(),
+      idEmpalme: new UntypedFormControl(),
+      fase: new UntypedFormControl(),
+      cantidadManual: new UntypedFormControl(null, Validators.required),
+      cantidadFullTension: new UntypedFormControl(null, Validators.required),
+      cantidadBlindaje: new UntypedFormControl(null, Validators.required),
+      noAplica: new UntypedFormControl(),
     });
     this.formDeshilachado = this.fb.group({
-      idDeshilachado: new FormControl(),
-      fase: new FormControl(null, Validators.required),
-      numeroHilos: new FormControl(null, Validators.required),
-      distancia: new FormControl(null, Validators.required),
+      idDeshilachado: new UntypedFormControl(),
+      fase: new UntypedFormControl(null, Validators.required),
+      numeroHilos: new UntypedFormControl(null, Validators.required),
+      distancia: new UntypedFormControl(null, Validators.required),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {

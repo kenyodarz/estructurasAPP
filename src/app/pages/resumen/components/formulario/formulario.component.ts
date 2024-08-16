@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormControl } from '@angular/forms';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, UntypedFormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 // PrimeNG
 import { MessageService, ConfirmationService } from 'primeng/api';
@@ -22,7 +22,7 @@ export class FormularioComponent implements OnInit {
   selectedFormulario: Formulario = null;
   formularios: Formulario[] = [];
   persona: Persona;
-  formFormulario: FormGroup;
+  formFormulario: UntypedFormGroup;
 
   title: string = '';
   displaySaveEditModal: boolean = false;
@@ -33,7 +33,7 @@ export class FormularioComponent implements OnInit {
     private token: TokenStorageService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router
   ) {}
 
@@ -180,35 +180,35 @@ export class FormularioComponent implements OnInit {
     this.obtenerFormularios();
     this.obtenerPersona(this.token.obtenerUsuario());
     this.formFormulario = this.fb.group({
-      idInspeccion: new FormControl(),
-      estructura: new FormControl(),
-      idApantallamiento: new FormControl(),
-      idTorres: new FormControl(),
-      idCableConductor: new FormControl(),
-      idAisladores: new FormControl(),
-      idBases: new FormControl(),
-      idSpt: new FormControl(),
-      idServidumbre: new FormControl(),
-      idtransposicion: new FormControl(),
-      idUbicacion: new FormControl(),
-      numeroOT: new FormControl(null, Validators.required),
-      observaciones: new FormControl(),
-      persona: new FormControl(null, Validators.required),
-      nombre2: new FormControl(),
-      nombre3: new FormControl(),
-      nombre4: new FormControl(),
-      nombre5: new FormControl(),
-      codigo1: new FormControl(),
-      codigo2: new FormControl(),
-      codigo3: new FormControl(),
-      codigo4: new FormControl(),
-      codigo5: new FormControl(),
-      fecha: new FormControl(),
-      movil: new FormControl(),
-      reviso: new FormControl(),
-      codigoRevisor: new FormControl(),
-      firma: new FormControl(),
-      fechaRevisor: new FormControl(),
+      idInspeccion: new UntypedFormControl(),
+      estructura: new UntypedFormControl(),
+      idApantallamiento: new UntypedFormControl(),
+      idTorres: new UntypedFormControl(),
+      idCableConductor: new UntypedFormControl(),
+      idAisladores: new UntypedFormControl(),
+      idBases: new UntypedFormControl(),
+      idSpt: new UntypedFormControl(),
+      idServidumbre: new UntypedFormControl(),
+      idtransposicion: new UntypedFormControl(),
+      idUbicacion: new UntypedFormControl(),
+      numeroOT: new UntypedFormControl(null, Validators.required),
+      observaciones: new UntypedFormControl(),
+      persona: new UntypedFormControl(null, Validators.required),
+      nombre2: new UntypedFormControl(),
+      nombre3: new UntypedFormControl(),
+      nombre4: new UntypedFormControl(),
+      nombre5: new UntypedFormControl(),
+      codigo1: new UntypedFormControl(),
+      codigo2: new UntypedFormControl(),
+      codigo3: new UntypedFormControl(),
+      codigo4: new UntypedFormControl(),
+      codigo5: new UntypedFormControl(),
+      fecha: new UntypedFormControl(),
+      movil: new UntypedFormControl(),
+      reviso: new UntypedFormControl(),
+      codigoRevisor: new UntypedFormControl(),
+      firma: new UntypedFormControl(),
+      fechaRevisor: new UntypedFormControl(),
     });
   }
 }

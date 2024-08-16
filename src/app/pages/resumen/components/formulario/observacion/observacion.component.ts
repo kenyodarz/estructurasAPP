@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -16,13 +16,13 @@ import { FormularioService } from 'src/app/core/services/formulario.service';
 export class ObservacionComponent implements OnInit {
   formulario: Formulario = new Formulario();
   persona: Persona = new Persona();
-  formObservacion: FormGroup;
-  formPersona: FormGroup;
+  formObservacion: UntypedFormGroup;
+  formPersona: UntypedFormGroup;
   constructor(
     private formularioService: FormularioService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private rutaActiva: ActivatedRoute
   ) {}
@@ -112,28 +112,28 @@ export class ObservacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.formObservacion = this.fb.group({
-      observaciones: new FormControl(null, Validators.required),
-      nombre2: new FormControl(null, Validators.required),
-      nombre3: new FormControl(null, Validators.required),
-      nombre4: new FormControl(null, Validators.required),
-      nombre5: new FormControl(null, Validators.required),
-      codigo2: new FormControl(null, Validators.required),
-      codigo3: new FormControl(null, Validators.required),
-      codigo4: new FormControl(null, Validators.required),
-      codigo5: new FormControl(null, Validators.required),
-      fecha: new FormControl(),
-      movil: new FormControl(),
-      reviso: new FormControl(null, Validators.required),
-      codigoRevisor: new FormControl(null, Validators.required),
-      firma: new FormControl(),
-      fechaRevisor: new FormControl(),
-      nombrePersona: new FormControl(null, Validators.required),
-      cedulaPersona: new FormControl(null, Validators.required),
+      observaciones: new UntypedFormControl(null, Validators.required),
+      nombre2: new UntypedFormControl(null, Validators.required),
+      nombre3: new UntypedFormControl(null, Validators.required),
+      nombre4: new UntypedFormControl(null, Validators.required),
+      nombre5: new UntypedFormControl(null, Validators.required),
+      codigo2: new UntypedFormControl(null, Validators.required),
+      codigo3: new UntypedFormControl(null, Validators.required),
+      codigo4: new UntypedFormControl(null, Validators.required),
+      codigo5: new UntypedFormControl(null, Validators.required),
+      fecha: new UntypedFormControl(),
+      movil: new UntypedFormControl(),
+      reviso: new UntypedFormControl(null, Validators.required),
+      codigoRevisor: new UntypedFormControl(null, Validators.required),
+      firma: new UntypedFormControl(),
+      fechaRevisor: new UntypedFormControl(),
+      nombrePersona: new UntypedFormControl(null, Validators.required),
+      cedulaPersona: new UntypedFormControl(null, Validators.required),
     });
     this.formPersona = this.fb.group({
-      nombrePersona: new FormControl(null, Validators.required),
-      apellidoPersona: new FormControl(null, Validators.required),
-      cedulaPersona: new FormControl(null, Validators.required),
+      nombrePersona: new UntypedFormControl(null, Validators.required),
+      apellidoPersona: new UntypedFormControl(null, Validators.required),
+      cedulaPersona: new UntypedFormControl(null, Validators.required),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {

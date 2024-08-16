@@ -8,9 +8,9 @@ import { MessageService, ConfirmationService } from 'primeng/api';
 import { EstructuraaService } from 'src/app/core/services/estructuraa.service';
 import { FormularioService } from 'src/app/core/services/formulario.service';
 import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { Estructuraa } from 'src/app/core/models/estructuraa';
@@ -29,7 +29,7 @@ export class EstructuraaComponent implements OnInit {
   vialOpcions: any[];
   nomenclaturaOpcions: any[];
 
-  formEstructuraa: FormGroup;
+  formEstructuraa: UntypedFormGroup;
 
   formulario: Formulario = new Formulario();
   estructuraa: Estructuraa = new Estructuraa();
@@ -39,7 +39,7 @@ export class EstructuraaComponent implements OnInit {
     private estruraaService: EstructuraaService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private rutaActiva: ActivatedRoute
   ) {}
@@ -103,15 +103,15 @@ export class EstructuraaComponent implements OnInit {
 
   ngOnInit(): void {
     this.formEstructuraa = this.fb.group({
-      idTorre: new FormControl(),
-      funcion: new FormControl(null, Validators.required),
-      tipo: new FormControl(null, Validators.required),
-      pintura: new FormControl(null, Validators.required),
-      estadoAngulos: new FormControl(null, Validators.required),
-      riesgoElectrico: new FormControl(null, Validators.required),
-      vial: new FormControl(null, Validators.required),
-      nomenclatura: new FormControl(null, Validators.required),
-      observaciones: new FormControl(null, Validators.required),
+      idTorre: new UntypedFormControl(),
+      funcion: new UntypedFormControl(null, Validators.required),
+      tipo: new UntypedFormControl(null, Validators.required),
+      pintura: new UntypedFormControl(null, Validators.required),
+      estadoAngulos: new UntypedFormControl(null, Validators.required),
+      riesgoElectrico: new UntypedFormControl(null, Validators.required),
+      vial: new UntypedFormControl(null, Validators.required),
+      nomenclatura: new UntypedFormControl(null, Validators.required),
+      observaciones: new UntypedFormControl(null, Validators.required),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {

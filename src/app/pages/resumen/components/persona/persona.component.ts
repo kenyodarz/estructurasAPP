@@ -1,7 +1,7 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormControl } from '@angular/forms';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, UntypedFormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 // PrimeNG
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { MenuItem } from 'primeng/api';
@@ -19,7 +19,7 @@ export class PersonaComponent implements OnInit {
   personaList: Persona[] = [];
   persona: Persona = new Persona();
   selectedPersona: Persona = null;
-  formPersona: FormGroup;
+  formPersona: UntypedFormGroup;
 
   value3: string;
   displaySaveEditModal: Boolean = false;
@@ -32,7 +32,7 @@ export class PersonaComponent implements OnInit {
     private personaService: PersonaService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {}
 
   obtenerPersonas(): void {
@@ -150,14 +150,14 @@ export class PersonaComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerPersonas();
     this.formPersona = this.fb.group({
-      cedulaPersona: new FormControl(null, Validators.required),
-      nombrePersona: new FormControl(null, Validators.required),
-      apellidoPersona: new FormControl(null, Validators.required),
-      telefonoPersona: new FormControl(null, Validators.required),
-      usuario: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required),
-      estadoActivo: new FormControl(null, Validators.required),
-      esAdministrador: new FormControl(null, Validators.required),
+      cedulaPersona: new UntypedFormControl(null, Validators.required),
+      nombrePersona: new UntypedFormControl(null, Validators.required),
+      apellidoPersona: new UntypedFormControl(null, Validators.required),
+      telefonoPersona: new UntypedFormControl(null, Validators.required),
+      usuario: new UntypedFormControl(null, Validators.required),
+      password: new UntypedFormControl(null, Validators.required),
+      estadoActivo: new UntypedFormControl(null, Validators.required),
+      esAdministrador: new UntypedFormControl(null, Validators.required),
     });
     this.items = [
       {

@@ -1,7 +1,7 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormControl } from '@angular/forms';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, UntypedFormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 // PrimeNG
 import { MessageService, ConfirmationService } from 'primeng/api';
@@ -27,9 +27,9 @@ export class ApantallamientoComponent implements OnInit {
   estado: Estado = new Estado();
   conector: Conector = new Conector();
 
-  formApantallamiento: FormGroup;
-  formEstado: FormGroup;
-  formConector: FormGroup;
+  formApantallamiento: UntypedFormGroup;
+  formEstado: UntypedFormGroup;
+  formConector: UntypedFormGroup;
 
   stateOptions: any[];
   paymentOptions: any[];
@@ -40,7 +40,7 @@ export class ApantallamientoComponent implements OnInit {
     private formularioService: FormularioService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private rutaActiva: ActivatedRoute
   ) {}
@@ -169,26 +169,26 @@ export class ApantallamientoComponent implements OnInit {
 
   ngOnInit(): void {
     this.formApantallamiento = this.fb.group({
-      idApantallamiento: new FormControl(),
-      cableGuarda: new FormControl(null, Validators.required),
-      tipoApantallamiento: new FormControl(null, Validators.required),
-      calibreApantallamiento: new FormControl(null, Validators.required),
-      observacionesApantallamiento: new FormControl(null, Validators.required),
+      idApantallamiento: new UntypedFormControl(),
+      cableGuarda: new UntypedFormControl(null, Validators.required),
+      tipoApantallamiento: new UntypedFormControl(null, Validators.required),
+      calibreApantallamiento: new UntypedFormControl(null, Validators.required),
+      observacionesApantallamiento: new UntypedFormControl(null, Validators.required),
     });
     this.formConector = this.fb.group({
-      sulfatados: new FormControl(),
-      quemados: new FormControl(),
-      reposicion: new FormControl(),
-      buenos: new FormControl(),
-      idConector: new FormControl(),
+      sulfatados: new UntypedFormControl(),
+      quemados: new UntypedFormControl(),
+      reposicion: new UntypedFormControl(),
+      buenos: new UntypedFormControl(),
+      idConector: new UntypedFormControl(),
     });
     this.formEstado = this.fb.group({
-      rotos: new FormControl(),
-      noTieneBlin: new FormControl(),
-      empalmeMalEstado: new FormControl(),
-      herrajeMalEstado: new FormControl(),
-      buenos: new FormControl(),
-      idEstado: new FormControl(),
+      rotos: new UntypedFormControl(),
+      noTieneBlin: new UntypedFormControl(),
+      empalmeMalEstado: new UntypedFormControl(),
+      herrajeMalEstado: new UntypedFormControl(),
+      buenos: new UntypedFormControl(),
+      idEstado: new UntypedFormControl(),
     });
 
     this.rutaActiva.params.subscribe((params: Params) => {

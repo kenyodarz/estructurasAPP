@@ -1,7 +1,7 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormControl } from '@angular/forms';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, UntypedFormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 // PrimeNG
 import { MessageService, ConfirmationService } from 'primeng/api';
@@ -20,7 +20,7 @@ import { Formulario } from 'src/app/core/models/formulario';
 export class InformacionComponent implements OnInit {
   estructura: Estructura = new Estructura();
   formulario: Formulario = new Formulario();
-  formInformacion: FormGroup;
+  formInformacion: UntypedFormGroup;
   stateOptions: { label: string; value: boolean }[];
 
   constructor(
@@ -28,7 +28,7 @@ export class InformacionComponent implements OnInit {
     private formularioService: FormularioService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private rutaActiva: ActivatedRoute
   ) {}
@@ -82,14 +82,14 @@ export class InformacionComponent implements OnInit {
       this.obtenerFormulario(params.id);
     });
     this.formInformacion = this.fb.group({
-      idEstructura: new FormControl(null, Validators.required),
-      numEstructura: new FormControl(null, Validators.required),
-      circuito: new FormControl(null, Validators.required),
-      ubicacion: new FormControl(null, Validators.required),
-      predioPublico: new FormControl(null, Validators.required),
-      coordinadaX: new FormControl(null, Validators.required),
-      coordinadaY: new FormControl(null, Validators.required),
-      alturaSobreNivelMar: new FormControl(null, Validators.required),
+      idEstructura: new UntypedFormControl(null, Validators.required),
+      numEstructura: new UntypedFormControl(null, Validators.required),
+      circuito: new UntypedFormControl(null, Validators.required),
+      ubicacion: new UntypedFormControl(null, Validators.required),
+      predioPublico: new UntypedFormControl(null, Validators.required),
+      coordinadaX: new UntypedFormControl(null, Validators.required),
+      coordinadaY: new UntypedFormControl(null, Validators.required),
+      alturaSobreNivelMar: new UntypedFormControl(null, Validators.required),
     });
     this.stateOptions = [
       { label: 'Publico', value: true },

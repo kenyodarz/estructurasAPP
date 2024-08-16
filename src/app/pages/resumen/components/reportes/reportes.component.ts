@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormControl } from '@angular/forms';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, UntypedFormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { MessageService, ConfirmationService } from 'primeng/api';
@@ -22,7 +22,7 @@ export class ReportesComponent implements OnInit {
   estructura: Estructura = new Estructura();
   selectedEstructura: Estructura = null;
   estructuras: Estructura[] = [];
-  formEstructura: FormGroup;
+  formEstructura: UntypedFormGroup;
   displaySaveEditModal: boolean = false;
   stateOptions: any[];
 
@@ -32,7 +32,7 @@ export class ReportesComponent implements OnInit {
     private estructuraService: EstructuraService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router
   ) {}
 
@@ -71,14 +71,14 @@ export class ReportesComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerEstructuras();
     this.formEstructura = this.fb.group({
-      idEstructura: new FormControl(),
-      numEstructura: new FormControl(),
-      circuito: new FormControl(),
-      ubicacion: new FormControl(),
-      predioPublico: new FormControl(),
-      coordinadaX: new FormControl(),
-      coordinadaY: new FormControl(),
-      alturaSobreNivelMar: new FormControl(),
+      idEstructura: new UntypedFormControl(),
+      numEstructura: new UntypedFormControl(),
+      circuito: new UntypedFormControl(),
+      ubicacion: new UntypedFormControl(),
+      predioPublico: new UntypedFormControl(),
+      coordinadaX: new UntypedFormControl(),
+      coordinadaY: new UntypedFormControl(),
+      alturaSobreNivelMar: new UntypedFormControl(),
     });
     // this.items = [
     //   {
