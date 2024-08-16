@@ -1,7 +1,7 @@
 // Angular
 import { NgModule } from '@angular/core';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,19 +15,12 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 
-@NgModule({
-  declarations: [AppComponent, LoginComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    PrimengModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-  ],
-  providers: [MessageService, ConfirmationService, DialogService],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
-})
+@NgModule({ declarations: [AppComponent, LoginComponent],
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA], imports: [BrowserModule,
+        AppRoutingModule,
+        PrimengModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule], providers: [MessageService, ConfirmationService, DialogService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}
