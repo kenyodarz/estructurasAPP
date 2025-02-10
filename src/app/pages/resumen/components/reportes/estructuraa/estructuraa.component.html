@@ -1,190 +1,176 @@
-<br>
+<br />
 <p>Información de estructura en mal estado</p>
 <p-table
-    #dt
-    [value]="estructuras"
-    [paginator]="true"
-    selectionMode="single"
-    
-    dataKey="idEstructura"
-    [rows]="10"
-    [responsive]="true"
-   
+  #dt
+  [value]="estructuras"
+  [paginator]="true"
+  selectionMode="single"
+  dataKey="idEstructura"
+  [rows]="10"
+  [responsive]="true"
+>
+  <br />
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 3rem">#</th>
+      <th>N° OT</th>
+      <th>N° ESTRUCTURA</th>
+      <th>FUNCIÓN</th>
+      <th>TIPO</th>
+      <th>PINTURA</th>
+      <th>ESTADO-ÁNGULOS</th>
+      <th>RIESGO ELÉCTRICO</th>
+      <th>VIAL</th>
+      <th>NOMENCLATURA</th>
+      <th>OBSERVACIONES</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body">
+    <tr>
+      <td>1</td>
+      <td>123562</td>
+      <td>E102</td>
+      <td>retencion</td>
+      <td>torre</td>
+      <td>no tiene</td>
+      <td>mal estado</td>
+      <td>mal estado</td>
+      <td>no aplica</td>
+      <td>buen estado</td>
+      <td>Ninguna</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>123564</td>
+      <td>E104</td>
+      <td>suspension</td>
+      <td>torre</td>
+      <td>mal estado</td>
+      <td>sueltos</td>
+      <td>mal estado</td>
+      <td>no tiene</td>
+      <td>no tiene</td>
+      <td>Ninguna</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>123565</td>
+      <td>E105</td>
+      <td>retencion</td>
+      <td>torre</td>
+      <td>no tiene</td>
+      <td>faltantes</td>
+      <td>no tiene</td>
+      <td>si tiene</td>
+      <td>mal estado</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>123569</td>
+      <td>E109</td>
+      <td>retencion</td>
+      <td>torre</td>
+      <td>no tiene</td>
+      <td>mal estado</td>
+      <td>mal estado</td>
+      <td>no aplica</td>
+      <td>buen estado</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>1235610</td>
+      <td>E110</td>
+      <td>retencion</td>
+      <td>tubo</td>
+      <td>mal estado</td>
+      <td>corrosion</td>
+      <td>no tiene</td>
+      <td>no tiene</td>
+      <td>no tiene</td>
+      <td>Ninguna</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>1235612</td>
+      <td>E112</td>
+      <td>suspencion</td>
+      <td>torre</td>
+      <td>mal estado</td>
+      <td>sueltos</td>
+      <td>mal estado</td>
+      <td>si tiene</td>
+      <td>mal estado</td>
+      <td>Ninguna</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>1235613</td>
+      <td>E113</td>
+      <td>retencion</td>
+      <td>tubo</td>
+      <td>mal estado</td>
+      <td>mal estado</td>
+      <td>mal estado</td>
+      <td>no tiene</td>
+      <td>buen estado</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>1235617</td>
+      <td>E117</td>
+      <td>suspencion</td>
+      <td>torre</td>
+      <td>mal estado</td>
+      <td>corrosion</td>
+      <td>no tiene</td>
+      <td>no aplica</td>
+      <td>buen estado</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>1235618</td>
+      <td>E118</td>
+      <td>suspencion</td>
+      <td>torre</td>
+      <td>no tiene</td>
+      <td>mal estado</td>
+      <td>no tiene</td>
+      <td>si tiene</td>
+      <td>no tiene</td>
+      <td>Ninguna</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>1235620</td>
+      <td>E120</td>
+      <td>suspencion</td>
+      <td>tubo</td>
+      <td>mal estado</td>
+      <td>buen estado</td>
+      <td>no tiene</td>
+      <td>no aplica</td>
+      <td>buen estado</td>
+      <td></td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="summary">
+    <div style="text-align: left">
+      Registro Seleccionado:
+      {{
+        selectedEstructura
+          ? selectedEstructura.numEstructura +
+            " - " +
+            selectedEstructura.circuito
+          : "Ninguno"
+      }}
+    </div></ng-template
   >
-  <br>
- <ng-template pTemplate="header">
-      <tr>
-        <th style="width: 3rem">#</th>
-        <th>N° OT</th>
-        <th>N° ESTRUCTURA</th>
-        <th>FUNCIÓN</th>
-        <th>TIPO</th>
-        <th>PINTURA</th>
-        <th>ESTADO-ÁNGULOS</th>
-        <th>RIESGO ELÉCTRICO</th>
-        <th>VIAL</th>
-        <th>NOMENCLATURA</th>
-        <th>OBSERVACIONES</th>
-      </tr>
-    </ng-template>
-     <ng-template pTemplate="body" >
-      <tr>    
-        <td>1</td>  
-       <td>123562</td>
-       <td>E102</td>
-       <td>retencion</td>
-       <td>torre</td>
-       <td>no tiene</td>
-       <td>mal estado</td>
-       <td>mal estado</td>
-       <td>no aplica</td>
-       <td>buen estado</td>
-       <td>Ninguna</td>
-       
-      </tr>
-            <tr>   
-              <td>2</td>   
-       <td>123564</td>
-       <td>E104</td>
-       <td>suspension</td>
-       <td>torre</td>
-       <td>mal estado</td>
-       <td>sueltos</td>
-       <td>mal estado</td>
-       <td>no tiene</td>
-       <td>no tiene</td>
-       <td>Ninguna</td>
-       
-      </tr>
-            <tr>    
-              <td>3</td>  
-       <td>123565</td>
-       <td>E105</td>
-       <td>retencion</td>
-       <td>torre</td>
-       <td>no tiene</td>
-       <td>faltantes</td>
-       <td>no tiene</td>
-       <td>si tiene</td>
-       <td>mal estado</td>
-       <td></td>
-       
-      </tr>
-      <tr>    
-        <td>4</td>  
-       <td>123569</td>
-       <td>E109</td>
-       <td>retencion</td>
-       <td>torre</td>
-       <td>no tiene</td>
-       <td>mal estado</td>
-       <td>mal estado</td>
-       <td>no aplica</td>
-       <td>buen estado</td>
-       <td></td>
-       
-      </tr>
-      <tr> 
-        <td>5</td>     
-       <td>1235610</td>
-       <td>E110</td>
-       <td>retencion</td>
-       <td>tubo</td>
-       <td>mal estado</td>
-       <td>corrosion</td>
-       <td>no tiene</td>
-       <td>no tiene</td>
-       <td>no tiene</td>
-       <td>Ninguna</td>
-       
-      </tr>
-      <tr>     
-        <td>6</td> 
-       <td>1235612</td>
-       <td>E112</td>
-       <td>suspencion</td>
-       <td>torre</td>
-       <td>mal estado</td>
-       <td>sueltos</td>
-       <td>mal estado</td>
-       <td>si tiene</td>
-       <td>mal estado</td>
-       <td>Ninguna</td>
-       
-      </tr>
-      <tr>      
-        <td>7</td>
-       <td>1235613</td>
-       <td>E113</td>
-       <td>retencion</td>
-       <td>tubo</td>
-       <td>mal estado</td>
-       <td>mal estado</td>
-       <td>mal estado</td>
-       <td>no tiene</td>
-       <td>buen estado</td>
-       <td></td>
-       
-      </tr>
-      <tr>      
-        <td>8</td>
-       <td>1235617</td>
-       <td>E117</td>
-       <td>suspencion</td>
-       <td>torre</td>
-       <td>mal estado</td>
-       <td>corrosion</td>
-       <td>no tiene</td>
-       <td>no aplica</td>
-       <td>buen estado</td>
-       <td></td>
-       
-      </tr>
-      <tr>   
-        <td>9</td>   
-       <td>1235618</td>
-       <td>E118</td>
-       <td>suspencion</td>
-       <td>torre</td>
-       <td>no tiene</td>
-       <td>mal estado</td>
-       <td>no tiene</td>
-       <td>si tiene</td>
-       <td>no tiene</td>
-       <td>Ninguna</td>
-       
-      </tr>
-      <tr>   
-        <td>10</td>   
-       <td>1235620</td>
-       <td>E120</td>
-       <td>suspencion</td>
-       <td>tubo</td>
-       <td>mal estado</td>
-       <td>buen estado</td>
-       <td>no tiene</td>
-       <td>no aplica</td>
-       <td>buen estado</td>
-       <td></td>
-       
-      </tr>
-
-      
-    </ng-template>
-
-     <ng-template pTemplate="summary">
-      <div style="text-align: left">
-        Registro Seleccionado:
-        {{
-          selectedEstructura
-            ? selectedEstructura.numEstructura +
-              " - " +
-              selectedEstructura.circuito   
-            : "Ninguno"
-        }}
-      </div></ng-template>
-
 </p-table>
-<br>
-<br> 
+<br />
+<br />
 <p>Estructuras en buen estado</p>

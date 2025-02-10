@@ -19,7 +19,7 @@ export class FormularioService extends CommonService<Formulario, string> {
   }
   guardarObservacionesConInspeccion(
     idInspeccion: string,
-    observacion: Formulario
+    observacion: Formulario,
   ): Observable<Formulario> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
@@ -28,7 +28,7 @@ export class FormularioService extends CommonService<Formulario, string> {
       JSON.stringify(observacion),
       {
         headers: headers,
-      }
+      },
     );
   }
 }

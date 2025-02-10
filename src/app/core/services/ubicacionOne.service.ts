@@ -24,7 +24,7 @@ export class UbicacionOneService extends CommonService<UbicacionOne, string> {
 
   guardarUbicacionOneconUbicacion(
     idUbicacion: string,
-    ubicacionOne: UbicacionOne
+    ubicacionOne: UbicacionOne,
   ): Observable<UbicacionOne> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
@@ -33,7 +33,7 @@ export class UbicacionOneService extends CommonService<UbicacionOne, string> {
       JSON.stringify(ubicacionOne),
       {
         headers: headers,
-      }
+      },
     );
   }
 }

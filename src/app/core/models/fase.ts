@@ -1,4 +1,4 @@
-import { Aislamiento } from "./aislamiento";
+import { Aislamiento } from './aislamiento';
 
 export class Fase {
   constructor(
@@ -11,6 +11,6 @@ export class Fase {
     public tipoCadena: string = null,
     public puentes: string = null,
     public observaciones: string = null,
-    public Aislamiento: Aislamiento = null
+    public Aislamiento: Aislamiento = null,
   ) {}
 }

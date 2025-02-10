@@ -18,9 +18,12 @@ export class EstructuraService extends CommonService<Estructura, string> {
     super(http);
   }
 
-  buscarTorresPorNumero(numEstrutura: String, circuito: String): Observable<Estructura>{
+  buscarTorresPorNumero(
+    numEstrutura: String,
+    circuito: String,
+  ): Observable<Estructura> {
     return this.http.get<Estructura>(
-      `${this.API_URL}numero/${numEstrutura}/${circuito}`
+      `${this.API_URL}numero/${numEstrutura}/${circuito}`,
     );
   }
 }

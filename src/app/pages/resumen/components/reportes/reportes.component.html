@@ -1,7 +1,6 @@
 <p-panel header="Administración de Reporte">
-
- <p-table
-  #dt
+  <p-table
+    #dt
     [value]="estructuras"
     [paginator]="true"
     selectionMode="single"
@@ -9,28 +8,28 @@
     dataKey="idEstructura"
     [rows]="10"
     [responsive]="true"
-    [globalFilterFields]="['numEstructura',  'ubicacion']">
-
-      <ng-template pTemplate="caption">
+    [globalFilterFields]="['numEstructura', 'ubicacion']"
+  >
+    <ng-template pTemplate="caption">
       <div class="p-d-flex p-ai-center p-jc-between">
-        <div class="p-d-flex p-ai-center ">
-        <button
-          pButton
-          pRipple
-          label="Estructuras en buen estado"
-          icon="pi pi-plus"
-          class="p-button-outlined p-button-success p-mr-2 "
-          (click)="onVerEstructurasBuenas()"
-        ></button>
-        
-        <button
-          pButton
-          pRipple
-          label="Estructuras en mal estado"
-          icon="pi pi-times"
-          class="p-button-outlined p-button-danger p-mr-2"
-           (click)="onVerEstructurasMalas()"
-        ></button>
+        <div class="p-d-flex p-ai-center">
+          <button
+            pButton
+            pRipple
+            label="Estructuras en buen estado"
+            icon="pi pi-plus"
+            class="p-button-outlined p-button-success p-mr-2"
+            (click)="onVerEstructurasBuenas()"
+          ></button>
+
+          <button
+            pButton
+            pRipple
+            label="Estructuras en mal estado"
+            icon="pi pi-times"
+            class="p-button-outlined p-button-danger p-mr-2"
+            (click)="onVerEstructurasMalas()"
+          ></button>
         </div>
         <div style="text-align: right">
           <i class="pi pi-search" style="margin: 4px 4px 0 0"></i>
@@ -44,9 +43,7 @@
           />
         </div>
       </div>
-      
     </ng-template>
-
 
     <!-- <ng-template pTemplate="caption">
       <p-toolbar>
@@ -72,7 +69,7 @@
 </p-toolbar>
     </ng-template> -->
 
-     <ng-template pTemplate="header">
+    <ng-template pTemplate="header">
       <tr>
         <th style="width: 3rem">#</th>
         <th>N° ESTRUCTURA</th>
@@ -82,7 +79,7 @@
       </tr>
     </ng-template>
 
-     <ng-template pTemplate="body" let-rowIndex="rowIndex" let-estructura>
+    <ng-template pTemplate="body" let-rowIndex="rowIndex" let-estructura>
       <tr [pSelectableRow]="estructura">
         <td>{{ rowIndex + 1 }}</td>
         <td>{{ estructura.numEstructura }}</td>
@@ -107,10 +104,10 @@
           selectedEstructura
             ? selectedEstructura.numEstructura +
               " - " +
-              selectedEstructura.circuito   
+              selectedEstructura.circuito
             : "Ninguno"
         }}
       </div></ng-template
     >
- </p-table>
+  </p-table>
 </p-panel>

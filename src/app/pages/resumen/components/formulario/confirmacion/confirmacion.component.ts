@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Formulario } from 'src/app/core/models/formulario';
@@ -40,7 +45,7 @@ export class ConfirmacionComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
     private router: Router,
-    private rutaActiva: ActivatedRoute
+    private rutaActiva: ActivatedRoute,
   ) {}
 
   obtenerFormulario(idInspeccion: string) {
@@ -56,7 +61,7 @@ export class ConfirmacionComponent implements OnInit {
             this.formConfirmacion.patchValue(formulario.idTorres);
             this.formConfirmacion.patchValue(formulario.idCableConductor);
             this.cargarDatos(formulario);
-            
+
             console.log(this.formConfirmacion.value);
           }
           // Aca va el nuevo Formulario
@@ -113,28 +118,27 @@ export class ConfirmacionComponent implements OnInit {
 
   prevPage() {
     this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/observacion/${this.formulario.idInspeccion}`
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/observacion/${this.formulario.idInspeccion}`,
     );
   }
-  nextPage(){
-    console.log("ingreso");
-     this.confirmationService.confirm({
-       message: '¿Está seguro que desea terminar el diligenciamiento de inspeccion por estructura?',
-       accept: () => {
-          this.formularioService
-            .save(this.formulario)
-            .subscribe((formulario: Formulario) => {
-              this.messageService.add({
-                severity: 'info',
-                summary: 'Información',
-                detail: `La Inspección ${formulario.idInspeccion} ha finalizado correctamente`,
-              });
-               this.router.navigateByUrl(
-                 `resumen/formulario`
-               );
-             });
-       },
-     });
+  nextPage() {
+    console.log('ingreso');
+    this.confirmationService.confirm({
+      message:
+        '¿Está seguro que desea terminar el diligenciamiento de inspeccion por estructura?',
+      accept: () => {
+        this.formularioService
+          .save(this.formulario)
+          .subscribe((formulario: Formulario) => {
+            this.messageService.add({
+              severity: 'info',
+              summary: 'Información',
+              detail: `La Inspección ${formulario.idInspeccion} ha finalizado correctamente`,
+            });
+            this.router.navigateByUrl(`resumen/formulario`);
+          });
+      },
+    });
   }
 
   ngOnInit(): void {
@@ -162,7 +166,10 @@ export class ConfirmacionComponent implements OnInit {
       observaciones: new UntypedFormControl(null, Validators.required),
       idCableConductor: new UntypedFormControl(),
       calibreCableConductor: new UntypedFormControl(null, Validators.required),
-      amortiguadorCableConductor: new UntypedFormControl(null, Validators.required),
+      amortiguadorCableConductor: new UntypedFormControl(
+        null,
+        Validators.required,
+      ),
       cantidadAmortiguadores: new UntypedFormControl(),
       observacionesCableConductor: new UntypedFormControl(),
       idAisladores: new UntypedFormControl(),
@@ -288,29 +295,29 @@ export class ConfirmacionComponent implements OnInit {
       { label: 'SI', value: true },
       { label: 'NO', value: false },
     ];
-      this.tipo = [
-        { label: 'POLIMÉRICO', value: 'polimerico' },
-        { label: 'PORCELANA', value: 'porcelana' },
-        { label: 'VIDRIO', value: 'vidrio' },
-        { label: 'LINE POST', value: 'line' },
-      ];
+    this.tipo = [
+      { label: 'POLIMÉRICO', value: 'polimerico' },
+      { label: 'PORCELANA', value: 'porcelana' },
+      { label: 'VIDRIO', value: 'vidrio' },
+      { label: 'LINE POST', value: 'line' },
+    ];
 
-      this.clase = [
-        { label: 'CUENCA', value: 'cuenca' },
-        { label: 'CLEVIS', value: 'clevis' },
-      ];
+    this.clase = [
+      { label: 'CUENCA', value: 'cuenca' },
+      { label: 'CLEVIS', value: 'clevis' },
+    ];
 
-      this.tipoCadena = [
-        { label: 'SENCILLA', value: 'sencilla' },
-        { label: 'DOBLE', value: 'doble' },
-      ];
+    this.tipoCadena = [
+      { label: 'SENCILLA', value: 'sencilla' },
+      { label: 'DOBLE', value: 'doble' },
+    ];
 
-      this.puentes = [
-        { label: 'CONTINUO', value: 'continuo' },
-        { label: 'ENTIZADO', value: 'entizado' },
-        { label: 'BLINDAJE', value: 'blindaje' },
-        { label: 'CONECTOR BIMETALICO', value: 'bimetalico' },
-        { label: 'CONECTOR COMPRESIÓN', value: 'compresion' },
-      ];
+    this.puentes = [
+      { label: 'CONTINUO', value: 'continuo' },
+      { label: 'ENTIZADO', value: 'entizado' },
+      { label: 'BLINDAJE', value: 'blindaje' },
+      { label: 'CONECTOR BIMETALICO', value: 'bimetalico' },
+      { label: 'CONECTOR COMPRESIÓN', value: 'compresion' },
+    ];
   }
 }

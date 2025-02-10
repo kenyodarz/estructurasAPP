@@ -7,6 +7,6 @@ export class Persona {
     public usuario: string = null,
     public password: string = null,
     public estadoActivo: boolean = null,
-    public esAdministrador: boolean = null
+    public esAdministrador: boolean = null,
   ) {}
 }

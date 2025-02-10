@@ -1,12 +1,12 @@
 <p-panel header="Estructuras en buen estado">
-   <p-menubar [model]="items"></p-menubar>
+  <p-menubar [model]="items"></p-menubar>
   <!-- <div class="stepsdemo-content">
   <div class="card">
     <p-steps [model]="items" [readonly]="true"></p-steps>
   </div>
 </div> -->
-<router-outlet></router-outlet>
-<p-table
+  <router-outlet></router-outlet>
+  <p-table
     #dt
     [value]="estructuras"
     [paginator]="true"
@@ -15,9 +15,9 @@
     dataKey="idEstructura"
     [rows]="10"
     [responsive]="true"
-    [globalFilterFields]="['numEstructura',  'ubicacion']"
+    [globalFilterFields]="['numEstructura', 'ubicacion']"
   >
-   <ng-template pTemplate="header">
+    <ng-template pTemplate="header">
       <tr>
         <th style="width: 3rem">#</th>
         <th>N° OT</th>
@@ -28,8 +28,8 @@
       </tr>
     </ng-template>
 
-          <ng-template pTemplate="body" >
-      <tr >
+    <ng-template pTemplate="body">
+      <tr>
         <td>1</td>
         <td>1235611</td>
         <td>E111</td>
@@ -118,18 +118,17 @@
       </tr>
     </ng-template>
 
-
-      <ng-template pTemplate="summary">
+    <ng-template pTemplate="summary">
       <div style="text-align: left">
         Registro Seleccionado:
         {{
           selectedEstructura
             ? selectedEstructura.numEstructura +
               " - " +
-              selectedEstructura.circuito   
+              selectedEstructura.circuito
             : "Ninguno"
         }}
       </div></ng-template
     >
-</p-table>
+  </p-table>
 </p-panel>

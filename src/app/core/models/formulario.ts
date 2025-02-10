@@ -1,14 +1,14 @@
-import { Aislamiento } from "./aislamiento";
-import { Apantallamiento } from "./apantallamiento";
-import { Bases } from "./bases";
-import { CableConductor } from "./cableConductor";
-import { Estructura } from "./estructura";
-import { Estructuraa } from "./estructuraa";
-import { Persona } from "./persona";
-import { Servidumbre } from "./servidumbre";
-import { Spt } from "./spt";
-import { Transposicion } from "./transposicion";
-import { Ubicacion } from "./ubicacion";
+import { Aislamiento } from './aislamiento';
+import { Apantallamiento } from './apantallamiento';
+import { Bases } from './bases';
+import { CableConductor } from './cableConductor';
+import { Estructura } from './estructura';
+import { Estructuraa } from './estructuraa';
+import { Persona } from './persona';
+import { Servidumbre } from './servidumbre';
+import { Spt } from './spt';
+import { Transposicion } from './transposicion';
+import { Ubicacion } from './ubicacion';
 
 export class Formulario {
   constructor(
@@ -40,6 +40,6 @@ export class Formulario {
     public reviso: string = null,
     public codigoRevisor: string = null,
     public firma: string = null,
-    public fechaRevisor: Date = null
+    public fechaRevisor: Date = null,
   ) {}
 }

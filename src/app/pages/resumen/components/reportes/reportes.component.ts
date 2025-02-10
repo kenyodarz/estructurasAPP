@@ -33,7 +33,7 @@ export class ReportesComponent implements OnInit {
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
-    private router: Router
+    private router: Router,
   ) {}
 
   obtenerEstructuras() {
@@ -60,12 +60,12 @@ export class ReportesComponent implements OnInit {
     this.router.navigateByUrl('resumen/reportes' + estructura);
   }
 
-  onVerEstructurasBuenas(){
+  onVerEstructurasBuenas() {
     this.router.navigateByUrl('resumen/reportes/estructurasBuenas');
   }
 
-  onVerEstructurasMalas(){
-     this.router.navigateByUrl('resumen/reportes/estructurasMalas');
+  onVerEstructurasMalas() {
+    this.router.navigateByUrl('resumen/reportes/estructurasMalas');
   }
 
   ngOnInit(): void {
@@ -84,7 +84,7 @@ export class ReportesComponent implements OnInit {
     //   {
     //     label: 'Estructuras en mal estado',
     //     // icon: '',
-        
+
     //     routerLink: ['/resumen/reportes/estructurasMalas'],
     //   },
     //   {
@@ -94,6 +94,5 @@ export class ReportesComponent implements OnInit {
     //    routerLink: ['/resumen/reportes/estructurasBuenas'],
     //   },
     // ];
-    
   }
 }

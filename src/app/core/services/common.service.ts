@@ -22,7 +22,7 @@ export abstract class CommonService<E, ID> {
     });
   }
 
-  delete(id: ID): Observable<E>{
+  delete(id: ID): Observable<E> {
     return this.http.get<E>(this.API_URL + 'delete/' + id);
   }
 }

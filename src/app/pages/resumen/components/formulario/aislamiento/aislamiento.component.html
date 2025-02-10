@@ -3,296 +3,329 @@
   <p-card>
     <p-fieldset legend="AISLAMIENTO">
       <ng-template pTemplate="content">
-       
-          <div class="card">
-             <div class="p-grid p-fluid">
+        <div class="card">
+          <div class="p-grid p-fluid">
             <div class="p-col-12 p-md-12">
-            <p-button  *ngIf="!mostrar" label="Fases" (click)="next()" (click)="mostrar = true"></p-button>
-            
-            <p-accordion 
-            *ngIf="mostrar"
-              (onClose)="onTabClose($event)"
-              (onOpen)="onTabOpen($event)"
-              
-            >
-              <p-accordionTab header="FASE R">
-                <form [formGroup]="formFaseR">
-                  <div class="p-grid p-fluid">
-                    <div class="p-col-12 p-md-1">
-                      <h4>TIPO:</h4>
-                    </div>
-                    <div class="p-col-12 p-md-11">
-                      <div class="p-field">
-                        <p-selectButton
-                          [options]="tipo"
-                          formControlName="tipo"
-                          optionLabel="label"
-                          optionValue="value"
-                        ></p-selectButton>
-                      </div>
-                    </div>
+              <p-button
+                *ngIf="!mostrar"
+                label="Fases"
+                (click)="next()"
+                (click)="mostrar = true"
+              ></p-button>
 
-                    <div class="p-col-12 p-md-1">
-                      <h4>CLASE:</h4>
-                    </div>
-                    <div class="p-col-12 p-md-5">
-                      <div class="p-field">
-                        <p-selectButton
-                          [options]="clase"
-                          formControlName="clase"
-                          optionLabel="label"
-                          optionValue="value"
-                        ></p-selectButton>
-                      </div>
-                    </div>
-                    <div class="p-col-12 p-md-3">
-                      <h4>N° AISLADORES POR CADENA:</h4>
-                    </div>
-                    <div class="p-col-12 p-md-2">
-                      <input type="text" pInputText formControlName="numAisladores"/>
-                    </div>
-                    <div class="p-col-12 p-md-1">
-                      <p-button icon="pi pi-check" (click)="next()"></p-button>
-                    </div>
-
-                    <div class="p-col-12 p-md-2">
-                      <h4>TIPO DE CADENA:</h4>
-                    </div>
-                    <div class="p-col-12 p-md-5">
-                      <p-selectButton
-                        [options]="tipoCadena"
-                        formControlName="tipoCadena"
-                        optionLabel="label"
-                        optionValue="value"
-                      ></p-selectButton>
-                    </div>
-                    <div class="p-col-12 p-md-2">
-                      <div class="p-field-checkbox">
-                        <p-checkbox binary="true"  formControlName="buenEstado"></p-checkbox>
-                        <label for="bu">BUEN ESTADO</label>
-                      </div>
-                    </div>
-                    <div class="p-col-12 p-md-12">
-                      <p-fieldset legend="PUENTES">
-                        <div class="p-field">
-                          <p-selectButton
-                            [options]="puentes"
-                            formControlName="puentes"
-                            optionLabel="label"
-                            optionValue="value"
-                          ></p-selectButton>
-                        </div>
-                      </p-fieldset>
-                    </div>
-                    <div class="p-col-12 p-md-12">
-                      <p-fieldset legend="OBSERVACIONES">
-                        <div class="p-col-12 p-md-12">
-                          <textarea
-                            rows="5"
-                            cols="30"
-                            pInputTextarea
-                            autoResize="autoResize"
-                            formControlName="observaciones"
-                          ></textarea>
-                        </div>
-                      </p-fieldset>
-                    </div>
-                    <p-button
-                      label="Agregar"
-                      icon="pi pi-check"
-                      (click)="guardarFaseR()"
-                    ></p-button>
-                  </div>
-                </form>
-              </p-accordionTab>
-              <p-accordionTab header="FASE S">
-                <form [formGroup]="formFaseS">
-                  <div class="p-grid p-fluid">
-                    <div class="p-col-12 p-md-1">
-                      <h4>TIPO:</h4>
-                    </div>
-                    <div class="p-col-12 p-md-11">
-                      <div class="p-field">
-                        <p-selectButton
-                          [options]="tipo"
-                          formControlName="tipo"
-                          optionLabel="label"
-                          optionValue="value"
-                        ></p-selectButton>
-                      </div>
-                    </div>
-
-                    <div class="p-col-12 p-md-1">
-                      <h4>CLASE:</h4>
-                    </div>
-                    <div class="p-col-12 p-md-5">
-                      <div class="p-field">
-                        <p-selectButton
-                          [options]="clase"
-                          formControlName="clase"
-                          optionLabel="label"
-                          optionValue="value"
-                        ></p-selectButton>
-                      </div>
-                    </div>
-                    <div class="p-col-12 p-md-3">
-                      <h4>N° AISLADORES POR CADENA:</h4>
-                    </div>
-                    <div class="p-col-12 p-md-2">
-                      <input type="text" pInputText formControlName="numAisladores"/>
-                    </div>
-                    <div class="p-col-12 p-md-1">
-                      <p-button icon="pi pi-check" (click)="next()"></p-button>
-                    </div>
-
-                    <div class="p-col-12 p-md-2">
-                      <h4>TIPO DE CADENA:</h4>
-                    </div>
-                    <div class="p-col-12 p-md-5">
-                      <p-selectButton
-                        [options]="tipoCadena"
-                        formControlName="tipoCadena"
-                        optionLabel="label"
-                        optionValue="value"
-                      ></p-selectButton>
-                    </div>
-                    <div class="p-col-12 p-md-2">
-                      <div class="p-field-checkbox">
-                        <p-checkbox binary="true"  formControlName="buenEstado"></p-checkbox>
-                        <label for="bu">BUEN ESTADO</label>
-                      </div>
-                    </div>
-                    <div class="p-col-12 p-md-12">
-                      <p-fieldset legend="PUENTES">
-                        <div class="p-field">
-                          <p-selectButton
-                            [options]="puentes"
-                            formControlName="puentes"
-                            optionLabel="label"
-                            optionValue="value"
-                          ></p-selectButton>
-                        </div>
-                      </p-fieldset>
-                    </div>
-                    <div class="p-col-12 p-md-12">
-                      <p-fieldset legend="OBSERVACIONES">
-                        <div class="p-col-12 p-md-12">
-                          <textarea
-                            rows="5"
-                            cols="30"
-                            pInputTextarea
-                            autoResize="autoResize"
-                            formControlName="observaciones"
-                          ></textarea>
-                        </div>
-                      </p-fieldset>
-                    </div>
-                    <p-button
-                      label="Agregar"
-                      icon="pi pi-check"
-                      (click)="guardarFaseS()"
-                    ></p-button>
-                  </div>
-                </form>
-              </p-accordionTab>
-
-              <p-accordionTab
-                header="FASE T"
-                [disabled]="false"
-                [selected]="false"
+              <p-accordion
+                *ngIf="mostrar"
+                (onClose)="onTabClose($event)"
+                (onOpen)="onTabOpen($event)"
               >
-                <form [formGroup]="formFaseT">
-                  <div class="p-grid p-fluid">
-                    <div class="p-col-12 p-md-1">
-                      <h4>TIPO:</h4>
-                    </div>
-                    <div class="p-col-12 p-md-11">
-                      <div class="p-field">
-                        <p-selectButton
-                          [options]="tipo"
-                          formControlName="tipo"
-                          optionLabel="label"
-                          optionValue="value"
-                        ></p-selectButton>
+                <p-accordionTab header="FASE R">
+                  <form [formGroup]="formFaseR">
+                    <div class="p-grid p-fluid">
+                      <div class="p-col-12 p-md-1">
+                        <h4>TIPO:</h4>
                       </div>
-                    </div>
-
-                    <div class="p-col-12 p-md-1">
-                      <h4>CLASE:</h4>
-                    </div>
-                    <div class="p-col-12 p-md-5">
-                      <div class="p-field">
-                        <p-selectButton
-                          [options]="clase"
-                          formControlName="clase"
-                          optionLabel="label"
-                          optionValue="value"
-                        ></p-selectButton>
-                      </div>
-                    </div>
-                    <div class="p-col-12 p-md-3">
-                      <h4>N° AISLADORES POR CADENA:</h4>
-                    </div>
-                    <div class="p-col-12 p-md-2">
-                      <input type="text" pInputText formControlName="numAisladores"/>
-                    </div>
-                    <div class="p-col-12 p-md-1">
-                      <p-button icon="pi pi-check" (click)="next()"></p-button>
-                    </div>
-
-                    <div class="p-col-12 p-md-2">
-                      <h4>TIPO DE CADENA:</h4>
-                    </div>
-                    <div class="p-col-12 p-md-5">
-                      <p-selectButton
-                        [options]="tipoCadena"
-                        formControlName="tipoCadena"
-                        optionLabel="label"
-                        optionValue="value"
-                      ></p-selectButton>
-                    </div>
-                    <div class="p-col-12 p-md-2">
-                      <div class="p-field-checkbox">
-                        <p-checkbox binary="true"  formControlName="buenEstado"></p-checkbox>
-                        <label for="bu">BUEN ESTADO</label>
-                      </div>
-                    </div>
-                    <div class="p-col-12 p-md-12">
-                      <p-fieldset legend="PUENTES">
+                      <div class="p-col-12 p-md-11">
                         <div class="p-field">
                           <p-selectButton
-                            [options]="puentes"
-                            formControlName="puentes"
+                            [options]="tipo"
+                            formControlName="tipo"
                             optionLabel="label"
                             optionValue="value"
                           ></p-selectButton>
                         </div>
-                      </p-fieldset>
-                    </div>
-                    <div class="p-col-12 p-md-12">
-                      <p-fieldset legend="OBSERVACIONES">
-                        <div class="p-col-12 p-md-12">
-                          <textarea
-                            rows="5"
-                            cols="30"
-                            pInputTextarea
-                            autoResize="autoResize"
-                            formControlName="observaciones"
-                          ></textarea>
+                      </div>
+
+                      <div class="p-col-12 p-md-1">
+                        <h4>CLASE:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-5">
+                        <div class="p-field">
+                          <p-selectButton
+                            [options]="clase"
+                            formControlName="clase"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
                         </div>
-                      </p-fieldset>
+                      </div>
+                      <div class="p-col-12 p-md-3">
+                        <h4>N° AISLADORES POR CADENA:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-2">
+                        <input
+                          type="text"
+                          pInputText
+                          formControlName="numAisladores"
+                        />
+                      </div>
+                      <div class="p-col-12 p-md-1">
+                        <p-button
+                          icon="pi pi-check"
+                          (click)="next()"
+                        ></p-button>
+                      </div>
+
+                      <div class="p-col-12 p-md-2">
+                        <h4>TIPO DE CADENA:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-5">
+                        <p-selectButton
+                          [options]="tipoCadena"
+                          formControlName="tipoCadena"
+                          optionLabel="label"
+                          optionValue="value"
+                        ></p-selectButton>
+                      </div>
+                      <div class="p-col-12 p-md-2">
+                        <div class="p-field-checkbox">
+                          <p-checkbox
+                            binary="true"
+                            formControlName="buenEstado"
+                          ></p-checkbox>
+                          <label for="bu">BUEN ESTADO</label>
+                        </div>
+                      </div>
+                      <div class="p-col-12 p-md-12">
+                        <p-fieldset legend="PUENTES">
+                          <div class="p-field">
+                            <p-selectButton
+                              [options]="puentes"
+                              formControlName="puentes"
+                              optionLabel="label"
+                              optionValue="value"
+                            ></p-selectButton>
+                          </div>
+                        </p-fieldset>
+                      </div>
+                      <div class="p-col-12 p-md-12">
+                        <p-fieldset legend="OBSERVACIONES">
+                          <div class="p-col-12 p-md-12">
+                            <textarea
+                              rows="5"
+                              cols="30"
+                              pInputTextarea
+                              autoResize="autoResize"
+                              formControlName="observaciones"
+                            ></textarea>
+                          </div>
+                        </p-fieldset>
+                      </div>
+                      <p-button
+                        label="Agregar"
+                        icon="pi pi-check"
+                        (click)="guardarFaseR()"
+                      ></p-button>
                     </div>
-                    <p-button
-                      label="Agregar"
-                      icon="pi pi-check"
-                      (click)="guardarFaseT()"
-                    ></p-button>
-                  </div>
-                </form>
-              </p-accordionTab>
-            </p-accordion>
-            <p-tabView>
-              <!--
+                  </form>
+                </p-accordionTab>
+                <p-accordionTab header="FASE S">
+                  <form [formGroup]="formFaseS">
+                    <div class="p-grid p-fluid">
+                      <div class="p-col-12 p-md-1">
+                        <h4>TIPO:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-11">
+                        <div class="p-field">
+                          <p-selectButton
+                            [options]="tipo"
+                            formControlName="tipo"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                      </div>
+
+                      <div class="p-col-12 p-md-1">
+                        <h4>CLASE:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-5">
+                        <div class="p-field">
+                          <p-selectButton
+                            [options]="clase"
+                            formControlName="clase"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                      </div>
+                      <div class="p-col-12 p-md-3">
+                        <h4>N° AISLADORES POR CADENA:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-2">
+                        <input
+                          type="text"
+                          pInputText
+                          formControlName="numAisladores"
+                        />
+                      </div>
+                      <div class="p-col-12 p-md-1">
+                        <p-button
+                          icon="pi pi-check"
+                          (click)="next()"
+                        ></p-button>
+                      </div>
+
+                      <div class="p-col-12 p-md-2">
+                        <h4>TIPO DE CADENA:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-5">
+                        <p-selectButton
+                          [options]="tipoCadena"
+                          formControlName="tipoCadena"
+                          optionLabel="label"
+                          optionValue="value"
+                        ></p-selectButton>
+                      </div>
+                      <div class="p-col-12 p-md-2">
+                        <div class="p-field-checkbox">
+                          <p-checkbox
+                            binary="true"
+                            formControlName="buenEstado"
+                          ></p-checkbox>
+                          <label for="bu">BUEN ESTADO</label>
+                        </div>
+                      </div>
+                      <div class="p-col-12 p-md-12">
+                        <p-fieldset legend="PUENTES">
+                          <div class="p-field">
+                            <p-selectButton
+                              [options]="puentes"
+                              formControlName="puentes"
+                              optionLabel="label"
+                              optionValue="value"
+                            ></p-selectButton>
+                          </div>
+                        </p-fieldset>
+                      </div>
+                      <div class="p-col-12 p-md-12">
+                        <p-fieldset legend="OBSERVACIONES">
+                          <div class="p-col-12 p-md-12">
+                            <textarea
+                              rows="5"
+                              cols="30"
+                              pInputTextarea
+                              autoResize="autoResize"
+                              formControlName="observaciones"
+                            ></textarea>
+                          </div>
+                        </p-fieldset>
+                      </div>
+                      <p-button
+                        label="Agregar"
+                        icon="pi pi-check"
+                        (click)="guardarFaseS()"
+                      ></p-button>
+                    </div>
+                  </form>
+                </p-accordionTab>
+
+                <p-accordionTab
+                  header="FASE T"
+                  [disabled]="false"
+                  [selected]="false"
+                >
+                  <form [formGroup]="formFaseT">
+                    <div class="p-grid p-fluid">
+                      <div class="p-col-12 p-md-1">
+                        <h4>TIPO:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-11">
+                        <div class="p-field">
+                          <p-selectButton
+                            [options]="tipo"
+                            formControlName="tipo"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                      </div>
+
+                      <div class="p-col-12 p-md-1">
+                        <h4>CLASE:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-5">
+                        <div class="p-field">
+                          <p-selectButton
+                            [options]="clase"
+                            formControlName="clase"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
+                        </div>
+                      </div>
+                      <div class="p-col-12 p-md-3">
+                        <h4>N° AISLADORES POR CADENA:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-2">
+                        <input
+                          type="text"
+                          pInputText
+                          formControlName="numAisladores"
+                        />
+                      </div>
+                      <div class="p-col-12 p-md-1">
+                        <p-button
+                          icon="pi pi-check"
+                          (click)="next()"
+                        ></p-button>
+                      </div>
+
+                      <div class="p-col-12 p-md-2">
+                        <h4>TIPO DE CADENA:</h4>
+                      </div>
+                      <div class="p-col-12 p-md-5">
+                        <p-selectButton
+                          [options]="tipoCadena"
+                          formControlName="tipoCadena"
+                          optionLabel="label"
+                          optionValue="value"
+                        ></p-selectButton>
+                      </div>
+                      <div class="p-col-12 p-md-2">
+                        <div class="p-field-checkbox">
+                          <p-checkbox
+                            binary="true"
+                            formControlName="buenEstado"
+                          ></p-checkbox>
+                          <label for="bu">BUEN ESTADO</label>
+                        </div>
+                      </div>
+                      <div class="p-col-12 p-md-12">
+                        <p-fieldset legend="PUENTES">
+                          <div class="p-field">
+                            <p-selectButton
+                              [options]="puentes"
+                              formControlName="puentes"
+                              optionLabel="label"
+                              optionValue="value"
+                            ></p-selectButton>
+                          </div>
+                        </p-fieldset>
+                      </div>
+                      <div class="p-col-12 p-md-12">
+                        <p-fieldset legend="OBSERVACIONES">
+                          <div class="p-col-12 p-md-12">
+                            <textarea
+                              rows="5"
+                              cols="30"
+                              pInputTextarea
+                              autoResize="autoResize"
+                              formControlName="observaciones"
+                            ></textarea>
+                          </div>
+                        </p-fieldset>
+                      </div>
+                      <p-button
+                        label="Agregar"
+                        icon="pi pi-check"
+                        (click)="guardarFaseT()"
+                      ></p-button>
+                    </div>
+                  </form>
+                </p-accordionTab>
+              </p-accordion>
+              <p-tabView>
+                <!--
                     </div>
 
                     <!-- <p-table >
@@ -320,9 +353,8 @@
                         
                       </ng-template>
                     </p-table> -->
-
-            </p-tabView>
-          </div>
+              </p-tabView>
+            </div>
           </div>
         </div>
       </ng-template>

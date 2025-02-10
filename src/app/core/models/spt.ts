@@ -10,6 +10,6 @@ export class Spt {
     public tieneBajante: boolean = null,
     public tipoBajante: string = null,
     public calibreBajante: string = null,
-    public observaciones: string = null
+    public observaciones: string = null,
   ) {}
 }

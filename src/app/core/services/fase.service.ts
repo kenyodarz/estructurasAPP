@@ -24,7 +24,7 @@ export class FaseService extends CommonService<Fase, string> {
 
   guardarFaseconAislamiento(
     idAisladores: string,
-    fase: Fase
+    fase: Fase,
   ): Observable<Fase> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
@@ -33,9 +33,7 @@ export class FaseService extends CommonService<Fase, string> {
       JSON.stringify(fase),
       {
         headers: headers,
-      }
+      },
     );
   }
-
- 
 }

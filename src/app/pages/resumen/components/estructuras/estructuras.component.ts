@@ -30,7 +30,7 @@ export class EstructurasComponent implements OnInit {
     private estructuraService: EstructuraService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: UntypedFormBuilder
+    private fb: UntypedFormBuilder,
   ) {}
 
   obtenerEstructuras() {
@@ -68,7 +68,7 @@ export class EstructurasComponent implements OnInit {
 
   validarEstructura(estructura: Estructura) {
     let index = this.estructuras.findIndex(
-      (e) => e.idEstructura === estructura.idEstructura
+      (e) => e.idEstructura === estructura.idEstructura,
     );
     if (index !== -1) {
       this.estructura[index] = estructura;
@@ -129,13 +129,13 @@ export class EstructurasComponent implements OnInit {
       },
     });
   }
-  
+
   validarEliminacion(estructura: Estructura) {
     this.estructuras.splice(
       this.estructuras.findIndex(
-        (e) => e.idEstructura === estructura.idEstructura
+        (e) => e.idEstructura === estructura.idEstructura,
       ),
-      1
+      1,
     );
   }
 

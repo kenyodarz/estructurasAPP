@@ -7,6 +7,6 @@ export class Estructura {
     public predioPublico: boolean = null,
     public coordinadaX: string = null,
     public coordinadaY: string = null,
-    public alturaSobreNivelMar: string = null
+    public alturaSobreNivelMar: string = null,
   ) {}
 }

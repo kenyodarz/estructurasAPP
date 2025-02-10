@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Formulario } from 'src/app/core/models/formulario';
@@ -35,7 +40,7 @@ export class UbicacionComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
     private router: Router,
-    private rutaActiva: ActivatedRoute
+    private rutaActiva: ActivatedRoute,
   ) {}
   obtenerFormulario(idInspeccion: string) {
     this.formularioService
@@ -78,13 +83,13 @@ export class UbicacionComponent implements OnInit {
     this.ubicacionOneService
       .guardarUbicacionOneconUbicacion(
         this.formulario.idUbicacion.idUbicacion,
-        ubicacionOne
+        ubicacionOne,
       )
       .subscribe((ubicacionOneResul: UbicacionOne) => {
         this.ubicacionService
           .asignarUbicacionOne(
             this.formulario.idUbicacion.idUbicacion,
-            ubicacionOneResul
+            ubicacionOneResul,
           )
           .subscribe((data) => {
             this.obtenerFormulario(this.formulario.idInspeccion);
@@ -120,7 +125,7 @@ export class UbicacionComponent implements OnInit {
           detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
         });
         this.router.navigateByUrl(
-          `resumen/formulario/ver/${formulario.idInspeccion}/observacion/${formulario.idInspeccion}`
+          `resumen/formulario/ver/${formulario.idInspeccion}/observacion/${formulario.idInspeccion}`,
         );
       });
   }
@@ -130,7 +135,7 @@ export class UbicacionComponent implements OnInit {
     //this.formulario.idUbicacion = this.formUbicacion.value;
     //this.guardarFormulario();
     this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/observacion/${this.formulario.idInspeccion}`
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/observacion/${this.formulario.idInspeccion}`,
     );
   }
 
@@ -156,7 +161,7 @@ export class UbicacionComponent implements OnInit {
   }
   prevPage() {
     this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/transposicion/${this.formulario.idInspeccion}`
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/transposicion/${this.formulario.idInspeccion}`,
     );
   }
   ngOnInit(): void {

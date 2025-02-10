@@ -34,7 +34,7 @@ export class FormularioComponent implements OnInit {
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
-    private router: Router
+    private router: Router,
   ) {}
 
   obtenerFormularios() {
@@ -80,20 +80,18 @@ export class FormularioComponent implements OnInit {
 
   validarFormulario(formulario: Formulario) {
     let index = this.formularios.findIndex(
-      (e) => e.idInspeccion === formulario.idInspeccion
+      (e) => e.idInspeccion === formulario.idInspeccion,
     );
     if (index !== -1) {
       this.formulario[index] = formulario;
-      
-            this.messageService.add({
-              severity: 'info',
-              summary: 'Información',
-              detail: `El formato ha sido eliminada correctamente`,
-            });
-        
+
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Información',
+        detail: `El formato ha sido eliminada correctamente`,
+      });
     } else {
       this.formularios.push(formulario);
-
     }
     this.onVerFormulario(formulario);
   }
@@ -156,9 +154,9 @@ export class FormularioComponent implements OnInit {
   validarEliminacion(formulario: Formulario) {
     this.formularios.splice(
       this.formularios.findIndex(
-        (e) => e.idInspeccion === formulario.idInspeccion
+        (e) => e.idInspeccion === formulario.idInspeccion,
       ),
-      1
+      1,
     );
   }
 
@@ -173,7 +171,9 @@ export class FormularioComponent implements OnInit {
 
   onVerFormulario(formulario: Formulario) {
     console.log(formulario);
-    this.router.navigateByUrl('resumen/formulario/ver/' + formulario.idInspeccion);
+    this.router.navigateByUrl(
+      'resumen/formulario/ver/' + formulario.idInspeccion,
+    );
   }
 
   ngOnInit(): void {

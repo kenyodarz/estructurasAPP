@@ -8,34 +8,28 @@
     dataKey="idInspeccion"
     [rows]="10"
     [responsive]="true"
-    [globalFilterFields]="[
-      'numeroOT',
-      'observaciones',
-      'nombre1',
-      'codigo1'
-    ]"
+    [globalFilterFields]="['numeroOT', 'observaciones', 'nombre1', 'codigo1']"
   >
     <ng-template pTemplate="caption">
       <div class="p-d-flex p-ai-center p-jc-between">
-        <div class="p-d-flex p-ai-center ">
-        <button
-          pButton
-          pRipple
-          label="Nuevo"
-          icon="pi pi-plus"
-          class="p-button-outlined p-button-success p-mr-2 "
-          (click)="mostrarDialogoGuardar(false)"
-        ></button>
-        
-         <button
-          pButton
-          pRipple
-          label="Indexar Excel"
-          icon="pi pi-upload"
-          class="p-button-outlined p-button-success p-mr-2"
-          
-        ></button>
-        <!-- <button
+        <div class="p-d-flex p-ai-center">
+          <button
+            pButton
+            pRipple
+            label="Nuevo"
+            icon="pi pi-plus"
+            class="p-button-outlined p-button-success p-mr-2"
+            (click)="mostrarDialogoGuardar(false)"
+          ></button>
+
+          <button
+            pButton
+            pRipple
+            label="Indexar Excel"
+            icon="pi pi-upload"
+            class="p-button-outlined p-button-success p-mr-2"
+          ></button>
+          <!-- <button
           pButton
           pRipple
           label="Eliminar"
@@ -56,9 +50,8 @@
           />
         </div>
       </div>
-      
     </ng-template>
-    
+
     <ng-template pTemplate="header">
       <tr>
         <th style="width: 3rem">#</th>
@@ -74,7 +67,10 @@
         <td>{{ rowIndex + 1 }}</td>
         <td>{{ formulario.numeroOT }}</td>
         <td>{{ formulario.observaciones }}</td>
-        <td>{{ formulario.persona.nombrePersona }} {{ formulario.persona.apellidoPersona }}</td>
+        <td>
+          {{ formulario.persona.nombrePersona }}
+          {{ formulario.persona.apellidoPersona }}
+        </td>
         <td>{{ formulario.persona.cedulaPersona }}</td>
         <!-- <td>
           <button
@@ -96,8 +92,8 @@
               " - " +
               selectedFormulario.observaciones +
               " - " +
-              selectedFormulario.persona.nombrePersona + 
-              " " + 
+              selectedFormulario.persona.nombrePersona +
+              " " +
               selectedFormulario.persona.apellidoPersona +
               " - " +
               selectedFormulario.codigo1
@@ -120,11 +116,18 @@
   <form action="" [formGroup]="formFormulario">
     <div class="p-fluid">
       <div class="p-field p-grid">
-            <label for="numeroOT" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Numero OT</label>
-            <div class="p-col-12 p-md-10">
-                <input id="numeroOT"  formControlName="numeroOT" type="text" pInputText> 
-            </div>
+        <label for="numeroOT" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+          >Numero OT</label
+        >
+        <div class="p-col-12 p-md-10">
+          <input
+            id="numeroOT"
+            formControlName="numeroOT"
+            type="text"
+            pInputText
+          />
         </div>
+      </div>
     </div>
   </form>
   <ng-template pTemplate="footer">
@@ -142,8 +145,4 @@
       styleClass="p-button-text"
     ></p-button>
   </ng-template>
-  
 </p-dialog>
-
-
-

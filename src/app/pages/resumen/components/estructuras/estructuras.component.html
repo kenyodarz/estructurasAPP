@@ -9,7 +9,7 @@
     dataKey="idEstructura"
     [rows]="10"
     [responsive]="true"
-    [globalFilterFields]="['idEstructura', 'numEstructura',  'ubicacion']"
+    [globalFilterFields]="['idEstructura', 'numEstructura', 'ubicacion']"
   >
     <ng-template pTemplate="caption">
       <div style="text-align: right">
@@ -29,7 +29,7 @@
         <th style="width: 3rem">#</th>
         <th>ID Estructura</th>
         <th>Nro Estructura</th>
-        
+
         <th>Ubicacion</th>
       </tr>
     </ng-template>
@@ -38,7 +38,7 @@
         <td>{{ rowIndex + 1 }}</td>
         <td>{{ estructura.idEstructura }}</td>
         <td>{{ estructura.numEstructura }}</td>
-       
+
         <td>{{ estructura.ubicacion }}</td>
       </tr>
     </ng-template>
@@ -51,7 +51,6 @@
               " - " +
               selectedEstructura.numEstructura +
               " - " +
-             
               selectedEstructura.ubicacion
             : "Ninguno"
         }}
@@ -113,7 +112,7 @@
           "
         ></p-message>
       </div>
-    
+
       <div class="p-col-12 p-md-12">
         <div>
           <div>Ubicación:*</div>
@@ -148,54 +147,54 @@
         ></p-message>
       </div>
       <div class="p-col-12 p-md-12">
-      <p-fieldset legend="Georeferenciación">
-        <div class="p-col-12 p-md-12">
-          <div>
-            <div>CoordenadaX:*</div>
-            <input pInputText type="text" formControlName="coordinadaX" />
+        <p-fieldset legend="Georeferenciación">
+          <div class="p-col-12 p-md-12">
+            <div>
+              <div>CoordenadaX:*</div>
+              <input pInputText type="text" formControlName="coordinadaX" />
+            </div>
+            <p-message
+              severity="error"
+              text="Por favor Ingrese la coordenadaX"
+              *ngIf="
+                !formEstructura.controls['coordinadaX'].valid &&
+                formEstructura.controls['coordinadaX'].dirty
+              "
+            ></p-message>
           </div>
-          <p-message
-            severity="error"
-            text="Por favor Ingrese la coordenadaX"
-            *ngIf="
-              !formEstructura.controls['coordinadaX'].valid &&
-              formEstructura.controls['coordinadaX'].dirty
-            "
-          ></p-message>
-        </div>
-        <div class="p-col-12 p-md-12">
-          <div>
-            <div>CoordenadaY:*</div>
-            <input pInputText type="text" formControlName="coordinadaY" />
+          <div class="p-col-12 p-md-12">
+            <div>
+              <div>CoordenadaY:*</div>
+              <input pInputText type="text" formControlName="coordinadaY" />
+            </div>
+            <p-message
+              severity="error"
+              text="Por favor Ingrese la coordenadaY"
+              *ngIf="
+                !formEstructura.controls['coordinadaY'].valid &&
+                formEstructura.controls['coordinadaY'].dirty
+              "
+            ></p-message>
           </div>
-          <p-message
-            severity="error"
-            text="Por favor Ingrese la coordenadaY"
-            *ngIf="
-              !formEstructura.controls['coordinadaY'].valid &&
-              formEstructura.controls['coordinadaY'].dirty
-            "
-          ></p-message>
-        </div>
-        <div class="p-col-12 p-md-12">
-          <div>
-            <div>Altura M.S.N.M:*</div>
-            <input
-              pInputText
-              type="text"
-              formControlName="alturaSobreNivelMar"
-            />
+          <div class="p-col-12 p-md-12">
+            <div>
+              <div>Altura M.S.N.M:*</div>
+              <input
+                pInputText
+                type="text"
+                formControlName="alturaSobreNivelMar"
+              />
+            </div>
+            <p-message
+              severity="error"
+              text="Por favor Ingrese un ID Estructura"
+              *ngIf="
+                !formEstructura.controls['alturaSobreNivelMar'].valid &&
+                formEstructura.controls['alturaSobreNivelMar'].dirty
+              "
+            ></p-message>
           </div>
-          <p-message
-            severity="error"
-            text="Por favor Ingrese un ID Estructura"
-            *ngIf="
-              !formEstructura.controls['alturaSobreNivelMar'].valid &&
-              formEstructura.controls['alturaSobreNivelMar'].dirty
-            "
-          ></p-message>
-        </div>
-      </p-fieldset>
+        </p-fieldset>
       </div>
     </div>
   </form>

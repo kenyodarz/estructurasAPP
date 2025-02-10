@@ -1,133 +1,158 @@
-<br>
+<br />
 <div class="stepsdemo-content">
   <p-card>
-      <form [formGroup]="formSpt" >
-    <p-fieldset legend="SISTEMA PUESTA A TIERRA SPT">
-      <ng-template pTemplate="content">
-        <div class="p-grid p-fluid">
-          <div class="p-col-12 p-md-12">
-            <div class="p-grid p-fluid">
-            <div class="p-col-12 p-md-6">
-            <p-fieldset legend="S.P.T.">
+    <form [formGroup]="formSpt">
+      <p-fieldset legend="SISTEMA PUESTA A TIERRA SPT">
+        <ng-template pTemplate="content">
+          <div class="p-grid p-fluid">
+            <div class="p-col-12 p-md-12">
               <div class="p-grid p-fluid">
                 <div class="p-col-12 p-md-6">
-                 
-                    <p-selectButton
-                      [options]="sptOptions"
-                       formControlName="tieneSPT"
-                      optionLabel="label"
-                      optionValue="value"
-                    ></p-selectButton>
-                 
-                </div>
-              <div class="p-col-12 p-md-2">
-               <label for="basic">CALIBRE:</label>
-              </div>
-             <div class="p-col-12 p-md-4">
-        <input type="text" pInputText  formControlName="calibreSPT"/>
-             </div>
-      </div>
-              <div class="p-grid p-fluid">
-                <div class="p-col-12 p-md-12">
-              <p-fieldset legend="TIPO">
-                 <div class="p-grid p-fluid">
-                   <div class="p-col-12 p-md-6">
-                <div class="p-field-checkbox">
-                    <p-checkbox
-                      [formControl]="formSpt.controls['tipoContrapeso']"
-                       (onChange)="OnChangeContrapeso()"
-                      binary="true"
-                    ></p-checkbox>
-                    <label for="su">CONTRAPESO</label>
-                  </div>
+                  <p-fieldset legend="S.P.T.">
+                    <div class="p-grid p-fluid">
+                      <div class="p-col-12 p-md-6">
+                        <p-selectButton
+                          [options]="sptOptions"
+                          formControlName="tieneSPT"
+                          optionLabel="label"
+                          optionValue="value"
+                        ></p-selectButton>
+                      </div>
+                      <div class="p-col-12 p-md-2">
+                        <label for="basic">CALIBRE:</label>
+                      </div>
+                      <div class="p-col-12 p-md-4">
+                        <input
+                          type="text"
+                          pInputText
+                          formControlName="calibreSPT"
+                        />
+                      </div>
+                    </div>
+                    <div class="p-grid p-fluid">
+                      <div class="p-col-12 p-md-12">
+                        <p-fieldset legend="TIPO">
+                          <div class="p-grid p-fluid">
+                            <div class="p-col-12 p-md-6">
+                              <div class="p-field-checkbox">
+                                <p-checkbox
+                                  [formControl]="
+                                    formSpt.controls['tipoContrapeso']
+                                  "
+                                  (onChange)="OnChangeContrapeso()"
+                                  binary="true"
+                                ></p-checkbox>
+                                <label for="su">CONTRAPESO</label>
+                              </div>
 
-                  <div class="p-field-checkbox">
-                    <p-checkbox
-                      [formControl]="formSpt.controls['tipoAnilloContrapeso']"
-                       (onChange)="OnChangeAnilloContrapeso()"
-                      binary="true"
-                    ></p-checkbox>
-                    <label for="qu">ANILLO + CONTRAPESO</label>
-                  </div>
-                  <div class="p-field-checkbox">
-                    <p-checkbox
-                      [formControl]="formSpt.controls['tipoAnillo']"
-                       (onChange)="OnChangeAnillo()"
-                      binary="true"
-                    ></p-checkbox>
-                    <label for="re">ANILLO</label>
-                  </div>
-                   </div>
-                   <div class="p-col-12 p-md-1">
-                     <label for="basic">CANT:</label>
-                   </div>
-                   <div class="p-col-12 p-md-5">
-                   <input type="text" pInputText  formControlName="cant"/>
-                   </div>
-                 </div>
-              </p-fieldset>
+                              <div class="p-field-checkbox">
+                                <p-checkbox
+                                  [formControl]="
+                                    formSpt.controls['tipoAnilloContrapeso']
+                                  "
+                                  (onChange)="OnChangeAnilloContrapeso()"
+                                  binary="true"
+                                ></p-checkbox>
+                                <label for="qu">ANILLO + CONTRAPESO</label>
+                              </div>
+                              <div class="p-field-checkbox">
+                                <p-checkbox
+                                  [formControl]="formSpt.controls['tipoAnillo']"
+                                  (onChange)="OnChangeAnillo()"
+                                  binary="true"
+                                ></p-checkbox>
+                                <label for="re">ANILLO</label>
+                              </div>
+                            </div>
+                            <div class="p-col-12 p-md-1">
+                              <label for="basic">CANT:</label>
+                            </div>
+                            <div class="p-col-12 p-md-5">
+                              <input
+                                type="text"
+                                pInputText
+                                formControlName="cant"
+                              />
+                            </div>
+                          </div>
+                        </p-fieldset>
+                      </div>
+                      <div class="p-col-12 p-md-12">
+                        <p-fieldset legend="BAJANTE">
+                          <div class="p-grid p-fluid">
+                            <div class="p-col-12 p-md-12">
+                              <p-selectButton
+                                [options]="bajante"
+                                formControlName="tieneBajante"
+                                optionLabel="label"
+                                optionValue="value"
+                              ></p-selectButton>
+                            </div>
+                            <div class="p-col-12 p-md-6">
+                              <p-fieldset legend="TIPO">
+                                <input
+                                  type="text"
+                                  pInputText
+                                  formControlName="tipoBajante"
+                                />
+                              </p-fieldset>
+                            </div>
+                            <div class="p-col-12 p-md-6">
+                              <p-fieldset legend="CALIBRE">
+                                <input
+                                  type="text"
+                                  pInputText
+                                  formControlName="calibreBajante"
+                                />
+                              </p-fieldset>
+                            </div>
+                          </div>
+                        </p-fieldset>
+                      </div>
+                    </div>
+                  </p-fieldset>
                 </div>
-                <div class="p-col-12 p-md-12">
-              <p-fieldset legend="BAJANTE">
-                <div class="p-grid p-fluid">
-                  <div class="p-col-12 p-md-12">
-                    <p-selectButton
-                      [options]="bajante"
-                       formControlName="tieneBajante"
-                      optionLabel="label"
-                      optionValue="value"
-                    ></p-selectButton>
-                  </div>
-                    <div class="p-col-12 p-md-6">
-                    <p-fieldset legend="TIPO">
-                      <input type="text" pInputText  formControlName="tipoBajante"/>
-                    </p-fieldset>
-                    </div>
-                    <div class="p-col-12 p-md-6">
-                    <p-fieldset legend="CALIBRE">
-                      <input type="text" pInputText  formControlName="calibreBajante"/>
-                    </p-fieldset>
-                    </div>
-                     </div>
-              </p-fieldset>
+                <div class="p-col-12 p-md-6">
+                  <p-fieldset legend="UBICACIÓN BAJANTES Y SPT">
+                    <br />
+                    <br />
+                    <br />
+                    <img alt="Card" src="assets/img/sptt.jpg" />
+                  </p-fieldset>
                 </div>
               </div>
-            </p-fieldset>
             </div>
-            <div class="p-col-12 p-md-6">
-             <p-fieldset legend="UBICACIÓN BAJANTES Y SPT">
-               <br>
-               <br>
-               <br>
-               <img alt="Card" src="assets/img/sptt.jpg">
-             </p-fieldset>
-            </div>
-            </div>
-          </div>
-        
-          <div class="p-col-12 p-md-12">
-             <p-fieldset legend="OBSERVACIONES">
-               
+
+            <div class="p-col-12 p-md-12">
+              <p-fieldset legend="OBSERVACIONES">
                 <textarea
-                rows="5"
-                cols="30"
-                pInputTextarea
-                autoResize="autoResize"
-                formControlName="observaciones"
-              ></textarea>
-             </p-fieldset>
-          </div>
-       </div>
-          </ng-template>
-    </p-fieldset>
-    </form>
-       <ng-template pTemplate="footer">
-            <div class="p-grid p-nogutter p-justify-between">
-                <p-button label="Back" icon="pi pi-angle-left" (onClick)="prevPage()"></p-button>
-                <p-button label="Next" icon="pi pi-angle-right" iconPos="right"  
-                [disabled]="formSpt.invalid"
-                (onClick)="nextPage()"></p-button>
+                  rows="5"
+                  cols="30"
+                  pInputTextarea
+                  autoResize="autoResize"
+                  formControlName="observaciones"
+                ></textarea>
+              </p-fieldset>
             </div>
+          </div>
         </ng-template>
+      </p-fieldset>
+    </form>
+    <ng-template pTemplate="footer">
+      <div class="p-grid p-nogutter p-justify-between">
+        <p-button
+          label="Back"
+          icon="pi pi-angle-left"
+          (onClick)="prevPage()"
+        ></p-button>
+        <p-button
+          label="Next"
+          icon="pi pi-angle-right"
+          iconPos="right"
+          [disabled]="formSpt.invalid"
+          (onClick)="nextPage()"
+        ></p-button>
+      </div>
+    </ng-template>
   </p-card>
 </div>

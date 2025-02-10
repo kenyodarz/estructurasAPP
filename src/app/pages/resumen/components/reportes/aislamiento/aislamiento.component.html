@@ -1,37 +1,32 @@
-<br>
+<br />
 <p>Información de aislamiento en buen estado</p>
-<p-table
-    #dt
-    [value]=""
-    [paginator]="true"
-    selectionMode="single" 
-  >
-  <br>
- <ng-template pTemplate="header">
-      <tr>
-        <th style="width: 3rem">#</th>
-        <th>N° OT</th>
-        <th>N° ESTRUCTURA</th>
-        <th>FASE</th>
-        <th>TIPO</th>
-        <th>CLASE</th>
-        <th>N° AISLAMIENTO POR CADENA</th>
-        <th>TIPO DE CADENA</th>
-        <th>PUENTES</th>
-        <th>OBSERVACIONES</th>
-      </tr>
-    </ng-template>
-     <ng-template pTemplate="body" let-rowIndex="rowIndex" let-estructura>
-      <tr [pSelectableRow]="estructura">
-        <td>{{ rowIndex + 1 }}</td>
-        <td>{{ estructura.ot }}</td>
-        <td>{{ estructura.numEstructura }}</td>
-        <td>{{ estructura.circuito }}</td>
-        <td>{{ estructura.circuito }}</td>
-        <td>{{ estructura.observaciones }}</td>
-        <!-- <td>{{ formulario.persona.nombrePersona }} {{ formulario.persona.apellidoPersona }}</td>
+<p-table #dt [value]="" [paginator]="true" selectionMode="single">
+  <br />
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 3rem">#</th>
+      <th>N° OT</th>
+      <th>N° ESTRUCTURA</th>
+      <th>FASE</th>
+      <th>TIPO</th>
+      <th>CLASE</th>
+      <th>N° AISLAMIENTO POR CADENA</th>
+      <th>TIPO DE CADENA</th>
+      <th>PUENTES</th>
+      <th>OBSERVACIONES</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowIndex="rowIndex" let-estructura>
+    <tr [pSelectableRow]="estructura">
+      <td>{{ rowIndex + 1 }}</td>
+      <td>{{ estructura.ot }}</td>
+      <td>{{ estructura.numEstructura }}</td>
+      <td>{{ estructura.circuito }}</td>
+      <td>{{ estructura.circuito }}</td>
+      <td>{{ estructura.observaciones }}</td>
+      <!-- <td>{{ formulario.persona.nombrePersona }} {{ formulario.persona.apellidoPersona }}</td>
         <td>{{ formulario.persona.cedulaPersona }}</td> -->
-        <!-- <td>
+      <!-- <td>
           <button
             pButton
             pRipple
@@ -40,22 +35,22 @@
             (click)="onVerEstructura(estructura)"
           ></button>
         </td> -->
-      </tr>
-    </ng-template>
+    </tr>
+  </ng-template>
 
-     <ng-template pTemplate="summary">
-      <div style="text-align: left">
-        Registro Seleccionado:
-        {{
-          selectedEstructura
-            ? selectedEstructura.numEstructura +
-              " - " +
-              selectedEstructura.circuito   
-            : "Ninguno"
-        }}
-      </div></ng-template>
-
+  <ng-template pTemplate="summary">
+    <div style="text-align: left">
+      Registro Seleccionado:
+      {{
+        selectedEstructura
+          ? selectedEstructura.numEstructura +
+            " - " +
+            selectedEstructura.circuito
+          : "Ninguno"
+      }}
+    </div></ng-template
+  >
 </p-table>
-<br>
-<br> 
+<br />
+<br />
 <p>Estructuras en buen estado</p>

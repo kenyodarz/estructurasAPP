@@ -24,7 +24,7 @@ export class EmpalmeService extends CommonService<Empalme, string> {
 
   guardarEmpalmeConCConductor(
     idCableConductor: string,
-    empalme: Empalme
+    empalme: Empalme,
   ): Observable<Empalme> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
@@ -33,7 +33,7 @@ export class EmpalmeService extends CommonService<Empalme, string> {
       JSON.stringify(empalme),
       {
         headers: headers,
-      }
+      },
     );
   }
 }

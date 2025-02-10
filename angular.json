@@ -4,7 +4,6 @@
   "newProjectRoot": "projects",
   "projects": {
     "estructurasAPP": {
-      "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
           "skipTests": true
@@ -36,23 +35,23 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/estructurasAPP",
             "index": "src/index.html",
-            "main": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.css",
-              "./node_modules/primeicons/primeicons.css",
-              "./node_modules/primeng/resources/themes/saga-blue/theme.css",
-              "./node_modules/primeng/resources/primeng.min.css",
-              "./node_modules/primeflex/primeflex.css"
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "main": "src/main.ts"
           },
           "configurations": {
             "production": {
@@ -67,8 +66,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -87,18 +84,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "estructurasAPP:build"
+            "buildTarget": "estructurasAPP:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "estructurasAPP:build:production"
+              "buildTarget": "estructurasAPP:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "estructurasAPP:build"
+            "buildTarget": "estructurasAPP:build"
           }
         },
         "test": {
@@ -114,14 +111,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         },
         "e2e": {
@@ -139,7 +134,6 @@
       }
     }
   },
-  "defaultProject": "estructurasAPP",
   "cli": {
     "analytics": false
   }

@@ -1,5 +1,5 @@
-import { Deshilachado } from "./deshilachado";
-import { Empalme } from "./empalme";
+import { Deshilachado } from './deshilachado';
+import { Empalme } from './empalme';
 
 export class CableConductor {
   constructor(
@@ -13,6 +13,6 @@ export class CableConductor {
     public deshilachado: Array<Deshilachado> = null,
     public faseEmbarrilado: string = null,
     public cantidadEmbarrilado: number = null,
-    public observacionesCableConductor: string = null
+    public observacionesCableConductor: string = null,
   ) {}
 }

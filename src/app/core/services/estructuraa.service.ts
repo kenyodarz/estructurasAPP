@@ -11,10 +11,7 @@ import { Estructuraa } from 'src/app/core/models/estructuraa';
 @Injectable({
   providedIn: 'root',
 })
-export class EstructuraaService extends CommonService<
-  Estructuraa,
-  string
-> {
+export class EstructuraaService extends CommonService<Estructuraa, string> {
   protected API_URL: string = `${API_URL}/torres/`;
   constructor(protected http: HttpClient) {
     super(http);

@@ -24,7 +24,7 @@ export class DeshilachadoService extends CommonService<Deshilachado, string> {
 
   guardarDeshilachadoConConductor(
     idCableConductor: string,
-    deshilachado: Deshilachado
+    deshilachado: Deshilachado,
   ): Observable<Deshilachado> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
@@ -33,7 +33,7 @@ export class DeshilachadoService extends CommonService<Deshilachado, string> {
       JSON.stringify(deshilachado),
       {
         headers: headers,
-      }
+      },
     );
   }
 }

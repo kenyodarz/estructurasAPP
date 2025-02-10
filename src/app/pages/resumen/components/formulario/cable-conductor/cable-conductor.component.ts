@@ -56,7 +56,7 @@ export class CableConductorComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
     private router: Router,
-    private rutaActiva: ActivatedRoute
+    private rutaActiva: ActivatedRoute,
   ) {}
 
   obtenerFormulario(idInspeccion: string) {
@@ -65,13 +65,11 @@ export class CableConductorComponent implements OnInit {
       .subscribe((formulario: Formulario) => {
         this.formulario = formulario;
         if (formulario.idCableConductor != null) {
+          if (formulario.idCableConductor.empalmes.length > 0) {
+            this.mostrar = true;
+          }
+          this.cargarDatos(formulario.idCableConductor);
 
-      if(formulario.idCableConductor.empalmes.length >0 ){
-        
-        this.mostrar = true;
-      }
-      this.cargarDatos(formulario.idCableConductor);
-    
           //this.formCableConductor.patchValue(formulario.idCableConductor);
         }
         //   console.log(this.formulario);
@@ -111,7 +109,6 @@ export class CableConductorComponent implements OnInit {
     });
     this.empalmes = cableConductor.empalmes;
     this.deshilachados = cableConductor.deshilachado;
-         
   }
 
   guardarCableConductor() {
@@ -129,13 +126,13 @@ export class CableConductorComponent implements OnInit {
     this.empalmeService
       .guardarEmpalmeConCConductor(
         this.formulario.idCableConductor.idCableConductor,
-        empalme
+        empalme,
       )
       .subscribe((empalmeResul: Empalme) => {
         this.cableConductorService
           .asignarEmpalme(
             this.formulario.idCableConductor.idCableConductor,
-            empalmeResul
+            empalmeResul,
           )
           .subscribe((data) => {
             this.obtenerFormulario(this.formulario.idInspeccion);
@@ -152,13 +149,13 @@ export class CableConductorComponent implements OnInit {
     this.deshilachadoService
       .guardarDeshilachadoConConductor(
         this.formulario.idCableConductor.idCableConductor,
-        deshilachado
+        deshilachado,
       )
       .subscribe((deshilachadoResul: Deshilachado) => {
         this.cableConductorService
           .asignarDeshilachado(
             this.formulario.idCableConductor.idCableConductor,
-            deshilachadoResul
+            deshilachadoResul,
           )
           .subscribe((data) => {
             this.obtenerFormulario(this.formulario.idInspeccion);
@@ -199,7 +196,7 @@ export class CableConductorComponent implements OnInit {
           detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
         });
         this.router.navigateByUrl(
-          `resumen/formulario/ver/${formulario.idInspeccion}/aislamiento/${formulario.idInspeccion}`
+          `resumen/formulario/ver/${formulario.idInspeccion}/aislamiento/${formulario.idInspeccion}`,
         );
       });
   }
@@ -243,29 +240,27 @@ export class CableConductorComponent implements OnInit {
       this.deshilacha == false
     ) {
       console.log('entro 1');
-       this.cableConductor = this.formCableConductor.value;
-       this.empalme = this.formEmpalme.value;
-       this.guardarCableConductor();
-
+      this.cableConductor = this.formCableConductor.value;
+      this.empalme = this.formEmpalme.value;
+      this.guardarCableConductor();
     } else if (
       this.cableConductor.buenEstadoConductor == false &&
       this.cableConductor.embarrilado == false &&
       this.deshilacha == true
     ) {
       console.log('entro 2');
-          this.cableConductor = this.formCableConductor.value;
-          this.empalme = this.formEmpalme.value;
-          this.deshilachado = this.formDeshilachado.value;
-          let deshilacha: Deshilachado = this.formDeshilachado.value;
-          // this.guardarDeshilachados(deshilacha);
-          this.guardarCableConductor();
-
+      this.cableConductor = this.formCableConductor.value;
+      this.empalme = this.formEmpalme.value;
+      this.deshilachado = this.formDeshilachado.value;
+      let deshilacha: Deshilachado = this.formDeshilachado.value;
+      // this.guardarDeshilachados(deshilacha);
+      this.guardarCableConductor();
     }
   }
 
   prevPage() {
     this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/estructuraa/${this.formulario.idInspeccion}`
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/estructuraa/${this.formulario.idInspeccion}`,
     );
   }
 
@@ -304,14 +299,20 @@ export class CableConductorComponent implements OnInit {
     this.formCableConductor = this.fb.group({
       idCableConductor: new UntypedFormControl(),
       calibreCableConductor: new UntypedFormControl(null, Validators.required),
-      amortiguadorCableConductor: new UntypedFormControl(null, Validators.required),
+      amortiguadorCableConductor: new UntypedFormControl(
+        null,
+        Validators.required,
+      ),
       cantidadAmortiguadores: new UntypedFormControl(),
       buenEstadoConductor: new UntypedFormControl(),
       embarrilado: new UntypedFormControl(),
       deshilachado: new UntypedFormControl(),
       faseEmbarrilado: new UntypedFormControl(),
       cantidadEmbarrilado: new UntypedFormControl(),
-      observacionesCableConductor: new UntypedFormControl(null, Validators.required),
+      observacionesCableConductor: new UntypedFormControl(
+        null,
+        Validators.required,
+      ),
       // boton: new FormControl(),
     });
     this.formEmpalme = this.fb.group({
@@ -361,8 +362,6 @@ export class CableConductorComponent implements OnInit {
       { label: 'SI', value: true },
       { label: 'NO', value: false },
     ];
-
-  
   }
 
   get buenEstado() {

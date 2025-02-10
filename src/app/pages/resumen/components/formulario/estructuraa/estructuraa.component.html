@@ -1,8 +1,7 @@
-
-<br>
+<br />
 <div class="stepsdemo-content">
   <p-card>
-    <form [formGroup]="formEstructuraa" >
+    <form [formGroup]="formEstructuraa">
       <p-fieldset legend="ESTRUCTURA">
         <div class="p-grid p-fluid">
           <div class="p-col-12 p-md-12">
@@ -12,7 +11,7 @@
                   <div class="p-field">
                     <p-selectButton
                       [options]="funcionOptions"
-                       formControlName="funcion"
+                      formControlName="funcion"
                       optionLabel="label"
                       optionValue="value"
                     ></p-selectButton>
@@ -24,7 +23,7 @@
               <div class="p-field">
                 <p-selectButton
                   [options]="tipoOpcions"
-                   formControlName="tipo"
+                  formControlName="tipo"
                   optionLabel="label"
                   optionValue="value"
                 ></p-selectButton>
@@ -34,7 +33,7 @@
               <div class="p-field">
                 <p-selectButton
                   [options]="pinturaOpcions"
-                   formControlName="pintura"
+                  formControlName="pintura"
                   optionLabel="label"
                   optionValue="value"
                 ></p-selectButton>
@@ -44,7 +43,7 @@
               <div class="p-field">
                 <p-selectButton
                   [options]="angulosOpcions"
-                   formControlName="estadoAngulos"
+                  formControlName="estadoAngulos"
                   optionLabel="label"
                   optionValue="value"
                 ></p-selectButton>
@@ -55,7 +54,7 @@
                 <div class="p-field">
                   <p-selectButton
                     [options]="riesgoElectricoOpcions"
-                     formControlName="riesgoElectrico"
+                    formControlName="riesgoElectrico"
                     optionLabel="label"
                     optionValue="value"
                   ></p-selectButton>
@@ -65,7 +64,7 @@
                 <div class="p-field">
                   <p-selectButton
                     [options]="vialOpcions"
-                     formControlName="vial"
+                    formControlName="vial"
                     optionLabel="label"
                     optionValue="value"
                   ></p-selectButton>
@@ -76,7 +75,7 @@
               <div class="p-field">
                 <p-selectButton
                   [options]="nomenclaturaOpcions"
-                   formControlName="nomenclatura"
+                  formControlName="nomenclatura"
                   optionLabel="label"
                   optionValue="value"
                 ></p-selectButton>
@@ -84,7 +83,7 @@
             </p-fieldset>
             <p-fieldset legend="OBSERVACIONES">
               <textarea
-              formControlName="observaciones"
+                formControlName="observaciones"
                 rows="5"
                 cols="30"
                 pInputTextarea

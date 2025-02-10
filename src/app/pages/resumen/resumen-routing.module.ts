@@ -41,20 +41,20 @@ const routes: Routes = [
         canActivate: [LoginGuard],
       },
       {
-      path: 'reportes/estructurasBuenas',
+        path: 'reportes/estructurasBuenas',
         loadChildren: () =>
-          import('src/app/pages/resumen/components/reportes/reporte.module').then(
-            (m) => m.ReporteModule
-          ),
+          import(
+            'src/app/pages/resumen/components/reportes/reporte.module'
+          ).then((m) => m.ReporteModule),
         canActivate: [LoginGuard],
       },
 
-       {
-      path: 'reportes/estructurasMalas',
+      {
+        path: 'reportes/estructurasMalas',
         loadChildren: () =>
-          import('src/app/pages/resumen/components/reportes/estructura.module').then(
-            (m) => m.EstructuraModule
-          ),
+          import(
+            'src/app/pages/resumen/components/reportes/estructura.module'
+          ).then((m) => m.EstructuraModule),
         canActivate: [LoginGuard],
       },
       {
@@ -65,9 +65,9 @@ const routes: Routes = [
       {
         path: 'formulario/ver/:id',
         loadChildren: () =>
-          import('src/app/pages/resumen/components/formulario/formulario.module').then(
-            (m) => m.FormularioModule
-          ),
+          import(
+            'src/app/pages/resumen/components/formulario/formulario.module'
+          ).then((m) => m.FormularioModule),
         canActivate: [LoginGuard],
       },
     ],

@@ -20,7 +20,7 @@ export class EstructuraaComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {}
   obtenerEstructuras() {
     this.estructuraService.getAll().subscribe((array: Estructura[]) => {
@@ -42,7 +42,6 @@ export class EstructuraaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-     this.obtenerEstructuras();
+    this.obtenerEstructuras();
   }
-  
 }

@@ -32,7 +32,7 @@ export class PersonaComponent implements OnInit {
     private personaService: PersonaService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private fb: UntypedFormBuilder
+    private fb: UntypedFormBuilder,
   ) {}
 
   obtenerPersonas(): void {
@@ -54,7 +54,7 @@ export class PersonaComponent implements OnInit {
       },
       (error) => {
         console.error(error);
-      }
+      },
     );
   }
 
@@ -72,7 +72,7 @@ export class PersonaComponent implements OnInit {
 
   validarGuardado(entity: Persona) {
     let index = this.personaList.findIndex(
-      (e) => e.cedulaPersona === entity.cedulaPersona
+      (e) => e.cedulaPersona === entity.cedulaPersona,
     );
     if (index != -1) {
       this.personaList[index] = entity;
@@ -136,9 +136,9 @@ export class PersonaComponent implements OnInit {
   validarEliminacion(persona: Persona) {
     this.personaList.splice(
       this.personaList.findIndex(
-        (e) => e.cedulaPersona === persona.cedulaPersona
+        (e) => e.cedulaPersona === persona.cedulaPersona,
       ),
-      1
+      1,
     );
   }
 

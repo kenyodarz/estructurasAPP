@@ -1,4 +1,4 @@
-import { Apantallamiento } from "./apantallamiento";
+import { Apantallamiento } from './apantallamiento';
 
 export class Estado {
   constructor(
@@ -8,6 +8,6 @@ export class Estado {
     public rotos: boolean = null,
     public empalmeMalEstado: boolean = null,
     public herrajeMalEstado: boolean = null,
-    public apantallamiento: Apantallamiento = null
+    public apantallamiento: Apantallamiento = null,
   ) {}
 }

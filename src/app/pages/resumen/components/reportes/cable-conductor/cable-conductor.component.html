@@ -1,182 +1,178 @@
-<br>
+<br />
 <p>Información de cable conductor en buen estado</p>
 <p-table
-    #dt
-    [value]="estructuras"
-    [paginator]="true"
-    selectionMode="single"
-    
-    dataKey="idEstructura"
-    [rows]="10"
-    [responsive]="true"
-   
+  #dt
+  [value]="estructuras"
+  [paginator]="true"
+  selectionMode="single"
+  dataKey="idEstructura"
+  [rows]="10"
+  [responsive]="true"
+>
+  <br />
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 3rem">#</th>
+      <th>N° OT</th>
+      <th>N° ESTRUCTURA</th>
+      <th>CIRCUITO</th>
+      <th>CALIBRE</th>
+      <th>AMORTIGUADOR</th>
+      <th>EMPALMES</th>
+      <th>ESTADO CONDUCTOR</th>
+      <th>OBSERVACIONES</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body">
+    <tr>
+      <td>1</td>
+      <td>123561</td>
+      <td>E101</td>
+      <td>Belen</td>
+      <td>M21</td>
+      <td>SI</td>
+      <td>RST</td>
+      <td>Buen estado</td>
+      <td>Ninguna</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>123562</td>
+      <td>E102</td>
+      <td>Belen</td>
+      <td>M22</td>
+      <td>SI</td>
+      <td>RST</td>
+      <td>Buen estado</td>
+      <td>Ninguna</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>123564</td>
+      <td>E104</td>
+      <td>Insula</td>
+      <td>M21</td>
+      <td>SI</td>
+      <td>RST</td>
+      <td>Buen estado</td>
+      <td>Ninguna</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>123565</td>
+      <td>E105</td>
+      <td>San mateo</td>
+      <td>M21</td>
+      <td>SI</td>
+      <td>RST</td>
+      <td>Buen estado</td>
+      <td>Ninguna</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>123569</td>
+      <td>E109</td>
+      <td>San mateo</td>
+      <td>M21</td>
+      <td>SI</td>
+      <td>RST</td>
+      <td>Buen estado</td>
+      <td>Ninguna</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>1235610</td>
+      <td>E110</td>
+      <td>Belen</td>
+      <td>M21</td>
+      <td>SI</td>
+      <td>RST</td>
+      <td>Buen estado</td>
+      <td>Ninguna</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>1235611</td>
+      <td>E111</td>
+      <td>Belen</td>
+      <td>M21</td>
+      <td>SI</td>
+      <td>RST</td>
+      <td>Buen estado</td>
+      <td>Ninguna</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>1235612</td>
+      <td>E112</td>
+      <td>Insula</td>
+      <td>M21</td>
+      <td>SI</td>
+      <td>RST</td>
+      <td>Buen estado</td>
+      <td>Ninguna</td>
+    </tr>
+
+    <tr>
+      <td>9</td>
+      <td>1235614</td>
+      <td>E114</td>
+      <td>Tibu</td>
+      <td>M22</td>
+      <td>SI</td>
+      <td>RST</td>
+      <td>Buen estado</td>
+      <td>Ninguna</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>1235616</td>
+      <td>E116</td>
+      <td>Tibu</td>
+      <td>M23</td>
+      <td>SI</td>
+      <td>RST</td>
+      <td>Buen estado</td>
+      <td>Ninguna</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>1235619</td>
+      <td>E119</td>
+      <td>San mateo</td>
+      <td>M21</td>
+      <td>SI</td>
+      <td>RST</td>
+      <td>Buen estado</td>
+      <td>Ninguna</td>
+    </tr>
+
+    <tr>
+      <td>12</td>
+      <td>1235620</td>
+      <td>E120</td>
+      <td>Insula</td>
+      <td>M21</td>
+      <td>SI</td>
+      <td>RST</td>
+      <td>Buen estado</td>
+      <td>Ninguna</td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="summary">
+    <div style="text-align: left">
+      Registro Seleccionado:
+      {{
+        selectedEstructura
+          ? selectedEstructura.numEstructura +
+            " - " +
+            selectedEstructura.circuito
+          : "Ninguno"
+      }}
+    </div></ng-template
   >
-  <br>
- <ng-template pTemplate="header">
-      <tr>
-        <th style="width: 3rem">#</th>
-        <th>N° OT</th>
-        <th>N° ESTRUCTURA</th>
-        <th>CIRCUITO</th>
-        <th>CALIBRE</th>
-        <th>AMORTIGUADOR</th>
-        <th>EMPALMES</th>
-        <th>ESTADO CONDUCTOR</th>
-        <th>OBSERVACIONES</th>
-      </tr>
-    </ng-template>
-     <ng-template pTemplate="body" >
-      <tr>    
-        <td>1</td>  
-       <td>123561</td>
-       <td>E101</td>
-       <td>Belen</td>
-       <td>M21</td>
-       <td>SI</td>
-       <td>RST</td>
-       <td>Buen estado</td>
-       <td>Ninguna</td>       
-      </tr>
-            <tr>   
-              <td>2</td>   
-       <td>123562</td>
-       <td>E102</td>
-       <td>Belen</td>
-       <td>M22</td>
-       <td>SI</td>
-       <td>RST</td>
-       <td>Buen estado</td>    
-       <td>Ninguna</td>    
-      </tr>
-       <tr>    
-        <td>3</td>  
-       <td>123564</td>
-       <td>E104</td>
-       <td>Insula</td>
-       <td>M21</td>
-       <td>SI</td>
-       <td>RST</td>
-       <td>Buen estado</td>
-       <td>Ninguna</td>       
-      </tr>
-            <tr>    
-              <td>4</td>  
-       <td>123565</td>
-       <td>E105</td>
-       <td>San mateo</td>
-       <td>M21</td>
-       <td>SI</td>
-       <td>RST</td>
-       <td>Buen estado</td>
-       <td>Ninguna</td> 
-       </tr>
-     <tr>      
-        <td>5</td>
-       <td>123569</td>
-       <td>E109</td>
-       <td>San mateo</td>
-       <td>M21</td>
-       <td>SI</td>
-       <td>RST</td>
-       <td>Buen estado</td>
-       <td>Ninguna</td> 
-      </tr>
-      <tr> 
-        <td>6</td>     
-       <td>1235610</td>
-       <td>E110</td>
-       <td>Belen</td>
-       <td>M21</td>
-       <td>SI</td>
-       <td>RST</td>
-       <td>Buen estado</td>
-       <td>Ninguna</td> 
-      </tr>
-      <tr>     
-        <td>7</td> 
-       <td>1235611</td>
-       <td>E111</td>
-       <td>Belen</td>
-       <td>M21</td>
-       <td>SI</td>
-       <td>RST</td>
-       <td>Buen estado</td>
-       <td>Ninguna</td> 
-      </tr>
-      <tr>     
-        <td>8</td> 
-       <td>1235612</td>
-       <td>E112</td>
-       <td>Insula</td>
-       <td>M21</td>
-       <td>SI</td>
-       <td>RST</td>
-       <td>Buen estado</td>
-       <td>Ninguna</td> 
-      </tr>
-      
-      <tr>      
-        <td>9</td>
-       <td>1235614</td>
-       <td>E114</td>
-       <td>Tibu</td>
-       <td>M22</td>
-       <td>SI</td>
-       <td>RST</td>
-       <td>Buen estado</td>
-       <td>Ninguna</td> 
-      </tr>
-      <tr>   
-        <td>10</td>   
-       <td>1235616</td>
-       <td>E116</td>
-       <td>Tibu</td>
-       <td>M23</td>
-       <td>SI</td>
-       <td>RST</td>
-       <td>Buen estado</td>
-       <td>Ninguna</td> 
-      </tr>
-      <tr>   
-        <td>11</td>   
-       <td>1235619</td>
-       <td>E119</td>
-       <td>San mateo</td>
-       <td>M21</td>
-       <td>SI</td>
-       <td>RST</td>
-       <td>Buen estado</td>
-       <td>Ninguna</td> 
-      </tr>
-
-            <tr>   
-        <td>12</td>   
-       <td>1235620</td>
-       <td>E120</td>
-       <td>Insula</td>
-       <td>M21</td>
-       <td>SI</td>
-       <td>RST</td>
-       <td>Buen estado</td>
-       <td>Ninguna</td>       
-      </tr>
-
-      
-    </ng-template>
-
-     <ng-template pTemplate="summary">
-      <div style="text-align: left">
-        Registro Seleccionado:
-        {{
-          selectedEstructura
-            ? selectedEstructura.numEstructura +
-              " - " +
-              selectedEstructura.circuito   
-            : "Ninguno"
-        }}
-      </div></ng-template>
-
 </p-table>
-<br>
-<br> 
+<br />
+<br />
 <p>Estructuras en buen estado</p>

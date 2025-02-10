@@ -20,7 +20,7 @@ export class CableConductorComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {}
 
   obtenerEstructuras() {

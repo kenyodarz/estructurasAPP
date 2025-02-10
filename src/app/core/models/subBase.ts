@@ -7,6 +7,6 @@ export class SubBase {
     public enterrada: boolean = null,
     public fracturada: boolean = null,
     public bases: Bases = null,
-    public base: string = null
+    public base: string = null,
   ) {}
 }

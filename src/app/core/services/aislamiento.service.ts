@@ -25,7 +25,7 @@ export class AislamientoService extends CommonService<Aislamiento, string> {
     return this.http.put<Aislamiento>(
       `${this.API_URL}/${idAislamiento}/asignar-fases`,
       fase,
-      { headers: headers }
+      { headers: headers },
     );
   }
   eliminarFases(idAislamiento: string, fase: Fase): Observable<Aislamiento> {
@@ -34,7 +34,7 @@ export class AislamientoService extends CommonService<Aislamiento, string> {
     return this.http.put<Aislamiento>(
       `${this.API_URL}/${idAislamiento}/eliminar-fases`,
       fase,
-      { headers: headers }
+      { headers: headers },
     );
   }
 }

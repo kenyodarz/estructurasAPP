@@ -9,7 +9,7 @@ import { EstructuraService } from 'src/app/core/services/estructura.service';
 @Component({
   selector: 'app-estructuras-buenas',
   templateUrl: './estructuras-buenas.component.html',
-  styleUrls: ['./estructuras-buenas.component.css']
+  styleUrls: ['./estructuras-buenas.component.css'],
 })
 export class EstructurasBuenasComponent implements OnInit {
   selectedEstructura: Estructura = null;
@@ -17,15 +17,15 @@ export class EstructurasBuenasComponent implements OnInit {
   items: MenuItem[];
 
   constructor(
-     private estructuraService: EstructuraService,
+    private estructuraService: EstructuraService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
-    private router: Router
-  ) { }
+    private router: Router,
+  ) {}
 
-   obtenerEstructuras() {
+  obtenerEstructuras() {
     this.estructuraService.getAll().subscribe((array: Estructura[]) => {
       let estructuras: Estructura[] = [];
       array.forEach((estructura) => {
@@ -43,57 +43,52 @@ export class EstructurasBuenasComponent implements OnInit {
       console.log(this.estructuras);
     });
   }
-// onVerCableConductor(){
-//    this.router.navigateByUrl('resumen/reportes/estructurasBuenas/cableConductor');
-// }
+  // onVerCableConductor(){
+  //    this.router.navigateByUrl('resumen/reportes/estructurasBuenas/cableConductor');
+  // }
   ngOnInit(): void {
     this.obtenerEstructuras();
     this.route.paramMap.subscribe((params) => {
       const idInspeccion: string = params.get('id');
-      this.router.navigateByUrl(
-        `resumen/reportes/estructurasBuenas`
-      );
+      this.router.navigateByUrl(`resumen/reportes/estructurasBuenas`);
     });
     this.items = [
-       
-        {
-          label: 'Apantallamiento',
-          routerLink: 'apantallamiento',
-        },
-        {
-          label: 'Estructuraa',
-          routerLink: 'estructuraa',
-        },
-        {
-          label: 'CableConductor',
-          routerLink: 'cable-conductor',
-        },
-        {
-          label: 'Aislamiento',
-          routerLink: 'aislamiento',
-        },
-        {
-          label: 'Bases',
-          routerLink: 'bases',
-        },
-        {
-          label: 'SPT',
-          routerLink: 'spt',
-        },
-        {
-          label: 'Servidumbre',
-          routerLink: 'servidumbre',
-        },
-        {
-          label: 'Transposicion',
-          routerLink: 'transposicion',
-        },
-        {
-          label: 'Ubicacion',
-          routerLink: 'ubicacion',
-        },
-       
-      ];
+      {
+        label: 'Apantallamiento',
+        routerLink: 'apantallamiento',
+      },
+      {
+        label: 'Estructuraa',
+        routerLink: 'estructuraa',
+      },
+      {
+        label: 'CableConductor',
+        routerLink: 'cable-conductor',
+      },
+      {
+        label: 'Aislamiento',
+        routerLink: 'aislamiento',
+      },
+      {
+        label: 'Bases',
+        routerLink: 'bases',
+      },
+      {
+        label: 'SPT',
+        routerLink: 'spt',
+      },
+      {
+        label: 'Servidumbre',
+        routerLink: 'servidumbre',
+      },
+      {
+        label: 'Transposicion',
+        routerLink: 'transposicion',
+      },
+      {
+        label: 'Ubicacion',
+        routerLink: 'ubicacion',
+      },
+    ];
   }
-
 }

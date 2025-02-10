@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Formulario } from 'src/app/core/models/formulario';
@@ -30,7 +35,7 @@ export class TransposicionComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
     private router: Router,
-    private rutaActiva: ActivatedRoute
+    private rutaActiva: ActivatedRoute,
   ) {}
   obtenerFormulario(idInspeccion: string) {
     this.formularioService
@@ -69,27 +74,26 @@ export class TransposicionComponent implements OnInit {
           detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
         });
         this.router.navigateByUrl(
-          `resumen/formulario/ver/${formulario.idInspeccion}/ubicacion/${formulario.idInspeccion}`
+          `resumen/formulario/ver/${formulario.idInspeccion}/ubicacion/${formulario.idInspeccion}`,
         );
       });
   }
 
   nextPage() {
-
     // this.transposicion = this.formTransposicion.value;
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
     this.transposicion = this.formTransposicion.value;
     console.log(this.transposicion);
     this.guardarTransposicion(this.transposicion);
 
-     this.router.navigateByUrl(
-       `resumen/formulario/ver/${this.formulario.idInspeccion}/ubicacion/${this.formulario.idInspeccion}`
-     );
+    this.router.navigateByUrl(
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/ubicacion/${this.formulario.idInspeccion}`,
+    );
   }
 
   prevPage() {
     this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/servidumbre/${this.formulario.idInspeccion}`
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/servidumbre/${this.formulario.idInspeccion}`,
     );
   }
 
@@ -113,12 +117,10 @@ export class TransposicionComponent implements OnInit {
       { name: '2', value: '2' },
       { name: '3', value: '3' },
     ];
-    
-        this.items = [];
-        for (let i = 1; i < 4; i++) {
-          this.items.push({ label: 'Item ' + i, value: 'Item ' + i });
-        }
-  }
-  
-}
 
+    this.items = [];
+    for (let i = 1; i < 4; i++) {
+      this.items.push({ label: 'Item ' + i, value: 'Item ' + i });
+    }
+  }
+}

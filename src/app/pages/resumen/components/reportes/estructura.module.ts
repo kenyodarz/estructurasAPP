@@ -6,15 +6,10 @@ import { PrimengModule } from 'src/app/shared/primeng.module';
 import { EstructurasMalasComponent } from './estructuras-malas/estructuras-malas.component';
 import { EstructuraRoutingModule } from './estructura-routing.module';
 
-
-
 @NgModule({
-  declarations: [
-   EstructurasMalasComponent,
-    
-  ],
+  declarations: [EstructurasMalasComponent],
   imports: [
-   EstructuraRoutingModule,
+    EstructuraRoutingModule,
     PrimengModule,
     CommonModule,
     FormsModule,

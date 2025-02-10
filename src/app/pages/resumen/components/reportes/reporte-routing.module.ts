@@ -6,7 +6,6 @@ import { CableConductorComponent } from './cable-conductor/cable-conductor.compo
 import { EstructuraaComponent } from './estructuraa/estructuraa.component';
 import { EstructurasBuenasComponent } from './estructuras-buenas/estructuras-buenas.component';
 
-
 @NgModule({
   imports: [
     RouterModule.forChild([
@@ -16,15 +15,14 @@ import { EstructurasBuenasComponent } from './estructuras-buenas/estructuras-bue
         component: EstructurasBuenasComponent,
         children: [
           //  { path: 'apantallamiento', component: EstructuraaComponent },
-           { path: 'estructuraa', component: EstructuraaComponent },
-           { path: 'cable-conductor', component: CableConductorComponent },
-           { path: 'aislamiento', component: AislamientoComponent },
-           { path: 'bases', component: BasesComponent },
+          { path: 'estructuraa', component: EstructuraaComponent },
+          { path: 'cable-conductor', component: CableConductorComponent },
+          { path: 'aislamiento', component: AislamientoComponent },
+          { path: 'bases', component: BasesComponent },
           //  { path: 'spt', component: EstructuraaComponent },
           //  { path: 'servidumbre', component: EstructuraaComponent },
           //  { path: 'transposicion', component: EstructuraaComponent },
           //  { path: 'ubicacion', component: EstructuraaComponent },
-          
         ],
       },
     ]),

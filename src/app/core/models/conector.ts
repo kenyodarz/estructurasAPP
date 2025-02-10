@@ -7,6 +7,6 @@ export class Conector {
     public quemados: boolean = null,
     public reposicion: boolean = null,
     public buenos: boolean = null,
-    public apantallamiento: Apantallamiento = null
+    public apantallamiento: Apantallamiento = null,
   ) {}
 }

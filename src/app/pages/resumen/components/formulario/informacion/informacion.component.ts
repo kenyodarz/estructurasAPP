@@ -30,7 +30,7 @@ export class InformacionComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
     private router: Router,
-    private rutaActiva: ActivatedRoute
+    private rutaActiva: ActivatedRoute,
   ) {}
 
   buscarEstructura() {
@@ -63,7 +63,7 @@ export class InformacionComponent implements OnInit {
           detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
         });
         this.router.navigateByUrl(
-          `resumen/formulario/ver/${formulario.idInspeccion}/apantallamiento/${formulario.idInspeccion}`
+          `resumen/formulario/ver/${formulario.idInspeccion}/apantallamiento/${formulario.idInspeccion}`,
         );
       });
   }

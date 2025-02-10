@@ -18,9 +18,9 @@ export class PersonaService extends CommonService<Persona, string> {
     super(http);
   }
 
-  validarPersona(credenciales: any): Observable<Persona>{
+  validarPersona(credenciales: any): Observable<Persona> {
     return this.http.get<Persona>(
-      `${this.API_URL}/validar/${credenciales.username}/${credenciales.password}`
+      `${this.API_URL}/validar/${credenciales.username}/${credenciales.password}`,
     );
   }
 }

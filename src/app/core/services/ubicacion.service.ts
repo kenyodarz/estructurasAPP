@@ -18,22 +18,28 @@ export class UbicacionService extends CommonService<Ubicacion, string> {
   constructor(protected http: HttpClient) {
     super(http);
   }
-  asignarUbicacionOne(idUbicacion: string, ubicacionOne: UbicacionOne): Observable<Ubicacion> {
+  asignarUbicacionOne(
+    idUbicacion: string,
+    ubicacionOne: UbicacionOne,
+  ): Observable<Ubicacion> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
     return this.http.put<Ubicacion>(
       `${this.API_URL}/${idUbicacion}/asignar-ubicacionesOne`,
       ubicacionOne,
-      { headers: headers }
+      { headers: headers },
     );
   }
-  eliminarUbicacionOne(idUbicacion: string, ubicacionOne: UbicacionOne): Observable<Ubicacion> {
+  eliminarUbicacionOne(
+    idUbicacion: string,
+    ubicacionOne: UbicacionOne,
+  ): Observable<Ubicacion> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
     return this.http.put<Ubicacion>(
       `${this.API_URL}/${idUbicacion}/eliminar-ubicacionesOne`,
       ubicacionOne,
-      { headers: headers }
+      { headers: headers },
     );
   }
 }

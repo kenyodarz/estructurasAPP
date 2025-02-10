@@ -1,221 +1,226 @@
-<br>
-<br>
+<br />
+<br />
 <div class="stepsdemo-content">
   <p-card>
-      <form [formGroup]="formObservacion" >
-    <p-fieldset legend="OBSERVACIONES GENERALES">
-      <ng-template pTemplate="content">
-        <div class="p-grid p-fluid">
-           <textarea
-                  rows="5"
-                  cols="30"
-                  pInputTextarea
-                  autoResize="autoResize"
-                  formControlName="observaciones"
-                ></textarea>
-        </div>
-          </ng-template>
-    </p-fieldset>
-     <p-fieldset legend="RESPONSABLE DE LA INSPECCIÓN">
-      <ng-template pTemplate="content">
-        <div class="p-grid p-fluid">
-           <!-- <form [formGroup]="formPersona" > -->
-          <div class="p-col-12 p-md-1">
-            <label>NOMBRE:</label>
+    <form [formGroup]="formObservacion">
+      <p-fieldset legend="OBSERVACIONES GENERALES">
+        <ng-template pTemplate="content">
+          <div class="p-grid p-fluid">
+            <textarea
+              rows="5"
+              cols="30"
+              pInputTextarea
+              autoResize="autoResize"
+              formControlName="observaciones"
+            ></textarea>
           </div>
-          <div class="p-col-12 p-md-5">
-            <input
-                  pInputText
-                  type="text"
-                  formControlName="nombrePersona"
-                  pKeyFilter="alphanum"
-                />
-          </div>
-          <div class="p-col-12 p-md-1">
-            <label>CODIGO:</label>
-          </div>
-          <div class="p-col-12 p-md-5">
-                <input
-                  pInputText
-                  type="text"
-                  formControlName="cedulaPersona"
-                  pKeyFilter="alphanum"
-                />
-          </div>
-           <!-- </form> -->
-          <div class="p-col-12 p-md-1">
-            <label>NOMBRE:</label>
-          </div>
- <div class="p-col-12 p-md-5">
-                 <input
-                  pInputText
-                  type="text"
-                  formControlName="nombre2"
-                  pKeyFilter="alphanum"
-                />
- </div>
- <div class="p-col-12 p-md-1">
-            <label>CODIGO:</label>
-          </div>
-  <div class="p-col-12 p-md-5">
-                 <input
-                  pInputText
-                  type="text"
-                  formControlName="codigo2"
-                  pKeyFilter="alphanum"
-                />
-  </div>
-                <div class="p-col-12 p-md-1">
-            <label>NOMBRE:</label>
-          </div>
-           <div class="p-col-12 p-md-5">
-                <input
-                  pInputText
-                  type="text"
-                  formControlName="nombre3"
-                  pKeyFilter="alphanum"
-                />
-           </div>
-           <div class="p-col-12 p-md-1">
-            <label>CODIGO:</label>
-          </div>
-            <div class="p-col-12 p-md-5">
-                <input
-                  pInputText
-                  type="text"
-                  formControlName="codigo3"
-                  pKeyFilter="alphanum"
-                />
-            </div>
-                <div class="p-col-12 p-md-1">
-            <label>NOMBRE:</label>
-          </div>
-           <div class="p-col-12 p-md-5">
-                <input
-                  pInputText
-                  type="text"
-                  formControlName="nombre4"
-                  pKeyFilter="alphanum"
-                />
-           </div>
-           <div class="p-col-12 p-md-1">
-            <label>CODIGO:</label>
-          </div>
-            <div class="p-col-12 p-md-5">
-                <input
-                  pInputText
-                  type="text"
-                  formControlName="codigo4"
-                  pKeyFilter="alphanum"
-                />
-            </div>
-<div class="p-col-12 p-md-1">
-            <label>NOMBRE:</label>
-          </div>
-           <div class="p-col-12 p-md-5">
-                <input
-                  pInputText
-                  type="text"
-                  formControlName="nombre5"
-                  pKeyFilter="alphanum"
-                />
-           </div>
-           <div class="p-col-12 p-md-1">
-            <label>CODIGO:</label>
-          </div>
-            <div class="p-col-12 p-md-5">
-                <input
-                  pInputText
-                  type="text"
-                  formControlName="codigo5"
-                  pKeyFilter="alphanum"
-                />
-            </div>
-            <div class="p-col-12 p-md-1">
-            <label>FECHA:</label>
-          </div>
-            <div class="p-col-12 p-md-5">
-                <input
-                  pInputText
-                  type="text"
-                  formControlName="fecha"
-                  pKeyFilter="alphanum"
-                />
-            </div>
-            <div class="p-col-12 p-md-1">
-            <label>MÓVIL:</label>
-          </div>
-            <div class="p-col-12 p-md-5">
-                <input
-                  pInputText
-                  type="text"
-                  formControlName="movil"
-                  pKeyFilter="alphanum"
-                />
-            </div>
-
-        </div>
-         
-          </ng-template>
-    </p-fieldset>
-     <p-fieldset legend="REVISÓ">
-      <ng-template pTemplate="content">
-        <div class="p-grid p-fluid">
-           <div class="p-col-12 p-md-1">
-            <label>NOMBRE:</label>
-          </div>
-           <div class="p-col-12 p-md-5">
-                <input
-                  pInputText
-                  type="text"
-                  formControlName="reviso"
-                  pKeyFilter="alphanum"
-                />
-           </div>
-                 <div class="p-col-12 p-md-1">
-            <label>CODIGO:</label>
-          </div>
-           <div class="p-col-12 p-md-5">
-                <input
-                  pInputText
-                  type="text"
-                  formControlName="codigoRevisor"
-                  pKeyFilter="alphanum"
-                />
-           </div>
-                 <div class="p-col-12 p-md-1">
-            <label>FIRMA:</label>
-          </div>
-           <div class="p-col-12 p-md-5">
-                <input
-                  pInputText
-                  type="text"
-                  formControlName="firma"
-                  pKeyFilter="alphanum"
-                />
-           </div>
-                 <div class="p-col-12 p-md-1">
-            <label>FECHA:</label>
-          </div>
-           <div class="p-col-12 p-md-5">
-             
-  <input
-                  pInputText
-                  type="text"
-                  formControlName="fechaRevisor"
-                  pKeyFilter="alphanum"
-                />
-           </div>
-
-        </div>
-          </ng-template>
-    </p-fieldset>
-      </form>
-       <ng-template pTemplate="footer">
-            <div class="p-grid p-nogutter p-justify-between">
-                <p-button label="Back" icon="pi pi-angle-left" (onClick)="prevPage()"></p-button>
-                <p-button label="Next" icon="pi pi-angle-right" iconPos="right" (onClick)="nextPage()"></p-button>
-            </div>
         </ng-template>
+      </p-fieldset>
+      <p-fieldset legend="RESPONSABLE DE LA INSPECCIÓN">
+        <ng-template pTemplate="content">
+          <div class="p-grid p-fluid">
+            <!-- <form [formGroup]="formPersona" > -->
+            <div class="p-col-12 p-md-1">
+              <label>NOMBRE:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="nombrePersona"
+                pKeyFilter="alphanum"
+              />
+            </div>
+            <div class="p-col-12 p-md-1">
+              <label>CODIGO:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="cedulaPersona"
+                pKeyFilter="alphanum"
+              />
+            </div>
+            <!-- </form> -->
+            <div class="p-col-12 p-md-1">
+              <label>NOMBRE:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="nombre2"
+                pKeyFilter="alphanum"
+              />
+            </div>
+            <div class="p-col-12 p-md-1">
+              <label>CODIGO:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="codigo2"
+                pKeyFilter="alphanum"
+              />
+            </div>
+            <div class="p-col-12 p-md-1">
+              <label>NOMBRE:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="nombre3"
+                pKeyFilter="alphanum"
+              />
+            </div>
+            <div class="p-col-12 p-md-1">
+              <label>CODIGO:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="codigo3"
+                pKeyFilter="alphanum"
+              />
+            </div>
+            <div class="p-col-12 p-md-1">
+              <label>NOMBRE:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="nombre4"
+                pKeyFilter="alphanum"
+              />
+            </div>
+            <div class="p-col-12 p-md-1">
+              <label>CODIGO:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="codigo4"
+                pKeyFilter="alphanum"
+              />
+            </div>
+            <div class="p-col-12 p-md-1">
+              <label>NOMBRE:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="nombre5"
+                pKeyFilter="alphanum"
+              />
+            </div>
+            <div class="p-col-12 p-md-1">
+              <label>CODIGO:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="codigo5"
+                pKeyFilter="alphanum"
+              />
+            </div>
+            <div class="p-col-12 p-md-1">
+              <label>FECHA:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="fecha"
+                pKeyFilter="alphanum"
+              />
+            </div>
+            <div class="p-col-12 p-md-1">
+              <label>MÓVIL:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="movil"
+                pKeyFilter="alphanum"
+              />
+            </div>
+          </div>
+        </ng-template>
+      </p-fieldset>
+      <p-fieldset legend="REVISÓ">
+        <ng-template pTemplate="content">
+          <div class="p-grid p-fluid">
+            <div class="p-col-12 p-md-1">
+              <label>NOMBRE:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="reviso"
+                pKeyFilter="alphanum"
+              />
+            </div>
+            <div class="p-col-12 p-md-1">
+              <label>CODIGO:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="codigoRevisor"
+                pKeyFilter="alphanum"
+              />
+            </div>
+            <div class="p-col-12 p-md-1">
+              <label>FIRMA:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="firma"
+                pKeyFilter="alphanum"
+              />
+            </div>
+            <div class="p-col-12 p-md-1">
+              <label>FECHA:</label>
+            </div>
+            <div class="p-col-12 p-md-5">
+              <input
+                pInputText
+                type="text"
+                formControlName="fechaRevisor"
+                pKeyFilter="alphanum"
+              />
+            </div>
+          </div>
+        </ng-template>
+      </p-fieldset>
+    </form>
+    <ng-template pTemplate="footer">
+      <div class="p-grid p-nogutter p-justify-between">
+        <p-button
+          label="Back"
+          icon="pi pi-angle-left"
+          (onClick)="prevPage()"
+        ></p-button>
+        <p-button
+          label="Next"
+          icon="pi pi-angle-right"
+          iconPos="right"
+          (onClick)="nextPage()"
+        ></p-button>
+      </div>
+    </ng-template>
   </p-card>
 </div>

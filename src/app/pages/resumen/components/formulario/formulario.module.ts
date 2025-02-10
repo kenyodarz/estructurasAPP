@@ -18,8 +18,6 @@ import { ServidumbreComponent } from './servidumbre/servidumbre.component';
 import { ObservacionComponent } from './observacion/observacion.component';
 import { ConfirmacionComponent } from './confirmacion/confirmacion.component';
 
-
-
 @NgModule({
   declarations: [
     VerFormularioComponent,

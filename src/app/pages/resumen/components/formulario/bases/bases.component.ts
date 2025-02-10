@@ -4,7 +4,12 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 
 // PrimeNG
 import { MessageService, ConfirmationService } from 'primeng/api';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { FormularioService } from 'src/app/core/services/formulario.service';
 import { BasesService } from 'src/app/core/services/bases.service';
 import { Bases } from 'src/app/core/models/bases';
@@ -39,7 +44,7 @@ export class BasesComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
     private router: Router,
-    private rutaActiva: ActivatedRoute
+    private rutaActiva: ActivatedRoute,
   ) {}
 
   obtenerFormulario(idInspeccion: string) {
@@ -49,7 +54,6 @@ export class BasesComponent implements OnInit {
         this.formulario = formulario;
         if (formulario.idBases != null) {
           if (formulario.idBases.subbases.length > 0) {
-            
             this.mostrar = true;
           }
           // Aca va el nuevo Formulario
@@ -143,7 +147,7 @@ export class BasesComponent implements OnInit {
           detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
         });
         this.router.navigateByUrl(
-          `resumen/formulario/ver/${formulario.idInspeccion}/spt/${formulario.idInspeccion}`
+          `resumen/formulario/ver/${formulario.idInspeccion}/spt/${formulario.idInspeccion}`,
         );
       });
   }
@@ -177,7 +181,7 @@ export class BasesComponent implements OnInit {
     console.log(this.bases);
     // console.info(this.formEstructuraa.value);
     this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/spt/${this.formulario.idInspeccion}`
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/spt/${this.formulario.idInspeccion}`,
     );
     // this.guardarBases();
   }
@@ -219,7 +223,7 @@ export class BasesComponent implements OnInit {
 
   prevPage() {
     this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/aislamiento/${this.formulario.idInspeccion}`
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/aislamiento/${this.formulario.idInspeccion}`,
     );
   }
 

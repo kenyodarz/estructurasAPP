@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -27,7 +32,7 @@ export class SptComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
     private router: Router,
-    private rutaActiva: ActivatedRoute
+    private rutaActiva: ActivatedRoute,
   ) {}
   obtenerFormulario(idInspeccion: string) {
     this.formularioService
@@ -65,7 +70,7 @@ export class SptComponent implements OnInit {
           detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
         });
         this.router.navigateByUrl(
-          `resumen/formulario/ver/${formulario.idInspeccion}/servidumbre/${formulario.idInspeccion}`
+          `resumen/formulario/ver/${formulario.idInspeccion}/servidumbre/${formulario.idInspeccion}`,
         );
       });
   }
@@ -78,20 +83,18 @@ export class SptComponent implements OnInit {
 
   prevPage() {
     this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/bases/${this.formulario.idInspeccion}`
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/bases/${this.formulario.idInspeccion}`,
     );
   }
 
   OnChangeAnilloContrapeso() {
     this.Anillo = false;
     this.Contrapeso = false;
-
   }
 
   OnChangeAnillo() {
     this.AnilloContrapeso = false;
     this.Contrapeso = false;
-
   }
 
   OnChangeContrapeso() {

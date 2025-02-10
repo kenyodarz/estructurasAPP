@@ -1,4 +1,4 @@
-import { CableConductor } from "./cableConductor";
+import { CableConductor } from './cableConductor';
 
 export class Empalme {
   constructor(
@@ -8,6 +8,6 @@ export class Empalme {
     public cantidadFullTension: number = null,
     public cantidadBlindaje: number = null,
     public noAplica: boolean = null,
-    public cableConductor: CableConductor = null
+    public cableConductor: CableConductor = null,
   ) {}
 }

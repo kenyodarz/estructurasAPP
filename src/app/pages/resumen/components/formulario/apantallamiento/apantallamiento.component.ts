@@ -42,7 +42,7 @@ export class ApantallamientoComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
     private router: Router,
-    private rutaActiva: ActivatedRoute
+    private rutaActiva: ActivatedRoute,
   ) {}
 
   obtenerFormulario(idInspeccion: string) {
@@ -96,7 +96,7 @@ export class ApantallamientoComponent implements OnInit {
         severity: 'info',
         summary: 'Conector',
         detail: `Se ha guardado correctamente el Conector ${conector.idConector}`,
-      })
+      }),
     );
   }
 
@@ -121,7 +121,7 @@ export class ApantallamientoComponent implements OnInit {
           detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
         });
         this.router.navigateByUrl(
-          `resumen/formulario/ver/${formulario.idInspeccion}/estructuraa/${formulario.idInspeccion}`
+          `resumen/formulario/ver/${formulario.idInspeccion}/estructuraa/${formulario.idInspeccion}`,
         );
       });
   }
@@ -136,7 +136,7 @@ export class ApantallamientoComponent implements OnInit {
 
   prevPage() {
     this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/informacion/${this.formulario.idInspeccion}`
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/informacion/${this.formulario.idInspeccion}`,
     );
   }
 
@@ -173,7 +173,10 @@ export class ApantallamientoComponent implements OnInit {
       cableGuarda: new UntypedFormControl(null, Validators.required),
       tipoApantallamiento: new UntypedFormControl(null, Validators.required),
       calibreApantallamiento: new UntypedFormControl(null, Validators.required),
-      observacionesApantallamiento: new UntypedFormControl(null, Validators.required),
+      observacionesApantallamiento: new UntypedFormControl(
+        null,
+        Validators.required,
+      ),
     });
     this.formConector = this.fb.group({
       sulfatados: new UntypedFormControl(),

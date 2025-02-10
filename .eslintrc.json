@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "plugin:@angular-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "@angular-eslint"
+  ],
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "createDefaultProgram": true
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/"
+  ],
+  "overrides": [
+    {
+      "files": ["*.html"],
+      "parser": "@angular-eslint/template-parser"
+    }
+  ]
+}

@@ -1,576 +1,584 @@
-<br>
+<br />
 <div class="stepsdemo-content">
-    <p-card>
-        <ng-template pTemplate="title">
-            Confirmación
-        </ng-template>
-        <ng-template pTemplate="subtitle">
-            Finalizar el formulario si la información es correcta
-        </ng-template>
-       
-        <ng-template pTemplate="content">
-           <form [formGroup]="formConfirmacion" >
-            <div class="p-field p-col-12">
-                <h4>APANTALLAMIENTO</h4>
-                <label>CABLE DE GUARDA:</label>
-                <!-- <label  formControlName="cableGuarda"></label> -->
-                   <p-selectButton
-                    [options]="stateOptions"
-                    formControlName="cableGuarda"
-                    optionLabel="label"
-                    optionValue="value"
-                  ></p-selectButton>
-                <br>
-                <label>TIPO:</label>
-                  <p-selectButton
-                    [options]="paymentOptions"
-                    formControlName="tipoApantallamiento"
-                    optionLabel="label"
-                    optionValue="value"
-                  ></p-selectButton>
-                  <br>
-                <label>CALIBRE:</label>
-                 <input
-                  pInputText
-                  type="text"
-                  formControlName="calibreApantallamiento"
-                  pKeyFilter="alphanum"
-                />
-                <br>
-                <label>ESTADO CABLE GUARDA:</label>
-                 <div class="p-field-checkbox">
-                    <p-checkbox
-                      [formControl]="formConfirmacion.controls['rotos']"                      
-                      binary="true"
-                      inputId="rotos"
-                    >
-                      ></p-checkbox
-                    >
-                    <label for="rotos">ROTOS</label>
-                  </div>
-                  <div class="p-field-checkbox">
-                    <p-checkbox
-                      [formControl]="formConfirmacion.controls['noTieneBlin']"                      
-                      binary="true"
-                    ></p-checkbox>
-                    <label for="sf">NO TIENE BLINDAJE</label>
-                  </div>
-                   <div class="p-field-checkbox">
-                    <p-checkbox
-                      [formControl]="formConfirmacion.controls['empalmeMalEstado']"
-                      binary="true"
-                    ></p-checkbox>
-                    <label for="la">EMPALMES EN MAL ESTADO</label>
-                  </div>
-                  <div class="p-field-checkbox">
-                    <p-checkbox
-                      [formControl]="formConfirmacion.controls['herrajeMalEstado']"                      
-                      binary="true"
-                    ></p-checkbox>
-                    <label for="ch">HERRAJES EN MAL ESTADO</label>
-                  </div>
-                   <div class="p-field-checkbox">
-                    <p-checkbox
-                      [formControl]="formConfirmacion.controls['buenos']"                      
-                      binary="true"
-                    ></p-checkbox>
-                    <label for="ch">BUENOS</label>
-                  </div>
-                <br>
-                <label>CONECTORES CABLE GUARDA:</label>
-                <br>
-                <label>OBSERVACIONES:</label>
-                  <textarea
-                  rows="5"
-                  cols="30"
-                  pInputTextarea
-                  autoResize="autoResize"
-                  formControlName="observacionesApantallamiento"
-                ></textarea>
-                <b></b>
+  <p-card>
+    <ng-template pTemplate="title"> Confirmación </ng-template>
+    <ng-template pTemplate="subtitle">
+      Finalizar el formulario si la información es correcta
+    </ng-template>
+
+    <ng-template pTemplate="content">
+      <form [formGroup]="formConfirmacion">
+        <div class="p-field p-col-12">
+          <h4>APANTALLAMIENTO</h4>
+          <label>CABLE DE GUARDA:</label>
+          <!-- <label  formControlName="cableGuarda"></label> -->
+          <p-selectButton
+            [options]="stateOptions"
+            formControlName="cableGuarda"
+            optionLabel="label"
+            optionValue="value"
+          ></p-selectButton>
+          <br />
+          <label>TIPO:</label>
+          <p-selectButton
+            [options]="paymentOptions"
+            formControlName="tipoApantallamiento"
+            optionLabel="label"
+            optionValue="value"
+          ></p-selectButton>
+          <br />
+          <label>CALIBRE:</label>
+          <input
+            pInputText
+            type="text"
+            formControlName="calibreApantallamiento"
+            pKeyFilter="alphanum"
+          />
+          <br />
+          <label>ESTADO CABLE GUARDA:</label>
+          <div class="p-field-checkbox">
+            <p-checkbox
+              [formControl]="formConfirmacion.controls['rotos']"
+              binary="true"
+              inputId="rotos"
+            >
+              ></p-checkbox
+            >
+            <label for="rotos">ROTOS</label>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox
+              [formControl]="formConfirmacion.controls['noTieneBlin']"
+              binary="true"
+            ></p-checkbox>
+            <label for="sf">NO TIENE BLINDAJE</label>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox
+              [formControl]="formConfirmacion.controls['empalmeMalEstado']"
+              binary="true"
+            ></p-checkbox>
+            <label for="la">EMPALMES EN MAL ESTADO</label>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox
+              [formControl]="formConfirmacion.controls['herrajeMalEstado']"
+              binary="true"
+            ></p-checkbox>
+            <label for="ch">HERRAJES EN MAL ESTADO</label>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox
+              [formControl]="formConfirmacion.controls['buenos']"
+              binary="true"
+            ></p-checkbox>
+            <label for="ch">BUENOS</label>
+          </div>
+          <br />
+          <label>CONECTORES CABLE GUARDA:</label>
+          <br />
+          <label>OBSERVACIONES:</label>
+          <textarea
+            rows="5"
+            cols="30"
+            pInputTextarea
+            autoResize="autoResize"
+            formControlName="observacionesApantallamiento"
+          ></textarea>
+          <b></b>
+        </div>
+        <div class="p-field p-col-12">
+          <h4>ESTRUCTURA</h4>
+          <label>FUNCIÓN:</label>
+          <p-selectButton
+            [options]="funcionOptions"
+            formControlName="funcion"
+            optionLabel="label"
+            optionValue="value"
+          ></p-selectButton>
+          <br />
+          <label>TIPO:</label>
+          <p-selectButton
+            [options]="tipoOpcions"
+            formControlName="tipo"
+            optionLabel="label"
+            optionValue="value"
+          ></p-selectButton>
+          <br />
+          <label>PINTURA:</label>
+          <p-selectButton
+            [options]="pinturaOpcions"
+            formControlName="pintura"
+            optionLabel="label"
+            optionValue="value"
+          ></p-selectButton>
+          <br />
+          <label>ESTADO-ÁNGULOS:</label>
+          <p-selectButton
+            [options]="angulosOpcions"
+            formControlName="estadoAngulos"
+            optionLabel="label"
+            optionValue="value"
+          ></p-selectButton>
+          <br />
+          <label>SEÑALIZACIÓN:</label>
+          <p-selectButton
+            [options]="riesgoElectricoOpcions"
+            formControlName="riesgoElectrico"
+            optionLabel="label"
+            optionValue="value"
+          ></p-selectButton>
+          <br />
+          <label>VIAL:</label>
+          <p-selectButton
+            [options]="vialOpcions"
+            formControlName="vial"
+            optionLabel="label"
+            optionValue="value"
+          ></p-selectButton>
+          <br />
+          <label>NOMENCLATURA:</label>
+          <p-selectButton
+            [options]="nomenclaturaOpcions"
+            formControlName="nomenclatura"
+            optionLabel="label"
+            optionValue="value"
+          ></p-selectButton>
+          <br />
+          <label>OBSERVACIONES:</label>
+          <textarea
+            formControlName="observaciones"
+            rows="5"
+            cols="30"
+            pInputTextarea
+            autoResize="autoResize"
+          ></textarea>
+          <b></b>
+        </div>
+
+        <div class="p-field p-col-12">
+          <h4>CABLE CONDUCTOR</h4>
+          <label>CALIBRE:</label>
+          <p-fieldset legend="CALIBRE">
+            <input
+              type="text"
+              pInputText
+              formControlName="calibreCableConductor"
+            />
+          </p-fieldset>
+          <label>AMORTIGUADOR:</label>
+          <p-selectButton
+            [options]="amortiguadorOpcions"
+            formControlName="amortiguadorCableConductor"
+            optionLabel="label"
+            optionValue="value"
+          ></p-selectButton>
+          <br />
+          <label>EMPALMES:</label>
+          <form [formGroup]="formFaseR">
+            <div class="p-text-center">
+              <label for="class">FASE R</label>
             </div>
-            <div class="p-field p-col-12">
-                <h4>ESTRUCTURA</h4>
-                  <label>FUNCIÓN:</label>
-                  <p-selectButton
-                      [options]="funcionOptions"
-                       formControlName="funcion"
-                      optionLabel="label"
-                      optionValue="value"
-                    ></p-selectButton>
-                    <br>
-                  <label>TIPO:</label>
-                   <p-selectButton
-                  [options]="tipoOpcions"
-                   formControlName="tipo"
-                  optionLabel="label"
-                  optionValue="value"
-                ></p-selectButton>
-                <br>
-                  <label>PINTURA:</label>
-                  <p-selectButton
-                  [options]="pinturaOpcions"
-                   formControlName="pintura"
-                  optionLabel="label"
-                  optionValue="value"
-                ></p-selectButton>
-                <br>
-                  <label>ESTADO-ÁNGULOS:</label>
-                  <p-selectButton
-                  [options]="angulosOpcions"
-                   formControlName="estadoAngulos"
-                  optionLabel="label"
-                  optionValue="value"
-                ></p-selectButton>
-                <br>
-                  <label>SEÑALIZACIÓN:</label>
-                   <p-selectButton
-                    [options]="riesgoElectricoOpcions"
-                     formControlName="riesgoElectrico"
-                    optionLabel="label"
-                    optionValue="value"
-                  ></p-selectButton>
-                  <br>
-                  <label>VIAL:</label>
-                    <p-selectButton
-                    [options]="vialOpcions"
-                     formControlName="vial"
-                    optionLabel="label"
-                    optionValue="value"
-                  ></p-selectButton>
-                  <br>
-                  <label>NOMENCLATURA:</label>
-                  <p-selectButton
-                  [options]="nomenclaturaOpcions"
-                   formControlName="nomenclatura"
-                  optionLabel="label"
-                  optionValue="value"
-                ></p-selectButton>
-                <br>
-                  <label>OBSERVACIONES:</label>
-                   <textarea
+
+            <p-fieldset legend="MANUAL">
+              <div class="p-grid p-fluid">
+                <div class="p-text-center p-col-12 p-md-3">
+                  <label for="class">CANT:</label>
+                </div>
+                <div class="p-col-4 p-md-9">
+                  <input
+                    type="text"
+                    pInputText
+                    formControlName="cantidadManual"
+                  />
+                </div>
+              </div>
+            </p-fieldset>
+
+            <p-fieldset legend="FULL TENSIÓN">
+              <div class="p-grid p-fluid">
+                <div class="p-text-center p-col-12 p-md-3">
+                  <label for="class">CANT:</label>
+                </div>
+                <div class="p-col-4 p-md-9">
+                  <input
+                    type="text"
+                    pInputText
+                    formControlName="cantidadFullTension"
+                  />
+                </div>
+              </div>
+            </p-fieldset>
+            <p-fieldset legend="BLINDAJE">
+              <div class="p-grid p-fluid">
+                <div class="p-text-center p-col-12 p-md-3">
+                  <label for="class">CANT:</label>
+                </div>
+                <div class="p-col-4 p-md-9">
+                  <input
+                    type="text"
+                    pInputText
+                    formControlName="cantidadBlindaje"
+                  />
+                </div>
+              </div>
+            </p-fieldset>
+          </form>
+          <form [formGroup]="formFaseS">
+            <div class="p-text-center">
+              <label for="class">FASE S</label>
+            </div>
+
+            <p-fieldset legend="MANUAL">
+              <div class="p-grid p-fluid">
+                <div class="p-text-center p-col-12 p-md-3">
+                  <label for="class">CANT:</label>
+                </div>
+                <div class="p-col-4 p-md-9">
+                  <input
+                    type="text"
+                    pInputText
+                    formControlName="cantidadManual"
+                  />
+                </div>
+              </div>
+            </p-fieldset>
+
+            <p-fieldset legend="FULL TENSIÓN">
+              <div class="p-grid p-fluid">
+                <div class="p-text-center p-col-12 p-md-3">
+                  <label for="class">CANT:</label>
+                </div>
+                <div class="p-col-4 p-md-9">
+                  <input
+                    type="text"
+                    pInputText
+                    formControlName="cantidadFullTension"
+                  />
+                </div>
+              </div>
+            </p-fieldset>
+            <p-fieldset legend="BLINDAJE">
+              <div class="p-grid p-fluid">
+                <div class="p-text-center p-col-12 p-md-3">
+                  <label for="class">CANT:</label>
+                </div>
+                <div class="p-col-4 p-md-9">
+                  <input
+                    type="text"
+                    pInputText
+                    formControlName="cantidadBlindaje"
+                  />
+                </div>
+              </div>
+            </p-fieldset>
+          </form>
+          <form [formGroup]="formFaseT">
+            <div class="p-text-center">
+              <label for="class">FASE T</label>
+            </div>
+
+            <p-fieldset legend="MANUAL">
+              <div class="p-grid p-fluid">
+                <div class="p-text-center p-col-12 p-md-3">
+                  <label for="class">CANT:</label>
+                </div>
+                <div class="p-col-4 p-md-9">
+                  <input
+                    type="text"
+                    pInputText
+                    formControlName="cantidadManual"
+                  />
+                </div>
+              </div>
+            </p-fieldset>
+
+            <p-fieldset legend="FULL TENSIÓN">
+              <div class="p-grid p-fluid">
+                <div class="p-text-center p-col-12 p-md-3">
+                  <label for="class">CANT:</label>
+                </div>
+                <div class="p-col-4 p-md-9">
+                  <input
+                    type="text"
+                    pInputText
+                    formControlName="cantidadFullTension"
+                  />
+                </div>
+              </div>
+            </p-fieldset>
+            <p-fieldset legend="BLINDAJE">
+              <div class="p-grid p-fluid">
+                <div class="p-text-center p-col-12 p-md-3">
+                  <label for="class">CANT:</label>
+                </div>
+                <div class="p-col-4 p-md-9">
+                  <input
+                    type="text"
+                    pInputText
+                    formControlName="cantidadBlindaje"
+                  />
+                </div>
+              </div>
+            </p-fieldset>
+          </form>
+          <br />
+          <label>ESTADO CONDUCTOR:</label>
+          <br />
+          <label>OBSERVACIONES:</label>
+          <textarea
+            rows="5"
+            cols="30"
+            pInputTextarea
+            autoResize="autoResize"
+            formControlName="observacionesCableConductor"
+          ></textarea>
+
+          <b></b>
+        </div>
+        <div class="p-field p-col-12">
+          <h4>AISLAMIENTO</h4>
+          <form [formGroup]="formFaseR">
+            <h5>FASE R</h5>
+            <label>TIPO:</label>
+            <p-selectButton
+              [options]="tipo"
+              formControlName="tipo"
+              optionLabel="label"
+              optionValue="value"
+            ></p-selectButton>
+            <br />
+            <label>CLASE:</label>
+            <p-selectButton
+              [options]="clase"
+              formControlName="clase"
+              optionLabel="label"
+              optionValue="value"
+            ></p-selectButton>
+            <br />
+            <label>N° AISLADORES POR CADENA:</label>
+            <div class="p-col-12 p-md-2">
+              <input type="text" pInputText formControlName="numAisladores" />
+            </div>
+            <label>TIPO DE CADENAS:</label>
+            <p-selectButton
+              [options]="tipoCadena"
+              formControlName="tipoCadena"
+              optionLabel="label"
+              optionValue="value"
+            ></p-selectButton>
+            <br />
+
+            <label>PUENTES:</label>
+            <p-selectButton
+              [options]="puentes"
+              formControlName="puentes"
+              optionLabel="label"
+              optionValue="value"
+            ></p-selectButton>
+            <br />
+            <label>OBSERVACIONES:</label>
+            <textarea
+              rows="5"
+              cols="30"
+              pInputTextarea
+              autoResize="autoResize"
               formControlName="observaciones"
-                rows="5"
-                cols="30"
-                pInputTextarea
-                autoResize="autoResize"
-              ></textarea>
-                <b></b>
+            ></textarea>
+          </form>
+          <h5>FASE S</h5>
+          <form [formGroup]="formFaseS">
+            <label>TIPO:</label>
+            <p-selectButton
+              [options]="tipo"
+              formControlName="tipo"
+              optionLabel="label"
+              optionValue="value"
+            ></p-selectButton>
+            <br />
+            <label>CLASE:</label>
+            <p-selectButton
+              [options]="clase"
+              formControlName="clase"
+              optionLabel="label"
+              optionValue="value"
+            ></p-selectButton>
+            <br />
+            <label>N° AISLADORES POR CADENA:</label>
+            <div class="p-col-12 p-md-2">
+              <input type="text" pInputText formControlName="numAisladores" />
             </div>
-            
-            <div class="p-field p-col-12">
-                <h4>CABLE CONDUCTOR</h4>
-                 <label>CALIBRE:</label>
-                 <p-fieldset legend="CALIBRE">
-                <input
-                  type="text"
-                  pInputText
-                  formControlName="calibreCableConductor"
-                />
-              </p-fieldset>
-                  <label>AMORTIGUADOR:</label>
-                  <p-selectButton
-                      [options]="amortiguadorOpcions"
-                      formControlName="amortiguadorCableConductor"
-                      optionLabel="label"
-                      optionValue="value"
-                    ></p-selectButton>
-                    <br>
-                  <label>EMPALMES:</label>
-                   <form [formGroup]="formFaseR" >
-                  <div class=" p-text-center">
-                              <label for="class" >FASE R</label>
-                            </div>
+            <label>TIPO DE CADENAS:</label>
+            <p-selectButton
+              [options]="tipoCadena"
+              formControlName="tipoCadena"
+              optionLabel="label"
+              optionValue="value"
+            ></p-selectButton>
+            <br />
 
-                             <p-fieldset legend="MANUAL">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                             <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadManual"
-                              />
-                             </div>
-                              </div>
-                            </p-fieldset>
+            <label>PUENTES:</label>
+            <p-selectButton
+              [options]="puentes"
+              formControlName="puentes"
+              optionLabel="label"
+              optionValue="value"
+            ></p-selectButton>
+            <br />
+            <label>OBSERVACIONES:</label>
+            <textarea
+              rows="5"
+              cols="30"
+              pInputTextarea
+              autoResize="autoResize"
+              formControlName="observaciones"
+            ></textarea>
+          </form>
 
-                            <p-fieldset legend="FULL TENSIÓN">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                            <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadFullTension"
-                              />
-                            </div>
-                              </div>
-                            </p-fieldset>
-                             <p-fieldset legend="BLINDAJE">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                            <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadBlindaje"
-                              />
-                            </div>
-                            </div>
-                            </p-fieldset>
-                   </form>
-                    <form [formGroup]="formFaseS" >
-                  <div class=" p-text-center">
-                              <label for="class" >FASE S</label>
-                            </div>
+          <h5>FASE T</h5>
+          <form [formGroup]="formFaseT">
+            <label>TIPO:</label>
+            <p-selectButton
+              [options]="tipo"
+              formControlName="tipo"
+              optionLabel="label"
+              optionValue="value"
+            ></p-selectButton>
+            <br />
+            <label>CLASE:</label>
+            <p-selectButton
+              [options]="clase"
+              formControlName="clase"
+              optionLabel="label"
+              optionValue="value"
+            ></p-selectButton>
+            <br />
+            <label>N° AISLADORES POR CADENA:</label>
+            <div class="p-col-12 p-md-2">
+              <input type="text" pInputText formControlName="numAisladores" />
+            </div>
+            <label>TIPO DE CADENAS:</label>
+            <p-selectButton
+              [options]="tipoCadena"
+              formControlName="tipoCadena"
+              optionLabel="label"
+              optionValue="value"
+            ></p-selectButton>
+            <br />
 
-                             <p-fieldset legend="MANUAL">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                             <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadManual"
-                              />
-                             </div>
-                              </div>
-                            </p-fieldset>
+            <label>PUENTES:</label>
+            <p-selectButton
+              [options]="puentes"
+              formControlName="puentes"
+              optionLabel="label"
+              optionValue="value"
+            ></p-selectButton>
+            <br />
+            <label>OBSERVACIONES:</label>
+            <textarea
+              rows="5"
+              cols="30"
+              pInputTextarea
+              autoResize="autoResize"
+              formControlName="observaciones"
+            ></textarea>
+          </form>
+          <b></b>
+        </div>
+        <div class="p-field p-col-12">
+          <h4>BASES</h4>
+          <h5>ESTADO BASES</h5>
+          <label>ANGULOS PRINCIPALES:</label>
+          <label>BASE I:</label>
+          <label>BASE II:</label>
+          <label>BASE III:</label>
+          <label>BASE IV:</label>
+          <label>OBSERVACIONES:</label>
+          <b></b>
+        </div>
+        <div class="p-field p-col-12">
+          <h4>SISTEMA PUESTA A TIERRA SPT</h4>
+          <label>TIENE S.P.T.:</label>
+          <label>CALIBRE:</label>
+          <label>TIPO:</label>
+          <label>CANT:</label>
+          <label>TIENE BAJANTE:</label>
+          <label>TIPO:</label>
+          <label>CALIBRE:</label>
+          <label>OBSERVACIONES:</label>
+          <b></b>
+        </div>
+        <div class="p-field p-col-12">
+          <h4>SERVIDUMBRE</h4>
+          <label>PODA:</label>
+          <label>SERVIDUMBRE:</label>
+          <label>OBSERVACIONES:</label>
+          <b></b>
+        </div>
+        <div class="p-field p-col-12">
+          <h4>TRANSPPOSICIÓN</h4>
+          <label>ALIMENTADOR DE ENTRADA I:</label>
+          <label>ALIMENTADOR DE SALIDA I:</label>
+          <label>ALIMENTADOR DE ENTRADA II:</label>
+          <label>ALIMENTADOR DE SALIDA II:</label>
+          <label>ALIMENTADOR DE ENTRADA III:</label>
+          <label>ALIMENTADOR DE SALIDA III:</label>
+          <b></b>
+        </div>
+        <div class="p-field p-col-12">
+          <h4>UBICACIÓN DE PODA E INVASIÓN DE SERVIDUMBRE</h4>
+          <label>TORRE N°:</label>
+          <label>TORRE N°:</label>
+          <label>TORRE N°:</label>
+          <label>TORRE N°:</label>
+          <b></b>
+        </div>
+        <div class="p-field p-col-12">
+          <h4>OBSERVACIONES GENERALES</h4>
+          <b></b>
+        </div>
+        <div class="p-field p-col-12">
+          <h4>RESPONSABLES DE LA INSPECCIÓN</h4>
+          <label>NOMBRE:</label>
+          <label>CODIGO:</label>
+          <label>NOMBRE:</label>
+          <label>CODIGO:</label>
+          <label>NOMBRE:</label>
+          <label>CODIGO:</label>
+          <label>NOMBRE:</label>
+          <label>CODIGO:</label>
+          <label>NOMBRE:</label>
+          <label>CODIGO:</label>
+          <label>FECHA:</label>
+          <label>MÓVIL:</label>
+          <b></b>
+        </div>
+        <div class="p-field p-col-12">
+          <h4>REVISÓ</h4>
+          <label>NOMBRE:</label>
+          <label>CODIGO:</label>
+          <label>FIRMA:</label>
+          <label>FECHA:</label>
+          <b></b>
+        </div>
+      </form>
+    </ng-template>
 
-                            <p-fieldset legend="FULL TENSIÓN">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                            <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadFullTension"
-                              />
-                            </div>
-                              </div>
-                            </p-fieldset>
-                             <p-fieldset legend="BLINDAJE">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                            <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadBlindaje"
-                              />
-                            </div>
-                            </div>
-                            </p-fieldset>
-                   </form>
-                    <form [formGroup]="formFaseT" >
-                  <div class=" p-text-center">
-                              <label for="class" >FASE T</label>
-                            </div>
-
-                             <p-fieldset legend="MANUAL">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                             <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadManual"
-                              />
-                             </div>
-                              </div>
-                            </p-fieldset>
-
-                            <p-fieldset legend="FULL TENSIÓN">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                            <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadFullTension"
-                              />
-                            </div>
-                              </div>
-                            </p-fieldset>
-                             <p-fieldset legend="BLINDAJE">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                            <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadBlindaje"
-                              />
-                            </div>
-                            </div>
-                            </p-fieldset>
-                   </form>
-                   <br>
-                  <label>ESTADO CONDUCTOR:</label>
-                  <br>
-                  <label>OBSERVACIONES:</label>
-                   <textarea
-                  rows="5"
-                  cols="30"
-                  pInputTextarea
-                  autoResize="autoResize"
-                  formControlName="observacionesCableConductor"
-                ></textarea>
-                 
-                <b></b>
-            </div>
-            <div class="p-field p-col-12">
-                <h4>AISLAMIENTO</h4>
-                <form [formGroup]="formFaseR" >
-                <h5>FASE R</h5>
-                <label>TIPO:</label>
-                <p-selectButton
-                          [options]="tipo"
-                          formControlName="tipo"
-                          optionLabel="label"
-                          optionValue="value"
-                        ></p-selectButton>
-                        <br>
-                <label>CLASE:</label>
-                 <p-selectButton
-                          [options]="clase"
-                          formControlName="clase"
-                          optionLabel="label"
-                          optionValue="value"
-                        ></p-selectButton>
-                        <br>
-                <label>N° AISLADORES POR CADENA:</label>
-                 <div class="p-col-12 p-md-2">
-                      <input type="text" pInputText formControlName="numAisladores"/>
-                    </div>
-                <label>TIPO DE CADENAS:</label>
-                 <p-selectButton
-                        [options]="tipoCadena"
-                        formControlName="tipoCadena"
-                        optionLabel="label"
-                        optionValue="value"
-                      ></p-selectButton>
-                      <br>
-
-                <label>PUENTES:</label>
-                 <p-selectButton
-                            [options]="puentes"
-                            formControlName="puentes"
-                            optionLabel="label"
-                            optionValue="value"
-                          ></p-selectButton>
-                          <br>
-                <label>OBSERVACIONES:</label>
-                 <textarea
-                            rows="5"
-                            cols="30"
-                            pInputTextarea
-                            autoResize="autoResize"
-                            formControlName="observaciones"
-                          ></textarea>
-                </form>
-                <h5>FASE S</h5>
-                <form [formGroup]="formFaseS" >
-                <label>TIPO:</label>
-                <p-selectButton
-                          [options]="tipo"
-                          formControlName="tipo"
-                          optionLabel="label"
-                          optionValue="value"
-                        ></p-selectButton>
-                        <br>
-                <label>CLASE:</label>
-                 <p-selectButton
-                          [options]="clase"
-                          formControlName="clase"
-                          optionLabel="label"
-                          optionValue="value"
-                        ></p-selectButton>
-                        <br>
-                <label>N° AISLADORES POR CADENA:</label>
-                 <div class="p-col-12 p-md-2">
-                      <input type="text" pInputText formControlName="numAisladores"/>
-                    </div>
-                <label>TIPO DE CADENAS:</label>
-                 <p-selectButton
-                        [options]="tipoCadena"
-                        formControlName="tipoCadena"
-                        optionLabel="label"
-                        optionValue="value"
-                      ></p-selectButton>
-                      <br>
-
-                <label>PUENTES:</label>
-                 <p-selectButton
-                            [options]="puentes"
-                            formControlName="puentes"
-                            optionLabel="label"
-                            optionValue="value"
-                          ></p-selectButton>
-                          <br>
-                <label>OBSERVACIONES:</label>
-                 <textarea
-                            rows="5"
-                            cols="30"
-                            pInputTextarea
-                            autoResize="autoResize"
-                            formControlName="observaciones"
-                          ></textarea>
-                </form>
-               
-                <h5>FASE T</h5>
-                <form [formGroup]="formFaseT" >
-                <label>TIPO:</label>
-                <p-selectButton
-                          [options]="tipo"
-                          formControlName="tipo"
-                          optionLabel="label"
-                          optionValue="value"
-                        ></p-selectButton>
-                        <br>
-                <label>CLASE:</label>
-                 <p-selectButton
-                          [options]="clase"
-                          formControlName="clase"
-                          optionLabel="label"
-                          optionValue="value"
-                        ></p-selectButton>
-                        <br>
-                <label>N° AISLADORES POR CADENA:</label>
-                 <div class="p-col-12 p-md-2">
-                      <input type="text" pInputText formControlName="numAisladores"/>
-                    </div>
-                <label>TIPO DE CADENAS:</label>
-                 <p-selectButton
-                        [options]="tipoCadena"
-                        formControlName="tipoCadena"
-                        optionLabel="label"
-                        optionValue="value"
-                      ></p-selectButton>
-                      <br>
-
-                <label>PUENTES:</label>
-                 <p-selectButton
-                            [options]="puentes"
-                            formControlName="puentes"
-                            optionLabel="label"
-                            optionValue="value"
-                          ></p-selectButton>
-                          <br>
-                <label>OBSERVACIONES:</label>
-                 <textarea
-                            rows="5"
-                            cols="30"
-                            pInputTextarea
-                            autoResize="autoResize"
-                            formControlName="observaciones"
-                          ></textarea>
-                </form>
-                <b></b>
-            </div>
-            <div class="p-field p-col-12">
-                <h4>BASES</h4>
-                <h5>ESTADO BASES</h5>
-                <label>ANGULOS PRINCIPALES:</label>
-                <label>BASE I:</label>
-                <label>BASE II:</label>
-                <label>BASE III:</label>
-                <label>BASE IV:</label>
-                <label>OBSERVACIONES:</label>
-                <b></b>
-            </div>
-            <div class="p-field p-col-12">
-                <h4>SISTEMA PUESTA A TIERRA SPT</h4>
-                <label>TIENE S.P.T.:</label>
-                <label>CALIBRE:</label>
-                <label>TIPO:</label>
-                <label>CANT:</label>
-                <label>TIENE BAJANTE:</label>
-                <label>TIPO:</label>
-                <label>CALIBRE:</label>
-                <label>OBSERVACIONES:</label>
-                <b></b>
-            </div>
-            <div class="p-field p-col-12">
-                <h4>SERVIDUMBRE</h4>
-                <label>PODA:</label>
-                <label>SERVIDUMBRE:</label>
-                <label>OBSERVACIONES:</label>
-                <b></b>
-            </div>
-            <div class="p-field p-col-12">
-                <h4>TRANSPPOSICIÓN</h4>
-                <label>ALIMENTADOR DE ENTRADA I:</label>
-                <label>ALIMENTADOR DE SALIDA I:</label>
-                <label>ALIMENTADOR DE ENTRADA II:</label>
-                <label>ALIMENTADOR DE SALIDA II:</label>
-                <label>ALIMENTADOR DE ENTRADA III:</label>
-                <label>ALIMENTADOR DE SALIDA III:</label>
-                <b></b>
-            </div>
-            <div class="p-field p-col-12">
-                <h4>UBICACIÓN DE PODA E INVASIÓN DE SERVIDUMBRE</h4>
-                <label>TORRE N°:</label>
-                <label>TORRE N°:</label>
-                <label>TORRE N°:</label>
-                <label>TORRE N°:</label>
-                <b></b>
-            </div>
-            <div class="p-field p-col-12">
-                <h4>OBSERVACIONES GENERALES</h4>
-                <b></b>
-            </div>
-            <div class="p-field p-col-12">
-                <h4>RESPONSABLES DE LA INSPECCIÓN</h4>
-                <label>NOMBRE:</label>
-                <label>CODIGO:</label>
-                <label>NOMBRE:</label>
-                <label>CODIGO:</label>
-                <label>NOMBRE:</label>
-                <label>CODIGO:</label>
-                <label>NOMBRE:</label>
-                <label>CODIGO:</label>
-                <label>NOMBRE:</label>
-                <label>CODIGO:</label>
-                <label>FECHA:</label>
-                <label>MÓVIL:</label>
-                <b></b>
-            </div>
-            <div class="p-field p-col-12">
-                <h4>REVISÓ</h4>
-                <label>NOMBRE:</label>
-                <label>CODIGO:</label>
-                <label>FIRMA:</label>
-                <label>FECHA:</label>
-                <b></b>
-            </div>
-           </form>
-        </ng-template>
-        
-        <ng-template pTemplate="footer">
-            <div class="p-grid p-nogutter p-justify-between">
-                <p-button label="Back" (onClick)="prevPage()" icon="pi pi-angle-left"></p-button>
-                <p-button label="Terminar"  (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right" styleClass="p-button-success"></p-button>
-            </div>
-        </ng-template>
-    </p-card>
+    <ng-template pTemplate="footer">
+      <div class="p-grid p-nogutter p-justify-between">
+        <p-button
+          label="Back"
+          (onClick)="prevPage()"
+          icon="pi pi-angle-left"
+        ></p-button>
+        <p-button
+          label="Terminar"
+          (onClick)="nextPage()"
+          icon="pi pi-angle-right"
+          iconPos="right"
+          styleClass="p-button-success"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
 </div>

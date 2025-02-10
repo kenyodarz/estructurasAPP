@@ -41,7 +41,7 @@ export class EstructuraaComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
     private router: Router,
-    private rutaActiva: ActivatedRoute
+    private rutaActiva: ActivatedRoute,
   ) {}
 
   obtenerFormulario(idInspeccion: string) {
@@ -84,7 +84,7 @@ export class EstructuraaComponent implements OnInit {
           detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
         });
         this.router.navigateByUrl(
-          `resumen/formulario/ver/${formulario.idInspeccion}/cable-conductor/${formulario.idInspeccion}`
+          `resumen/formulario/ver/${formulario.idInspeccion}/cable-conductor/${formulario.idInspeccion}`,
         );
       });
   }
@@ -92,12 +92,12 @@ export class EstructuraaComponent implements OnInit {
   nextPage() {
     // se igual el formulario de apantallamiento a apantallamiento en el formulario
     this.estructuraa = this.formEstructuraa.value;
-    this.guardarEstructuraa(this.estructuraa)
+    this.guardarEstructuraa(this.estructuraa);
   }
 
   prevPage() {
     this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/apantallamiento/${this.formulario.idInspeccion}`
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/apantallamiento/${this.formulario.idInspeccion}`,
     );
   }
 

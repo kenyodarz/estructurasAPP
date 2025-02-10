@@ -10,6 +10,6 @@ export class Servidumbre {
     public noAplica: boolean = null,
     public invasion: boolean = null,
     public pasoMT: boolean = null,
-    public pasoBT: boolean = null
+    public pasoBT: boolean = null,
   ) {}
 }

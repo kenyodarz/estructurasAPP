@@ -1,16 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
+@import "primeng/resources/themes/saga-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "node_modules/primeng/resources/primeng.min.css";
+@import "primeflex/primeflex.css";
 
-body{
-    width: 100%;
-    height: 100vh;
-    background: url(assets/img/fondoo.PNG) center center fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+/* Order */
+@layer reset, primeng;
+
+/* Reset CSS */
+@layer reset {
+
+  button,
+  input {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      background: url(assets/img/fondoo.PNG) center center fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
 }

@@ -12,150 +12,153 @@
                     <p-fieldset legend="ANGULOS PRINCIPALES">
                       <div class="p-grid p-fluid">
                         <div class="p-col-12 p-md-10">
-                         
-                            <p-selectButton
-                              [options]="angulos"
-                              formControlName="buenEstado"
-                              optionLabel="label"
-                              optionValue="value"
-                            ></p-selectButton>
-                          
+                          <p-selectButton
+                            [options]="angulos"
+                            formControlName="buenEstado"
+                            optionLabel="label"
+                            optionValue="value"
+                          ></p-selectButton>
                         </div>
-                         <div class="p-col-12 p-md-1">
-                 <p-button  *ngIf="!mostrar" label="Next" (click)="next()" (click)="mostrar = true"></p-button>
-                  <!-- <p-toggleButton [(ngModel)]="checked2"  onLabel="next" offLabel="deshabilitar" onIcon="" offIcon="" [style]="{'width': '10em'}"  formControlName="boton" (click)="next()"></p-toggleButton> -->
-
-                  </div>
+                        <div class="p-col-12 p-md-1">
+                          <p-button
+                            *ngIf="!mostrar"
+                            label="Next"
+                            (click)="next()"
+                            (click)="mostrar = true"
+                          ></p-button>
+                          <!-- <p-toggleButton [(ngModel)]="checked2"  onLabel="next" offLabel="deshabilitar" onIcon="" offIcon="" [style]="{'width': '10em'}"  formControlName="boton" (click)="next()"></p-toggleButton> -->
+                        </div>
                       </div>
                     </p-fieldset>
                   </div>
-                  <div class="p-col-12 p-md-12" >
+                  <div class="p-col-12 p-md-12">
                     <p-accordion *ngIf="mostrar">
                       <p-accordionTab header="BASES">
-                          <div class="p-grid p-fluid">
-                        <div class="p-col-12 p-md-3">
-                          <form [formGroup]="formSubBaseI">
-                            <p-fieldset legend="BASE I">
-                              <div class="p-field-checkbox">
-                                <p-checkbox
-                                  [formControl]="formSubBaseI.controls['buena']"
-                                  (onChange)="OnChangeBuenEstadoI()"
-                                  binary="true"
-                                ></p-checkbox>
-                                <label for="su">BUENA</label>
-                              </div>
+                        <div class="p-grid p-fluid">
+                          <div class="p-col-12 p-md-3">
+                            <form [formGroup]="formSubBaseI">
+                              <p-fieldset legend="BASE I">
+                                <div class="p-field-checkbox">
+                                  <p-checkbox
+                                    [formControl]="
+                                      formSubBaseI.controls['buena']
+                                    "
+                                    (onChange)="OnChangeBuenEstadoI()"
+                                    binary="true"
+                                  ></p-checkbox>
+                                  <label for="su">BUENA</label>
+                                </div>
 
-                              <div class="p-field-checkbox">
-                                <p-checkbox
-                                  [formControl]="
-                                    formSubBaseI.controls['enterrada']
-                                  "
-                                  (onChange)="OnChangeMalEstadoI()"
-                                  binary="true"
-                                ></p-checkbox>
-                                <label for="qu">ENTERRADA</label>
-                              </div>
-                              <div class="p-field-checkbox">
-                                <p-checkbox
-                                  [formControl]="
-                                    formSubBaseI.controls['fracturada']
-                                  "
-                                  (onChange)="OnChangeMalEstadoI()"
-                                  binary="true"
-                                ></p-checkbox>
-                                <label for="re">FRACTURADA</label>
-                              </div>
-                              <button
-                                pButton
-                                pRipple
-                                type="button"
-                                label="AGREGAR"
-                                
-                                (click)="guardarSubBaseI()"
-                              ></button>
-                            </p-fieldset>
-                          </form>
-                        </div>
-                        <div class="p-col-12 p-md-3">
-                          <form [formGroup]="formSubBaseII">
-                            <p-fieldset legend="BASE II">
-                              <div class="p-field-checkbox">
-                                <p-checkbox
-                                  [formControl]="
-                                    formSubBaseII.controls['buena']
-                                  "
-                                  (onChange)="OnChangeBuenEstadoII()"
-                                  binary="true"
-                                ></p-checkbox>
-                                <label for="su">BUENA</label>
-                              </div>
-
-                              <div class="p-field-checkbox">
-                                <p-checkbox
-                                  [formControl]="
-                                    formSubBaseII.controls['enterrada']
-                                  "
-                                  (onChange)="OnChangeMalEstadoII()"
-                                  binary="true"
-                                ></p-checkbox>
-                                <label for="qu">ENTERRADA</label>
-                              </div>
-                              <div class="p-field-checkbox">
-                                <p-checkbox
-                                  [formControl]="
-                                    formSubBaseII.controls['fracturada']
-                                  "
-                                  (onChange)="OnChangeMalEstadoII()"
-                                  binary="true"
-                                ></p-checkbox>
-                                <label for="re">FRACTURADA</label>
-                              </div>
+                                <div class="p-field-checkbox">
+                                  <p-checkbox
+                                    [formControl]="
+                                      formSubBaseI.controls['enterrada']
+                                    "
+                                    (onChange)="OnChangeMalEstadoI()"
+                                    binary="true"
+                                  ></p-checkbox>
+                                  <label for="qu">ENTERRADA</label>
+                                </div>
+                                <div class="p-field-checkbox">
+                                  <p-checkbox
+                                    [formControl]="
+                                      formSubBaseI.controls['fracturada']
+                                    "
+                                    (onChange)="OnChangeMalEstadoI()"
+                                    binary="true"
+                                  ></p-checkbox>
+                                  <label for="re">FRACTURADA</label>
+                                </div>
                                 <button
-                                pButton
-                                pRipple
-                                type="button"
-                                label="AGREGAR"
-                                (click)="guardarSubBaseII()"
-                              ></button>
-                            </p-fieldset>
-                          </form>
-                        </div>
-
-                        <div class="p-col-12 p-md-3">
-                          <p-fieldset legend="BASE III">
-                            <form [formGroup]="formSubBaseIII">
-                              <div class="p-field-checkbox">
-                                <p-checkbox
-                                  [formControl]="
-                                    formSubBaseIII.controls['buena']
-                                  "
-                                  (onChange)="OnChangeBuenEstadoIII()"
-                                  binary="true"
-                                ></p-checkbox>
-                                <label for="su">BUENA</label>
-                              </div>
-
-                              <div class="p-field-checkbox">
-                                <p-checkbox
-                                  [formControl]="
-                                    formSubBaseIII.controls['enterrada']
-                                  "
-                                  (onChange)="OnChangeMalEstadoIII()"
-                                  binary="true"
-                                ></p-checkbox>
-                                <label for="qu">ENTERRADA</label>
-                              </div>
-                              <div class="p-field-checkbox">
-                                <p-checkbox
-                                  [formControl]="
-                                    formSubBaseIII.controls['fracturada']
-                                  "
-                                  (onChange)="OnChangeMalEstadoIII()"
-                                  binary="true"
-                                ></p-checkbox>
-                                <label for="re">FRACTURADA</label>
-                              </div>
+                                  pButton
+                                  pRipple
+                                  type="button"
+                                  label="AGREGAR"
+                                  (click)="guardarSubBaseI()"
+                                ></button>
+                              </p-fieldset>
                             </form>
+                          </div>
+                          <div class="p-col-12 p-md-3">
+                            <form [formGroup]="formSubBaseII">
+                              <p-fieldset legend="BASE II">
+                                <div class="p-field-checkbox">
+                                  <p-checkbox
+                                    [formControl]="
+                                      formSubBaseII.controls['buena']
+                                    "
+                                    (onChange)="OnChangeBuenEstadoII()"
+                                    binary="true"
+                                  ></p-checkbox>
+                                  <label for="su">BUENA</label>
+                                </div>
+
+                                <div class="p-field-checkbox">
+                                  <p-checkbox
+                                    [formControl]="
+                                      formSubBaseII.controls['enterrada']
+                                    "
+                                    (onChange)="OnChangeMalEstadoII()"
+                                    binary="true"
+                                  ></p-checkbox>
+                                  <label for="qu">ENTERRADA</label>
+                                </div>
+                                <div class="p-field-checkbox">
+                                  <p-checkbox
+                                    [formControl]="
+                                      formSubBaseII.controls['fracturada']
+                                    "
+                                    (onChange)="OnChangeMalEstadoII()"
+                                    binary="true"
+                                  ></p-checkbox>
+                                  <label for="re">FRACTURADA</label>
+                                </div>
+                                <button
+                                  pButton
+                                  pRipple
+                                  type="button"
+                                  label="AGREGAR"
+                                  (click)="guardarSubBaseII()"
+                                ></button>
+                              </p-fieldset>
+                            </form>
+                          </div>
+
+                          <div class="p-col-12 p-md-3">
+                            <p-fieldset legend="BASE III">
+                              <form [formGroup]="formSubBaseIII">
+                                <div class="p-field-checkbox">
+                                  <p-checkbox
+                                    [formControl]="
+                                      formSubBaseIII.controls['buena']
+                                    "
+                                    (onChange)="OnChangeBuenEstadoIII()"
+                                    binary="true"
+                                  ></p-checkbox>
+                                  <label for="su">BUENA</label>
+                                </div>
+
+                                <div class="p-field-checkbox">
+                                  <p-checkbox
+                                    [formControl]="
+                                      formSubBaseIII.controls['enterrada']
+                                    "
+                                    (onChange)="OnChangeMalEstadoIII()"
+                                    binary="true"
+                                  ></p-checkbox>
+                                  <label for="qu">ENTERRADA</label>
+                                </div>
+                                <div class="p-field-checkbox">
+                                  <p-checkbox
+                                    [formControl]="
+                                      formSubBaseIII.controls['fracturada']
+                                    "
+                                    (onChange)="OnChangeMalEstadoIII()"
+                                    binary="true"
+                                  ></p-checkbox>
+                                  <label for="re">FRACTURADA</label>
+                                </div>
+                              </form>
                               <button
                                 pButton
                                 pRipple
@@ -163,43 +166,43 @@
                                 label="AGREGAR"
                                 (click)="guardarSubBaseIII()"
                               ></button>
-                          </p-fieldset>
-                        </div>
-                        <div class="p-col-12 p-md-3">
-                          <p-fieldset legend="BASE IV">
-                            <form [formGroup]="formSubBaseIV">
-                              <div class="p-field-checkbox">
-                                <p-checkbox
-                                  [formControl]="
-                                    formSubBaseIV.controls['buena']
-                                  "
-                                  (onChange)="OnChangeBuenEstadoIV()"
-                                  binary="true"
-                                ></p-checkbox>
-                                <label for="su">BUENA</label>
-                              </div>
+                            </p-fieldset>
+                          </div>
+                          <div class="p-col-12 p-md-3">
+                            <p-fieldset legend="BASE IV">
+                              <form [formGroup]="formSubBaseIV">
+                                <div class="p-field-checkbox">
+                                  <p-checkbox
+                                    [formControl]="
+                                      formSubBaseIV.controls['buena']
+                                    "
+                                    (onChange)="OnChangeBuenEstadoIV()"
+                                    binary="true"
+                                  ></p-checkbox>
+                                  <label for="su">BUENA</label>
+                                </div>
 
-                              <div class="p-field-checkbox">
-                                <p-checkbox
-                                  [formControl]="
-                                    formSubBaseIV.controls['enterrada']
-                                  "
-                                  (onChange)="OnChangeMalEstadoIV()"
-                                  binary="true"
-                                ></p-checkbox>
-                                <label for="qu">ENTERRADA</label>
-                              </div>
-                              <div class="p-field-checkbox">
-                                <p-checkbox
-                                  [formControl]="
-                                    formSubBaseIV.controls['fracturada']
-                                  "
-                                  (onChange)="OnChangeMalEstadoIV()"
-                                  binary="true"
-                                ></p-checkbox>
-                                <label for="re">FRACTURADA</label>
-                              </div>
-                            </form>
+                                <div class="p-field-checkbox">
+                                  <p-checkbox
+                                    [formControl]="
+                                      formSubBaseIV.controls['enterrada']
+                                    "
+                                    (onChange)="OnChangeMalEstadoIV()"
+                                    binary="true"
+                                  ></p-checkbox>
+                                  <label for="qu">ENTERRADA</label>
+                                </div>
+                                <div class="p-field-checkbox">
+                                  <p-checkbox
+                                    [formControl]="
+                                      formSubBaseIV.controls['fracturada']
+                                    "
+                                    (onChange)="OnChangeMalEstadoIV()"
+                                    binary="true"
+                                  ></p-checkbox>
+                                  <label for="re">FRACTURADA</label>
+                                </div>
+                              </form>
                               <button
                                 pButton
                                 pRipple
@@ -207,9 +210,9 @@
                                 label="AGREGAR"
                                 (click)="guardarSubBaseIV()"
                               ></button>
-                          </p-fieldset>
-                        </div>
+                            </p-fieldset>
                           </div>
+                        </div>
                       </p-accordionTab>
                     </p-accordion>
                   </div>

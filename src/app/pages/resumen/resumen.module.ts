@@ -11,7 +11,6 @@ import { PersonaComponent } from './components/persona/persona.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 
-
 @NgModule({
   declarations: [
     ResumenComponent,
@@ -20,7 +19,6 @@ import { ReportesComponent } from './components/reportes/reportes.component';
     PersonaComponent,
     FormularioComponent,
     ReportesComponent,
- 
   ],
   imports: [
     CommonModule,

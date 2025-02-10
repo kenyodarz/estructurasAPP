@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Formulario } from 'src/app/core/models/formulario';
@@ -24,7 +29,7 @@ export class ServidumbreComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
     private router: Router,
-    private rutaActiva: ActivatedRoute
+    private rutaActiva: ActivatedRoute,
   ) {}
 
   obtenerFormulario(idInspeccion: string) {
@@ -64,7 +69,7 @@ export class ServidumbreComponent implements OnInit {
           detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
         });
         this.router.navigateByUrl(
-          `resumen/formulario/ver/${formulario.idInspeccion}/transposicion/${formulario.idInspeccion}`
+          `resumen/formulario/ver/${formulario.idInspeccion}/transposicion/${formulario.idInspeccion}`,
         );
       });
   }
@@ -76,7 +81,7 @@ export class ServidumbreComponent implements OnInit {
 
   prevPage() {
     this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/spt/${this.formulario.idInspeccion}`
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/spt/${this.formulario.idInspeccion}`,
     );
   }
 
@@ -218,7 +223,7 @@ export class ServidumbreComponent implements OnInit {
     console.log('cambio');
     if (this.sinRiesgo === false) {
       this.cantArboles = 0;
-      this.obsPoda = " ";
+      this.obsPoda = ' ';
     }
   }
 }

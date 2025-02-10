@@ -7,7 +7,9 @@ const routes: Routes = [
   {
     path: 'resumen',
     loadChildren: () =>
-      import('src/app/pages/resumen/resumen.module').then((m) => m.ResumenModule),
+      import('src/app/pages/resumen/resumen.module').then(
+        (m) => m.ResumenModule,
+      ),
     canActivate: [LoginGuard],
   },
   { path: 'login', component: LoginComponent },

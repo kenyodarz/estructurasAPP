@@ -22,10 +22,7 @@ export class SubBaseService extends CommonService<SubBase, string> {
     return this.http.get<SubBase>(`${this.API_URL}obtener/${id}`);
   }
 
-  guardarSubBaseConBase(
-    idBase: string,
-    subBase: SubBase
-  ): Observable<SubBase> {
+  guardarSubBaseConBase(idBase: string, subBase: SubBase): Observable<SubBase> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
     return this.http.post<SubBase>(
@@ -33,7 +30,7 @@ export class SubBaseService extends CommonService<SubBase, string> {
       JSON.stringify(subBase),
       {
         headers: headers,
-      }
+      },
     );
   }
 }

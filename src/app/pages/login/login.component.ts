@@ -8,7 +8,6 @@ import { MessageService } from 'primeng/api';
 import { TokenStorageService } from 'src/app/core/services/token-storage.service';
 import { PersonaService } from 'src/app/core/services/persona.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,7 +24,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private tokenStorage: TokenStorageService,
     private fb: UntypedFormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService,
   ) {}
 
   onSubmit() {
@@ -50,7 +49,7 @@ export class LoginComponent implements OnInit {
           summary: 'Login failed:',
           detail: this.errorMessage,
         });
-      }
+      },
     );
   }
 

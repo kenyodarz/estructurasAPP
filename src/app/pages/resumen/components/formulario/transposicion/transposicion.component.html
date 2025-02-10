@@ -1,59 +1,109 @@
-<br>
+<br />
 <div class="stepsdemo-content">
   <p-card>
-    <form [formGroup]="formTransposicion" >
+    <form [formGroup]="formTransposicion">
       <div class="p-grid p-fluid">
         <div class="p-col-12 p-md-5">
-      <p-fieldset legend="ALIMENTADOR">
-         <img alt="Card" src="assets/img/alimentador.PNG">
-      </p-fieldset>
-      </div>
+          <p-fieldset legend="ALIMENTADOR">
+            <img alt="Card" src="assets/img/alimentador.PNG" />
+          </p-fieldset>
+        </div>
         <div class="p-col-12 p-md-7">
-    <p-fieldset legend="TRANSPOSICIÓN">
-      <ng-template pTemplate="content">
-        <div class="p-grid p-fluid">
-          <div class="p-col-12 p-md-5" style="text-align: center">
-            <h4>Seleccionar fase de entrada</h4>
-          </div>
-          <div class="p-col-12 p-md-5" style="text-align: center">
-            <h4>Seleccionar fase de salida</h4>
-          </div>
-          <!-- <p-dropdown [options]="items" [(ngModel)]="item" placeholder="Seleccione Fase" [virtualScroll]="true" [itemSize]="5" [filter]="false"></p-dropdown> -->
-          <div class="p-col-12 p-md-5">
-          <p-dropdown [options]="alimentador" placeholder="Seleccione fase de entrada" optionLabel="name" optionValue="value" [showClear]="true" formControlName="faseEntrada1"></p-dropdown>
-          </div> 
-          <div class="p-col-12 p-md-5">
-          <p-dropdown [options]="alimentador" placeholder="Seleccione fase de salida" optionLabel="name" optionValue="value" [showClear]="true" formControlName="faseSalida1"></p-dropdown>
-        </div>
-        </div>
+          <p-fieldset legend="TRANSPOSICIÓN">
+            <ng-template pTemplate="content">
+              <div class="p-grid p-fluid">
+                <div class="p-col-12 p-md-5" style="text-align: center">
+                  <h4>Seleccionar fase de entrada</h4>
+                </div>
+                <div class="p-col-12 p-md-5" style="text-align: center">
+                  <h4>Seleccionar fase de salida</h4>
+                </div>
+                <!-- <p-dropdown [options]="items" [(ngModel)]="item" placeholder="Seleccione Fase" [virtualScroll]="true" [itemSize]="5" [filter]="false"></p-dropdown> -->
+                <div class="p-col-12 p-md-5">
+                  <p-dropdown
+                    [options]="alimentador"
+                    placeholder="Seleccione fase de entrada"
+                    optionLabel="name"
+                    optionValue="value"
+                    [showClear]="true"
+                    formControlName="faseEntrada1"
+                  ></p-dropdown>
+                </div>
+                <div class="p-col-12 p-md-5">
+                  <p-dropdown
+                    [options]="alimentador"
+                    placeholder="Seleccione fase de salida"
+                    optionLabel="name"
+                    optionValue="value"
+                    [showClear]="true"
+                    formControlName="faseSalida1"
+                  ></p-dropdown>
+                </div>
+              </div>
 
-         <div class="p-grid p-fluid">
-           <div class="p-col-12 p-md-5">
-          <p-dropdown [options]="alimentador" placeholder="Seleccione fase de entrada" optionLabel="name" optionValue="value" [showClear]="true" formControlName="faseEntrada2"></p-dropdown>
-           </div>
-           <div class="p-col-12 p-md-5">
-          <p-dropdown [options]="alimentador" placeholder="Seleccione fase de salida" optionLabel="name" optionValue="value" [showClear]="true" formControlName="faseSalida2"></p-dropdown>
-           </div>
+              <div class="p-grid p-fluid">
+                <div class="p-col-12 p-md-5">
+                  <p-dropdown
+                    [options]="alimentador"
+                    placeholder="Seleccione fase de entrada"
+                    optionLabel="name"
+                    optionValue="value"
+                    [showClear]="true"
+                    formControlName="faseEntrada2"
+                  ></p-dropdown>
+                </div>
+                <div class="p-col-12 p-md-5">
+                  <p-dropdown
+                    [options]="alimentador"
+                    placeholder="Seleccione fase de salida"
+                    optionLabel="name"
+                    optionValue="value"
+                    [showClear]="true"
+                    formControlName="faseSalida2"
+                  ></p-dropdown>
+                </div>
+              </div>
+              <div class="p-grid p-fluid">
+                <div class="p-col-12 p-md-5">
+                  <p-dropdown
+                    [options]="alimentador"
+                    placeholder="Seleccione fase de entrada"
+                    optionLabel="name"
+                    optionValue="value"
+                    [showClear]="true"
+                    formControlName="faseEntrada3"
+                  ></p-dropdown>
+                </div>
+                <div class="p-col-12 p-md-5">
+                  <p-dropdown
+                    [options]="alimentador"
+                    placeholder="Seleccione fase de salida"
+                    optionLabel="name"
+                    optionValue="value"
+                    [showClear]="true"
+                    formControlName="faseSalida3"
+                  ></p-dropdown>
+                </div>
+              </div>
+            </ng-template>
+          </p-fieldset>
         </div>
-         <div class="p-grid p-fluid">
-           <div class="p-col-12 p-md-5">
-          <p-dropdown [options]="alimentador" placeholder="Seleccione fase de entrada" optionLabel="name" optionValue="value" [showClear]="true" formControlName="faseEntrada3"></p-dropdown>
-        </div>
-        <div class="p-col-12 p-md-5">
-          <p-dropdown [options]="alimentador" placeholder="Seleccione fase de salida" optionLabel="name" optionValue="value" [showClear]="true" formControlName="faseSalida3"></p-dropdown>
-        </div>
-        </div>
-          </ng-template>
-    </p-fieldset>
-        </div>
-      
       </div>
     </form>
-       <ng-template pTemplate="footer">
-            <div class="p-grid p-nogutter p-justify-between">
-                <p-button label="Back" icon="pi pi-angle-left" (onClick)="prevPage()"></p-button>
-                <p-button label="Next" icon="pi pi-angle-right" iconPos="right"  (onClick)="nextPage()"></p-button>
-            </div>
-        </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="p-grid p-nogutter p-justify-between">
+        <p-button
+          label="Back"
+          icon="pi pi-angle-left"
+          (onClick)="prevPage()"
+        ></p-button>
+        <p-button
+          label="Next"
+          icon="pi pi-angle-right"
+          iconPos="right"
+          (onClick)="nextPage()"
+        ></p-button>
+      </div>
+    </ng-template>
   </p-card>
 </div>

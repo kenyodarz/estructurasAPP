@@ -21,7 +21,7 @@ export class EstructurasMalasComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {}
 
   obtenerEstructuras() {
@@ -44,7 +44,7 @@ export class EstructurasMalasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-        this.obtenerEstructuras();
+    this.obtenerEstructuras();
     this.route.paramMap.subscribe((params) => {
       const idInspeccion: string = params.get('id');
       this.router.navigateByUrl(`resumen/reportes/estructurasMalas`);

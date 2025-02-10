@@ -26,7 +26,10 @@
                       (ngModelChange)="amortiguadorOnChange()"
                     ></p-selectButton>
                   </div>
-                  <div class="p-col-12 p-md-2"  *ngIf="amortiguadorCableConductor">
+                  <div
+                    class="p-col-12 p-md-2"
+                    *ngIf="amortiguadorCableConductor"
+                  >
                     <label>CANTIDAD:</label>
                   </div>
                   <div
@@ -40,450 +43,480 @@
                     />
                   </div>
                   <div class="p-col-12 p-md-1">
-                
-                     <p-button  *ngIf="!mostrar" [disabled]="formCableConductor.invalid" label="Next" (click)="next()" (click)="mostrar = true"></p-button>
+                    <p-button
+                      *ngIf="!mostrar"
+                      [disabled]="formCableConductor.invalid"
+                      label="Next"
+                      (click)="next()"
+                      (click)="mostrar = true"
+                    ></p-button>
 
-                  <!-- <p-toggleButton [(ngModel)]="checked2"  onLabel="Next" offLabel="deshabilitar" onIcon="" offIcon="" [style]="{'width': '10em'}"  formControlName="boton"  (click)="next()"></p-toggleButton> -->
-
+                    <!-- <p-toggleButton [(ngModel)]="checked2"  onLabel="Next" offLabel="deshabilitar" onIcon="" offIcon="" [style]="{'width': '10em'}"  formControlName="boton"  (click)="next()"></p-toggleButton> -->
                   </div>
                 </div>
               </p-fieldset>
             </div>
             <div class="p-col-12 p-md-12">
               <p-accordion>
-                 <form [formGroup]="formEmpalme">
-                <div   *ngIf="mostrar">
-                <p-accordionTab header="EMPALMES">
-                  <p>
-                      
-                  <div>
-                    <div class="p-grid p-fluid">
+                <form [formGroup]="formEmpalme">
+                  <div *ngIf="mostrar">
+                    <p-accordionTab header="EMPALMES">
+                      <p></p>
 
-                      <!-- Fase R -->
-                      
-                      <div class="p-col-4 p-md-4">
+                      <div>
+                        <div class="p-grid p-fluid">
+                          <!-- Fase R -->
 
-                        <form [formGroup]="formFaseR">
-                          
-                          <button
-                            *ngIf="!mostrarFaseR"
-                            pButton
-                            pRipple
-                            type="button"
-                            label="FASE R"
-                            (click)="mostrarFaseR = true"
-                          ></button>
-                        
-                          <p-card *ngIf="mostrarFaseR">
-                             <div class=" p-text-center">
-                              <label for="class" >FASE R</label>
-                            </div>
-                             
-                               <div class="p-col-4 p-md-12">
-                            <p-fieldset legend="MANUAL">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                             <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadManual"
-                              />
-                             </div>
-                              </div>
-                            </p-fieldset>
-                               
-                            <p-fieldset legend="FULL TENSIÓN">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                            <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadFullTension"
-                              />
-                            </div>
-                              </div>
-                            </p-fieldset>
-                            <p-fieldset legend="BLINDAJE">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                            <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadBlindaje"
-                              />
-                            </div>
-                            </div>
-                            </p-fieldset>
-                               </div>
-                            <p-footer>
+                          <div class="p-col-4 p-md-4">
+                            <form [formGroup]="formFaseR">
                               <button
+                                *ngIf="!mostrarFaseR"
                                 pButton
                                 pRipple
                                 type="button"
-                                label="ACTUALIZAR FASE R"
-                                (click)="guardarEmpalmeR()"
-                                class="p-button-info"
-                                [disabled]="formFaseR.invalid"
+                                label="FASE R"
+                                (click)="mostrarFaseR = true"
                               ></button>
+
+                              <p-card *ngIf="mostrarFaseR">
+                                <div class="p-text-center">
+                                  <label for="class">FASE R</label>
+                                </div>
+
+                                <div class="p-col-4 p-md-12">
+                                  <p-fieldset legend="MANUAL">
+                                    <div class="p-grid p-fluid">
+                                      <div
+                                        class="p-text-center p-col-12 p-md-3"
+                                      >
+                                        <label for="class">CANT:</label>
+                                      </div>
+                                      <div class="p-col-4 p-md-9">
+                                        <input
+                                          type="text"
+                                          pInputText
+                                          formControlName="cantidadManual"
+                                        />
+                                      </div>
+                                    </div>
+                                  </p-fieldset>
+
+                                  <p-fieldset legend="FULL TENSIÓN">
+                                    <div class="p-grid p-fluid">
+                                      <div
+                                        class="p-text-center p-col-12 p-md-3"
+                                      >
+                                        <label for="class">CANT:</label>
+                                      </div>
+                                      <div class="p-col-4 p-md-9">
+                                        <input
+                                          type="text"
+                                          pInputText
+                                          formControlName="cantidadFullTension"
+                                        />
+                                      </div>
+                                    </div>
+                                  </p-fieldset>
+                                  <p-fieldset legend="BLINDAJE">
+                                    <div class="p-grid p-fluid">
+                                      <div
+                                        class="p-text-center p-col-12 p-md-3"
+                                      >
+                                        <label for="class">CANT:</label>
+                                      </div>
+                                      <div class="p-col-4 p-md-9">
+                                        <input
+                                          type="text"
+                                          pInputText
+                                          formControlName="cantidadBlindaje"
+                                        />
+                                      </div>
+                                    </div>
+                                  </p-fieldset>
+                                </div>
+                                <p-footer>
+                                  <button
+                                    pButton
+                                    pRipple
+                                    type="button"
+                                    label="ACTUALIZAR FASE R"
+                                    (click)="guardarEmpalmeR()"
+                                    class="p-button-info"
+                                    [disabled]="formFaseR.invalid"
+                                  ></button>
+                                  <button
+                                    pButton
+                                    pRipple
+                                    type="button"
+                                    label="ELIMINAR FASE R"
+                                    (click)="mostrarFaseR = false"
+                                    class="p-button-danger"
+                                  ></button>
+                                </p-footer>
+                              </p-card>
+                            </form>
+                          </div>
+
+                          <!-- Fase S -->
+
+                          <div class="p-col-4 p-md-4">
+                            <form [formGroup]="formFaseS">
                               <button
+                                *ngIf="!mostrarFaseS"
                                 pButton
                                 pRipple
                                 type="button"
-                                label="ELIMINAR FASE R"
-                                (click)="mostrarFaseR = false"
-                                class="p-button-danger"
+                                label="FASE S"
+                                (click)="mostrarFaseS = true"
                               ></button>
-                            </p-footer>
-                  
-                          </p-card>
-                        </form>
+                              <p-card *ngIf="mostrarFaseS">
+                                <div class="p-text-center">
+                                  <label for="class">FASE S</label>
+                                </div>
+
+                                <div class="p-col-4 p-md-12">
+                                  <p-fieldset legend="MANUAL">
+                                    <div class="p-grid p-fluid">
+                                      <div
+                                        class="p-text-center p-col-12 p-md-3"
+                                      >
+                                        <label for="class">CANT:</label>
+                                      </div>
+                                      <div class="p-col-4 p-md-9">
+                                        <input
+                                          type="text"
+                                          pInputText
+                                          formControlName="cantidadManual"
+                                        />
+                                      </div>
+                                    </div>
+                                  </p-fieldset>
+
+                                  <p-fieldset legend="FULL TENSIÓN">
+                                    <div class="p-grid p-fluid">
+                                      <div
+                                        class="p-text-center p-col-12 p-md-3"
+                                      >
+                                        <label for="class">CANT:</label>
+                                      </div>
+                                      <div class="p-col-4 p-md-9">
+                                        <input
+                                          type="text"
+                                          pInputText
+                                          formControlName="cantidadFullTension"
+                                        />
+                                      </div>
+                                    </div>
+                                  </p-fieldset>
+                                  <p-fieldset legend="BLINDAJE">
+                                    <div class="p-grid p-fluid">
+                                      <div
+                                        class="p-text-center p-col-12 p-md-3"
+                                      >
+                                        <label for="class">CANT:</label>
+                                      </div>
+                                      <div class="p-col-4 p-md-9">
+                                        <input
+                                          type="text"
+                                          pInputText
+                                          formControlName="cantidadBlindaje"
+                                        />
+                                      </div>
+                                    </div>
+                                  </p-fieldset>
+                                </div>
+                                <p-footer>
+                                  <button
+                                    pButton
+                                    pRipple
+                                    type="button"
+                                    label="ACTUALIZAR FASE S"
+                                    (click)="guardarEmpalmeS()"
+                                    class="p-button-info"
+                                    [disabled]="formFaseS.invalid"
+                                  ></button>
+                                  <button
+                                    pButton
+                                    pRipple
+                                    type="button"
+                                    label="ELIMINAR FASE S"
+                                    (click)="mostrarFaseS = false"
+                                    class="p-button-danger"
+                                  ></button>
+                                </p-footer>
+                              </p-card>
+                            </form>
+                          </div>
+
+                          <!-- Fase T -->
+
+                          <div class="p-col-4 p-md-4">
+                            <form [formGroup]="formFaseT">
+                              <button
+                                *ngIf="!mostrarFaseT"
+                                pButton
+                                pRipple
+                                type="button"
+                                label="FASE T"
+                                (click)="mostrarFaseT = true"
+                              ></button>
+                              <p-card *ngIf="mostrarFaseT">
+                                <div class="p-text-center">
+                                  <label for="class">FASE T</label>
+                                </div>
+
+                                <div class="p-col-4 p-md-12">
+                                  <p-fieldset legend="MANUAL">
+                                    <div class="p-grid p-fluid">
+                                      <div
+                                        class="p-text-center p-col-12 p-md-3"
+                                      >
+                                        <label for="class">CANT:</label>
+                                      </div>
+                                      <div class="p-col-4 p-md-9">
+                                        <input
+                                          type="text"
+                                          pInputText
+                                          formControlName="cantidadManual"
+                                        />
+                                      </div>
+                                    </div>
+                                  </p-fieldset>
+
+                                  <p-fieldset legend="FULL TENSIÓN">
+                                    <div class="p-grid p-fluid">
+                                      <div
+                                        class="p-text-center p-col-12 p-md-3"
+                                      >
+                                        <label for="class">CANT:</label>
+                                      </div>
+                                      <div class="p-col-4 p-md-9">
+                                        <input
+                                          type="text"
+                                          pInputText
+                                          formControlName="cantidadFullTension"
+                                        />
+                                      </div>
+                                    </div>
+                                  </p-fieldset>
+                                  <p-fieldset legend="BLINDAJE">
+                                    <div class="p-grid p-fluid">
+                                      <div
+                                        class="p-text-center p-col-12 p-md-3"
+                                      >
+                                        <label for="class">CANT:</label>
+                                      </div>
+                                      <div class="p-col-4 p-md-9">
+                                        <input
+                                          type="text"
+                                          pInputText
+                                          formControlName="cantidadBlindaje"
+                                        />
+                                      </div>
+                                    </div>
+                                  </p-fieldset>
+                                </div>
+                                <p-footer>
+                                  <button
+                                    pButton
+                                    pRipple
+                                    type="button"
+                                    label="ACTUALIZAR FASE T"
+                                    (click)="guardarEmpalmeT()"
+                                    class="p-button-info"
+                                    [disabled]="formFaseT.invalid"
+                                  ></button>
+                                  <button
+                                    pButton
+                                    pRipple
+                                    type="button"
+                                    label="ELIMINAR FASE T"
+                                    (click)="mostrarFaseT = false"
+                                    class="p-button-danger"
+                                  ></button>
+                                </p-footer>
+                              </p-card>
+                            </form>
+                          </div>
+                        </div>
                       </div>
-                     
-                      <!-- Fase S -->
+                    </p-accordionTab>
+                  </div>
+                </form>
 
-                      <div class="p-col-4 p-md-4">
-                        <form [formGroup]="formFaseS">
-                          <button
-                            *ngIf="!mostrarFaseS"
-                            pButton
-                            pRipple
-                            type="button"
-                            label="FASE S"
-                            (click)="mostrarFaseS = true"
-                          ></button>
-                          <p-card *ngIf="mostrarFaseS">
-                           <div class=" p-text-center">
-                              <label for="class" >FASE S</label>
-                            </div>
-                             
-                               <div class="p-col-4 p-md-12">
-                            <p-fieldset legend="MANUAL">
+                <form [formGroup]="formDeshilachado">
+                  <div *ngIf="mostrar">
+                    <p-accordionTab header="ESTADO CONDUCTOR">
+                      <div class="p-col-12 p-md-12">
+                        <div class="p-field-checkbox">
+                          <p-checkbox
+                            binary="true"
+                            [formControl]="
+                              formCableConductor.controls['buenEstadoConductor']
+                            "
+                            (onChange)="OnChangeBuenEstado()"
+                          ></p-checkbox>
+                          <label for="ny">BUEN ESTADO</label>
+                        </div>
+                        <!----------------------------------------------------------------------------------------->
+                        <div class="p-field-checkbox">
+                          <p-checkbox
+                            [formControl]="
+                              formCableConductor.controls['embarrilado']
+                            "
+                            (onChange)="OnChangeEmbarrilado()"
+                            binary="true"
+                          >
+                            ></p-checkbox
+                          >
+                          <label for="ny">EMBARRILADO</label>
+                        </div>
+
+                        <div class="p-col-12 p-md-12">
+                          <form [formGroup]="formCableConductor">
+                            <p-card *ngIf="embarrilado">
                               <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                             <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadManual"
-                              />
-                             </div>
+                                <div class="p-col-12 p-md-1">
+                                  <label>FASE:</label>
+                                </div>
+                                <div class="p-col-12 p-md-5">
+                                  <input
+                                    type="text"
+                                    pInputText
+                                    formControlName="faseEmbarrilado"
+                                  />
+                                </div>
+                                <div class="p-col-12 p-md-1">
+                                  <label>CANT:</label>
+                                </div>
+                                <div class="p-col-12 p-md-5">
+                                  <input
+                                    type="text"
+                                    pInputText
+                                    formControlName="cantidadEmbarrilado"
+                                  />
+                                </div>
                               </div>
-                            </p-fieldset>
-                               
-                            <p-fieldset legend="FULL TENSIÓN">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                            <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadFullTension"
-                              />
-                            </div>
+                            </p-card>
+                          </form>
+                        </div>
+
+                        <!------------------------------------------------------------------------------------------->
+                        <div class="p-field-checkbox">
+                          <p-checkbox
+                            [formControl]="
+                              formCableConductor.controls['deshilachado']
+                            "
+                            (onChange)="OnChangeDeshilachado()"
+                            binary="true"
+                          >
+                            ></p-checkbox
+                          >
+                          <label for="ny">DESHILACHADO</label>
+                        </div>
+                        <div class="p-col-12 p-md-12">
+                          <p-card *ngIf="deshilacha">
+                            <div class="p-grid p-fluid">
+                              <div class="p-col-12 p-md-1">
+                                <h4>FASE R</h4>
                               </div>
-                            </p-fieldset>
-                            <p-fieldset legend="BLINDAJE">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
+                              <div class="p-col-12 p-md-1">
+                                <label>N° HILOS:</label>
+                              </div>
+                              <div class="p-col-12 p-md-3">
+                                <input
+                                  type="text"
+                                  pInputText
+                                  formControlName="numeroHilos"
+                                />
+                              </div>
+                              <div class="p-col-12 p-md-2">
+                                <label>DISTANCIA:</label>
+                              </div>
+                              <div class="p-col-12 p-md-3">
+                                <input
+                                  type="text"
+                                  pInputText
+                                  formControlName="distancia"
+                                />
+                              </div>
+                              <div class="p-col-12 p-md-2">
+                                <p-toggleButton
+                                  onIcon=""
+                                  offIcon="pi pi-times"
+                                  (click)="guardarDeshilachadoR()"
+                                ></p-toggleButton>
+                              </div>
+                              <div class="p-col-12 p-md-1">
+                                <h4>FASE S</h4>
+                              </div>
+                              <div class="p-col-12 p-md-1">
+                                <label>N° HILOS:</label>
+                              </div>
+                              <div class="p-col-12 p-md-3">
+                                <input
+                                  type="text"
+                                  pInputText
+                                  formControlName="numeroHilos"
+                                />
+                              </div>
+                              <div class="p-col-12 p-md-2">
+                                <label>DISTANACIA:</label>
+                              </div>
+                              <div class="p-col-12 p-md-3">
+                                <input
+                                  type="text"
+                                  pInputText
+                                  formControlName="distancia"
+                                />
+                              </div>
+                              <div class="p-col-12 p-md-2">
+                                <p-toggleButton
+                                  onIcon=""
+                                  offIcon="pi pi-times"
+                                  (click)="guardarDeshilachadoS()"
+                                ></p-toggleButton>
+                              </div>
+                              <div class="p-col-12 p-md-1">
+                                <h4>FASE T</h4>
+                              </div>
+                              <div class="p-col-12 p-md-1">
+                                <label>N° HILOS:</label>
+                              </div>
+                              <div class="p-col-12 p-md-3">
+                                <input
+                                  type="text"
+                                  pInputText
+                                  formControlName="numeroHilos"
+                                />
+                              </div>
+                              <div class="p-col-12 p-md-2">
+                                <label>DISTANCIA:</label>
+                              </div>
+                              <div class="p-col-12 p-md-3">
+                                <input
+                                  type="text"
+                                  pInputText
+                                  formControlName="distancia"
+                                />
+                              </div>
+                              <div class="p-col-12 p-md-2">
+                                <p-toggleButton
+                                  onIcon=""
+                                  offIcon="pi pi-times"
+                                  (click)="guardarDeshilachadoT()"
+                                ></p-toggleButton>
+                              </div>
                             </div>
-                            <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadBlindaje"
-                              />
-                            </div>
-                            </div>
-                            </p-fieldset>
-                               </div>
-                            <p-footer>
-                              <button
-                                pButton
-                                pRipple
-                                type="button"
-                                label="ACTUALIZAR FASE S"
-                                (click)="guardarEmpalmeS()"
-                                class="p-button-info"
-                                [disabled]="formFaseS.invalid"
-                              ></button>
-                              <button
-                                pButton
-                                pRipple
-                                type="button"
-                                label="ELIMINAR FASE S"
-                                (click)="mostrarFaseS = false"
-                                class="p-button-danger"
-                              ></button>
-                            </p-footer>
                           </p-card>
-                        </form>
+                        </div>
                       </div>
- 
-                      <!-- Fase T -->
-
-                      <div class="p-col-4 p-md-4">
-                        <form [formGroup]="formFaseT">
-                          <button
-                            *ngIf="!mostrarFaseT"
-                            pButton
-                            pRipple
-                            type="button"
-                            label="FASE T"
-                            (click)="mostrarFaseT = true"
-                          ></button>
-                          <p-card *ngIf="mostrarFaseT">
-                           <div class=" p-text-center">
-                              <label for="class" >FASE T</label>
-                            </div>
-                             
-                               <div class="p-col-4 p-md-12">
-                            <p-fieldset legend="MANUAL">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                             <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadManual"
-                              />
-                             </div>
-                              </div>
-                            </p-fieldset>
-                               
-                            <p-fieldset legend="FULL TENSIÓN">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                            <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadFullTension"
-                              />
-                            </div>
-                              </div>
-                            </p-fieldset>
-                            <p-fieldset legend="BLINDAJE">
-                              <div class="p-grid p-fluid">
-                              <div class=" p-text-center p-col-12 p-md-3">
-                              <label for="class" >CANT:</label>
-                            </div>
-                            <div class="p-col-4 p-md-9">
-                              <input
-                                type="text"
-                                pInputText
-                                formControlName="cantidadBlindaje"
-                              />
-                            </div>
-                            </div>
-                            </p-fieldset>
-                               </div>
-                            <p-footer>
-                              <button
-                                pButton
-                                pRipple
-                                type="button"
-                                label="ACTUALIZAR FASE T"
-                                (click)="guardarEmpalmeT()"
-                                class="p-button-info"
-                                [disabled]="formFaseT.invalid"
-                              ></button>
-                              <button
-                                pButton
-                                pRipple
-                                type="button"
-                                label="ELIMINAR FASE T"
-                                (click)="mostrarFaseT = false"
-                                class="p-button-danger"
-                              ></button>
-                            </p-footer>
-                          </p-card>
-                        </form>
-                        
-                      </div>
-                       
-                    </div>
-                  </div>  
-                </p-accordionTab>
-                </div>
-                 </form>
-
-                  <form [formGroup]="formDeshilachado">
-                    <div *ngIf="mostrar">
-                <p-accordionTab header="ESTADO CONDUCTOR">
-                <div class="p-col-12 p-md-12">
-                  
-                    <div class="p-field-checkbox" >
-                    <p-checkbox
-                      binary="true"
-                       [formControl]="formCableConductor.controls['buenEstadoConductor']"
-                       (onChange)="OnChangeBuenEstado()"
-                      ></p-checkbox>
-                    <label for="ny">BUEN ESTADO</label>
+                    </p-accordionTab>
                   </div>
-<!----------------------------------------------------------------------------------------->
-                  <div class="p-field-checkbox">
-                    <p-checkbox 
-                       [formControl]="formCableConductor.controls['embarrilado']"
-                        (onChange)="OnChangeEmbarrilado()"
-                      binary="true"> 
-                      ></p-checkbox>
-                    <label for="ny">EMBARRILADO</label>
-                  </div>
-
-                    
-                     <div class="p-col-12 p-md-12">  
-                   <form [formGroup]="formCableConductor">
-                      
-                   <p-card *ngIf="embarrilado">
-                     <div class="p-grid p-fluid">
-                       <div class="p-col-12 p-md-1">
-                         <label>FASE:</label>
-                       </div> 
-                    <div class="p-col-12 p-md-5">
-                      <input
-                        type="text"
-                        pInputText
-                        formControlName="faseEmbarrilado"
-                      />
-                    </div>
-                     <div class="p-col-12 p-md-1">
-                         <label>CANT:</label>
-                       </div> 
-                    <div class="p-col-12 p-md-5">
-                      <input
-                        type="text"
-                        pInputText
-                        formControlName="cantidadEmbarrilado"
-                      />
-                    </div>
-                     </div>
-                  </p-card>
-                      
-                  </form>
-                     </div>
-                   
-<!------------------------------------------------------------------------------------------->
-                  <div class="p-field-checkbox">
-                    <p-checkbox
-                     [formControl]="formCableConductor.controls['deshilachado']"
-                     (onChange)="OnChangeDeshilachado()"
-                      binary="true"                                    
-                    >
-                      ></p-checkbox
-                    >
-                    <label for="ny">DESHILACHADO</label>
-                  </div>
-                   <div class="p-col-12 p-md-12">  
-                  <p-card *ngIf="deshilacha">
-                    <div class="p-grid p-fluid">
-                      <div class="p-col-12 p-md-1">
-                         <h4>FASE R</h4>
-                       </div> 
-                       <div class="p-col-12 p-md-1">
-                         <label>N° HILOS:</label>
-                       </div> 
-                    <div class="p-col-12 p-md-3">
-                      <input
-                        type="text"
-                        pInputText
-                        formControlName="numeroHilos"
-                      />
-                    </div>
-                    <div class="p-col-12 p-md-2">
-                         <label>DISTANCIA:</label>
-                       </div> 
-                    <div class="p-col-12 p-md-3">
-                      <input
-                        type="text"
-                        pInputText
-                        formControlName="distancia"
-                      />
-                    </div>
-                    <div class="p-col-12 p-md-2">
-                      <p-toggleButton  onIcon="" offIcon="pi pi-times" (click)="guardarDeshilachadoR()"></p-toggleButton>
-                    </div>
-                    <div class="p-col-12 p-md-1">
-                         <h4>FASE S</h4>
-                       </div> 
-                       <div class="p-col-12 p-md-1">
-                         <label>N° HILOS:</label>
-                       </div> 
-                    <div class="p-col-12 p-md-3">
-                      <input
-                        type="text"
-                        pInputText
-                        formControlName="numeroHilos"
-                      />
-                    </div>
-                    <div class="p-col-12 p-md-2">
-                         <label>DISTANACIA:</label>
-                       </div> 
-                    <div class="p-col-12 p-md-3">
-                      <input
-                        type="text"
-                        pInputText
-                        formControlName="distancia"
-                      />
-                    </div>
-                     <div class="p-col-12 p-md-2">
-                      <p-toggleButton  onIcon="" offIcon="pi pi-times" (click)="guardarDeshilachadoS()"></p-toggleButton>
-                    </div>
-                    <div class="p-col-12 p-md-1">
-                         <h4>FASE T</h4>
-                       </div> 
-                       <div class="p-col-12 p-md-1">
-                         <label>N° HILOS:</label>
-                       </div> 
-                    <div class="p-col-12 p-md-3">
-                      <input
-                        type="text"
-                        pInputText
-                        formControlName="numeroHilos"
-                      />
-                    </div>
-                    <div class="p-col-12 p-md-2">
-                         <label>DISTANCIA:</label>
-                       </div> 
-                    <div class="p-col-12 p-md-3">
-                      <input
-                        type="text"
-                        pInputText
-                        formControlName="distancia"
-                      />
-                    </div>
-                     <div class="p-col-12 p-md-2">
-                      <p-toggleButton  onIcon="" offIcon="pi pi-times" (click)="guardarDeshilachadoT()"></p-toggleButton>
-                    </div>
-                    </div>
-                  </p-card>
-                   </div>
-            </div> 
-                </p-accordionTab>
-                    </div>
-                 </form>
-
+                </form>
               </p-accordion>
             </div>
-            
-          
+
             <div class="p-col-12 p-md-12">
               <p-fieldset legend="OBSERVACIONES">
                 <textarea

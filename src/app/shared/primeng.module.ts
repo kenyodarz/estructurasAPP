@@ -34,6 +34,7 @@ import { PasswordModule } from 'primeng/password';
 import { CarouselModule } from 'primeng/carousel';
 
 import { GalleriaModule } from 'primeng/galleria';
+import { StyleClassModule } from 'primeng/styleclass';
 
 const myModule = [
   ConfirmDialogModule,
@@ -67,6 +68,7 @@ const myModule = [
   PasswordModule,
   CarouselModule,
   GalleriaModule,
+  StyleClassModule,
 ];
 
 @NgModule({

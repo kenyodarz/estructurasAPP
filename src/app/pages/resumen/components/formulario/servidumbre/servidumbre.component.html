@@ -39,35 +39,36 @@
                   </div>
                 </div>
                 <div class="p-grid p-fluid">
-                <div class="p-col-12 p-md-3">
-                  <div class="p-field-checkbox">
-                    <p-checkbox
-                      [formControl]="formServidumbre.controls['podasinRiesgo']"
-                      (onChange)="OnChangePodasin()"
-                      binary="true"
-                       (ngModelChange)="sinRiesgoOnChange()"
-                    ></p-checkbox>
-                    <label for="su">PODA SIN RIESGO ELÉCTRICO </label>
+                  <div class="p-col-12 p-md-3">
+                    <div class="p-field-checkbox">
+                      <p-checkbox
+                        [formControl]="
+                          formServidumbre.controls['podasinRiesgo']
+                        "
+                        (onChange)="OnChangePodasin()"
+                        binary="true"
+                        (ngModelChange)="sinRiesgoOnChange()"
+                      ></p-checkbox>
+                      <label for="su">PODA SIN RIESGO ELÉCTRICO </label>
+                    </div>
                   </div>
-                </div>
-                <div class="p-col-12 p-md-2" *ngIf="sinRiesgo">
-                  <label for="basic">CANTIDAD DE ARBOLES:</label>
-                </div>
-                
+                  <div class="p-col-12 p-md-2" *ngIf="sinRiesgo">
+                    <label for="basic">CANTIDAD DE ARBOLES:</label>
+                  </div>
+
                   <div class="p-col-12 p-md-2" *ngIf="sinRiesgo">
                     <input
                       type="text"
                       pInputText
                       formControlName="cantArboles"
                     />
-                  
-                </div>
-                <div class="p-col-12 p-md-2" *ngIf="sinRiesgo">
-                  <label for="basic">OBSERVACIONES:</label>
-                </div>
-                <div class="p-col-12 p-md-3" *ngIf="sinRiesgo">
-                  <input type="text" pInputText formControlName="obsPoda" />
-                </div>
+                  </div>
+                  <div class="p-col-12 p-md-2" *ngIf="sinRiesgo">
+                    <label for="basic">OBSERVACIONES:</label>
+                  </div>
+                  <div class="p-col-12 p-md-3" *ngIf="sinRiesgo">
+                    <input type="text" pInputText formControlName="obsPoda" />
+                  </div>
                 </div>
                 <div class="p-field-checkbox">
                   <p-checkbox
@@ -81,57 +82,57 @@
             </div>
           </div>
           <div class="p-grid p-fluid">
-          <div class="p-col-12 p-md-5">
-            <p-fieldset legend="SERVIDUMBRE">
-              <div class="p-field-checkbox">
-                <p-checkbox
-                  [formControl]="formServidumbre.controls['invasion']"
-                  (onChange)="OnChangeSiAplica()"
-                  binary="true"
-                ></p-checkbox>
-                <label for="su">INVASIÓN SERVIDUMBRE</label>
-              </div>
+            <div class="p-col-12 p-md-5">
+              <p-fieldset legend="SERVIDUMBRE">
+                <div class="p-field-checkbox">
+                  <p-checkbox
+                    [formControl]="formServidumbre.controls['invasion']"
+                    (onChange)="OnChangeSiAplica()"
+                    binary="true"
+                  ></p-checkbox>
+                  <label for="su">INVASIÓN SERVIDUMBRE</label>
+                </div>
 
-              <div class="p-field-checkbox">
-                <p-checkbox
-                  [formControl]="formServidumbre.controls['pasoMT']"
-                  (onChange)="OnChangeSiAplica()"
-                  binary="true"
-                ></p-checkbox>
-                <label for="su">PASO LINEAS MT EN EL TRAMO LINEA</label>
-              </div>
+                <div class="p-field-checkbox">
+                  <p-checkbox
+                    [formControl]="formServidumbre.controls['pasoMT']"
+                    (onChange)="OnChangeSiAplica()"
+                    binary="true"
+                  ></p-checkbox>
+                  <label for="su">PASO LINEAS MT EN EL TRAMO LINEA</label>
+                </div>
 
-              <div class="p-field-checkbox">
-                <p-checkbox
-                  [formControl]="formServidumbre.controls['pasoBT']"
-                  (onChange)="OnChangeSiAplica()"
-                  binary="true"
-                ></p-checkbox>
-                <label for="su">PASO LINEAS BT EN EL TRAMO LINEA</label>
-              </div>
+                <div class="p-field-checkbox">
+                  <p-checkbox
+                    [formControl]="formServidumbre.controls['pasoBT']"
+                    (onChange)="OnChangeSiAplica()"
+                    binary="true"
+                  ></p-checkbox>
+                  <label for="su">PASO LINEAS BT EN EL TRAMO LINEA</label>
+                </div>
 
-              <div class="p-field-checkbox">
-                <p-checkbox
-                  [formControl]="formServidumbre.controls['noAplica']"
-                  (onChange)="OnChangeNoAplica()"
-                  binary="true"
-                ></p-checkbox>
-                <label for="su">NO APLICA</label>
-              </div>
-            </p-fieldset>
-          </div>
-          
-          <div class="p-col-12 p-md-7">
-            <p-fieldset legend="OBSERVACIONES">
-              <textarea
-                rows="5"
-                cols="30"
-                pInputTextarea
-                autoResize="autoResize"
-                formControlName="obsServidumbre"
-              ></textarea>
-            </p-fieldset>
-          </div>
+                <div class="p-field-checkbox">
+                  <p-checkbox
+                    [formControl]="formServidumbre.controls['noAplica']"
+                    (onChange)="OnChangeNoAplica()"
+                    binary="true"
+                  ></p-checkbox>
+                  <label for="su">NO APLICA</label>
+                </div>
+              </p-fieldset>
+            </div>
+
+            <div class="p-col-12 p-md-7">
+              <p-fieldset legend="OBSERVACIONES">
+                <textarea
+                  rows="5"
+                  cols="30"
+                  pInputTextarea
+                  autoResize="autoResize"
+                  formControlName="obsServidumbre"
+                ></textarea>
+              </p-fieldset>
+            </div>
           </div>
         </ng-template>
       </p-fieldset>

@@ -9,21 +9,40 @@
       <a [routerLink]="['/resume/home']" routerLinkActive="active">Home</a>
     </li>
     <li>
-      <a [routerLink]="['/resumen/persona']" routerLinkActive="active" *ngIf="isAdmin">Personas</a>
+      <a
+        [routerLink]="['/resumen/persona']"
+        routerLinkActive="active"
+        *ngIf="isAdmin"
+        >Personas</a
+      >
     </li>
     <li>
-      <a [routerLink]="['/resumen/estructuras']" routerLinkActive="active"  *ngIf="isAdmin">Estructuras</a>
+      <a
+        [routerLink]="['/resumen/estructuras']"
+        routerLinkActive="active"
+        *ngIf="isAdmin"
+        >Estructuras</a
+      >
     </li>
-    <li><a [routerLink]="['/resumen/reportes']" routerLinkActive="active"  *ngIf="isAdmin">Reportes</a></li>
     <li>
-      <a [routerLink]="['/resumen/formulario']" routerLinkActive="active" >Formato</a>
+      <a
+        [routerLink]="['/resumen/reportes']"
+        routerLinkActive="active"
+        *ngIf="isAdmin"
+        >Reportes</a
+      >
+    </li>
+    <li>
+      <a [routerLink]="['/resumen/formulario']" routerLinkActive="active"
+        >Formato</a
+      >
     </li>
     <li>
       <button
         type="button"
         id="btn_usuario"
         pButton
-        pRipple 
+        pRipple
         icon="pi pi-user"
         [label]="[usuario]"
         (click)="menu.toggle($event)"

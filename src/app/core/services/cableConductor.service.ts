@@ -25,51 +25,51 @@ export class cableConductorService extends CommonService<
 
   asignarEmpalme(
     idCableConductor: string,
-    empalme: Empalme
+    empalme: Empalme,
   ): Observable<CableConductor> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
     return this.http.put<CableConductor>(
       `${this.API_URL}/${idCableConductor}/asignar-empalmes`,
       empalme,
-      { headers: headers }
+      { headers: headers },
     );
   }
   eliminarEmpalme(
     idCableConductor: string,
-    empalme: Empalme
+    empalme: Empalme,
   ): Observable<CableConductor> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
     return this.http.put<CableConductor>(
       `${this.API_URL}/${idCableConductor}/eliminar-empalmes`,
       empalme,
-      { headers: headers }
+      { headers: headers },
     );
   }
 
   asignarDeshilachado(
     idCableConductor: string,
-    deshilachado: Deshilachado
+    deshilachado: Deshilachado,
   ): Observable<CableConductor> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
     return this.http.put<CableConductor>(
       `${this.API_URL}/${idCableConductor}/asignar-deshilachados`,
       deshilachado,
-      { headers: headers }
+      { headers: headers },
     );
   }
   eliminarDeshilachado(
     idCableConductor: string,
-    deshilachado: Deshilachado
+    deshilachado: Deshilachado,
   ): Observable<CableConductor> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
     return this.http.put<CableConductor>(
       `${this.API_URL}/${idCableConductor}/eliminar-deshilachados`,
       deshilachado,
-      { headers: headers }
+      { headers: headers },
     );
   }
 }

@@ -11,7 +11,10 @@ import { Apantallamiento } from 'src/app/core/models/apantallamiento';
 @Injectable({
   providedIn: 'root',
 })
-export class ApantallamientoService extends CommonService<Apantallamiento, string> {
+export class ApantallamientoService extends CommonService<
+  Apantallamiento,
+  string
+> {
   protected API_URL: string = `${API_URL}/apantallamientos/`;
   constructor(protected http: HttpClient) {
     super(http);

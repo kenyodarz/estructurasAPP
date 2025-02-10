@@ -3,7 +3,12 @@ import { Formulario } from 'src/app/core/models/formulario';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { FormularioService } from 'src/app/core/services/formulario.service';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { AislamientoService } from 'src/app/core/services/aislamiento.service';
 import { Aislamiento } from 'src/app/core/models/aislamiento';
 import { Fase } from 'src/app/core/models/fase';
@@ -43,7 +48,7 @@ export class AislamientoComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private router: Router,
     private fb: UntypedFormBuilder,
-    private rutaActiva: ActivatedRoute
+    private rutaActiva: ActivatedRoute,
   ) {}
 
   obtenerFormulario(idInspeccion: string) {
@@ -99,7 +104,7 @@ export class AislamientoComponent implements OnInit {
           detail: `se ha actualizado el formulario ${formulario.idInspeccion}`,
         });
         this.router.navigateByUrl(
-          `resumen/formulario/ver/${formulario.idInspeccion}/bases/${formulario.idInspeccion}`
+          `resumen/formulario/ver/${formulario.idInspeccion}/bases/${formulario.idInspeccion}`,
         );
       });
   }
@@ -147,7 +152,7 @@ export class AislamientoComponent implements OnInit {
     this.faseService
       .guardarFaseconAislamiento(
         this.formulario.idAisladores.idAislamiento,
-        fase
+        fase,
       )
       .subscribe((faseResul: Fase) => {
         this.aislamientoService
@@ -183,13 +188,13 @@ export class AislamientoComponent implements OnInit {
     // this.formulario.estructura = this.formInformacion.value as Estructura;
     // this.guardarFormulario();
     this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/bases/${this.formulario.idInspeccion}`
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/bases/${this.formulario.idInspeccion}`,
     );
   }
 
   prevPage() {
     this.router.navigateByUrl(
-      `resumen/formulario/ver/${this.formulario.idInspeccion}/cable-conductor/${this.formulario.idInspeccion}`
+      `resumen/formulario/ver/${this.formulario.idInspeccion}/cable-conductor/${this.formulario.idInspeccion}`,
     );
   }
 
@@ -317,7 +322,6 @@ export class AislamientoComponent implements OnInit {
     //   summary: 'Tab Expanded',
     //   detail: 'Index: ' + event.index,
     // });
-
     // this.next();
   }
 }
